@@ -6,12 +6,12 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpackConfig = {
     mode: 'production',
     entry: {
-        index: path.resolve(__dirname, './web/src/index.js')
+        index: path.resolve(__dirname, './src/index.js')
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, './web/dist/'),
-        publicPath: '/dist/'
+        path: path.resolve(__dirname, './web/build/'),
+        publicPath: '/build/'
     },
     module: {
         rules: [
@@ -23,13 +23,11 @@ const webpackConfig = {
                         presets: ['env', 'react', 'stage-0']
                     }
                 },
-                include: path.resolve(__dirname, './web'),
                 exclude: /node_modules/
             },
             {
                 test: /\.(js|jsx)$/,
                 use: {loader: 'eslint-loader'},
-                include: path.resolve(__dirname, './web'),
                 exclude: /node_modules/
             },
             {
@@ -38,25 +36,21 @@ const webpackConfig = {
                     MiniCssExtractPlugin.loader,
                     "css-loader"
                 ],
-                include: path.resolve(__dirname, './web'),
                 exclude: /node_modules/
             },
             {
                 test: /\.scss$/,
                 use: [MiniCssExtractPlugin.loader,"css-loader","sass-loader"],
-                include: path.resolve(__dirname, './web'),
                 exclude: /node_modules/
             },
             {
                 test: /\.(png|jpg|gif)$/,
                 use: [{loader: 'url-loader', options: {limit: 8192}}],
-                include: path.resolve(__dirname, './web'),
                 exclude: /node_modules/
             },
             {
                 test: /\.(eot|svg|ttf|woff)/,
                 use: [{loader: 'file-loader'}],
-                include: path.resolve(__dirname, './web'),
                 exclude: /node_modules/
             }
         ]
@@ -65,7 +59,7 @@ const webpackConfig = {
         extensions: ['.js', '.jsx', '.css', '.scss']
     },
     plugins: [
-        new CleanWebpackPlugin(['dist']),//清除dist目录中已经build过的文件
+        new CleanWebpackPlugin(['./web/build']),//清除dist目录中已经build过的文件
         new webpack.LoaderOptionsPlugin({
             test: /\.(js|jsx)$/,
             options:{

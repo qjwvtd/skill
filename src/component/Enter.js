@@ -8,23 +8,40 @@ import React,{Component} from 'react';
 export default class Enter extends Component{
     constructor(props){
         super(props);
-        this.openEnterEvent = this.openEnterEvent.bind(this);
+        this.state = {
+            mm:60,
+            display:true
+        };
     }
     componentDidMount(){
-        document.onkeydown = false;
-    }
-    openEnterEvent(){
         document.onkeydown = (e) => {
-            var code = e.charCode || e.keyCode;
+            let code = e.charCode || e.keyCode;
             if(code == 13){
                 //这里写回车的代码
-                alert('这里写回车的代码');
+                alert('Enter`s code is here');
             }
         };
+        setInterval(() => {
+            if(this.state.mm > 0){
+                this.setState({
+                    mm:this.state.mm -1
+                });
+            }
+            if(this.state.mm == 0){
+                this.setState({
+                    display:false
+                });
+                document.onkeydown = false;
+            }
+        },1000);
     }
     render(){
         return (
-            <button type="button" onClick={this.openEnterEvent}>点击开启回车事件</button>
+            <div style={{display:this.state.display == true ? 'block' : 'none'}}>
+                <h5>回车事件</h5>
+                <button type="button">回车事件({this.state.mm}秒后失效)</button>
+                <hr/>
+            </div>
         );
     }
 }

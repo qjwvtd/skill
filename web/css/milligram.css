@@ -10,6 +10,8 @@
 *:after,
 *:before {
   box-sizing: inherit;
+  margin:0;
+  padding:0;
 }
 
 html {
@@ -193,8 +195,8 @@ pre > code {
 
 hr {
   border: 0;
-  border-top: 0.1rem solid #f4f5f6;
-  margin: 3.0rem 0;
+  border-top: 0.1rem solid #ccc;
+  margin: 0.5rem 0;
 }
 
 input[type='email'],
@@ -558,8 +560,6 @@ h5,
 h6 {
   font-weight: 300;
   letter-spacing: -.1rem;
-  margin-bottom: 2.0rem;
-  margin-top: 0;
 }
 
 h1 {
