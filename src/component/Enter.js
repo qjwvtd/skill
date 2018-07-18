@@ -39,7 +39,7 @@ export default class Enter extends Component{
         return (
             <div style={{display:this.state.display == true ? 'block' : 'none'}}>
                 <h5>回车事件</h5>
-                <button type="button">回车事件({this.state.mm}秒后失效)</button>
+                <button type="button">回车事件({this.state.mm}秒后关闭)</button>
                 <hr/>
             </div>
         );

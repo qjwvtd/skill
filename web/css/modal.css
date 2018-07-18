@@ -1,0 +1,20 @@
+/*样式根据项目UI风格自行调整*/
+/*模态*/
+.modal{position:fixed;z-index:2147483647;top:0;right:0;bottom:0;left:0;display:none;}
+.modal.active{display:block;animation:fadeIn 0.5s !important;}
+.modal-body{background:#212326;box-shadow:0 0 40px #25d6f5;margin:10% auto auto auto;border-radius:3px}
+.modal-head{overflow:hidden;text-align:left;color:#fff;}
+.modal-head>span{float:right;width:20px;height:20px;text-align:center;cursor:pointer;border-radius:3px}
+.modal-head>span:hover{background:palevioletred}
+.modal-body,.modal-content,.modal-foot{padding:10px;}
+.modal-foot{text-align:right}
+.modal-foot button{height:30px;line-height:30px;width:80px;text-align:center;border:none;color:#fff;}
+/*fadeIn fadeOut*/
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes fadeOut {
+    0% {opacity:1;}
+    100% {opacity:0;}
+}
