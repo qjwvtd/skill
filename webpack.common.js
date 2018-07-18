@@ -1,10 +1,14 @@
+/*
+ * 2018/6/27
+ * administractor
+ */
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');//清除已经build过的文件
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const webpackConfig = {
-    mode: 'production',
+//const HtmlWebpackPlugin = require('html-webpack-plugin');
+module.exports = {
     entry: {
         index: path.resolve(__dirname, './web/src/index.js')
     },
@@ -75,11 +79,6 @@ const webpackConfig = {
         new MiniCssExtractPlugin({
             filename: "[name].css",
             chunkFilename: "index.css"
-        }),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
         })
     ]
 };
-
-module.exports = webpackConfig;
