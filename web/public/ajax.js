@@ -1,4 +1,4 @@
-function ajax(o){
+export function ajax(o){
 	o = o || {};
 	o.type = o.type.toUpperCase() || 'POST';
 	o.url = o.url || '';
@@ -36,7 +36,7 @@ function ajax(o){
 	};
 }
 //get
-function getJson(url,callback){
+export function getJson(url,callback){
 	var req = null;
 	if (XMLHttpRequest) {
 		req = new XMLHttpRequest();

@@ -71,7 +71,7 @@ export function formatDate(dateStr,reg) {
         'DATE':date,
         'YMD':year + _reg + month + _reg + date,
         'HMS':hour + ":" + minute + ":" + second,
-        'YMD_HMS':year + _reg + month + _reg + date + " " + hour + ":" + minute + ":" + second
+        'YMD_HMS':year + _reg + month + _reg + date +  + hour + ":" + minute + ":" + second
     };
 }
 //字符串去空
@@ -173,4 +173,21 @@ export function getPageHeight() {
         f = g.documentElement,
         d = g.compatMode == "BackCompat" ? a : g.documentElement;
     return Math.max(f.scrollHeight, a.scrollHeight, d.clientHeight);
+}
+
+export class Cookie{
+    setCookie(name,value){
+        document.cookie = name + "=" + value;
+    }
+    getCookie(name){
+        const cName = name + "=";
+        const ca = document.cookie.split(';');
+        for(let i=0; i<ca.length; i++){
+            const c = ca[i].trim();
+            if(c.indexOf(cName) == 0) {
+                return c.substring(cName.length,c.length);
+            };
+        }
+        return "";
+    }
 }
