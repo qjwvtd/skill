@@ -1,0 +1,12 @@
+/*自定义checkbox*/
+span.checkbox{
+    border:1px solid #ccc;
+    display:inline-block;
+    width:18px;
+    height:18px;
+    border-radius:3px;
+}
+span.checkbox.active{
+    border:1px solid #3B86FF;
+    color:#3B86FF;
+}

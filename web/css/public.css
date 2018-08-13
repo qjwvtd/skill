@@ -1,0 +1,91 @@
+*{box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;margin:0;padding:0;font-family:Monospaced Number, Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;}
+html,body{height:100%}
+html{font-size: 62.5%;min-width:1366px;overflow-x:scroll}
+body{font-size:1.2em;}
+body>#root{height:100%}
+a{outline:none;text-decoration:none;cursor:pointer}
+ul{list-style:none;}
+input,select,textarea{
+    outline:none;
+    text-decoration:none;
+    border:1px solid #C8CED3;
+    border-radius:3px;
+    text-indent:5px;
+}
+
+/*灰白*/
+.grey{color:#C8CED3 !important;}
+/*warning*/
+.warning{color:#fe8900 !important;}
+/*error字体颜色*/
+.error{color:#ff0830 !important;}
+/*优字体颜色*/
+.actor{color:#3B86FF !important;}
+/*待处理*/
+.unhanld{color:orange !important;}
+/*处理中*/
+.hanlding{color:#2ED2F2 !important;}
+/*已完成*/
+.finished{color:#5fb878 !important;}
+/*title*/
+.titleGroup{padding:20px 0}
+.pageTitle{font-size:1.6em;color:#3B86FF}
+.module-title{font-size:1.4em;font-weight:bold;padding:0 6px}
+/*圆角*/
+.borderRadius3{border-radius:3px}
+.borderRadius5{border-radius:5px}
+/*阴影*/
+.boxShadow{box-shadow:0 0 15px #ccc;}
+/*仿bootstrap.css*/
+.container{}
+.row{overflow:hidden;clear:both;display:block;}
+.col-1,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-10,.col-11,.col-12{display:block;float:left;}
+.col-1{width:8.3333%;}
+.col-2{width:16.6666%;}
+.col-3{width:24.9999%;}
+.col-4{width:33.3332%;}
+.col-5{width:41.6665%;}
+.col-6{width:49.9998%;}
+.col-7{width:58.3331%;}
+.col-8{width:66.6664%;}
+.col-9{width:74.9997%;}
+.col-10{width:83.333%;}
+.col-11{width:91.6663%;}
+.col-12{width:100%;}
+/*列偏移量,结合col使用*/
+.ml-1{margin-left:8.3333%;}
+.ml-2{margin-left:16.6666%;}
+.ml-3{margin-left:24.9999%;}
+.ml-4{margin-left:33.3332%;}
+.ml-5{margin-left:41.6665%;}
+.ml-6{margin-left:49.9998%;}
+.ml-7{margin-left:58.3331%;}
+.ml-8{margin-left:66.6664%;}
+.ml-9{margin-left:74.9997%;}
+.ml-10{margin-left:83.333%;}
+.ml-11{margin-left:91.6663%;}
+/*滚动条*/
+body{
+    /*IE*/
+    scrollbar-arrow-color:#212326;/*三角箭头的颜色*/
+    scrollbar-face-color:#212326;/*滚动条滑块按钮的颜色*/
+    scrollbar-highlight-color:#212326;/*滚动条整体颜色*/
+    scrollbar-shadow-color:#212326;/*滚动条阴影*/
+}
+/*-webkit-*/
+::-webkit-scrollbar{
+    width:5px;/*滚动条垂直方向的宽度*/
+}
+::-webkit-scrollbar-thumb:vertical{
+    background:#212326;/* 垂直滚动条的滑动块 */
+}
+/*浮动*/
+.fl{float:left}
+.fr{float:right}
+.clear{overflow:hidden}
+/*文字*/
+.text-left{text-align:left}
+.text-center{text-align:center}
+.text-right{text-align:right}
+
+

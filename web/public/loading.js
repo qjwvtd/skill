@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-
+//需要loading.css
 //import后，直接使用 const data = true ? XXX : <Loading />;
 
 export default class Loading extends Component{

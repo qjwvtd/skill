@@ -108,32 +108,7 @@ export function ranDate(){
 export function isNumber(num){
     return /^\d|\d.\d$/.test(num);
 }
-export class Checkbox extends Component{
-    //<Checkbox checked="checked" onChange={this.onChange.bind(this)} />
-    constructor(props){
-        super(props);
-    }
-    onClick(event){
-        const checkbox = event.currentTarget;
-        const className = checkbox.className;
-        switch (className){
-        case 'checkbox active':
-        checkbox.className = 'checkbox';
-        this.props.onChange(false);
-            break;
-        case 'checkbox':
-        checkbox.className = 'checkbox active';
-        this.props.onChange(true);
-            break;
-        }
-    }
-    render(){
-        const isChecked = this.props.checked == 'checked' ? 'checkbox active' : 'checkbox';
-        return (
-            <span className={isChecked} onClick={this.onClick.bind(this)}></span>
-        );
-    }
-}
+
 //数组去重复
 export function arrayRepet(arr){
     //arr:['a','b','c','a','c','b']

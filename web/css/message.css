@@ -1,0 +1,54 @@
+/*message[success|warning|error]*/
+.messageContainer{
+    position:absolute;
+    z-index:9999;
+    width:100%;
+    height:100%;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    text-align:center;
+}
+.messageBody{
+    background:#fff;
+    box-shadow:0 0 15px #ccc;
+    max-width:560px;
+    position:relative;
+    border-radius:5px;
+    color:#2B344C;
+    text-align:center;
+    padding:25px 50px;
+    top:50px;
+}
+.messageBody.active{
+    animation:msgShow 0.5s !important;
+}
+.messageBody>span{
+    font-size:14px !important;
+    display:inline-block;
+    height:16px;
+    line-height:16px;
+}
+.messageBody>span:first-child{
+    margin-right:5px;
+    width:16px;
+    border-radius:50%;
+}
+.messageBody>span.successIcon{
+    background:green;
+    color:#fff;
+}
+.messageBody>span.warningIcon{
+    background:orange;
+    color:#fff;
+}
+.messageBody>span.errorIcon{
+    background:red;
+    color:#fff;
+}
+/*message show*/
+@keyframes msgShow {
+    0% {top:-600px;}
+    100% {top:50px;}
+}
