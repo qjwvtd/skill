@@ -1,62 +1,81 @@
-export function ajax(o){
-	o = o || {};
-	o.type = o.type.toUpperCase() || 'POST';
-	o.url = o.url || '';
-	o.async = o.async || true;
-	o.data = o.data || null;
-	o.success = o.success || function () {};
-	o.error = o.error || function () {};
-	var req = null;
-	if (XMLHttpRequest) {
-		req = new XMLHttpRequest();
-	}else {
-		req = new ActiveXObject('Microsoft.XMLHTTP');
-	}
+export default class Ajax {
+    constructor() {
+        this.author = 'qjwvtd';//作者
+        this.version = '1.0.0';//版本号
+        //处理数据
+        this.setQueryString = (obj) => {
+            const pa = [];
+            for (let key in obj) {
+                pa.push(key + '=' + obj[key]);
+            }
+            const pd = pa.join('&');
+            return pd;
+        };
+    }
 
-	var pa = [];
-	for (var key in o.data){
-		pa.push(key + '=' + o.data[key]);
-	}
-	var pd = pa.join('&');
+    get(o) {
+        const XHR = new XMLHttpRequest();
+        const data = o.data;
+        //拼接字符串
+        if (data) {
+            const pa = [];
+            for (let key in data) {
+                pa.push(key + '=' + data[key]);
+            }
+            const queryString = pa.join('&');
+            const dataUrl = o.url + "?" + queryString;
+        }
+        const url = data ? dataUrl : o.url;
+        //配置
+        XHR.open("GET", url, true);
+        //发送
+        XHR.send(null);
+        //返回
+        XHR.onreadystatechange = () => {
+            if(XHR.readyState == 4) {
+                if (XHR.status == 200) {
+                    o.success(XHR.responseText);
+                }
+            }else{
+                o.error(XHR.xhr + ',' + XHR.status + ',' + XHR.error);
+            }
+        };
+    }
 
-	if (o.type.toUpperCase() === 'POST') {
-		req.open(o.type, o.url, o.async);
-		req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
-		req.send(pd);
-	}else if (o.type.toUpperCase() === 'GET') {
-		req.open(o.type, o.url + '?' + pd, o.async);
-		req.send(null);
-	}
-	req.onreadystatechange = function () {
-		if (req.readyState == 4 && req.status == 200) {
-			o.success(req.responseText);
-		}else{
-			o.error(req.xhr, req.status, req.error);
-		}
-	};
+    post(o) {
+        const XHR = new XMLHttpRequest();
+        const url = o.url;
+        const data = o.data;
+        const dataType = o.dataType;
+        if(!data){
+            const t = confirm("http协议规定POST提交的数据必须放在body中,您确定要断续执行？");
+            if(!t){return;}
+        }
+        XHR.open('POST', url, true);
+        //默认使用URL编码
+        if(!dataType || dataType.toUpperCase() != 'JSON'){
+            XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
+            const pa = [];
+            for (let key in data) {
+                pa.push(key + '=' + encodeURIComponent(data[key]));
+            }
+            const queryString = pa.join('&');
+            XHR.send(queryString);
+        }
+        //使用JSON
+        if(dataType && dataType.toUpperCase() == 'JSON'){
+            XHR.setRequestHeader('Content-Type', 'application/json;charset=utf-8');
+            XHR.send(JSON.stringify(data));
+        }
+        //返回
+        XHR.onreadystatechange = () => {
+            if(XHR.readyState == 4) {
+                if (XHR.status == 200) {
+                    o.success(XHR.responseText);
+                }
+            }else{
+                o.error(XHR.xhr + ',' + XHR.status + ',' + XHR.error);
+            }
+        };
+    }
 }
-//get
-export function getJson(url,callback){
-	var req = null;
-	if (XMLHttpRequest) {
-		req = new XMLHttpRequest();
-	}else {
-		req = new ActiveXObject('Microsoft.XMLHTTP');
-	}
-	req.open('GET',url,true);
-	req.send(null);
-	req.onreadystatechange = function(){
-		if(req.readyState == 4 && req.status == 200) {
-			callback(eval("(" + req.responseText + ")"));
-		}
-	};
-}
-
-//export default class Ajax{
-//	constructor(){
-//		this.xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-//	}
-//	get(url,config){
-//
-//	}
-//}
