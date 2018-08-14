@@ -10,7 +10,7 @@ export default class Ajax {
         if (data) {
             const pa = [];
             for (let key in data) {
-                pa.push(key + '=' + data[key]);
+                pa.push(key + '=' + encodeURIComponent(data[key]));
             }
             const queryString = pa.join('&');
             const dataUrl = o.url + "?" + queryString;
