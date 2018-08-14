@@ -7,6 +7,7 @@ import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 //component
 import Enter from './component/Enter';//回车
+//module
 import {
     ArrayIncludes,
     ObjectKeyValue,

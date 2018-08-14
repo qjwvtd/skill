@@ -3,7 +3,7 @@
  * 使用localStorage/sessionStorage封装的Storage类
  * 使用cookie封装的cookie类
  * **/
-//Storage
+//Storage(支持现代浏览器)
 export class Storage{
     setItem(key,value){
         sessionStorage.setItem(key,JSON.stringify(value));
@@ -15,7 +15,7 @@ export class Storage{
         sessionStorage.removeItem(key);
     }
 }
-//cookie
+//cookie(本地支持IE,本地高级浏览器不支持，布署后服务器支持)
 export class Cookie{
     setCookie(name,value){
         document.cookie = name + "=" + value;
