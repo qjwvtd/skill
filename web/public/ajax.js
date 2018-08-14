@@ -2,17 +2,7 @@ export default class Ajax {
     constructor() {
         this.author = 'qjwvtd';//作者
         this.version = '1.0.0';//版本号
-        //处理数据
-        this.setQueryString = (obj) => {
-            const pa = [];
-            for (let key in obj) {
-                pa.push(key + '=' + obj[key]);
-            }
-            const pd = pa.join('&');
-            return pd;
-        };
     }
-
     get(o) {
         const XHR = new XMLHttpRequest();
         const data = o.data;
@@ -41,7 +31,6 @@ export default class Ajax {
             }
         };
     }
-
     post(o) {
         const XHR = new XMLHttpRequest();
         const url = o.url;

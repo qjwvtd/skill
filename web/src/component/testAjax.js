@@ -22,7 +22,7 @@ export default class TestAjax extends Component {
             }
         });
         ajax.post({
-            url:'http://192.168.10.89:8080/knowledge/document/1',
+            url:'http://192.168.10.89:8080/knowledge/document/123',
             success:(res) => {
                 this.setState({
                     postData:res
