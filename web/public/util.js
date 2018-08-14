@@ -1,5 +1,3 @@
-import React,{Component} from 'react';
-import ReactDOM from 'react-dom';
 import globalAxios from 'axios';
 //axios全局设置
 //const instance = globalAxios.create({});
@@ -34,20 +32,6 @@ import globalAxios from 'axios';
 //    }
 //);
 export const axios = globalAxios;
-
-//session
-export class Session{
-    setItem(key,value){
-        sessionStorage.setItem(key,JSON.stringify(value));
-    }
-    getItem(key){
-        return JSON.parse(sessionStorage.getItem(key));
-    }
-    removeItem(key){
-        sessionStorage.removeItem(key);
-    }
-}
-
 function setLen(str){
     str = str.toString().length < 2 ? 0 + str.toString() : str;
     return str;
@@ -108,27 +92,13 @@ export function ranDate(){
 export function isNumber(num){
     return /^\d|\d.\d$/.test(num);
 }
-
-//数组去重复
-export function arrayRepet(arr){
-    //arr:['a','b','c','a','c','b']
-    const newArr = [];
-    const __set = new Set(arr);
-    for(const val of __set){
-        newArr.push(val);
-    }
-    return newArr;
-}
-//数组中是否包含某个值
-export function isIncludes(arr,arrItem){
-    return arr.includes(arrItem);
-}
 //回车事件
-export function enterEvent(){
+export function enterEvent(callback){
     document.onkeydown = (event) => {
         let code = event.charCode || event.keyCode;
         if(code == 13){
             //这里是回车后的代码
+            callback();
             alert('Enter`s code is here');
         }
     };
@@ -148,21 +118,4 @@ export function getPageHeight() {
         f = g.documentElement,
         d = g.compatMode == "BackCompat" ? a : g.documentElement;
     return Math.max(f.scrollHeight, a.scrollHeight, d.clientHeight);
-}
-
-export class Cookie{
-    setCookie(name,value){
-        document.cookie = name + "=" + value;
-    }
-    getCookie(name){
-        const cName = name + "=";
-        const ca = document.cookie.split(';');
-        for(let i=0; i<ca.length; i++){
-            const c = ca[i].trim();
-            if(c.indexOf(cName) == 0) {
-                return c.substring(cName.length,c.length);
-            };
-        }
-        return "";
-    }
 }
