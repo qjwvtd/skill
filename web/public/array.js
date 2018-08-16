@@ -1,7 +1,7 @@
 /**
  * 关于数组的一些方法
  **/
-export default class MyArray{
+class MyArray{
     //纯数组去重['A','B','C','A','C','D'],返回新数组
     removeRepet(arr){
         const newArr = [];
@@ -16,13 +16,15 @@ export default class MyArray{
         return arr.includes(arrItem);
     }
     //根据参数项(比如ID)替换数组项，返回新数组,数组必须是[{},{},...]格式
-    replaceItem(array,arrayItem,itemArguments){
-        const len = array.length;
+    replaceItem(arr,arrItem,itemArguments){
+        const len = arr.length;
         for(let i=0;i<len;i++){
-            if(array[i][itemArguments] == arrayItem[itemArguments]){
-                array[i] = arrayItem;
+            if(arr[i][itemArguments] == arrItem[itemArguments]){
+                arr[i] = arrItem;
             }
         }
-        return array;
+        return arr;
     }
 }
+const array = new MyArray();
+export default array;
