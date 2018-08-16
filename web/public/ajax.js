@@ -1,6 +1,6 @@
 class Ajax {
     constructor() {
-        this.xhr = new XMLHttpRequest();
+        this.xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
         this.author = 'qjwvtd';//作者
         this.version = '1.0.0';//版本号
     }
