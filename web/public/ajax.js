@@ -22,10 +22,8 @@ export default class Ajax {
         XHR.send(null);
         //返回
         XHR.onreadystatechange = () => {
-            if(XHR.readyState == 4) {
-                if (XHR.status == 200) {
-                    o.success(XHR.responseText);
-                }
+            if(XHR.readyState == 4 && XHR.status == 200){
+                o.success(XHR.responseText);
             }else{
                 o.error(XHR.xhr + ',' + XHR.status + ',' + XHR.error);
             }
@@ -58,10 +56,8 @@ export default class Ajax {
         }
         //返回
         XHR.onreadystatechange = () => {
-            if(XHR.readyState == 4) {
-                if (XHR.status == 200) {
-                    o.success(XHR.responseText);
-                }
+            if(XHR.readyState == 4 && XHR.status == 200){
+                o.success(XHR.responseText);
             }else{
                 o.error(XHR.xhr + ',' + XHR.status + ',' + XHR.error);
             }
