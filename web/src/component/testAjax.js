@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import Ajax from './../../public/ajax';
+import ajax from './../../public/ajax';
 export default class TestAjax extends Component {
     constructor(props) {
         super(props);
@@ -9,7 +9,6 @@ export default class TestAjax extends Component {
         };
     }
     componentDidMount() {
-        const ajax = new Ajax();
         ajax.get({
             url:'http://192.168.10.89:8080/knowledge/document/all',
             success:(res) => {

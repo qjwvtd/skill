@@ -17,7 +17,7 @@ class Ajax {
                 if((XHR.status >= 200 && XHR.status < 300) || XHR.status == 304){
                     o.success(XHR.responseText);
                 }else{
-                    o.error(XHR.statusText + ' , ' + XHR.status + ' , ' + XHR.error);
+                    o.error(XHR.response);
                 }
             };
         }catch(e) {
@@ -48,7 +48,7 @@ class Ajax {
                 if((XHR.status >= 200 && XHR.status < 300) || XHR.status == 304){
                     o.success(XHR.responseText);
                 }else{
-                    o.error(XHR.statusText + ' , ' + XHR.status + ' , ' + XHR.error);
+                    o.error(XHR.response);
                 }
             };
         }catch(e) {

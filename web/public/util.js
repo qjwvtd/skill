@@ -62,11 +62,15 @@ export function formatDate(dateStr,reg) {
 export function trim(str){
     return str.replace(/\s+/g, "");
 }
-//常用图表颜色，分别是 【优，良，中，差】
-export const echartDefaultColor = ['#3b86ff','#64e3a3','#ff8373','#a3a0fb'];
-//随机数
+//input只能输入数字:<input type="text" onkeydown="onlyInNum()"/>
+function onlyInNum(){
+    if(!((event.keyCode >= 48 && event.keyCode <= 57)||(event.keyCode >= 96 && event.keyCode <= 105))){
+        event.returnValue = false;
+    }
+}
+
+//随机数,返回int以内的随机数
 export function ranNumber(int){
-    //返回int以内的随机数
     return (Math.random()*int).toFixed(0);
 }
 //随机日期、时间
@@ -118,4 +122,19 @@ export function getPageHeight() {
         f = g.documentElement,
         d = g.compatMode == "BackCompat" ? a : g.documentElement;
     return Math.max(f.scrollHeight, a.scrollHeight, d.clientHeight);
+}
+//获取鼠标点击时的位置
+function Position(ev) {
+    var pageH = document.body.clientHeight;
+    var e = event || window.event;
+    var x = e.clientX;
+    var y = e.clientY;
+    var bm = pageH - y;
+    return {'x': x, 'y': y, 'bottom': bm};
+}
+
+//获取每月天数
+function monthDayCount(year, month) {
+    var d = new Date(year, month, 0);
+    return d.getDate();
 }

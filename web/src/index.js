@@ -7,7 +7,7 @@ import React,{Component} from 'react';
 import ReactDOM from 'react-dom';
 //component
 import Enter from './component/Enter';//回车
-import TestAjax from './component/testAjax';
+import VerificationCodeBtn from './../public/verificationCodeBtn';
 //module
 import {
     ArrayIncludes,
@@ -34,7 +34,7 @@ class App extends Component{
                 <ObjectAssign key="ObjectAssign" />,
                 <Es6Map key="Es6Map" />,
                 <Es6Set key="Es6Set" />,
-                <TestAjax key="TestAjax" />
+                <VerificationCodeBtn key="VerificationCodeBtn" wait={60} />
             ]
         );
     }
