@@ -1,4 +1,5 @@
 /**
+ * 验证码btn组件
  * wait:验证码btn秒数
  * 样式可定制
  * <VerificationCodeBtn wait={60} />
