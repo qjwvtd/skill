@@ -32,68 +32,14 @@ import globalAxios from 'axios';
 //    }
 //);
 export const axios = globalAxios;
-function setLen(str){
-    str = str.toString().length < 2 ? 0 + str.toString() : str;
-    return str;
-}
-//日期格式化
-export function formatDate(dateStr,reg) {
-    if(!dateStr){
-        return;
-    }
-    let _data = new Date(dateStr);
-    let year = _data.getFullYear();
-    let month = setLen(_data.getMonth() + 1);
-    let date = setLen(_data.getDate());
-    let hour = setLen(_data.getHours());
-    let minute = setLen(_data.getMinutes());
-    let second = setLen(_data.getSeconds());
-    let _reg = reg ? reg : '-';
-    return {
-        'YEAR':year,
-        'MONTH':month,
-        'DATE':date,
-        'YMD':year + _reg + month + _reg + date,
-        'HMS':hour + ":" + minute + ":" + second,
-        'YMD_HMS':year + _reg + month + _reg + date +  + hour + ":" + minute + ":" + second
-    };
-}
 //字符串去空
 export function trim(str){
     return str.replace(/\s+/g, "");
 }
-//input只能输入数字:<input type="text" onkeydown="onlyInNum(this)"/>
-//export function onlyInNum(){
-//    const event = e || window.event;
-//    if(!((event.keyCode >= 48 && event.keyCode <= 57)||(event.keyCode >= 96 && event.keyCode <= 105))){
-//        event.returnValue = false;
-//    }
-//}
-
-//随机数,返回int以内的随机数(默认10000)
+//随机数,返回int以内的随机数(默认100)
 export function ranNumber(int){
-    const __int = int ? int : 10000;
+    const __int = int ? int : 100;
     return (Math.random()*__int).toFixed(0);
-}
-//随机日期、时间
-export function ranDate(){
-    const current = new Date().getTime();
-    const time = parseInt((Math.random() * current).toFixed(0));
-    const ranTime = new Date(time);
-    const year = ranTime.getFullYear();
-    const month = setLen(ranTime.getMonth() + 1);
-    const day = setLen(ranTime.getDate());
-    const hour = setLen(ranTime.getHours());
-    const minute = setLen(ranTime.getMinutes());
-    const second = setLen(ranTime.getSeconds());
-    return {
-        'year':year,
-        'month':month,
-        'day':day,
-        'ymd':year + '-' + month + '-' + day,
-        'hms':hour + ":" + minute + ":" + second,
-        'ymd_hms':year + '-' + month + '-' + day + " " + hour + ":" + minute + ":" + second
-    };
 }
 //是否是数字
 export function isNumber(num){
@@ -102,32 +48,6 @@ export function isNumber(num){
     //负浮点数
     const regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/;
     return regPos.test(num) || regNeg.test(num) ? true : false;
-}
-//回车事件
-export function enterDown(callback){
-    document.onkeydown = (event) => {
-        let code = event.charCode || event.keyCode;
-        if(code == 13){
-            //这里是回车后的代码
-            callback();
-        }
-    };
-}
-//获取页面宽度
-export function getPageWidth() {
-    const g = document,
-        a = g.body,
-        f = g.documentElement,
-        d = g.compatMode == "BackCompat" ? a : g.documentElement;
-    return Math.max(f.scrollWidth, a.scrollWidth, d.clientWidth);
-}
-//获取页面高度
-export function getPageHeight() {
-    const g = document,
-        a = g.body,
-        f = g.documentElement,
-        d = g.compatMode == "BackCompat" ? a : g.documentElement;
-    return Math.max(f.scrollHeight, a.scrollHeight, d.clientHeight);
 }
 //获取鼠标点击时的位置
 export function Position(ev) {
@@ -138,9 +58,23 @@ export function Position(ev) {
     const bm = pageH - y;
     return {'x': x, 'y': y, 'bottom': bm};
 }
+//生成随机字符串
+export function randomString(length) {
+    let rdmString = "";
+    for(let i=0;i<length;i++){
+        if(rdmString.length < length){
+            rdmString  += Math.random().toString(36).substr(2).toUpperCase();
+        }
+    }
+    return  rdmString.substr(0, length);
+}
 
-//获取每月天数
-export function monthDayCount(year, month) {
-    const d = new Date(year, month, 0);
-    return d.getDate();
+//js判断浏览器的userAgent，用正则来判断是否是ios和Android客户端
+export function getNavigatorInfo(){
+    const u = navigator.userAgent;
+    const app = navigator.appVersion;//返回浏览器版本
+    const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+    const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    const isWindow = u.indexOf('Windows') > -1;//pc端windows
+    return 'Android：'+isAndroid+'\n'+'ios：'+isiOS+'\n'+'Window: '+isWindow+'\n'+"verson info:"+app;
 }
