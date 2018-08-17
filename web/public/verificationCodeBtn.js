@@ -2,10 +2,10 @@
  * 验证码btn组件
  * wait:验证码btn秒数
  * 样式可定制
- * <VerificationCodeBtn wait={60} />
+ * <VerifyCodeBtn wait={60} />
  **/
 import React,{Component} from 'react';
-export default class VerificationCodeBtn extends Component {
+export default class VerifyCodeBtn extends Component {
     constructor(props) {
         super(props);
         this.state = {

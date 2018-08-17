@@ -62,48 +62,54 @@ export function formatDate(dateStr,reg) {
 export function trim(str){
     return str.replace(/\s+/g, "");
 }
-//input只能输入数字:<input type="text" onkeydown="onlyInNum()"/>
-function onlyInNum(){
-    if(!((event.keyCode >= 48 && event.keyCode <= 57)||(event.keyCode >= 96 && event.keyCode <= 105))){
-        event.returnValue = false;
-    }
-}
+//input只能输入数字:<input type="text" onkeydown="onlyInNum(this)"/>
+//export function onlyInNum(){
+//    const event = e || window.event;
+//    if(!((event.keyCode >= 48 && event.keyCode <= 57)||(event.keyCode >= 96 && event.keyCode <= 105))){
+//        event.returnValue = false;
+//    }
+//}
 
-//随机数,返回int以内的随机数
+//随机数,返回int以内的随机数(默认10000)
 export function ranNumber(int){
-    return (Math.random()*int).toFixed(0);
+    const __int = int ? int : 10000;
+    return (Math.random()*__int).toFixed(0);
 }
 //随机日期、时间
 export function ranDate(){
-    const ran = (Math.random()*1000000000000).toFixed(0);
-    const ranTime = new Date().getTime() - parseInt(ran);
-    const dateNum = new Date(ranTime);
-    const year = dateNum.getFullYear();
-    const month = setLen(dateNum.getMonth() + 1);
-    const date = setLen(dateNum.getDate());
-    const hour = setLen(dateNum.getHours());
-    const minute = setLen(dateNum.getMinutes());
-    const second = setLen(dateNum.getSeconds());
+    const current = new Date().getTime();
+    const time = parseInt((Math.random() * current).toFixed(0));
+    const ranTime = new Date(time);
+    const year = ranTime.getFullYear();
+    const month = setLen(ranTime.getMonth() + 1);
+    const day = setLen(ranTime.getDate());
+    const hour = setLen(ranTime.getHours());
+    const minute = setLen(ranTime.getMinutes());
+    const second = setLen(ranTime.getSeconds());
     return {
-        'YEAR':year,
-        'MONTH':month,
-        'DATE':date,
-        'YMD':year + '-' + month + '-' + date,
-        'HMS':hour + ":" + minute + ":" + second,
-        'YMD_HMS':year + '-' + month + '-' + date + " " + hour + ":" + minute + ":" + second
+        'year':year,
+        'month':month,
+        'day':day,
+        'ymd':year + '-' + month + '-' + day,
+        'hms':hour + ":" + minute + ":" + second,
+        'ymd_hms':year + '-' + month + '-' + day + " " + hour + ":" + minute + ":" + second
     };
 }
+//是否是数字
 export function isNumber(num){
-    return /^\d|\d.\d$/.test(num);
+    //非负浮点数
+    const regPos = /^\d+(\.\d+)?$/;
+    //负浮点数
+    const regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/;
+    return regPos.test(num) || regNeg.test(num) ? true : false;
 }
 //回车事件
-export function enterEvent(callback){
+export function enterDown(callback){
     document.onkeydown = (event) => {
         let code = event.charCode || event.keyCode;
         if(code == 13){
             //这里是回车后的代码
             callback();
-            alert('Enter`s code is here');
         }
     };
 }
@@ -124,17 +130,17 @@ export function getPageHeight() {
     return Math.max(f.scrollHeight, a.scrollHeight, d.clientHeight);
 }
 //获取鼠标点击时的位置
-function Position(ev) {
-    var pageH = document.body.clientHeight;
-    var e = event || window.event;
-    var x = e.clientX;
-    var y = e.clientY;
-    var bm = pageH - y;
+export function Position(ev) {
+    const pageH = document.body.clientHeight;
+    const e = event || window.event;
+    const x = e.clientX;
+    const y = e.clientY;
+    const bm = pageH - y;
     return {'x': x, 'y': y, 'bottom': bm};
 }
 
 //获取每月天数
-function monthDayCount(year, month) {
-    var d = new Date(year, month, 0);
+export function monthDayCount(year, month) {
+    const d = new Date(year, month, 0);
     return d.getDate();
 }
