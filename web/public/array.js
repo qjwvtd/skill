@@ -3,7 +3,7 @@
  **/
 class MyArray{
     //纯数组去重['A','B','C','A','C','D'],返回新数组
-    removeRepet(arr){
+    loseRepet(arr){
         const newArr = [];
         const __set = new Set(arr);
         for(const val of __set){
@@ -14,6 +14,19 @@ class MyArray{
     //纯数组包含某值[a,b,c,d,...],返回boolean
     includesItem(arr,arrItem){
         return arr.includes(arrItem);
+    }
+    //纯数组删除某值[a,b,c,d,...],返回新数组
+    deleteItem(arr,arrItem){
+        if(!arr || !arrItem){
+            return;
+        }
+        const list = [];
+        for(let i=0;i<list.length;i++){
+            if(arr[i] != arrItem){
+                list.push(arr[i]);
+            }
+        }
+        return list;
     }
     //根据参数项(比如ID)替换数组项，返回新数组,数组必须是[{},{},...]格式
     replaceItem(arr,arrItem,itemArguments){
