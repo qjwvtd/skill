@@ -43,7 +43,7 @@ export function ranNumber(int){
 }
 //是否是数字
 export function isNumber(num){
-    //非负浮点数
+    ////非负浮点数
     const regPos = /^\d+(\.\d+)?$/;
     //负浮点数
     const regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/;
