@@ -87,5 +87,22 @@ body{
 .text-left{text-align:left}
 .text-center{text-align:center}
 .text-right{text-align:right}
+/*手动滚动区域*/
+.manualScrollOutContainer {
+    position: relative;
+    overflow: hidden;
+}
+
+.manualScrollInnerContainer {
+    position: absolute;
+    left: 0;
+    width:100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.manualScrollInnerContainer::-webkit-scrollbar {display: none;}/*chrome 和Safari*/
+.manualScrollInnerContainer::-webkit-scrollbar { width: 0 !important }/*chrome 和Safari*/
+.manualScrollInnerContainer { -ms-overflow-style: none; }/*IE 10+*/
+.manualScrollInnerContainer { overflow: -moz-scrollbars-none; }/*Firefox*/
 
 

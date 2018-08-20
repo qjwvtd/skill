@@ -9,12 +9,17 @@ import ReactDOM from 'react-dom';
 import VerifyCodeBtn from './../public/verificationCodeBtn';
 //util function
 import {isNumber,ranNumber,randomString} from './../public/util';
+//ScrollContent
+import ScrollContent from './component/testScrollContent';
 //DateTest
 import DateTest from './component/testDate';
 //pageTest
 import PageTest from './component/testPage';
 //es6/7
 import {MathArrayMax,Es6Map} from './component/ES678';
+
+//css
+import './../css/index.css';
 
 class App extends Component{
     constructor(props){
@@ -54,6 +59,10 @@ class App extends Component{
                 </div>
                 <div className="play">
                     <Es6Map />
+                </div>
+                <div className="play">
+                    <h5>手动滚动(无滚动条)</h5>
+                    <ScrollContent />
                 </div>
             </div>
         );
