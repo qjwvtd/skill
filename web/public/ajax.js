@@ -34,13 +34,13 @@ class Ajax {
             XHR.open('POST', url, true);
             //默认使用URL编码
             if(!dataType || dataType.toUpperCase() != 'JSON'){
-                XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
+                XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                 const queryString = formsParams(data);
                 XHR.send(queryString);
             }
             //使用JSON
             if(dataType && dataType.toUpperCase() == 'JSON'){
-                XHR.setRequestHeader('Content-Type', 'application/json;charset=utf-8');
+                XHR.setRequestHeader('Content-Type', 'application/json');
                 XHR.send(JSON.stringify(data));
             }
             //返回
