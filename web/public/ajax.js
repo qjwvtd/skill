@@ -75,13 +75,45 @@ class Ajax {
         }
     }
 }
-//ajax发送的数据处理函数
-function formsParams(DATA){
-    const pa = [];
-    for (let key in DATA) {
-        pa.push(key + '=' + encodeURIComponent(DATA[key]));
-    }
-    return pa.join('&');
-}
 const ajax = new Ajax();
 export default ajax;
+//ajax发送的数据处理函数
+//function formsParams(DATA){
+//    const pa = [];
+//    for (let key in DATA) {
+//        pa.push(key + '=' + encodeURIComponent(DATA[key]));
+//    }
+//    return pa.join('&');
+//}
+//ajax发送的数据处理函数
+function formsParams(obj) {
+    var query = '', name, value, fullSubName, subName, subValue, innerObj, i;
+
+    for(name in obj) {
+        value = obj[name];
+
+        if(value instanceof Array) {
+            for(i=0; i<value.length; ++i) {
+                subValue = value[i];
+                fullSubName = name + '[' + i + ']';
+                innerObj = {};
+                innerObj[fullSubName] = subValue;
+                query += formatParam(innerObj) + '&';
+            }
+        }
+        else if(value instanceof Object) {
+            for(subName in value) {
+                subValue = value[subName];
+                fullSubName = name + '[' + subName + ']';
+                innerObj = {};
+                innerObj[fullSubName] = subValue;
+                query += formatParam(innerObj) + '&';
+            }
+        }
+        else if(value !== undefined && value !== null)
+            query += encodeURIComponent(name) + '=' + encodeURIComponent(value) + '&';
+    }
+    return query.length ? query.substr(0, query.length - 1) : query;
+}
+
+

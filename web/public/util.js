@@ -89,13 +89,59 @@ export function randomString(length) {
 export function randomColor(){
     return '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).slice(-6);
 }
-
-//js判断浏览器的userAgent，用正则来判断是否是ios和Android客户端
-export function getNavigatorInfo(){
-    const u = navigator.userAgent;
-    const app = navigator.appVersion;//返回浏览器版本
-    const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
-    const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-    const isWindow = u.indexOf('Windows') > -1;//pc端windows
-    return 'Android：'+isAndroid+'\n'+'ios：'+isiOS+'\n'+'Window: '+isWindow+'\n'+"verson info:"+app;
+// 对象
+export function isObject(value) {
+    return Object.prototype.toString.call(value).slice(8, -1) === 'Object';
 }
+// 数组
+export function isArray(value) {
+    return Object.prototype.toString.call(value).slice(8, -1) === 'Array';
+}
+// 函数
+export function isFunction(value) {
+    return Object.prototype.toString.call(value).slice(8, -1) === 'Function';
+}
+//四舍五入
+export function round(v, p) {
+    /*
+     *v：值，p:精度,如round(123.321,2) => 123.32
+     */
+    p = Math.pow(10, p >>> 31 ? 0 : p | 0);
+    v *= p;
+    return (v + 0.5 + (v >> 31) | 0) / p;
+}
+//在浏览器中根据url下载文件
+export function browserDownload(url){
+    const isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+    const isSafari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
+    if (isChrome || isSafari) {
+        const link = document.createElement('a');
+        link.href = url;
+        if (link.download !== undefined) {
+            const fileName = url.substring(url.lastIndexOf('/') + 1, url.length);
+            link.download = fileName;
+        }
+        if (document.createEvent) {
+            const e = document.createEvent('MouseEvents');
+            e.initEvent('click', true, true);
+            link.dispatchEvent(e);
+            return true;
+        }
+    }
+    if (url.indexOf('?') === -1) {
+        url += '?download';
+    }
+    window.open(url, '_self');
+    return true;
+}
+//快速生成UUID
+export function setUuid() {
+    let d = new Date().getTime();
+    const fmt = 'xxxxxxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx';//uuid格式
+    const uuid = fmt.replace(/[xy]/g, function(c) {
+        const r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16).toUpperCase();
+    });
+    return uuid;
+};

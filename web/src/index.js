@@ -8,7 +8,9 @@ import ReactDOM from 'react-dom';
 //component
 import VerifyCodeBtn from './../public/verificationCodeBtn';
 //util function
-import {isNumber,ranNumber,randomString,randomColor} from './../public/util';
+import {isNumber,ranNumber,randomString,randomColor,round,setUuid} from './../public/util';
+//browser
+import browser from './../public/browser';
 //Star
 import Star from './../public/star';
 //ScrollContent
@@ -29,6 +31,11 @@ class App extends Component{
     }
     componentDidMount(){
         console.log(isNumber('3.0'));
+        console.log(round(Math.random()*100,2));
+        const uuid = setUuid();
+        console.log('uuid:' + uuid);
+        console.log(browser.navigatorInfo());
+        console.log(browser.appInfo());
     }
     onlyInNumer(event){
         //input限制只能输入数字
