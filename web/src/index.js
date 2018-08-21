@@ -33,7 +33,7 @@ class App extends Component{
     onlyInNumer(event){
         //input限制只能输入数字
         //console.log(typeof event.currentTarget.value);
-        const flag = isNumber(event.currentTarget.value);
+        const flag = isNumber(Number(event.currentTarget.value));
         if(!flag){
             event.currentTarget.value = null;
         }

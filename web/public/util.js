@@ -56,12 +56,10 @@ export function ranNumber(min,max){
 }
 //是否是数字
 export function isNumber(num) {
-    if(typeof num === 'object'|| typeof num === 'boolean'){
+    //严格模式,必须传入number类型
+    if(typeof num !== 'number'){
+        console.warn('警告:参数类型为' + typeof num + ',不匹配');
         return false;
-    }
-    //将js默认的string转成number,如：'3.0' -> 3.0
-    if(typeof num === 'string'){
-        num = Number(num);
     }
     const zreo = /^[0]+$/;//0也是数字
     const positive = /^[1-9]+$|^[0]{1}[.]{1}[0-9]+$|^[1-9]+[.]{1}[0-9]+$/;//匹配正数
