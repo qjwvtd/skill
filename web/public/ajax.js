@@ -4,7 +4,7 @@
  三种请求:
  1、Simple Request----简单请求，GET，HEAD或POST之一,没有自定义请求头
  2、Preflighted Request----预置请求，GET，HEAD或POST之一，自定义请求头或者Content-Type也不是application/x-www-form-urlencoded,multipart/form-data或text/plain之一
- 3、Requests with Credential----使用凭证请求，发送请求的时候需要将用户凭证包含在请求中，XHR.withCredentials = true，注意：需要删除请求头
+ 3、Requests with Credential----使用凭证请求，发送请求的时候需要将用户凭证包含在请求中，XHR.withCredentials = true
  《集成对CORS的支持》
  在使用CORS来访问数据的时候，客户端不需要更改任何数据访问逻辑。
  所有的一切工作都是在服务端及浏览器之间自动完成的。
@@ -25,7 +25,7 @@ class Ajax {
             const url = o.data ? o.url + "?" + formsParams(o.data) : o.url;
             //配置
             XHR.open("GET", url, true);
-            //凭证(一般用于跨域设置,需要删除请求头)
+            //凭证(一般用于跨域设置,有自定义请求头时，如：'myRequestHeader':'myRequestHeaderContent')
             //XHR.withCredentials = true;
             //发送
             XHR.send(null);
@@ -49,7 +49,7 @@ class Ajax {
             const data = o.data;
             const dataType = o.dataType;
             XHR.open('POST', url, true);
-            //凭证(一般用于跨域设置,需要删除请求头)
+            //凭证(一般用于跨域设置,有自定义请求头时，如：'myRequestHeader':'myRequestHeaderContent')
             //XHR.withCredentials = true;
             //默认使用URL编码
             if(!dataType || dataType.toUpperCase() != 'JSON'){
