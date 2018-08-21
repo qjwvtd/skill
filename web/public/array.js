@@ -71,6 +71,10 @@ class MyArray{
     min(numberArr){
         return Math.min(...numberArr);
     }
+    //多维数组转一维数组:[1, [2, 3], ['4', 5, ['6',7,[8]]], [9], 10] => [1, 2, 3, "4", 5, "6", 7, 8, 9, 10]
+    flatten(arr){
+        return arr.reduce((a, b) => a.concat(Array.isArray(b) ? this.flatten(b) : b), []);
+    }
 }
 const array = new MyArray();
 export default array;

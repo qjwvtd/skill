@@ -8,7 +8,9 @@ import ReactDOM from 'react-dom';
 //component
 import VerifyCodeBtn from './../public/verificationCodeBtn';
 //util function
-import {isNumber,ranNumber,randomString} from './../public/util';
+import {isNumber,ranNumber,randomString,randomColor} from './../public/util';
+//Star
+import Star from './../public/star';
 //ScrollContent
 import ScrollContent from './component/testScrollContent';
 //DateTest
@@ -26,7 +28,7 @@ class App extends Component{
         super(props);
     }
     componentDidMount(){
-        console.log(isNumber(-2));
+        console.log(isNumber('3.0'));
     }
     onlyInNumer(event){
         //input限制只能输入数字
@@ -52,7 +54,10 @@ class App extends Component{
                     <VerifyCodeBtn wait={60} />
                 </div>
                 <div className="play">
-                    <p>随机字符串:{randomString(5)}</p>
+                    <p>{'随机数：' + ranNumber(100,1000)}</p>
+                </div>
+                <div className="play">
+                    <p>{'随机字符串:' + randomString(5)}</p>
                 </div>
                 <div className="play">
                     <MathArrayMax />
@@ -64,6 +69,12 @@ class App extends Component{
                     <h5>手动滚动(无滚动条)</h5>
                     <ScrollContent />
                 </div>
+                <div className="play">
+                    <h5 style={{color:randomColor()}}>随机颜色</h5>
+                </div>
+                <div className="play">
+                    <Star size={3} />
+                </div>
             </div>
         );
     }
@@ -73,4 +84,5 @@ ReactDOM.render(
     <App />,
     document.getElementById('root')
 );
+
 

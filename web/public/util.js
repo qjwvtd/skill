@@ -36,18 +36,37 @@ export const axios = globalAxios;
 export function trim(str){
     return str.replace(/\s+/g, "");
 }
-//随机数,返回int以内的随机数(默认100)
-export function ranNumber(int){
-    const __int = int ? int : 100;
-    return (Math.random()*__int).toFixed(0);
+//随机整数,返回min-max以内(包括min,max)的随机数,(无参数时返回Math.random)
+export function ranNumber(min,max){
+    if(typeof min != 'number' || typeof max != 'number'){
+        return 'parameter is error';
+    }
+    //无参
+    if(!min && !max){
+        return Math.random();
+    }
+    //一个参数
+    if(min && !max){
+        return ((Math.random())*min).toFixed(0);
+    }
+    //两个参数
+    if(min && max){
+        return ((Math.random())*(max - min)).toFixed(0);
+    }
 }
 //是否是数字
-export function isNumber(num){
-    ////非负浮点数
-    const regPos = /^\d+(\.\d+)?$/;
-    //负浮点数
-    const regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/;
-    return regPos.test(num) || regNeg.test(num) ? true : false;
+export function isNumber(num) {
+    if(typeof num === 'object'|| typeof num === 'boolean'){
+        return false;
+    }
+    //将js默认的string转成number,如：'3.0' -> 3.0
+    if(typeof num === 'string'){
+        num = Number(num);
+    }
+    const zreo = /^[0]+$/;//0也是数字
+    const positive = /^[1-9]+$|^[0]{1}[.]{1}[0-9]+$|^[1-9]+[.]{1}[0-9]+$/;//匹配正数
+    const negative = /^[-]{1}[1-9]+$|^[-]{1}[0]{1}[.]{1}[0-9]+$|^[-]{1}[1-9]+[.]{1}[0-9]+$/;//匹配负数
+    return positive.test(num) || negative.test(num) || zreo.test(num) ? true : false;
 }
 //获取鼠标点击时的位置
 export function Position(ev) {
@@ -67,6 +86,10 @@ export function randomString(length) {
         }
     }
     return  rdmString.substr(0, length);
+}
+//随机颜色
+export function randomColor(){
+    return '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).slice(-6);
 }
 
 //js判断浏览器的userAgent，用正则来判断是否是ios和Android客户端

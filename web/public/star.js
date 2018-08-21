@@ -1,6 +1,6 @@
 /**
  * Created by Lenovo on 2018/7/28.
- * 五量点赞，属性size:表示星星个数
+ * 五量点赞评级组件，属性size:表示星星个数
  * 使用:<Star size={3} />
  */
 import React,{Component} from 'react';
@@ -9,6 +9,7 @@ export default class Star extends Component{
         super(props);
         this.state = {
             star:'★',
+            unstar:'☆',
             defaultLen:5//默认五颗星
         };
     }
@@ -23,7 +24,7 @@ export default class Star extends Component{
                     if(i < size){
                         list.push(<b key={i} style={{color:'orange'}}>{this.state.star}</b>);
                     }else{
-                        list.push(<b key={i} style={{color:'#ccc'}}>{this.state.star}</b>);
+                        list.push(<b key={i} style={{color:'#ccc'}}>{this.state.unstar}</b>);
                     }
 
                 };
