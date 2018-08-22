@@ -26,7 +26,7 @@ export class Modal extends Component{
         return (
             <div className={this.props.status ? 'modal active' : 'modal'}>
                 <div className="modal-body" ref="modalWindow" style={{width:width}}>
-                    <div className="modal-head">{this.props.title}<span onClick={this.closeModal.bind(this,false)}>×</span></div>
+                    <div className="modal-head">{title}<span onClick={this.closeModal.bind(this,false)}>×</span></div>
                     <div className="modal-content">
                         { children }
                     </div>

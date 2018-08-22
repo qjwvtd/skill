@@ -27,7 +27,6 @@ class Ajax {
         XHR.open("GET", url, true);
         //凭证(一般用于跨域设置,有自定义请求头时，如：'myRequestHeader':'myRequestHeaderContent')
         //XHR.withCredentials = true;
-        XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         //发送
         XHR.send(null);
         //返回

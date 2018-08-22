@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
-import ScrollDiv from './../../public/scrollDiv';
+import {ManualScroll,AutoScroll} from './../../public/scroll';
 
+//手动滚动
 export default class ScrollContent extends Component {
     constructor(props) {
         super(props);
@@ -19,9 +20,13 @@ export default class ScrollContent extends Component {
     }
     render() {
         return (
-            <ScrollDiv height={'200px'}>
-                <div>{this.state.content}</div>
-            </ScrollDiv>
+            <div>
+                <ManualScroll height={'200px'}>
+                    <div>{this.state.content}</div>
+                </ManualScroll>
+                <AutoScroll />
+            </div>
+
         );
     }
 }
