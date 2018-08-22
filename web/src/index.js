@@ -13,6 +13,8 @@ import {isNumber,ranNumber,randomString,randomColor,round,setUuid} from './../pu
 import browser from './../public/browser';
 //Star
 import Star from './../public/star';
+//AjaxTest
+import AjaxTest from './component/testAjax';
 //ScrollContent
 import ScrollContent from './component/testScrollContent';
 //DateTest
@@ -81,6 +83,9 @@ class App extends Component{
                 </div>
                 <div className="play">
                     <Star size={3} />
+                </div>
+                <div className="play">
+                    <AjaxTest />
                 </div>
             </div>
         );
