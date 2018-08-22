@@ -12,7 +12,7 @@
  集成工作实际上十分简单：在的web.xml中添加一个Filter（或利用已有的Filter）并根据传入的请求首先判断其是哪一种CORS请求。
  在得知了请求的类型后，就可以决定到底以哪种方式响应用户。
 */
-
+/**有BUG，慎用**/
 class Ajax {
     constructor() {
         this.xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
@@ -20,59 +20,53 @@ class Ajax {
         this.version = '1.0.0';//版本号
     }
     get(o) {
-        try{
-            const XHR = this.xhr;
-            const url = o.data ? o.url + "?" + formsParams(o.data) : o.url;
-            //配置
-            XHR.open("GET", url, true);
-            //凭证(一般用于跨域设置,有自定义请求头时，如：'myRequestHeader':'myRequestHeaderContent')
-            //XHR.withCredentials = true;
-            //发送
-            XHR.send(null);
-            //返回
-            XHR.onload = () => {
-                if((XHR.status >= 200 && XHR.status < 300) || XHR.status == 304){
-                    o.success(XHR.responseText);
-                }else{
-                    o.error(XHR.response);
-                }
-            };
-        }catch(e) {
-            o.error(e.message);
+        const XHR = this.xhr;
+        const error = o.error ? o.error : () => {};
+        const url = o.data ? o.url + "?" + formsParams(o.data) : o.url;
+        //配置
+        XHR.open("GET", url, true);
+        //凭证(一般用于跨域设置,有自定义请求头时，如：'myRequestHeader':'myRequestHeaderContent')
+        //XHR.withCredentials = true;
+        XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        //发送
+        XHR.send(null);
+        //返回
+        XHR.onreadystatechange = () => {
+            if((XHR.status >= 200 && XHR.status < 300) || XHR.status == 304){
+                o.success(XHR.responseText);
+            }else{
+                error(XHR.response);
+            }
         };
-
     }
     post(o) {
-        try{
-            const XHR = this.xhr;
-            const url = o.url;
-            const data = o.data;
-            const dataType = o.dataType;
-            XHR.open('POST', url, true);
-            //凭证(一般用于跨域设置,有自定义请求头时，如：'myRequestHeader':'myRequestHeaderContent')
-            //XHR.withCredentials = true;
-            //默认使用URL编码
-            if(!dataType || dataType.toUpperCase() != 'JSON'){
-                XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                const queryString = formsParams(data);
-                XHR.send(queryString);
-            }
-            //使用JSON
-            if(dataType && dataType.toUpperCase() == 'JSON'){
-                XHR.setRequestHeader('Content-Type', 'application/json');
-                XHR.send(JSON.stringify(data));
-            }
-            //返回
-            XHR.onload = () => {
-                if((XHR.status >= 200 && XHR.status < 300) || XHR.status == 304){
-                    o.success(XHR.responseText);
-                }else{
-                    o.error(XHR.response);
-                }
-            };
-        }catch(e) {
-            o.error(e.message);
+        const XHR = this.xhr;
+        const error = o.error ? o.error : () => {};
+        const url = o.url;
+        const data = o.data;
+        const dataType = o.dataType;
+        XHR.open('POST', url, true);
+        //凭证(一般用于跨域设置,有自定义请求头时，如：'myRequestHeader':'myRequestHeaderContent')
+        //XHR.withCredentials = true;
+        //默认使用URL编码
+        if(!dataType || dataType.toUpperCase() != 'JSON'){
+            XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            const queryString = formsParams(data);
+            XHR.send(queryString);
         }
+        //使用JSON
+        if(dataType && dataType.toUpperCase() == 'JSON'){
+            XHR.setRequestHeader('Content-Type', 'application/json');
+            XHR.send(JSON.stringify(data));
+        }
+        //返回
+        XHR.onreadystatechange = () => {
+            if((XHR.status >= 200 && XHR.status < 300) || XHR.status == 304){
+                o.success(XHR.responseText);
+            }else{
+                error(XHR.response);
+            }
+        };
     }
 }
 const ajax = new Ajax();
