@@ -1,10 +1,25 @@
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
 *{box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;margin:0;padding:0;font-family:Monospaced Number, Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;}
+html{font-size: 62.5%;overflow-x:scroll}/*16*62.5%=10px*/
 html,body{height:100%}
-html{font-size: 62.5%;min-width:1366px;overflow-x:scroll}
-body{font-size:1.2em;}
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;padding: 0;border: 0;outline: 0;vertical-align: baseline;background: transparent;
+}
+body{font-size:1em;line-height: 1;min-width:1366px;}
 body>#root{height:100%}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,q:before, q:after {content: '';content: none;}
+:focus {outline: 0;}/* remember to define focus styles! */
+/*:root{font-size: calc(2vw + 1vh)}!*字体大小根据不同视口进行调整,移动端适用,body{font-size:1em;}*!*/
+ins {text-decoration: none;}/* remember to highlight inserts somehow! */
+del {text-decoration: line-through;}
+table {border-collapse: collapse;border-spacing: 0;}/* tables still need 'cellspacing="0"' in the markup */
 a{outline:none;text-decoration:none;cursor:pointer}
-ul{list-style:none;}
 input,select,textarea{
     outline:none;
     text-decoration:none;
@@ -12,32 +27,53 @@ input,select,textarea{
     border-radius:3px;
     text-indent:5px;
 }
-
-/*灰白*/
-.grey{color:#C8CED3 !important;}
-/*warning*/
-.warning{color:#fe8900 !important;}
-/*error字体颜色*/
-.error{color:#ff0830 !important;}
-/*优字体颜色*/
-.actor{color:#3B86FF !important;}
-/*待处理*/
-.unhanld{color:orange !important;}
-/*处理中*/
-.hanlding{color:#2ED2F2 !important;}
-/*已完成*/
-.finished{color:#5fb878 !important;}
-/*title*/
-.titleGroup{padding:20px 0}
-.pageTitle{font-size:1.6em;color:#3B86FF}
-.module-title{font-size:1.4em;font-weight:bold;padding:0 6px}
+/*滚动条*/
+body{
+    /*IE*/
+    scrollbar-arrow-color:#212326;/*三角箭头的颜色*/
+    scrollbar-face-color:#212326;/*滚动条滑块按钮的颜色*/
+    scrollbar-highlight-color:#212326;/*滚动条整体颜色*/
+    scrollbar-shadow-color:#212326;/*滚动条阴影*/
+}
+/*-webkit-*/
+::-webkit-scrollbar{width:5px;}/*滚动条垂直方向的宽度*/
+::-webkit-scrollbar-thumb:vertical{background:#212326;}/* 垂直滚动条的滑动块 */
+.no-events {pointer-events: none}/*PC端禁止鼠标点击事件，移动端禁止触摸事件还有长按事件*/
+/*移动端禁止用户长按文字选择功能*/
+.unselect {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
+}
+.nowrap{white-space: nowrap;}/* 不换行 */
+.autowrap{word-wrap: break-word;word-break: normal;}/* 自动换行 */
+.mustwrap{word-break: break-all;}/* 强制换行 */
+/*超出N行显示省略号,根据实际情况调整n*/
+.hide-text-n {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: n;
+    overflow: hidden
+}
+.scroll-touch {-webkit-overflow-scrolling: touch}/*移动端顺畅滚动*/
+/*字体颜色*/
+.grey{color:#C8CED3 !important;}/*灰白*/
+.warning{color:#fe8900 !important;}/*warning*/
+.error{color:#ff0830 !important;}/*error字体颜色*/
+.actor{color:#3B86FF !important;}/*优字体颜色*/
+.unhanld{color:orange !important;}/*待处理*/
+.hanlding{color:#2ED2F2 !important;}/*处理中*/
+.finished{color:#5fb878 !important;}/*已完成*/
 /*圆角*/
-.borderRadius3{border-radius:3px}
-.borderRadius5{border-radius:5px}
+.br3{border-radius:3px}
+.br5{border-radius:5px}
 /*阴影*/
 .boxShadow{box-shadow:0 0 15px #ccc;}
 /*仿bootstrap.css*/
-.container{}
+.container{width:100%;}
 .row{overflow:hidden;clear:both;display:block;}
 .col-1,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-10,.col-11,.col-12{display:block;float:left;}
 .col-1{width:8.3333%;}
@@ -64,21 +100,7 @@ input,select,textarea{
 .ml-9{margin-left:74.9997%;}
 .ml-10{margin-left:83.333%;}
 .ml-11{margin-left:91.6663%;}
-/*滚动条*/
-body{
-    /*IE*/
-    scrollbar-arrow-color:#212326;/*三角箭头的颜色*/
-    scrollbar-face-color:#212326;/*滚动条滑块按钮的颜色*/
-    scrollbar-highlight-color:#212326;/*滚动条整体颜色*/
-    scrollbar-shadow-color:#212326;/*滚动条阴影*/
-}
-/*-webkit-*/
-::-webkit-scrollbar{
-    width:5px;/*滚动条垂直方向的宽度*/
-}
-::-webkit-scrollbar-thumb:vertical{
-    background:#212326;/* 垂直滚动条的滑动块 */
-}
+
 /*浮动*/
 .fl{float:left}
 .fr{float:right}
@@ -87,22 +109,30 @@ body{
 .text-left{text-align:left}
 .text-center{text-align:center}
 .text-right{text-align:right}
-/*手动滚动区域*/
-.manualScrollOutContainer {
+/*手动滚动区域 start*/
+/*
+<div class="msoc-scroll">
+    <div class="msic-scroll">
+        这是滚动内容
+    </div>
+</div>
+*/
+.msoc-scroll {
     position: relative;
     overflow: hidden;
+    height:480px;/*高度根据实际情况修改*/
 }
-
-.manualScrollInnerContainer {
+.msic-scroll {
     position: absolute;
     left: 0;
     width:100%;
+    height:inherit;
     overflow-x: hidden;
     overflow-y: scroll;
 }
-.manualScrollInnerContainer::-webkit-scrollbar {display: none;}/*chrome 和Safari*/
-.manualScrollInnerContainer::-webkit-scrollbar { width: 0 !important }/*chrome 和Safari*/
-.manualScrollInnerContainer { -ms-overflow-style: none; }/*IE 10+*/
-.manualScrollInnerContainer { overflow: -moz-scrollbars-none; }/*Firefox*/
-
+.msic-scroll::-webkit-scrollbar {display: none;}/*chrome 和Safari*/
+.msic-scroll::-webkit-scrollbar { width: 0 !important }/*chrome 和Safari*/
+.msic-scroll { -ms-overflow-style: none; }/*IE 10+*/
+.msic-scroll { overflow: -moz-scrollbars-none; }/*Firefox*/
+/*手动滚动区域 end*/
 

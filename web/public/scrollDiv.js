@@ -27,8 +27,8 @@ export default class ScrollDiv extends Component {
     render() {
         const {children} = this.props;
         return (
-            <div className="manualScrollOutContainer" style={this.state.outStyle}>
-                <div className="manualScrollInnerContainer" style={this.state.innerStyle}>
+            <div className="msoc-scroll" style={this.state.outStyle}>
+                <div className="msic-scroll" style={this.state.innerStyle}>
                     {children}
                 </div>
             </div>

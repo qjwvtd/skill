@@ -21,6 +21,8 @@ import ScrollContent from './component/testScrollContent';
 import DateTest from './component/testDate';
 //pageTest
 import PageTest from './component/testPage';
+//Switch
+import Switch from './../public/switch';
 //es6/7
 import {MathArrayMax,Es6Map} from './component/ES678';
 
@@ -86,6 +88,9 @@ class App extends Component{
                 </div>
                 <div className="play">
                     <AjaxTest />
+                </div>
+                <div className="play">
+                    <Switch />
                 </div>
             </div>
         );
