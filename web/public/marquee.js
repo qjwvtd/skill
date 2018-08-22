@@ -1,14 +1,14 @@
 /**
  * 滚动组件，包括无滚动条的手动滚动和自动滚动
  * 1、手动滚动DIV，无滚动条
- * <ManualScroll height={'200px'}>
+ * <ManualMarquee height={'200px'}>
  *     这里是滚动内容
- * </ManualScroll>
+ * </ManualMarquee>
  * 2、自动滚动
  **/
 import React,{Component} from 'react';
 //无滚动条,手动滚动
-export class ManualScroll extends Component {
+export class ManualMarquee extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -39,7 +39,7 @@ export class ManualScroll extends Component {
     }
 }
 //无滚动条,自动滚动
-export class AutoScroll extends Component{
+export class AutoMarquee extends Component{
     constructor(props) {
         super(props);
         this.state = {};

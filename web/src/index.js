@@ -77,7 +77,6 @@ class App extends Component{
                     <Es6Map />
                 </div>
                 <div className="play">
-                    <h5>手动滚动(无滚动条)</h5>
                     <ScrollContent />
                 </div>
                 <div className="play">

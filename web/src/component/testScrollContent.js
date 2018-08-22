@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {ManualScroll,AutoScroll} from './../../public/scroll';
+import {ManualMarquee,AutoMarquee} from './../../public/marquee';
 
 //手动滚动
 export default class ScrollContent extends Component {
@@ -21,10 +21,12 @@ export default class ScrollContent extends Component {
     render() {
         return (
             <div>
-                <ManualScroll height={'200px'}>
+                <h5>手动滚动(无滚动条)</h5>
+                <ManualMarquee height={'200px'}>
                     <div>{this.state.content}</div>
-                </ManualScroll>
-                <AutoScroll />
+                </ManualMarquee>
+                <h5>自动滚动</h5>
+                <AutoMarquee />
             </div>
 
         );
