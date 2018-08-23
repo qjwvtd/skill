@@ -26,7 +26,14 @@ export default class ScrollContent extends Component {
                     <div>{this.state.content}</div>
                 </ManualMarquee>
                 <h5>自动滚动</h5>
-                <AutoMarquee />
+                <AutoMarquee height={'200px'} speed={50}>
+                    <ul>
+                        <li style={{lineHeight: '40px','borderBottom':'1px solid #ccc'}}>1</li>
+                        <li style={{lineHeight: '40px','borderBottom':'1px solid #ccc'}}>2</li>
+                        <li style={{lineHeight: '40px','borderBottom':'1px solid #ccc'}}>3</li>
+                        <li style={{lineHeight: '40px','borderBottom':'1px solid #ccc'}}>4</li>
+                    </ul>
+                </AutoMarquee>
             </div>
 
         );

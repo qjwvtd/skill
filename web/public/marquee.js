@@ -1,10 +1,13 @@
 /**
  * 滚动组件，包括无滚动条的手动滚动和自动滚动
- * 1、手动滚动DIV，无滚动条
+ * 1、手动滚动，无滚动条
  * <ManualMarquee height={'200px'}>
  *     这里是滚动内容
  * </ManualMarquee>
  * 2、自动滚动
+ * <AutoMarquee height={'200px'} speed={50}>
+ *    这里是滚动内容
+ * </AutoMarquee>
  **/
 import React,{Component} from 'react';
 //无滚动条,手动滚动
@@ -42,56 +45,49 @@ export class ManualMarquee extends Component {
 export class AutoMarquee extends Component{
     constructor(props) {
         super(props);
-        this.state = {};
+        this.style = {
+            overflow:'hidden',
+            height:this.props.height,
+            width:'100%'
+        };//容器样式
+        this.count = 0;//滚动开始位置
+        this.speed = this.props.speed ? this.props.speed : 50;//滚动速度
     }
     componentDidMount(){
-        const demo = document.getElementById("demo");
-        const demo1 = document.getElementById("demo1");
-        const demo2 = document.getElementById("demo2");
-
-        const state = {
-            demo2scrollTop:demo2.scrollTop,
-            demo2offsetTop:demo2.offsetTop,
-            demoScrollTop:demo.scrollTop,
-            demo1OffsetHeight:demo1.offsetHeight
+        const mp = this.refs.mp;
+        const ms = this.refs.ms;
+        const md = this.refs.md;
+        let MyMar;
+        MyMar = setInterval(() => {
+            this.marquee(mp,ms,md);
+        }, this.speed);
+        mp.onmouseover = () => {
+            clearInterval(MyMar);
         };
-        demo2.innerHTML = demo1.innerHTML;
-        //垂直滚动函数
-        function Marquee() {
-            if (demo2.offsetTop - demo.scrollTop <= 0){
-                demo.scrollTop -= demo1.offsetHeight;
-            }else{
-                state.demoScrollTop++;
-                demo.scrollTop = state.demoScrollTop;
-            }
-        }
-        //设置定时器0.2秒重复执行一次函数
-        const t = setInterval(Marquee, 100);
-        demo.onmouseover = function(){
-            clearInterval(t);
-        };
-        demo.onmouseout = function(){
-            setInterval(Marquee, 100);
+        mp.onmouseout = () => {
+            MyMar = setInterval(() => {
+                this.marquee(mp,ms,md);
+            }, this.speed);
         };
     }
+    marquee(mp,ms,md){
+        const showHeight = (ms.clientHeight * 2) - mp.clientHeight;
+        if (md.offsetTop - mp.scrollTop <= 0){
+            this.count -= ms.offsetHeight;
+        }else {
+            this.count = this.count+1;
+        }
+        if(this.count == showHeight){
+            this.count = 0;
+        }
+        mp.scrollTop = this.count;
+    }
     render(){
+        const {children} = this.props;
         return (
-            <div id="demo" style={{overflow:'hidden',height:'200px',width:'280px',border: '1px solid #ccc'}}>
-                <div id="demo1">
-                    <ul>
-                        <li style={{lineHeight: '40px','borderBottom':'1px solid #ccc'}}>1</li>
-                        <li style={{lineHeight: '40px','borderBottom':'1px solid #ccc'}}>2</li>
-                        <li style={{lineHeight: '40px','borderBottom':'1px solid #ccc'}}>3</li>
-                        <li style={{lineHeight: '40px','borderBottom':'1px solid #ccc'}}>4</li>
-                        <li style={{lineHeight: '40px','borderBottom':'1px solid #ccc'}}>5</li>
-                        <li style={{lineHeight: '40px','borderBottom':'1px solid #ccc'}}>6</li>
-                        <li style={{lineHeight: '40px','borderBottom':'1px solid #ccc'}}>7</li>
-                        <li style={{lineHeight: '40px','borderBottom':'1px solid #ccc'}}>8</li>
-                        <li style={{lineHeight: '40px','borderBottom':'1px solid #ccc'}}>9</li>
-                        <li style={{lineHeight: '40px','borderBottom':'1px solid #ccc'}}>0</li>
-                    </ul>
-                </div>
-                <div id="demo2" style={{backgroundColor:'#e6e6e6'}}></div>
+            <div ref="mp" style={this.style}>
+                <div ref="ms">{children}</div>
+                <div ref="md">{children}</div>
             </div>
         );
     }
