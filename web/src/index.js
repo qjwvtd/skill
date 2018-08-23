@@ -21,6 +21,8 @@ import ScrollContent from './component/testScrollContent';
 import DateTest from './component/testDate';
 //pageTest
 import PageTest from './component/testPage';
+//ModalTest
+import ModalTest from './component/testModal';
 //Switch
 import Switch from './../public/switch';
 //es6/7
@@ -90,6 +92,9 @@ class App extends Component{
                 </div>
                 <div className="play">
                     <Switch />
+                </div>
+                <div className="play">
+                    <ModalTest />
                 </div>
             </div>
         );

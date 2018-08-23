@@ -1,0 +1,6 @@
+.btn{outline:none;cursor:pointer;border-radius:3px;opacity:0.8;border:none;margin:0 5px 0 0}
+.btn:hover,.btn.active{opacity:1}
+/*color*/
+.btn-promise{background:#3B86FF;color:#fff}
+/*size*/
+.btn-md{padding:6px 12px}
