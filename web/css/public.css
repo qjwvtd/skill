@@ -60,13 +60,21 @@ body{
 }
 .scroll-touch {-webkit-overflow-scrolling: touch}/*移动端顺畅滚动*/
 /*字体颜色*/
-.grey{color:#C8CED3 !important;}/*灰白*/
-.warning{color:#fe8900 !important;}/*warning*/
-.error{color:#ff0830 !important;}/*error字体颜色*/
-.actor{color:#3B86FF !important;}/*优字体颜色*/
-.unhanld{color:orange !important;}/*待处理*/
-.hanlding{color:#2ED2F2 !important;}/*处理中*/
-.finished{color:#5fb878 !important;}/*已完成*/
+.text-grey{color:#C8CED3 !important;}/*灰白*/
+.text-warning{color:#fe8900 !important;}/*warning*/
+.text-error{color:#ff0830 !important;}/*error字体颜色*/
+.text-actor{color:#3B86FF !important;}/*优字体颜色*/
+.text-unhanld{color:orange !important;}/*待处理*/
+.text-hanlding{color:#2ED2F2 !important;}/*处理中*/
+.text-finished{color:#5fb878 !important;}/*已完成*/
+/*浮动*/
+.fl{float:left}
+.fr{float:right}
+.clear{overflow:hidden}
+/*文字位置*/
+.text-left{text-align:left}
+.text-center{text-align:center}
+.text-right{text-align:right}
 /*圆角*/
 .br3{border-radius:3px}
 .br5{border-radius:5px}
@@ -100,15 +108,6 @@ body{
 .ml-9{margin-left:74.9997%;}
 .ml-10{margin-left:83.333%;}
 .ml-11{margin-left:91.6663%;}
-
-/*浮动*/
-.fl{float:left}
-.fr{float:right}
-.clear{overflow:hidden}
-/*文字*/
-.text-left{text-align:left}
-.text-center{text-align:center}
-.text-right{text-align:right}
 /*手动滚动区域 start*/
 /*
 <div class="msoc-scroll">

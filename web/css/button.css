@@ -1,6 +1,25 @@
-.btn{outline:none;cursor:pointer;border-radius:3px;opacity:0.8;border:none;margin:0 5px 0 0}
+.btn{
+    outline:none;
+    opacity:0.8;
+    margin:0 5px 0 0;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    text-transform: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btn:not(:disabled):not(.disabled) {cursor: pointer;}
 .btn:hover,.btn.active{opacity:1}
 /*color*/
 .btn-promise{background:#3B86FF;color:#fff}
 /*size*/
-.btn-md{padding:6px 12px}
