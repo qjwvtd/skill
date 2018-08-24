@@ -13,7 +13,7 @@ export default class StepsTest extends Component{
     }
     render(){
         return (
-            <Steps index={3} steps={this.state.list} />
+            <Steps index={5} steps={this.state.list} />
         );
     }
 }

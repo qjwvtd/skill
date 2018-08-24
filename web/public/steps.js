@@ -10,12 +10,9 @@ import React,{Component} from 'react';
 export default class Steps extends Component{
     constructor(props){
         super(props);
-        this.state = {
-            steps:['第一步','第二步','第三步','第四步','第五步']
-        };
     }
     render(){
-        if(this.props.index > this.state.steps.length){
+        if(this.props.index > this.props.steps.length){
             return;
         }
         return (
@@ -24,7 +21,7 @@ export default class Steps extends Component{
                     <div className="line"></div>
                     <ul className="stepsPoints">
                         {
-                            this.state.steps.map((item,index) => {
+                            this.props.steps.map((item,index) => {
                                 const isText = index+1 < this.props.index ? '√' : index+1;
                                 const finishStyle = index+1 < this.props.index ? {background:'#3B86FF',color:'#fff'} : {};
                                 return (
@@ -36,7 +33,7 @@ export default class Steps extends Component{
                 </div>
                 <div className="stepTextList">
                     {
-                        this.state.steps.map((item,index) => {
+                        this.props.steps.map((item,index) => {
                             const isActive = index+1 == this.props.index ? 'active' :'';
                             return (
                                 <span key={index} className={isActive}><b>{item}</b></span>
