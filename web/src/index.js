@@ -27,6 +27,8 @@ import ModalTest from './component/testModal';
 import CheckBoxTest from './component/testCheckBox';
 //Switch
 import TestSwitch from './component/testSwitch';
+//StepsTest
+import StepsTest from './component/testSteps';
 //es6/7
 import {MathArrayMax,Es6Map} from './component/ES678';
 
@@ -100,6 +102,9 @@ class App extends Component{
                 </div>
                 <div className="play">
                     <CheckBoxTest />
+                </div>
+                <div className="play">
+                    <StepsTest />
                 </div>
             </div>
         );
