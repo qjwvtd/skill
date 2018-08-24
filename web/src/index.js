@@ -26,7 +26,7 @@ import ModalTest from './component/testModal';
 //CheckBoxTest
 import CheckBoxTest from './component/testCheckBox';
 //Switch
-import Switch from './../public/switch';
+import TestSwitch from './component/testSwitch';
 //es6/7
 import {MathArrayMax,Es6Map} from './component/ES678';
 
@@ -93,7 +93,7 @@ class App extends Component{
                     <AjaxTest />
                 </div>
                 <div className="play">
-                    <Switch />
+                    <TestSwitch />
                 </div>
                 <div className="play">
                     <ModalTest />

@@ -1,39 +1,34 @@
 /*
  *switch组件CSS
- * 背景层
  */
-/*.switch-component {*/
-    /*position: relative;*/
-    /*cursor:pointer;*/
-    /*width: 60px;*/
-    /*height: 30px;*/
-    /*background-color: #dadada;*/
-    /*border-radius: 30px;*/
-    /*border: none;*/
-    /*outline: none;*/
-    /*-webkit-appearance: none;*/
-    /*transition: all .2s ease;*/
-/*}*/
 
-/*!* 按钮 *!*/
-/*.switch-component::after {*/
-    /*content: '';*/
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*left: 0;*/
-    /*width: 50%;*/
-    /*height: 100%;*/
-    /*background-color: #fff;*/
-    /*border-radius: 50%;*/
-    /*transition: all .2s ease;*/
-/*}*/
-
-/*!* 选中状态时，背景色切换 *!*/
-/*.switch-component:checked {*/
-    /*background-color: #86c0fa;*/
-/*}*/
-
-/*!* 选中状态时，按钮的位置移动 *!*/
-/*.switch-component:checked::after {*/
-    /*left: 50%;*/
-/*}*/
+.ui-switch,.ui-switch>.ui-switch-slider{
+    display:inline-block;
+}
+.ui-switch{
+    background:#ccc;
+    border:1px solid #ccc;
+    position:relative;
+}
+.ui-switch.active{
+    background:#3B86FF;
+    border:1px solid #3B86FF;
+    animation:swtichAnimation 0.5s !important;
+}
+.ui-switch>.ui-switch-slider{
+    position:absolute;
+    right:0;
+}
+.ui-switch.active>.ui-switch-slider{
+    left:0;
+}
+.ui-switch-slider{
+    height:100%;
+    border-radius:50%;
+    background:#fff;
+}
+/*swtich animation*/
+@keyframes swtichAnimation {
+    0% {background:#ccc;border:1px solid #ccc;}
+    100% {background:#3B86FF;border:1px solid #3B86FF;}
+}

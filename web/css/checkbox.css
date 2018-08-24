@@ -19,7 +19,7 @@ input[type="checkbox"]:checked::before {
     box-shadow: 0 0 1em #3B86FF;
     animation:boxAnimation 0.25s !important;
 }
-/*message show*/
+/*checkbox animation*/
 @keyframes boxAnimation {
     0% {box-shadow: 0 0 0 0 transparent;}
     100% {box-shadow: 0 0 0.5em 0.2em #3B86FF;}
