@@ -23,6 +23,8 @@ import DateTest from './component/testDate';
 import PageTest from './component/testPage';
 //ModalTest
 import ModalTest from './component/testModal';
+//CheckBoxTest
+import CheckBoxTest from './component/testCheckBox';
 //Switch
 import Switch from './../public/switch';
 //es6/7
@@ -95,6 +97,9 @@ class App extends Component{
                 </div>
                 <div className="play">
                     <ModalTest />
+                </div>
+                <div className="play">
+                    <CheckBoxTest />
                 </div>
             </div>
         );

@@ -1,12 +1,26 @@
 /*自定义checkbox*/
-span.checkbox{
-    border:1px solid #ccc;
-    display:inline-block;
-    width:18px;
-    height:18px;
-    border-radius:3px;
+input[type="checkbox"]{
+    border-radius:0.25rem;
+    position:relative;
+    width:20px;
+    height:20px;
+    cursor:pointer;
 }
-span.checkbox.active{
+input[type="checkbox"]:checked::before {
     border:1px solid #3B86FF;
-    color:#3B86FF;
+    position:absolute;
+    left:0;
+    border-radius:0.25rem;
+    width:18px;
+    height:20px;
+    content: "\2713";
+    color:#fff;
+    background: #3B86FF;
+    box-shadow: 0 0 1em #3B86FF;
+    animation:boxAnimation 0.25s !important;
+}
+/*message show*/
+@keyframes boxAnimation {
+    0% {box-shadow: 0 0 0 0 transparent;}
+    100% {box-shadow: 0 0 0.5em 0.2em #3B86FF;}
 }
