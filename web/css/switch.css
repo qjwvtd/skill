@@ -7,12 +7,12 @@
 }
 .ui-switch{
     background:#ccc;
-    border:1px solid #ccc;
+    border:2px solid #ccc;
     position:relative;
 }
 .ui-switch.active{
     background:#3B86FF;
-    border:1px solid #3B86FF;
+    border:2px solid #3B86FF;
     animation:swtichAnimation 0.5s !important;
 }
 .ui-switch>.ui-switch-slider{
