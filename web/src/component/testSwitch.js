@@ -12,7 +12,7 @@ export default class TestSwitch extends Component {
     }
     render() {
         return (
-            <Switch width={50} height={23} active={false} onChange={this.switchOnChange.bind(this)} />
+            <Switch width={50} active={false} onChange={this.switchOnChange.bind(this)} />
         );
     }
 }

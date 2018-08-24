@@ -1,9 +1,8 @@
 /**
  *
- * 将input元素改造成switch组件
- * @switch.css
- * 属性：[width:int(默认50),height:int(默认25)]
- * <Switch width={60} height={30} active={false} onChange={this.switchOnChange.bind(this)} />
+ * 需要@switch.css
+ * 属性：[width:int(默认50)]
+ * <Switch width={60} active={false} onChange={this.switchOnChange.bind(this)} />
  **/
 
 import React,{Component} from 'react';
@@ -12,7 +11,6 @@ export default class Switch extends Component {
         super(props);
         this.state = {
             defaultWidth: 50,
-            defaultHeight: 25,
             switchStyle: {},
             sliderStyle: {}
         };
@@ -20,16 +18,17 @@ export default class Switch extends Component {
 
     componentDidMount() {
         const __width = this.props.width ? this.props.width : this.state.defaultWidth;
-        const __height = this.props.height ? this.props.height : this.state.defaultHeight;
+        const __height = +(__width / 2);
         this.setState({
             switchStyle: {width: __width + 'px', height: __height + 'px', borderRadius: (__height / 2) + 'px'},
-            sliderStyle: {width: __height + 'px'}
+            sliderStyle: {width: (__height - 4) + 'px'}
         });
     }
-    onSwitchStart(){
+
+    onSwitchStart() {
         const sw = this.refs.switch;
         const swClassName = sw.className;
-        switch (swClassName){
+        switch (swClassName) {
         case 'ui-switch active':
             sw.className = 'ui-switch';
             this.props.onChange(false);
@@ -44,7 +43,11 @@ export default class Switch extends Component {
     render() {
         const isActiveClass = this.props.active ? 'ui-switch active' : 'ui-switch';
         return (
-            <a className={isActiveClass} ref="switch" style={this.state.switchStyle} onClick={this.onSwitchStart.bind(this)}>
+            <a className={isActiveClass}
+                ref="switch"
+                style={this.state.switchStyle}
+                onClick={this.onSwitchStart.bind(this)}
+            >
                 <span className="ui-switch-slider" style={this.state.sliderStyle}></span>
             </a>
         );

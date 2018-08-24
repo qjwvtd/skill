@@ -8,7 +8,6 @@
 .ui-switch{
     background:#ccc;
     border:2px solid #ccc;
-    position:relative;
 }
 .ui-switch.active{
     background:#3B86FF;
@@ -16,11 +15,12 @@
     animation:swtichAnimation 0.5s !important;
 }
 .ui-switch>.ui-switch-slider{
-    position:absolute;
-    right:0;
+    margin-left:calc(50% + 2px);
+    animation:swtichChangeRightAnimation 0.2s !important;
 }
 .ui-switch.active>.ui-switch-slider{
-    left:0;
+    margin-left:0;
+    animation:swtichChangeLeftAnimation 0.2s !important;
 }
 .ui-switch-slider{
     height:100%;
@@ -29,6 +29,14 @@
 }
 /*swtich animation*/
 @keyframes swtichAnimation {
-    0% {background:#ccc;border:1px solid #ccc;}
-    100% {background:#3B86FF;border:1px solid #3B86FF;}
+    0% {background:#ccc;border:2px solid #ccc;}
+    100% {background:#3B86FF;border:2px solid #3B86FF;}
+}
+@keyframes swtichChangeLeftAnimation {
+    0% {margin-left:calc(50% + 2px);}
+    100% {margin-left:0;}
+}
+@keyframes swtichChangeRightAnimation {
+    0% {margin-left:0;}
+    100% {margin-left:calc(50% + 2px);}
 }
