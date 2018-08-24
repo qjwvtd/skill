@@ -10,7 +10,7 @@ export default class VerifyCodeBtn extends Component {
         super(props);
         this.state = {
             btnText: '获取验证码',
-            wait: this.props.wait
+            wait: props.wait
         };
     }
     btnClick(){

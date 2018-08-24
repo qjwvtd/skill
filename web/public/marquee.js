@@ -18,13 +18,13 @@ export class ManualMarquee extends Component {
             outStyle:{
                 position:'relative',
                 overflow:'hidden',
-                height:this.props.height
+                height:props.height
             },
             innerStyle:{
                 position: 'absolute',
                 left: 0,
                 width:'100%',
-                height:this.props.height,
+                height:props.height,
                 overFlowX: 'hidden',
                 overFlowY: 'scroll'
             }
@@ -47,11 +47,11 @@ export class AutoMarquee extends Component{
         super(props);
         this.style = {
             overflow:'hidden',
-            height:this.props.height,
+            height:props.height,
             width:'100%'
         };//容器样式
         this.count = 0;//滚动开始位置
-        this.speed = this.props.speed ? this.props.speed : 50;//滚动速度
+        this.speed = props.speed ? props.speed : 50;//滚动速度
     }
     componentDidMount(){
         const mp = this.refs.mp;
