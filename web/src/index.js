@@ -31,6 +31,8 @@ import TestSwitch from './component/testSwitch';
 import StepsTest from './component/testSteps';
 //PaginationTest
 import PaginationTest from './component/testPagination';
+//SelectTest
+import SelectTest from './component/testSelect';
 //es6/7
 import {MathArrayMax,Es6Map} from './component/ES678';
 
@@ -110,6 +112,9 @@ class App extends Component{
                 </div>
                 <div className="play">
                     <PaginationTest />
+                </div>
+                <div className="play">
+                    <SelectTest />
                 </div>
             </div>
         );
