@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
-//需要checkbox.css
+//两种checkbox,需要checkbox.css
 //<Checkbox checked="checked" onChange={this.onChange.bind(this)} />
+//<CheckBoxSpan checked={true} onChange={this.onSpanCheckboxChange.bind(this)} />
 export class Checkbox extends Component{
     constructor(props){
         super(props);
