@@ -4,7 +4,7 @@
  * <CheckBoxSpan checked={true} onChange={this.onSpanCheckboxChange.bind(this)} />
  **/
 import React,{Component} from 'react';
-import {Checkbox,CheckBoxSpan} from './../../public/CheckBox';
+import {Checkbox,CheckBoxSpan} from './../../public/checkbox';
 
 export default class CheckBoxTest extends Component{
     constructor(props){
