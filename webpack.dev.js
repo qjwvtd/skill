@@ -1,8 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
-module.exports = merge(common, {
+const baseConfig = require('./webpack.config.js');
+//添加热插播
+baseConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
+
+module.exports = merge(baseConfig, {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
@@ -12,8 +15,5 @@ module.exports = merge(common, {
         port: 9000,
         compress:true,//虚拟服务代码压缩,加快开发流程和优化
         hot: true,//true,webpack4会自动添加HMR插件
-    },
-    plugins:[
-        new webpack.HotModuleReplacementPlugin(),
-    ]
+    }
 });

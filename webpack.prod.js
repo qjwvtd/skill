@@ -1,10 +1,10 @@
 const merge = require('webpack-merge');
 const webpack = require('webpack');
-const common = require('./webpack.common.js');
+const baseConfig = require('./webpack.config.js');
 
 //const HtmlWebpackPlugin = require('html-webpack-plugin');
-//common.entry.vendor = ['react','react-dom'];
-//common.optimization = {
+//baseConfig.entry.vendor = ['react','react-dom'];
+//baseConfig.optimization = {
 //    splitChunks: {
 //        chunks: "all",
 //            minChunks: 1,
@@ -17,6 +17,6 @@ const common = require('./webpack.common.js');
 //        }
 //    }
 //};
-module.exports = merge(common, {
+module.exports = merge(baseConfig, {
     mode: 'production'
 });

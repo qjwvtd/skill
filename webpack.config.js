@@ -70,6 +70,7 @@ const webpackConfig = {
             filename: "[name].css",
             chunkFilename: "index.css"
         }),
+        //开发环境下可以作一些压缩，加快热更新速度
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         })
