@@ -1,4 +1,4 @@
-/*自定义checkbox*/
+/*自定义checkbox---input版*/
 input[type="checkbox"]{
     border-radius:0.25rem;
     position:relative;
@@ -19,6 +19,38 @@ input[type="checkbox"]:checked::before {
     box-shadow: 0 0 1em #3B86FF;
     animation:boxAnimation 0.25s !important;
 }
+/*自定义checkbox---span版*/
+span.checkBoxSpan::before{
+    display:inline-block;
+    content: "";
+}
+span.checkBoxSpan{
+    display:inline-block;
+    border:1px solid #ccc;
+    background: #f8f8f8;
+    border-radius:0.25rem;
+    margin:0;
+    width:20px;
+    height:20px;
+    line-height:20px;
+    color:transparent;
+    text-align:center;
+    cursor:pointer;
+    box-shadow: 0 0 1em #ccc;
+}
+span.checkBoxSpan.active{
+    border:1px solid #3B86FF !important;
+    color:#fff !important;
+    background: #3B86FF;
+    box-shadow: 0 0 1em #3B86FF;
+    animation:boxAnimation 0.25s;
+}
+span.checkBoxSpan.active::before{
+    display: inline-block;
+    /*content: "\2713";*/
+    content: "√";
+}
+
 /*checkbox animation*/
 @keyframes boxAnimation {
     0% {box-shadow: 0 0 0 0 transparent;}
