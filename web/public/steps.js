@@ -23,7 +23,7 @@ export default class Steps extends Component{
                         {
                             this.props.steps.map((item,index) => {
                                 const isText = index+1 < this.props.index ? '√' : index+1;
-                                const finishStyle = index+1 < this.props.index ? {background:'#3B86FF',color:'#fff'} : {};
+                                const finishStyle = index+1 < this.props.index ? {background:'#1890ff',color:'#fff'} : {};
                                 return (
                                     <li key={item}><span style={finishStyle}>{isText}</span></li>
                                 );

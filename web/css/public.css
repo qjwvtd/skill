@@ -63,7 +63,7 @@ body{
 .text-grey{color:#C8CED3 !important;}/*灰白*/
 .text-warning{color:#fe8900 !important;}/*warning*/
 .text-error{color:#ff0830 !important;}/*error字体颜色*/
-.text-actor{color:#3B86FF !important;}/*优字体颜色*/
+.text-actor{color:#1890ff !important;}/*优字体颜色*/
 .text-unhanld{color:orange !important;}/*待处理*/
 .text-hanlding{color:#2ED2F2 !important;}/*处理中*/
 .text-finished{color:#5fb878 !important;}/*已完成*/
@@ -134,4 +134,3 @@ body{
 .msic-scroll { -ms-overflow-style: none; }/*IE 10+*/
 .msic-scroll { overflow: -moz-scrollbars-none; }/*Firefox*/
 /*手动滚动区域 end*/
-

@@ -1,6 +1,6 @@
 /*loading*/
 .loading{padding:5px;text-align:center}
-.loading span{font-size:16px;font-weight:bold;padding:2px;color:#3B86FF}
+.loading span{font-size:16px;font-weight:bold;padding:2px;color:#1890ff}
 .loading>span.loadingl{animation:a1 1s infinite;}
 .loading>span.loadingo{animation:a2 1s infinite;}
 .loading>span.loadinga{animation:a3 1s infinite;}
@@ -11,13 +11,13 @@
 .loading>span.loadingp1{animation:a8 1s infinite;}
 .loading>span.loadingp2{animation:a9 1s infinite;}
 .loading>span.loadingp3{animation:a0 1s infinite;}
-@keyframes a1 {0%{color:#fff}10%{color:#3B86FF}}
-@keyframes a2 {10%{color:#fff}20%{color:#3B86FF}}
-@keyframes a3 {20%{color:#fff}30%{color:#3B86FF}}
-@keyframes a4 {30%{color:#fff}40%{color:#3B86FF}}
-@keyframes a5 {40%{color:#fff}50%{color:#3B86FF}}
-@keyframes a6 {50%{color:#fff}60%{color:#3B86FF}}
-@keyframes a7 {60%{color:#fff}70%{color:#3B86FF}}
-@keyframes a8 {70%{color:#fff}80%{color:#3B86FF}}
-@keyframes a9 {80%{color:#fff}90%{color:#3B86FF}}
-@keyframes a0 {90%{color:#fff}100%{color:#3B86FF}}
+@keyframes a1 {0%{color:#fff}10%{color:#1890ff}}
+@keyframes a2 {10%{color:#fff}20%{color:#1890ff}}
+@keyframes a3 {20%{color:#fff}30%{color:#1890ff}}
+@keyframes a4 {30%{color:#fff}40%{color:#1890ff}}
+@keyframes a5 {40%{color:#fff}50%{color:#1890ff}}
+@keyframes a6 {50%{color:#fff}60%{color:#1890ff}}
+@keyframes a7 {60%{color:#fff}70%{color:#1890ff}}
+@keyframes a8 {70%{color:#fff}80%{color:#1890ff}}
+@keyframes a9 {80%{color:#fff}90%{color:#1890ff}}
+@keyframes a0 {90%{color:#fff}100%{color:#1890ff}}

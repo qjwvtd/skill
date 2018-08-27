@@ -29,6 +29,8 @@ import CheckBoxTest from './component/testCheckBox';
 import TestSwitch from './component/testSwitch';
 //StepsTest
 import StepsTest from './component/testSteps';
+//PaginationTest
+import PaginationTest from './component/testPagination';
 //es6/7
 import {MathArrayMax,Es6Map} from './component/ES678';
 
@@ -105,6 +107,9 @@ class App extends Component{
                 </div>
                 <div className="play">
                     <StepsTest />
+                </div>
+                <div className="play">
+                    <PaginationTest />
                 </div>
             </div>
         );

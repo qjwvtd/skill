@@ -7,7 +7,7 @@ input[type="checkbox"]{
     cursor:pointer;
 }
 input[type="checkbox"]:checked::before {
-    border:1px solid #3B86FF;
+    border:1px solid #1890ff;
     position:absolute;
     left:0;
     border-radius:0.25rem;
@@ -15,8 +15,8 @@ input[type="checkbox"]:checked::before {
     height:20px;
     content: "\2713";
     color:#fff;
-    background: #3B86FF;
-    box-shadow: 0 0 1em #3B86FF;
+    background: #1890ff;
+    box-shadow: 0 0 1em #1890ff;
     animation:boxAnimation 0.25s !important;
 }
 /*自定义checkbox---span版*/
@@ -39,20 +39,24 @@ span.checkBoxSpan{
     box-shadow: 0 0 1em #ccc;
 }
 span.checkBoxSpan.active{
-    border:1px solid #3B86FF !important;
+    border:1px solid #1890ff;
     color:#fff !important;
-    background: #3B86FF;
-    box-shadow: 0 0 1em #3B86FF;
+    background: #1890ff;
+    box-shadow: 0 0 1em #1890ff;
     animation:boxAnimation 0.25s;
 }
 span.checkBoxSpan.active::before{
     display: inline-block;
-    /*content: "\2713";*/
-    content: "√";
+    /*content: "√";*/
+    content: "\2713";
+}
+span.checkBoxSpan:hover{
+    border:1px solid #1890ff;
+    box-shadow: 0 0 1em #1890ff;
 }
 
 /*checkbox animation*/
 @keyframes boxAnimation {
     0% {box-shadow: 0 0 0 0 transparent;}
-    100% {box-shadow: 0 0 0.5em 0.2em #3B86FF;}
+    100% {box-shadow: 0 0 0.5em 0.2em #1890ff;}
 }

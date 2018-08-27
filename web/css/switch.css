@@ -10,8 +10,8 @@
     border:2px solid #ccc;
 }
 .ui-switch.active{
-    background:#3B86FF;
-    border:2px solid #3B86FF;
+    background:#1890ff;
+    border:2px solid #1890ff;
     animation:swtichAnimation 0.5s !important;
 }
 .ui-switch>.ui-switch-slider{
@@ -30,7 +30,7 @@
 /*swtich animation*/
 @keyframes swtichAnimation {
     0% {background:#ccc;border:2px solid #ccc;}
-    100% {background:#3B86FF;border:2px solid #3B86FF;}
+    100% {background:#1890ff;border:2px solid #1890ff;}
 }
 @keyframes swtichChangeLeftAnimation {
     0% {margin-left:calc(50% + 2px);}

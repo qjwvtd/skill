@@ -62,7 +62,7 @@
 
 .modal-head > span:hover {
     color: #fff;
-    background: #3B86FF
+    background: #1890ff
 }
 
 .modal-content {
@@ -100,7 +100,7 @@
 }
 
 .modal-foot > span.btnSucces {
-    background: #3B86FF
+    background: #1890ff
 }
 
 .modal-foot > span.btnCancel {
