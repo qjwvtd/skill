@@ -1,0 +1,87 @@
+.ui-select-box{
+    position:relative;
+    border-radius:3px;
+    border:1px solid #d9d9d9;
+    cursor:pointer;
+}
+.ui-select-box:hover{
+    border:1px solid #1890ff;
+    animation:hoverBorderAnimate 0.5s !important;
+}
+/*hover边框动画*/
+@keyframes hoverBorderAnimate {
+    0% {border:1px solid #d9d9d9;}
+    100% {border:1px solid #1890ff;}
+}
+.ui-select-box>div{
+    position:absolute;
+    width:100%;
+}
+.ui-select-box>div.ui-select-show{
+    z-index:1;
+    height:100%;
+    background:transparent;
+}
+.ui-select-box>div .ui-select-icon{
+    color:#999;
+    transform:rotate(0deg);
+    animation:iconAnimateOne 0.15s !important;
+}
+.ui-select-box>div .ui-select-icon.active{
+    transform:rotate(0deg);
+    animation:iconAnimateTwo 0.15s !important;
+}
+/*icon边框动画*/
+@keyframes iconAnimateOne {
+    0% {transform:rotate(90deg);}
+    100% {transform:rotate(0deg);}
+}
+@keyframes iconAnimateTwo {
+    0% {transform:rotate(0deg);}
+    100% {transform:rotate(90deg);}
+}
+
+.ui-select-box>div.ui-select-show a{
+    float:left;
+    height:calc(100% + 2px);
+}
+.ui-select-box>div.ui-select-show a:first-child{
+    text-indent:5px;
+    width:calc(100% - 30px);
+}
+.ui-select-box>div.ui-select-show a:last-child{
+    width:30px;
+    text-align:center;
+}
+.ui-select-box>div.ui-select-content{
+    z-index:9;
+    border:1px solid #1890ff;
+    height:0;
+    opacity:0;
+    display:none;
+    max-height:320px;
+    overflow-y: auto;
+}
+.ui-select-box>div.ui-select-content.active{
+    display:block;
+    height:auto;
+    opacity:1;
+    animation: contentAnimateTwo 0.8s !important;
+}
+/*内容区显隐动画*/
+@keyframes contentAnimateTwo {
+    0% {height:0;opacity:0;}
+    100% {height:auto;opacity:1;}
+}
+.ui-select-box>div.ui-select-content ul{
+    list-style:none;
+    width:100%;
+}
+.ui-select-box>div.ui-select-content ul li{
+    height:30px;
+    line-height:30px;
+}
+.ui-select-box>div.ui-select-content ul li:hover{
+    background: #1890ff;
+    color:#fff;
+}

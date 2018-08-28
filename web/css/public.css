@@ -23,7 +23,7 @@ a{outline:none;text-decoration:none;cursor:pointer}
 input,select,textarea{
     outline:none;
     text-decoration:none;
-    border:1px solid #C8CED3;
+    border:1px solid #d9d9d9;
     border-radius:3px;
     text-indent:5px;
 }
@@ -82,8 +82,8 @@ body{
 .boxShadow{box-shadow:0 0 15px #ccc;}
 /*仿bootstrap.css*/
 .container{width:100%;}
-.row{overflow:hidden;clear:both;display:block;}
-.col-1,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-10,.col-11,.col-12{display:block;float:left;}
+.row{font-size:0;/*清除inline-block的间隔*/}
+.col-1,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-10,.col-11,.col-12{display:inline-block;font-size: medium;}
 .col-1{width:8.3333%;}
 .col-2{width:16.6666%;}
 .col-3{width:24.9999%;}
