@@ -1,5 +1,4 @@
 /**
- * 此处是注释
  * list必须是数组，且必须有key,value字段
  * width['50%'/'50px']
  * height['50px']现阶段只能是px
