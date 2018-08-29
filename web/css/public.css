@@ -30,14 +30,14 @@ input,select,textarea{
 /*滚动条*/
 body{
     /*IE*/
-    scrollbar-arrow-color:#212326;/*三角箭头的颜色*/
-    scrollbar-face-color:#212326;/*滚动条滑块按钮的颜色*/
-    scrollbar-highlight-color:#212326;/*滚动条整体颜色*/
-    scrollbar-shadow-color:#212326;/*滚动条阴影*/
+    scrollbar-arrow-color:#1890ff;/*三角箭头的颜色*/
+    scrollbar-face-color:#1890ff;/*滚动条滑块按钮的颜色*/
+    scrollbar-highlight-color:#1890ff;/*滚动条整体颜色*/
+    scrollbar-shadow-color:#1890ff;/*滚动条阴影*/
 }
 /*-webkit-*/
 ::-webkit-scrollbar{width:5px;}/*滚动条垂直方向的宽度*/
-::-webkit-scrollbar-thumb:vertical{background:#212326;}/* 垂直滚动条的滑动块 */
+::-webkit-scrollbar-thumb:vertical{background:#1890ff;}/* 垂直滚动条的滑动块 */
 .no-events {pointer-events: none}/*PC端禁止鼠标点击事件，移动端禁止触摸事件还有长按事件*/
 /*移动端禁止用户长按文字选择功能*/
 .unselect {

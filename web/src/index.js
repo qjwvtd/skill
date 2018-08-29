@@ -96,6 +96,9 @@ class App extends Component{
                     <Star size={3} />
                 </div>
                 <div className="play">
+                    <SelectTest />
+                </div>
+                <div className="play">
                     <AjaxTest />
                 </div>
                 <div className="play">
@@ -112,9 +115,6 @@ class App extends Component{
                 </div>
                 <div className="play">
                     <PaginationTest />
-                </div>
-                <div className="play">
-                    <SelectTest />
                 </div>
             </div>
         );

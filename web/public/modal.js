@@ -26,7 +26,7 @@ export class ModalAlert extends Component{
         const width = this.props.width ? this.props.width : '600px';
         return (
             <div className={this.props.status ? 'modal active' : 'modal'}>
-                <div className="modal-body" ref="modalWindow" style={{width:width}}>
+                <div className="modal-body" style={{width:this.props.status ? width : '0'}}>
                     <div className="modal-head">{title}<span onClick={this.closeDilog.bind(this,false)}>×</span></div>
                     <div className="modal-content">
                         { children }
@@ -54,7 +54,7 @@ export class ModalConfirm extends Component{
         const width = this.props.width ? this.props.width : '600px';
         return (
             <div className={this.props.status ? 'modal active' : 'modal'}>
-                <div className="modal-body" ref="modalWindow" style={{width:width}}>
+                <div className="modal-body" style={{width:this.props.status ? width : '0'}}>
                     <div className="modal-head">{title}<span onClick={this.closeModal.bind(this,false)}>×</span></div>
                     <div className="modal-content">
                         { children }
@@ -88,7 +88,7 @@ export class ModalPrompt extends Component{
         const width = this.props.width ? this.props.width : '600px';
         return (
             <div className={this.props.status ? 'modal active' : 'modal'}>
-                <div className="modal-body" ref="modalWindow" style={{width:width}}>
+                <div className="modal-body" style={{width:this.props.status ? width : '0'}}>
                     <div className="modal-head">{title}<span onClick={this.closeModal.bind(this,false)}>×</span></div>
                     <div className="modal-content">
                         <input type="text" ref="promptModalIn" className="promptModalIn" placeholder="Please enter text" />
@@ -115,7 +115,7 @@ export class ModalDilog extends Component{
         const width = this.props.width ? this.props.width : '600px';
         return (
             <div className={this.props.status ? 'modal active' : 'modal'}>
-                <div className="modal-body" ref="modalWindow" style={{width:width}}>
+                <div className="modal-body" style={{width:this.props.status ? width : '0'}}>
                     <div className="modal-head">{title}<span onClick={this.closeModal.bind(this,false)}>×</span></div>
                     <div className="modal-content">
                         {this.props.message}

@@ -54,32 +54,28 @@
     text-align:center;
 }
 .ui-select-box>div.ui-select-content{
+    border-radius:3px;
     z-index:9;
-    border:1px solid #1890ff;
+    background:#fff;
+    border:none;
     height:0;
-    opacity:0;
-    display:none;
-    max-height:320px;
-    overflow-y: auto;
+    overflow:hidden;
+
+    transition:height 0.15s;
+    -moz-transition:height 0.15s; /* Firefox 4 */
+    -webkit-transition:height 0.15s; /* Safari and Chrome */
+    -o-transition:height 0.15s; /* Opera */
 }
 .ui-select-box>div.ui-select-content.active{
-    display:block;
-    height:auto;
-    opacity:1;
-    animation: contentAnimateTwo 0.8s !important;
-}
-/*内容区显隐动画*/
-@keyframes contentAnimateTwo {
-    0% {height:0;opacity:0;}
-    100% {height:auto;opacity:1;}
+    border:1px solid #1890ff;
+    overflow:auto;
 }
 .ui-select-box>div.ui-select-content ul{
     list-style:none;
     width:100%;
 }
 .ui-select-box>div.ui-select-content ul li{
-    height:30px;
-    line-height:30px;
+    text-indent:5px;
 }
 .ui-select-box>div.ui-select-content ul li:hover{
     background: #1890ff;
