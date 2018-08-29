@@ -51,7 +51,7 @@ export class Es6Map extends Component{
         return (
             <div>
                 <h5>ES6 Map</h5>
-                <button type="button" onClick={this.es6testEvent.bind(this)}>ES6 Map test</button>
+                <button className="btn btn-promise" onClick={this.es6testEvent.bind(this)}>ES6 Map test</button>
                 <p>{this.state.result}</p>
             </div>
         );

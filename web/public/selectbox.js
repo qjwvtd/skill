@@ -18,7 +18,7 @@ export default class SelectBox extends Component{
         this.state = {
             isActive:false,
             selectedKey:null,
-            selectedVal:null
+            selectedVal:'--请选择--'
         };
     }
     openContent(){

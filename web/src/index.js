@@ -33,6 +33,8 @@ import StepsTest from './component/testSteps';
 import PaginationTest from './component/testPagination';
 //SelectTest
 import SelectTest from './component/testSelect';
+//DatePickerTest
+import DatePickerTest from './component/testDatePicker';
 //es6/7
 import {MathArrayMax,Es6Map} from './component/ES678';
 
@@ -112,6 +114,9 @@ class App extends Component{
                 </div>
                 <div className="play">
                     <StepsTest />
+                </div>
+                <div className="play">
+                    <DatePickerTest />
                 </div>
                 <div className="play">
                     <PaginationTest />

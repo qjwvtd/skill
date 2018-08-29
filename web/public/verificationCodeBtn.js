@@ -47,6 +47,7 @@ export default class VerifyCodeBtn extends Component {
         return (
             <button
                 type="button"
+                className="btn btn-promise"
                 ref="vcbtn"
                 onClick={this.setTime.bind(this)}
             >
