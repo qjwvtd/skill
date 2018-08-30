@@ -4,7 +4,7 @@
 class MyDate{
     constructor(){
         this.setLen = (str) => {
-            const __str = str.toString().length < 2 ? 0 + str.toString() : str;
+            const __str = str.toString().length < 2 ? 0 + str.toString() : str.toString();
             return __str;
         };
     }
