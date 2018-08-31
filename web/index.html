@@ -8,10 +8,18 @@
     <style>
         #root{width:80%;margin:20px auto;padding-bottom:600px}
         .play{border:1px solid #ccc;padding:10px;margin-bottom:20px;border-radius:3px;background:#f8f8f8}
+
+        a.tooltip{position:relative;border:1px solid red}
+        a.tooltip span{display:none;padding:5px;width:200px}
+        /*a:hover{background:#fff}*/
+        a.tooltip:hover span{display:inline;position:absolute;}
     </style>
 </head>
 <body>
 <div id="root"></div>
+<div>
+    <a class="tooltip"><span>this is some text</span></a>
+</div>
 <script type="text/javascript" src="./build/index.js"></script>
 </body>
 </html>

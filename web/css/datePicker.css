@@ -19,9 +19,13 @@
     width:calc(100% - 20px);
     height:inherit;
 }
+.ui-datePicker>.ui-datePicker-input input:focus{
+    border:none !important;
+}
 .ui-datePicker>.ui-datePicker-input .ui-datePicker-icon{
     font-size:20px;
     color:#ccc;
+    cursor:pointer;
 }
 /*日期盒子*/
 .ui-datePicker-box{
@@ -37,20 +41,20 @@
     opacity:0;
 }
 .ui-datePicker-box.active{
-    height:360px;
+    height:370px;
     opacity:1;
     animation:boxShowAnimation 0.5s;
 }
 @keyframes boxShowAnimation {
     0%{height:0;opacity:0;}
-    100%{height:360px;opacity:1;}
+    100%{height:370px;opacity:1;}
 }
 .ui-datePicker-box .ui-datePicker-show{
     text-align:center;
     padding:15px 0;
     border-bottom:1px solid #d9d9d9;
 }
-.ui-datePicker-box .ui-datePicker-show>span{
+.ui-datePicker-box .ui-datePicker-show span{
     display:inline-block;
     width:24px;
     height:24px;
@@ -62,12 +66,28 @@
     margin:0 2px;
     background:#fff;
 }
-.ui-datePicker-box .ui-datePicker-show>span:hover{
+.ui-datePicker-box .ui-datePicker-show span:hover{
     color:#1890ff;
     border:1px solid #1890ff;
 }
+.ui-datePicker-box .ui-datePicker-show b{
+    pointer-events:none;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently not supported by any browser */
+}
 .ui-datePicker-box .ui-datePicker-weeks{
     padding:10px 0;
+    pointer-events:none;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently not supported by any browser */
 }
 .ui-datePicker-box .ui-datePicker-weeks ul{
     overflow:hidden;
@@ -129,7 +149,7 @@
 .ui-datePicker-nextMonth:before{content:'>';}
 /*时分秒*/
 .ui-datePicker-times{
-    padding:15px 0;
+    padding:5px 0;
     text-align:center;
 }
 .ui-datePicker-times span{
@@ -137,14 +157,16 @@
     text-align:center;
     height:30px;
     line-height:30px;
+    margin-bottom:5px;
 }
 .ui-datePicker-times span input{
     margin:0 2px;
-    width:30px;
+    width:35px;
     height:30px;
     line-height:28px;
     text-align:center;
     text-indent:0 !important;
+    border-width:0 0 1px 0;
 }
 .ui-datePicker-times span button{
     outline:none;
@@ -154,7 +176,7 @@
     color:#fff;
     opacity:0.8;
     border-radius:3px;
-    margin:0 2px;
+    margin:0 3px;
     padding:0 8px;
     height:28px;
     line-height:28px;

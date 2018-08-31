@@ -21,5 +21,5 @@
 .btn:not(:disabled):not(.disabled) {cursor: pointer;}
 .btn:hover,.btn.active{opacity:1}
 /*color*/
-.btn-promise{background:#1890ff;color:#fff}
+.btn-promise{background:#1890ff;color:#fff;}
 /*size*/

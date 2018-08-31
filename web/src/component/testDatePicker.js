@@ -9,7 +9,7 @@ export default class DatePickerTest extends Component {
     }
 
     getDate(dateInfo) {
-        console.log(JSON.stringify(dateInfo));
+        console.log('回调：'+JSON.stringify(dateInfo));
     }
 
     render() {
@@ -17,15 +17,13 @@ export default class DatePickerTest extends Component {
             <div>
                 <h5>基于React的一款日期插件</h5>
                 <div>
-                    <DatePicker callback={this.getDate.bind(this)} />
+                    <DatePicker callback={this.getDate.bind(this)} placeholder="开始日期" />
+                    <br />
+                    <DatePicker callback={this.getDate.bind(this)} placeholder="结束日期" />
                 </div>
                 <br />
                 <div>
-                    <DatePicker width={'100%'} height={'44px'} model={'YMDHMS'} callback={this.getDate.bind(this)} />
-                </div>
-                <br />
-                <div>
-                    <DatePicker width={'400px'} height={'48px'} model={'HMS'} callback={this.getDate.bind(this)} />
+                    <DatePicker width={'50%'} height={'44px'} format={'ymdhms'} callback={this.getDate.bind(this)} />
                 </div>
             </div>
         );

@@ -1,16 +1,15 @@
 /* http://meyerweb.com/eric/tools/css/reset/ */
-/* v1.0 | 20080212 */
 *{box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;margin:0;padding:0;font-family:Monospaced Number, Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;}
 *{border-radius:3px}
-html{font-size: 62.5%;}/*16*62.5%=10px*/
-html,body{height:100%}
+html{font-size: 62.5%;}/*基准大小16px*62.5%=10px*/
+/*html,body{height:100%}*/
 html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,del, dfn, em, font, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td {
     margin: 0;padding: 0;border: 0;outline: 0;vertical-align: baseline;background: transparent;
 }
-body{font-size:1em;min-width:1366px;}
+body{line-height:1;min-width:1366px;}
 ol, ul {list-style: none;}
 blockquote, q {quotes: none;}
 blockquote:before, blockquote:after,q:before, q:after {content: '';content: none;}
@@ -20,6 +19,7 @@ ins {text-decoration: none;}/* remember to highlight inserts somehow! */
 del {text-decoration: line-through;}
 table {border-collapse: collapse;border-spacing: 0;}/* tables still need 'cellspacing="0"' in the markup */
 a{outline:none;text-decoration:none;cursor:pointer}
+img{max-width:100%}
 input,select,textarea{
     outline:none;
     text-decoration:none;
@@ -27,7 +27,8 @@ input,select,textarea{
     border-radius:3px;
     text-indent:5px;
 }
-button{outline:none;text-decoration:none;border:none}
+textarea{overflow: auto}/*取消IE文本框滚动条*/
+button{outline:none;text-decoration:none;border:none;cursor:pointer}
 /*滚动条*/
 /*IE内核*/
 body{
@@ -35,6 +36,19 @@ body{
     scrollbar-face-color:#A7A7A7;/*滚动条滑块按钮的颜色*/
     scrollbar-highlight-color:#EFEFEF;/*滚动条整体颜色*/
     scrollbar-shadow-color:#EFEFEF;/*滚动条阴影*/
+}
+/*body顶部阴影*/
+body:before{
+    content:'';
+    position:fixed;
+    z-index:100;
+    top:-10px;
+    left:0;
+    width:100%;
+    height:10px;
+    -webkit-box-shadow:0 0 10px #515151;
+    -moz-box-shadow:0 0 10px #515151;
+    box-shadow:0 0 10px #515151;
 }
 /*-webkit内核-*/
 ::-webkit-scrollbar{width:5px;}/*滚动条垂直方向的宽度*/

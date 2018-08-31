@@ -43,7 +43,7 @@
 
 .ui-select-box>div.ui-select-show a{
     float:left;
-    height:calc(100% + 2px);
+    background:transparent;
 }
 .ui-select-box>div.ui-select-show a:first-child{
     text-indent:5px;
