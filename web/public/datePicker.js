@@ -198,6 +198,7 @@ class TimesBox extends Component {
         return (
             <div>
                 <span>
+                    时间
                     <input type="text" ref="hh"
                         defaultValue={this.state.hour}
                         onChange={this.listenInput.bind(this,'hh')} onFocus={this.onFocus.bind(this)}/>:

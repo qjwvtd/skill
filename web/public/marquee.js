@@ -53,19 +53,22 @@ export class AutoMarquee extends Component{
         this.count = 0;//滚动开始位置
         this.speed = props.speed ? props.speed : 50;//滚动速度
     }
+    componentWillUnmount(){
+        clearInterval(this.setinterval);
+    }
     componentDidMount(){
         const mp = this.refs.mp;
         const ms = this.refs.ms;
         const md = this.refs.md;
         let MyMar;
-        MyMar = setInterval(() => {
+        this.setinterval = setInterval(() => {
             this.marquee(mp,ms,md);
         }, this.speed);
         mp.onmouseover = () => {
-            clearInterval(MyMar);
+            clearInterval(this.setinterval);
         };
         mp.onmouseout = () => {
-            MyMar = setInterval(() => {
+            this.setinterval = setInterval(() => {
                 this.marquee(mp,ms,md);
             }, this.speed);
         };
