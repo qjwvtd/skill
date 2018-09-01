@@ -60,7 +60,6 @@ export class AutoMarquee extends Component{
         const mp = this.refs.mp;
         const ms = this.refs.ms;
         const md = this.refs.md;
-        let MyMar;
         this.setinterval = setInterval(() => {
             this.marquee(mp,ms,md);
         }, this.speed);

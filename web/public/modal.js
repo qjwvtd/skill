@@ -1,7 +1,3 @@
-/*
- * 2018/5/18
- * administractor
- */
 import React,{ Component } from 'react';
 /*
  * 需要modal.css
@@ -24,9 +20,11 @@ export class ModalAlert extends Component{
         const { children } = this.props;
         const title = this.props.title ? this.props.title : '标题';
         const width = this.props.width ? this.props.width : '600px';
+        const isActiveClassBody = this.props.status ? 'modal-body active' : 'modal-body';
+        const isActiveWidth = this.props.status ? width : '0';
         return (
             <div className={this.props.status ? 'modal active' : 'modal'}>
-                <div className="modal-body" style={{width:this.props.status ? width : '0'}}>
+                <div className={isActiveClassBody} style={{width:isActiveWidth}}>
                     <div className="modal-head">{title}<span onClick={this.closeDilog.bind(this,false)}>×</span></div>
                     <div className="modal-content">
                         { children }
@@ -52,9 +50,11 @@ export class ModalConfirm extends Component{
         const { children } = this.props;
         const title = this.props.title ? this.props.title : '标题';
         const width = this.props.width ? this.props.width : '600px';
+        const isActiveClassBody = this.props.status ? 'modal-body active' : 'modal-body';
+        const isActiveWidth = this.props.status ? width : '0';
         return (
             <div className={this.props.status ? 'modal active' : 'modal'}>
-                <div className="modal-body" style={{width:this.props.status ? width : '0'}}>
+                <div className={isActiveClassBody} style={{width:isActiveWidth}}>
                     <div className="modal-head">{title}<span onClick={this.closeModal.bind(this,false)}>×</span></div>
                     <div className="modal-content">
                         { children }
@@ -86,9 +86,11 @@ export class ModalPrompt extends Component{
     render(){
         const title = this.props.title ? this.props.title : '标题';
         const width = this.props.width ? this.props.width : '600px';
+        const isActiveClassBody = this.props.status ? 'modal-body active' : 'modal-body';
+        const isActiveWidth = this.props.status ? width : '0';
         return (
             <div className={this.props.status ? 'modal active' : 'modal'}>
-                <div className="modal-body" style={{width:this.props.status ? width : '0'}}>
+                <div className={isActiveClassBody} style={{width:isActiveWidth}}>
                     <div className="modal-head">{title}<span onClick={this.closeModal.bind(this,false)}>×</span></div>
                     <div className="modal-content">
                         <input type="text" ref="promptModalIn" className="promptModalIn" placeholder="Please enter text" />
@@ -113,9 +115,11 @@ export class ModalDilog extends Component{
     render(){
         const title = this.props.title ? this.props.title : '标题';
         const width = this.props.width ? this.props.width : '600px';
+        const isActiveClassBody = this.props.status ? 'modal-body active' : 'modal-body';
+        const isActiveWidth = this.props.status ? width : '0';
         return (
             <div className={this.props.status ? 'modal active' : 'modal'}>
-                <div className="modal-body" style={{width:this.props.status ? width : '0'}}>
+                <div className={isActiveClassBody} style={{width:isActiveWidth}}>
                     <div className="modal-head">{title}<span onClick={this.closeModal.bind(this,false)}>×</span></div>
                     <div className="modal-content">
                         {this.props.message}
