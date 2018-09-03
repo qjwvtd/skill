@@ -39,7 +39,6 @@
     -moz-transition: width 0.25s;
 }
 .modal-body.active{
-    width:360px !important;
     animation: bodyShow 0.6s;
 }
 @keyframes bodyShow {
