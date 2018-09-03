@@ -20,6 +20,11 @@ function setLen(str) {
     const __str = str.toString().length < 2 ? 0 + str.toString() : str.toString();
     return __str;
 };
+//根据年月获取每月天数
+function getMonthDays(year,month){
+    const __date = new Date(year, month, 0);
+    return __date.getDate();
+}
 //年月切换
 class SwitchYearMonthDay extends Component {
     constructor(props) {
@@ -91,7 +96,7 @@ class DayBox extends Component {
 
     render() {
         const dataList = this.props.list;
-        const inDent = this.props.indent;
+        const inDent = this.props.indent * 14.2857 + '%';
         const day = this.props.currentDay;
         return (
             <ul>
@@ -251,13 +256,21 @@ export default class DatePicker extends Component {
 
     //输入框显示模式(YMD,YMDHMS)
     showformat() {
+        const _dateMap = {
+            year:this.state.year,
+            month:setLen(this.state.month),
+            day:setLen(this.state.day),
+            hour:this.state.hour,
+            minute:this.state.minute,
+            second:this.state.second
+        };
         let _date;
         switch (this.format) {
         case 'YMD':
-            _date = this.state.year + '/' + setLen(this.state.month) + '/' + setLen(this.state.day);
+            _date = _dateMap.year + '/' + _dateMap.month + '/' + _dateMap.day;
             break;
         case 'YMDHMS':
-            _date = this.state.year + '/' + setLen(this.state.month) + '/' + setLen(this.state.day) + ' ' + this.state.hour + ':' + this.state.minute + ':' + this.state.second;
+            _date = _dateMap.year + '/' + _dateMap.month + '/' + _dateMap.day + ' ' + _dateMap.hour + ':' + _dateMap.minute + ':' + _dateMap.second;
             break;
         }
         this.setState({
@@ -272,34 +285,33 @@ export default class DatePicker extends Component {
         return {weekName: '星期' + week, index: weekIndex};
     }
 
-    //根据年、月，获取每月天数
-    getCurrentMonthDays(year, month) {
-        const __date = new Date(year, month, 0);
-        return __date.getDate();
-    }
-
     //统计天数格子
     initDateBox() {
-        const days = this.getCurrentMonthDays(this.state.year, this.state.month);
+        //每月1号下标,初始化日期盒子缩进量
+        const weekInfo = this.getWeek(new Date(this.state.year + '/' + this.state.month + '/' + '01'));
+        const index = weekInfo.index;
+        const weekName = weekInfo.weekName;
+
+
+
+        //当前月天数
+        const days = getMonthDays(this.state.year, this.state.month);
         const arr = [];
         for (let i = 0; i < days; i++) {
-            const item = {};
-            const itemDay = i + 1;
-            const __week = this.getWeek(new Date(this.state.year + '/' + this.state.month + '/' + itemDay));
+            let item = {};
+            let itemDay = i + 1;
+            let __week = this.getWeek(new Date(this.state.year + '/' + this.state.month + '/' + itemDay));
             item.year = this.state.year;
             item.month = setLen(this.state.month);
             item.day = setLen(itemDay);
             item.week = __week.weekName;
             arr.push(item);
         }
-        //每月1号下标,初始化日期盒子缩进量
-        const weekInfo = this.getWeek(new Date(this.state.year + '/' + this.state.month + '/' + '01'));
-        const index = weekInfo.index;
-        const weekName = weekInfo.weekName;
+
         this.setState({
             dayArray: arr,
             week: weekName,
-            indent: 14.2857 * index + '%'
+            indent: index
         });
     }
 
@@ -380,7 +392,6 @@ export default class DatePicker extends Component {
             isActive: bool
         });
     }
-
     componentDidMount() {
         this.initDateBox();//初始化
         this.setCallBackValue();
@@ -393,7 +404,7 @@ export default class DatePicker extends Component {
         const num = Number(h.replace(/px/, ''));
         const placeholder = this.props.placeholder ? this.props.placeholder : '请选择日期';
         return (
-            <div className="ui-datePicker" ref="abc" style={{width:w,height:h}}>
+            <div className="ui-datePicker" style={{width:w,height:h}}>
                 <div className="ui-datePicker-input" onClick={this.controlEvent.bind(this)}>
                     <input type="text" placeholder={placeholder} value={this.state.selectedDate}/>
                     <span className="ui-datePicker-icon" style={{lineHeight:(num - 2)+'px'}}>{this.icon}</span>
