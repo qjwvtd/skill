@@ -89,11 +89,9 @@ class DayBox extends Component {
     constructor(props) {
         super(props);
     }
-
     selectDay(item) {
         this.props.callback(item);
     }
-
     render() {
         const dataList = this.props.list;
         const inDent = this.props.indent * 14.2857 + '%';
@@ -266,12 +264,14 @@ export default class DatePicker extends Component {
             second:this.state.second
         };
         let _date;
+        const ymd = _dateMap.year + '/' + _dateMap.month + '/' + _dateMap.day;
+        const hms = _dateMap.hour + ':' + _dateMap.minute + ':' + _dateMap.second;
         switch (this.format) {
         case 'YMD':
-            _date = _dateMap.year + '/' + _dateMap.month + '/' + _dateMap.day;
+            _date = ymd;
             break;
         case 'YMDHMS':
-            _date = _dateMap.year + '/' + _dateMap.month + '/' + _dateMap.day + ' ' + _dateMap.hour + ':' + _dateMap.minute + ':' + _dateMap.second;
+            _date = ymd + ' ' + hms;
             break;
         }
         this.setState({
@@ -292,9 +292,6 @@ export default class DatePicker extends Component {
         const weekInfo = this.getWeek(new Date(this.state.year + '/' + this.state.month + '/' + '01'));
         const index = weekInfo.index;
         const weekName = weekInfo.weekName;
-
-
-
         //当前月天数
         const days = getMonthDays(this.state.year, this.state.month);
         const arr = [];
@@ -400,7 +397,7 @@ export default class DatePicker extends Component {
 
     render() {
         const isBoxActive = this.state.isActive ? 'ui-datePicker-box active' : 'ui-datePicker-box';
-        const w = this.props.width ? this.props.width : '280px';
+        const w = this.props.width ? this.props.width : '100%';
         const h = this.props.height ? this.props.height : '34px';
         const num = Number(h.replace(/px/, ''));
         const placeholder = this.props.placeholder ? this.props.placeholder : '请选择日期';
