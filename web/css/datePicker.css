@@ -53,6 +53,12 @@
     text-align:center;
     padding:15px 0;
     border-bottom:1px solid #d9d9d9;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently not supported by any browser */
 }
 .ui-datePicker-box .ui-datePicker-show span{
     display:inline-block;
@@ -143,10 +149,10 @@
     }
 }
 /*上一年，上一月，下一年，下一月*/
-.ui-datePicker-prevYear:before{content:'<<';}
-.ui-datePicker-nextYear:before{content:'>>';}
-.ui-datePicker-prevMonth:before{content:'<';}
-.ui-datePicker-nextMonth:before{content:'>';}
+/*.ui-datePicker-prevYear:before{content:'<<';}*/
+/*.ui-datePicker-nextYear:before{content:'>>';}*/
+/*.ui-datePicker-prevMonth:before{content:'<';}*/
+/*.ui-datePicker-nextMonth:before{content:'>';}*/
 /*时分秒*/
 .ui-datePicker-times{
     padding:5px 0;

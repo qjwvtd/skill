@@ -57,11 +57,11 @@ class SwitchYearMonthDay extends Component {
     render() {
         return (
             <div>
-                <span className="ui-datePicker-prevYear" onClick={this.reSelectYear.bind(this,'prev')}></span>
-                <span className="ui-datePicker-prevMonth" onClick={this.reSelectMonth.bind(this,'prev')}></span>
-                <b unselectable="on">{this.props.date.year + '年' + setLen(this.props.date.month) + '月' + setLen(this.props.date.day) + '日'}</b>
-                <span className="ui-datePicker-nextMonth" onClick={this.reSelectMonth.bind(this,'next')}></span>
-                <span className="ui-datePicker-nextYear" onClick={this.reSelectYear.bind(this,'next')}></span>
+                <span onClick={this.reSelectYear.bind(this,'prev')}>{'<<'}</span>
+                <span onClick={this.reSelectMonth.bind(this,'prev')}>{'<'}</span>
+                <b>{this.props.date.year + '年' + setLen(this.props.date.month) + '月' + setLen(this.props.date.day) + '日'}</b>
+                <span onClick={this.reSelectMonth.bind(this,'next')}>{'>'}</span>
+                <span onClick={this.reSelectYear.bind(this,'next')}>{'>>'}</span>
             </div>
         );
     }
@@ -203,6 +203,7 @@ class TimesBox extends Component {
         return (
             <div>
                 <span>
+                    时间
                     <input type="text" ref="hh"
                         defaultValue={this.state.hour}
                         onChange={this.listenInput.bind(this,'hh')} onFocus={this.onFocus.bind(this)}/>:
@@ -410,7 +411,7 @@ export default class DatePicker extends Component {
                     <span className="ui-datePicker-icon" style={{lineHeight:(num - 2)+'px'}}>{this.icon}</span>
                 </div>
                 <div className={isBoxActive} style={{top:(num + 1)+'px'}}>
-                    <div className="ui-datePicker-show">
+                    <div className="ui-datePicker-show" unSelectable="on">
                         <SwitchYearMonthDay
                             date={this.state}
                             callback={this.getSwitchYearMonthDay.bind(this)}

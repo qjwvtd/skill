@@ -6,43 +6,46 @@
     right: 0;
     bottom: 0;
     left: 0;
+    height:100%;
     display: none;
     background:transparent;
-    animation: fadeOut 0.5s !important;
+    animation: fadeOut 0.6s !important;
 }
 
 .modal.active {
     display: block;
-    background:rgba(0,0,0,0.5);
-    animation: fadeIn 0.5s !important;
+    background:rgba(0,0,0,0.2);
+    animation: fadeIn 0.6s !important;
 }
 /*modal animation*/
 @keyframes fadeIn {
-    0% {
-        background:transparent;
-    }
-    100% {
-        background:rgba(0,0,0,0.5);
-    }
+    0% {background:transparent;}
+    100% {background:rgba(0,0,0,0.2);}
 }
 
 @keyframes fadeOut {
-    0% {
-        background:rgba(0,0,0,0.5);
-    }
-    100% {
-        background:transparent;
-    }
+    0% {background:rgba(0,0,0,0.5);}
+    100% {background:transparent;}
 }
 .modal-body {
     background: #fff;
-    box-shadow: 0 0 15px #ccc;
+    box-shadow: 0 0 15px #515151;
     margin: 15% auto auto auto;
-    border-radius: 5px;
+    border-radius: 3px;
     width:0;
-    transition: width 0.15s;
+    opacity:1;
+    transition: width 0.25s;
+    -webkit-transition: width 0.25s;
+    -moz-transition: width 0.25s;
 }
-
+.modal-body.active{
+    width:360px !important;
+    animation: bodyShow 0.6s;
+}
+@keyframes bodyShow {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
 .modal-head {
     overflow: hidden;
     text-align: left;
@@ -58,7 +61,6 @@
     line-height: 18px;
     text-align: center;
     cursor: pointer;
-    border-radius: 3px;
     border: 1px solid #f8f8f8
 }
 
@@ -80,7 +82,7 @@
 
 .modal-foot {
     overflow: hidden;
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 3px 3px;
 }
 
 .modal-foot > span {
@@ -88,7 +90,7 @@
     height: 44px;
     line-height: 44px;
     text-align: center;
-    border-radius: 0px;
+    border-radius:0 !important;
     color: #fff;
     cursor: pointer
 }
