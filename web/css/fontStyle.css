@@ -1,0 +1,13 @@
+/*字体颜色*/
+.color-grey{color:#C8CED3 !important;}/*灰白*/
+.color-warning{color:#fe8900 !important;}/*warning*/
+.color-error{color:#ff0830 !important;}/*error字体颜色*/
+.color-actor{color:#1890ff !important;}/*优字体颜色*/
+.color-unhanld{color:orange !important;}/*待处理*/
+.color-hanlding{color:#2ED2F2 !important;}/*处理中*/
+.color-finished{color:#5fb878 !important;}/*已完成*/
+/*文字位置*/
+.text-left{text-align:left}/*文字居左*/
+.text-center{text-align:center}/*文字居中*/
+.text-right{text-align:right}/*文字居右*/
+.text-vertical{-webkit-writing-mode: vertical-lr;-ms-writing-mode: vertical-lr;writing-mode: tb-lr;}/*文字垂直排列*/

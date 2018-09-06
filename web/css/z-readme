@@ -1,5 +1,5 @@
 1、最后一个li没有边框：li:not(:last-child){border:1px solid red}
-2、body顶部阴影：
+2、body顶部阴影�?
     body:before{
        content:'';
        position:fixed;
@@ -13,7 +13,7 @@
        box-shadow:0 0 10px #515151;
     }
 3、table的单元格等宽 table td{table-layout:fixed;}
-4、禁止选中文字,在需要禁止的元素上添加:unselectable="on"
+4、禁止选中文字,在需要禁止的元素上添�?unselectable="on"
     .noselect{
         -webkit-touch-callout: none; /* iOS Safari */
         -webkit-user-select: none; /* Chrome/Safari/Opera */
@@ -22,3 +22,5 @@
         -ms-user-select: none; /* Internet Explorer/Edge */
         user-select: none; /* Non-prefixed version, currently not supported by any browser */
     }
+
+

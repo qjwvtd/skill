@@ -12,7 +12,7 @@ webpack -p
 
 npm start
 
-访问：http://localhost:/9000
+访问：http://localhost:/6868
 
 #关于谷歌浏览器跨域的解决方法
 

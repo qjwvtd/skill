@@ -83,31 +83,20 @@ body:before{
     overflow: hidden
 }
 .scroll-touch {-webkit-overflow-scrolling: touch}/*移动端顺畅滚动*/
-/*字体颜色*/
-.text-grey{color:#C8CED3 !important;}/*灰白*/
-.text-warning{color:#fe8900 !important;}/*warning*/
-.text-error{color:#ff0830 !important;}/*error字体颜色*/
-.text-actor{color:#1890ff !important;}/*优字体颜色*/
-.text-unhanld{color:orange !important;}/*待处理*/
-.text-hanlding{color:#2ED2F2 !important;}/*处理中*/
-.text-finished{color:#5fb878 !important;}/*已完成*/
 /*浮动*/
 .fl{float:left}
 .fr{float:right}
 .clear{overflow:hidden}
-/*文字位置*/
-.text-left{text-align:left}
-.text-center{text-align:center}
-.text-right{text-align:right}
 /*圆角*/
 .br3{border-radius:3px}
 .br5{border-radius:5px}
 /*阴影*/
 .boxShadow{box-shadow:0 0 15px #ccc;}
 /*仿bootstrap.css*/
-.container{width:100%;}
-.row{font-size:0;/*清除inline-block的间隔*/}
-.col-1,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-10,.col-11,.col-12{display:inline-block;font-size: medium;}
+.container{}
+.row{}
+.row{content: "";display: block;height: 0;clear: both;visibility: hidden;}
+.col-1,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-10,.col-11,.col-12{float:left}
 .col-1{width:8.3333%;}
 .col-2{width:16.6666%;}
 .col-3{width:24.9999%;}
@@ -158,3 +147,28 @@ body:before{
 .msic-scroll { -ms-overflow-style: none; }/*IE 10+*/
 .msic-scroll { overflow: -moz-scrollbars-none; }/*Firefox*/
 /*手动滚动区域 end*/
+/*DIV垂直居中原理 start*/
+.vertical-parent {
+    height: 300px;
+    background-color: #ccc;
+    -webkit-writing-mode: vertical-lr;
+    -ms-writing-mode: vertical-lr;
+    writing-mode: tb-lr;
+}
+.vertical-parent>.vertical-children {
+    height: 20%;
+    width: 200px;
+    margin: auto 0;
+    background-color: burlywood;
+}
+/*DIV垂直居中原理 end*/
+/*图片垂直居中 start*/
+.verticalImgContainer {
+    /*直接子元素必须是img*/
+    -webkit-writing-mode: vertical-lr;
+    -ms-writing-mode: vertical-lr;
+    writing-mode: tb-lr;
+    height: 300px;/*高度根据实地修改*/
+    text-align: center;
+}
+/*图片垂直居中 end*/

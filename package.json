@@ -1,5 +1,6 @@
 {
   "name": "webpack-dev-server-exzample",
+  "port": "6868",
   "version": "1.0.0",
   "description": "this is some description",
   "main": "webpack.config.js",

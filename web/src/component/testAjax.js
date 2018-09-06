@@ -31,7 +31,7 @@ export default class AjaxTest extends Component{
         const __JSON = this.state.json;
         return (
             <div>
-                <h5>从服务端获取数据</h5>
+                <h5>从服务端获取数据，测试跨域</h5>
                 <div className="imgTestContainer">
                     <p>name:{__JSON ? __JSON.name : ''}</p>
                     <p>version:{__JSON ? __JSON.version : ''}</p>
