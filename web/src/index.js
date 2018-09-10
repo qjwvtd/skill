@@ -35,8 +35,6 @@ import PaginationTest from './component/testPagination';
 import SelectTest from './component/testSelect';
 //DatePickerTest
 import DatePickerTest from './component/testDatePicker';
-//RadioTest
-import RadioTest from './component/testRadio';
 //es6/7
 import {MathArrayMax,Es6Map} from './component/ES678';
 
@@ -122,9 +120,6 @@ class App extends Component{
                 </div>
                 <div className="play">
                     <PaginationTest />
-                </div>
-                <div className="play">
-                    <RadioTest />
                 </div>
             </div>
         );
