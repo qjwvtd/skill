@@ -1,0 +1,31 @@
+.ui-inputCount-box{
+    border:1px solid #dcdfe6;
+    display:inline-block;
+    overflow:hidden;
+    height:32px;
+    line-height:32px;
+    border-radius:3px;
+}
+.ui-inputCount-box>button{
+    width:32px;
+    background:#f5f7fa;
+    color:#606266;
+    font-size:2em;
+}
+.ui-inputCount-box>button:hover{
+    color:#1890ff;
+    background:#ebeef5;
+}
+.ui-inputCount-box>input{
+    width:40px;
+    padding:0 4px;
+    border-color:#dcdfe6;
+    border-width:0 1px;
+    text-indent:0 !important;
+}
+.ui-inputCount-box>button,.ui-inputCount-box>input{
+    float:left;
+    height:inherit;
+    text-align:center;
+    border-radius:0px !important;
+}
