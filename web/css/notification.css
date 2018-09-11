@@ -1,0 +1,10 @@
+.ui-notification-box{
+    position:fixed;
+    z-index:9999;
+    top:20px;
+    right:20px;
+    background:#fff;
+    box-shadow:0 0 5px #515151;
+    max-width:320px;
+    min-width:240px;
+}
