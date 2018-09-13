@@ -13,10 +13,11 @@
     padding:20px;
     text-align:center;
     top:-600px;
+    animation:msgHide 0.5s !important;
 }
 .ui-message-box.active{
     top:50px;
-    animation:msgShow 0.25s !important;
+    animation:msgShow 0.3s !important;
 }
 .ui-message-body{
     /*background:#fff;*/
@@ -48,11 +49,11 @@
     background:#1890ff;
     color:#fff;
 }
-.ui-message-body>span.warningIcon{
+.ui-message-body>span.ui-message-warning-icon{
     background:orange;
     color:#fff;
 }
-.ui-message-body>span.errorIcon{
+.ui-message-body>span.ui-message-error-icon{
     background:red;
     color:#fff;
 }
@@ -60,4 +61,8 @@
 @keyframes msgShow {
     0% {top:-600px;}
     100% {top:50px;}
+}
+@keyframes msgHide {
+    0% {top:50px;}
+    100% {top:-600px;}
 }
