@@ -2,9 +2,41 @@
     position:fixed;
     z-index:9999;
     top:20px;
-    right:20px;
+    right:-360px;
     background:#fff;
-    box-shadow:0 0 5px #515151;
+    border:1px solid #e1e1e1;
     max-width:320px;
     min-width:240px;
+    opacity:0;
+    animation:boxChange 0.3s;
+}
+.ui-notification-box.active{
+    opacity:1;
+    right:20px;
+}
+@keyframes boxChange {
+    0%{right:-360px;opacity:0;}
+    100%{right:20px;opacity:1;}
+}
+.ui-notification-box>.ui-notification-body{
+    overflow:hidden;
+}
+.ui-notification-box>.ui-notification-body>.ui-notification-close{
+    float: right;
+    margin:5px 5px 0 0;
+    border:1px solid transparent;
+    width:24px;
+    height:24px;
+    line-height:22px;
+    text-align:center;
+    font-size:20px;
+}
+.ui-notification-box>.ui-notification-body>.ui-notification-close:hover{
+    cursor:pointer;
+    border:1px solid #1890ff;
+    color:#1890ff;
+}
+.ui-notification-box>.ui-notification-body>.ui-notification-centent{
+    margin-top:24px;
+    padding:10px 20px 34px 20px;
 }
