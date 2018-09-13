@@ -90,6 +90,7 @@ class DayBox extends Component {
         super(props);
     }
     selectDay(item) {
+        alert('click:'+JSON.stringify(item));
         this.props.callback(item);
     }
     render() {
@@ -244,12 +245,30 @@ export default class DatePicker extends Component {
             selectedDate: ''
         };
     }
-
-    //日期盒子显隐
+    //输入框获得焦点
+    onFocusEvent(){
+        this.setState({
+            isActive:true
+        });
+    }
+    //输入框失去焦点
+    //onBlurEvent(){
+    //    this.setState({
+    //        isActive:false
+    //    },() => {
+    //        this.showformat();
+    //    });
+    //}
+    //点击ICON日期盒子显隐
     controlEvent() {
         const status = this.state.isActive;
         this.setState({
             isActive: status ? false : true
+        },() => {
+            const dateTimeInput = this.refs.dateTimeInput;
+            if(this.state.isActive){
+                dateTimeInput.focus();
+            }
         });
     }
 
@@ -391,6 +410,7 @@ export default class DatePicker extends Component {
         });
     }
     componentDidMount() {
+        this.showformat();
         this.initDateBox();//初始化
         this.setCallBackValue();
     }
@@ -403,9 +423,22 @@ export default class DatePicker extends Component {
         const placeholder = this.props.placeholder ? this.props.placeholder : '请选择日期';
         return (
             <div className="ui-datePicker" style={{width:w,height:h}}>
-                <div className="ui-datePicker-input" onClick={this.controlEvent.bind(this)}>
-                    <input type="text" placeholder={placeholder} value={this.state.selectedDate}/>
-                    <span className="ui-datePicker-icon" style={{lineHeight:(num - 2)+'px'}}>{this.icon}</span>
+                <div className="ui-datePicker-input">
+                    <input
+                        type="text"
+                        placeholder={placeholder}
+                        value={this.state.selectedDate}
+                        //onBlur={this.onBlurEvent.bind(this)}
+                        onFocus={this.onFocusEvent.bind(this)}
+                        ref="dateTimeInput"
+                    />
+                    <span
+                        className="ui-datePicker-icon"
+                        style={{lineHeight:(num - 2)+'px'}}
+                        onClick={this.controlEvent.bind(this)}
+                    >
+                        {this.icon}
+                    </span>
                 </div>
                 <div className={isBoxActive} style={{top:(num + 1)+'px'}}>
                     <div className="ui-datePicker-show" unSelectable="on">

@@ -29,13 +29,6 @@ class Notification{
         const template = '<div class="ui-notification-body">' +
             '<p class="ui-notification-centent">'+text+'</p>' +
             '</div>';
-        if(container){
-            delay = delay ? delay : 3000;
-            this.container.innerHTML = template;
-            setTimeout(() => {
-                this.close();
-            },delay);
-        }
         if(!container){
             const fgt = document.createDocumentFragment();
             this.container = document.createElement('div');
@@ -49,6 +42,7 @@ class Notification{
                 this.close();
             },delay);
         }
+        return;
     }
     render(text){
         text = text ? text : 'this is some notification text!';
@@ -58,12 +52,6 @@ class Notification{
             '<span class="ui-notification-close">×</span>' +
             '<p class="ui-notification-centent">'+text+'</p>' +
             '</div>';
-        if(container){
-            this.container.innerHTML = template;
-            this.container.onclick = () => {
-                this.close();
-            };
-        }
         if(!container){
             const fgt = document.createDocumentFragment();
             this.container = document.createElement('div');
@@ -76,6 +64,7 @@ class Notification{
                 this.close();
             };
         }
+        return;
     }
     close(){
         if(this.container != null){
