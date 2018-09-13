@@ -46,16 +46,15 @@ class Message{
             '<span class="ui-message-success-icon">√</span>' +
             '<span>'+text+'</span>' +
             '</a>';
-        if(container){
-            this.container.innerHTML = temp;
-        }else{
+        if(!container){
             this.container = document.createElement('div');
             this.container.id = this.boxId;
             this.container.className = isActive;
             this.container.innerHTML = temp;
             this.body.appendChild(this.container);
+            this.remove(delay ? delay : this.__delay);
         }
-        this.remove(delay ? delay : this.__delay);
+        return;
     }
     warning(text,delay){
         this.container.innerHTML = this.warningTemplate(text);
