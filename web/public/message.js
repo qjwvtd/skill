@@ -18,54 +18,63 @@ class Message{
     constructor(){
         this.body = document.body;
         this.boxId = randomString(6);
-        this.__delay = 3000;//默认2.5秒后remove
+        this.__delay = 3000;//默认3秒后remove
         this.container = null;
-        //this.container = document.createElement('div');
-        //this.container.className = 'ui-message-box';
-        //this.__delay = 2500;//默认2.5秒后remove
-        //this.successTemplate = (successText) => {
-        //    return '<a class="ui-message-body"><span class="successIcon">√</span><span>'+successText+'</span></a>';
-        //};
-        //this.warningTemplate = (warningText) => {
-        //    return '<a class="ui-message-body"><span class="warningIcon">!</span><span>'+warningText+'</span></a>';
-        //};
-        //this.errorTemplate = (errorText) => {
-        //    return '<a class="ui-message-body"><span class="errorIcon">×</span><span>'+errorText+'</span></a>';
-        //};
-        this.remove = (delay) => {
-            setTimeout(() => {
-                this.body.removeChild(this.container);
-            },delay);
-        };
     }
     success(text,delay){
         text = text ? text : 'this is some message text!';
-        const isActive = text ? 'ui-message-box active' : 'ui-message-box';
         const container = document.getElementById(this.boxId);
-        const temp = '<a class="ui-message-body">' +
+        const successTemplate = '<a class="ui-message-body">' +
             '<span class="ui-message-success-icon">√</span>' +
             '<span>'+text+'</span>' +
             '</a>';
         if(!container){
-            this.container = document.createElement('div');
-            this.container.id = this.boxId;
-            this.container.className = isActive;
-            this.container.innerHTML = temp;
-            this.body.appendChild(this.container);
+            this.render(successTemplate);
             this.remove(delay ? delay : this.__delay);
         }
         return;
     }
     warning(text,delay){
-        this.container.innerHTML = this.warningTemplate(text);
-        this.body.appendChild(this.container);
-        this.remove(delay ? delay : this.__delay);
+        text = text ? text : 'this is some message text!';
+        const container = document.getElementById(this.boxId);
+        const warningTemplate = '<a class="ui-message-body">' +
+            '<span class="ui-message-warning-icon">!</span>' +
+            '<span>'+text+'</span>' +
+            '</a>';
+        if(!container){
+            this.render(warningTemplate);
+            this.remove(delay ? delay : this.__delay);
+        }
+        return;
     }
     error(text,delay){
-        this.container.innerHTML = this.errorTemplate(text);
-        this.body.appendChild(this.container);
-        this.remove(delay ? delay : this.__delay);
+        text = text ? text : 'this is some message text!';
+        const container = document.getElementById(this.boxId);
+        const errorTemplate = '<a class="ui-message-body">' +
+            '<span class="ui-message-error-icon">×</span>' +
+            '<span>'+text+'</span>' +
+            '</a>';
+        if(!container){
+            this.render(errorTemplate);
+            this.remove(delay ? delay : this.__delay);
+        }
+        return;
     }
+    render(temp){
+        this.container = document.createElement('div');
+        this.container.id = this.boxId;
+        this.container.className = 'ui-message-box active';
+        this.container.innerHTML = temp;
+        this.body.appendChild(this.container);
+    }
+    remove(delay){
+        setTimeout(() => {
+            this.container.className = 'ui-message-box';
+            setTimeout(() => {
+                this.body.removeChild(this.container);
+            },500);
+        },delay);
+    };
 }
 const message = new Message();
 export default message;
