@@ -19,21 +19,7 @@
     top:50px;
     animation:msgShow 0.3s !important;
 }
-.ui-message-body{
-    /*background:#fff;*/
-    /*box-shadow:0 0 15px #ccc;*/
-    /*max-width:480px;*/
-    /*min-width:240px;*/
-    /*position:relative;*/
-    /*border-radius:3px;*/
-    /*color:#2B344C;*/
-    /*text-align:center;*/
-    /*padding:25px 50px;*/
-    /*top:50px;*/
-}
-/*.ui-message-body.active{*/
-    /*animation:msgShow 0.5s !important;*/
-/*}*/
+.ui-message-body{}
 .ui-message-body>span{
     font-size:14px !important;
     display:inline-block;
