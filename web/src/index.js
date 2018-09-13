@@ -41,6 +41,8 @@ import RadioTest from './component/testRadio';
 import InputCountTest from './component/testInputNumber';
 //NotificationTest
 import NotificationTest from './component/testNotification';
+//MessageTest
+import MessageTest from './component/testMessage';
 
 //es6/7
 import {MathArrayMax,Es6Map} from './component/ES678';
@@ -137,6 +139,9 @@ class App extends Component{
                 </div>
                 <div className="play">
                     <NotificationTest />
+                </div>
+                <div className="play">
+                    <MessageTest />
                 </div>
             </div>
         );
