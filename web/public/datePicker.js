@@ -6,7 +6,7 @@
  * height:{'40px'}，目前只接收px值,默认32px
  * placeholder:默认'请选择日期'
  * format：日期格式，['ymd'/'YMD'/'ymdhms'/'YMDHMS],年月日/年月日时分秒,默认YMD
- * callback:回调函数，返回一个object,所选日期详情，必须
+ * onchange:回调函数，返回一个object,所选日期详情，必须
  * 一般用法:<DatePicker width={'280px'} height={'50px'} format={'YMD'} callback={this.getDate.bind(this)} />
  * 懒人用法：<DatePicker callback={this.getDate.bind(this)} />
  **/
@@ -90,7 +90,6 @@ class DayBox extends Component {
         super(props);
     }
     selectDay(item) {
-        alert('click:'+JSON.stringify(item));
         this.props.callback(item);
     }
     render() {
@@ -251,14 +250,22 @@ export default class DatePicker extends Component {
             isActive:true
         });
     }
+
     //输入框失去焦点
-    //onBlurEvent(){
-    //    this.setState({
-    //        isActive:false
-    //    },() => {
-    //        this.showformat();
-    //    });
-    //}
+    onBlurEvent(){
+        this.setSelectedFmtDate();
+        const bool = this.state.selectedDate;
+        console.log('旧:'+bool);
+        setTimeout(() => {
+            const bool2 = this.state.selectedDate;
+            console.log('新:'+bool2);
+        },100);
+        const start = new Date();
+
+        //this.setState({
+        //    isActive:false
+        //});
+    }
     //点击ICON日期盒子显隐
     controlEvent() {
         const status = this.state.isActive;
@@ -272,8 +279,8 @@ export default class DatePicker extends Component {
         });
     }
 
-    //输入框显示模式(YMD,YMDHMS)
-    showformat() {
+    //设置选择的日期时间(YMD,YMDHMS)
+    setSelectedFmtDate() {
         const _dateMap = {
             year:this.state.year,
             month:setLen(this.state.month),
@@ -332,7 +339,7 @@ export default class DatePicker extends Component {
         });
     }
 
-    //设置回调返回值
+    //组件回调返回值
     setCallBackValue() {
         const returnValue = {
             year: this.state.year,
@@ -343,7 +350,7 @@ export default class DatePicker extends Component {
             second: this.state.second,
             week: this.state.week
         };
-        this.props.callback(returnValue);
+        this.props.onchange(returnValue);
     }
 
     //年月切换
@@ -353,7 +360,7 @@ export default class DatePicker extends Component {
             month: setLen(month),
             day: day
         }, () => {
-            this.showformat();
+            this.setSelectedFmtDate();
             this.initDateBox();
             this.setCallBackValue();
         });
@@ -368,7 +375,7 @@ export default class DatePicker extends Component {
             day: setLen(item.day),
             week: item.week
         }, () => {
-            this.showformat();
+            this.setSelectedFmtDate();
             this.setCallBackValue();
         });
     }
@@ -383,7 +390,7 @@ export default class DatePicker extends Component {
             minute: setLen(date.getMinutes()),
             second: setLen(date.getSeconds())
         }, () => {
-            this.showformat();
+            this.setSelectedFmtDate();
             this.initDateBox();
             this.setCallBackValue();
         });
@@ -397,7 +404,7 @@ export default class DatePicker extends Component {
             minute: m,
             second: s
         }, () => {
-            this.showformat();
+            this.setSelectedFmtDate();
             this.initDateBox();
             this.setCallBackValue();
         });
@@ -410,7 +417,6 @@ export default class DatePicker extends Component {
         });
     }
     componentDidMount() {
-        this.showformat();
         this.initDateBox();//初始化
         this.setCallBackValue();
     }
@@ -428,7 +434,7 @@ export default class DatePicker extends Component {
                         type="text"
                         placeholder={placeholder}
                         value={this.state.selectedDate}
-                        //onBlur={this.onBlurEvent.bind(this)}
+                        onBlur={this.onBlurEvent.bind(this)}
                         onFocus={this.onFocusEvent.bind(this)}
                         ref="dateTimeInput"
                     />
