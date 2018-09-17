@@ -5,9 +5,9 @@
  * width:{'50%'/'280px'}，百分比或具体的px值,默认280px
  * height:{'40px'}，目前只接收px值,默认32px
  * placeholder:默认'请选择日期'
- * format：日期格式，['ymd'/'YMD'/'ymdhms'/'YMDHMS],年月日/年月日时分秒,默认YMD
- * onchange:回调函数，返回一个object,所选日期详情，必须
- * 一般用法:<DatePicker width={'280px'} height={'50px'} format={'YMD'} callback={this.getDate.bind(this)} />
+ * type：日期格式，[full/default],{default:年月日,full:年月日时分秒},默认normal
+ * onchange:回调函数，返回一个object,所选日期详情，必须完整
+ * 一般用法:<DatePicker width={'280px'} height={'50px'} type={'full'} callback={this.getDate.bind(this)} />
  * 懒人用法：<DatePicker callback={this.getDate.bind(this)} />
  **/
 import React,{Component} from 'react';
@@ -24,6 +24,18 @@ function setLen(str) {
 function getMonthDays(year,month){
     const __date = new Date(year, month, 0);
     return __date.getDate();
+}
+//随机字符串,用于插件随机ID
+function randomString(len) {
+    len = len || 32;
+    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+    const $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+    const maxPos = $chars.length;
+    let str = '';
+    for (let i = 0; i < len; i++) {
+        str += $chars.charAt(Math.floor(Math.random() * maxPos));
+    }
+    return str;
 }
 //年月切换
 class SwitchYearMonthDay extends Component {
@@ -57,11 +69,11 @@ class SwitchYearMonthDay extends Component {
     render() {
         return (
             <div>
-                <span onClick={this.reSelectYear.bind(this,'prev')}>{'<<'}</span>
-                <span onClick={this.reSelectMonth.bind(this,'prev')}>{'<'}</span>
+                <span onClick={this.reSelectYear.bind(this,'prev')} title="上一年">{'◀◀'}</span>
+                <span onClick={this.reSelectMonth.bind(this,'prev')} title="上一月">{'◀'}</span>
                 <b>{this.props.date.year + '年' + setLen(this.props.date.month) + '月' + setLen(this.props.date.day) + '日'}</b>
-                <span onClick={this.reSelectMonth.bind(this,'next')}>{'>'}</span>
-                <span onClick={this.reSelectYear.bind(this,'next')}>{'>>'}</span>
+                <span onClick={this.reSelectMonth.bind(this,'next')} title="下一月">{'▶'}</span>
+                <span onClick={this.reSelectYear.bind(this,'next')} title="下一年">{'▶▶'}</span>
             </div>
         );
     }
@@ -117,103 +129,75 @@ class DayBox extends Component {
 class TimesBox extends Component {
     constructor(props) {
         super(props);
-        //快速生成一个XX长度的数组
-        this.setArray = (len) => {
-            const arr = [];
-            for (let i = 0; i < len; i++) {
-                arr.push(setLen(i));
-            }
-            return arr;
-        };
-        this.arrIncludes = (arr, arrItem) => {
-            for (let i = 0; i < arr.length; i++) {
-                if (arr.indexOf(arrItem) == -1) {
-                    return false;
-                }
-            }
-            return true;
-        };
-        this.hhs = this.setArray(24);
-        this.mms = this.setArray(60);
-        this.sss = this.setArray(60);
+        this.hours = [];
+        this.standard = [];
         this.state = {
-            hour: props.hms.hour,
-            minute: props.hms.minute,
-            second: props.hms.second
+            hour: '00',
+            minute: '00',
+            second: '00'
         };
     }
-
-    //监控时分秒的输入
-    listenInput(str, event) {
-        const target = event.currentTarget;
-        const value = target.value;
-        let flag = null;
-        switch (str) {
-        case 'hh':
-            flag = this.arrIncludes(this.hhs, setLen(value));
-            target.value = flag ? value : '';
-            break;
-        case 'mm':
-            flag = this.arrIncludes(this.mms, setLen(value));
-            target.value = flag ? value : '';
-            break;
-        case 'ss':
-            flag = this.arrIncludes(this.sss, setLen(value));
-            target.value = flag ? value : '';
-            break;
+    componentWillMount(){
+        for(let i=0;i<60;i++){
+            if(i < 24){this.hours.push({name:'时',value:setLen(i)});}
+            if(i < 60){this.standard.push({name:'分/秒',value:setLen(i)});}
         }
     }
-
-    onFocus(event) {
-        event.currentTarget.value = '';
+    //设备时间
+    setTimes(option,item){
+        if(option == 'hour'){
+            this.setState({
+                hour:item.value
+            });
+        }
+        if(option == 'minute'){
+            this.setState({
+                minute:item.value
+            });
+        }
+        if(option == 'second'){
+            this.setState({
+                second:item.value
+            });
+        }
     }
-
-    //设置当前时间
-    setCurrent() {
-        const now = new Date();
-        this.props.current(now);
-        this.refs.hh.value = setLen(now.getHours());
-        this.refs.mm.value = setLen(now.getMinutes());
-        this.refs.ss.value = setLen(now.getSeconds());
-    }
-
-    //清空时分秒
-    clearHMS() {
-        this.refs.hh.value = '';
-        this.refs.mm.value = '';
-        this.refs.ss.value = '';
-    }
-
-    //设置时分秒
-    sethms() {
-        const hv = setLen(this.refs.hh.value);
-        const mv = setLen(this.refs.mm.value);
-        const sv = setLen(this.refs.ss.value);
-        this.props.callback(hv, mv, sv);
-    }
-
-    //关闭回调
-    closeBox() {
-        this.props.active(false);
+    //确定
+    onCallBack(){
+        this.props.callback(this.state.hour,this.state.minute,this.state.second);
     }
 
     render() {
         return (
             <div>
+                <div className="ui-datePicker-times-top">
+                    <span>时</span><span>分</span><span>秒</span>
+                </div>
+                <ul className="ui-datePicker-times-list">
+                    <li>
+                        {
+                            this.hours.map((item,index) =>
+                                <p key={item.name+'-'+index} onClick={this.setTimes.bind(this,'hour',item)}>{item.value}</p>
+                            )
+                        }
+                    </li>
+                    <li>
+                        {
+                            this.standard.map((item,index) =>
+                                <p key={item.name+'-'+index} onClick={this.setTimes.bind(this,'minute',item)}>{item.value}</p>
+                            )
+                        }
+                    </li>
+                    <li>
+                        {
+                            this.standard.map((item,index) =>
+                                <p key={item.name+'-'+index} onClick={this.setTimes.bind(this,'second',item)}>{item.value}</p>
+                            )
+                        }
+                    </li>
+                </ul>
+                <p className="ui-datePicker-times-show">{this.state.hour+':'+this.state.minute+':'+this.state.second}</p>
                 <span>
-                    时间
-                    <input type="text" ref="hh" value={this.state.hour}
-                        onChange={this.listenInput.bind(this,'hh')} onFocus={this.onFocus.bind(this)}/>:
-                    <input type="text" ref="mm" value={this.state.minute}
-                        onChange={this.listenInput.bind(this,'mm')} onFocus={this.onFocus.bind(this)}/>:
-                    <input type="text" ref="ss" value={this.state.second}
-                        onChange={this.listenInput.bind(this,'ss')} onFocus={this.onFocus.bind(this)}/>
-                </span>
-                <span>
-                    <button title="清空" onClick={this.clearHMS.bind(this)}>清空</button>
-                    <button title="现在" onClick={this.setCurrent.bind(this)}>现在</button>
-                    <button onClick={this.sethms.bind(this)}>确定</button>
-                    <button onClick={this.closeBox.bind(this)}>关闭</button>
+                    <button onClick={this.onCallBack.bind(this)}>确定</button>
                 </span>
             </div>
         );
@@ -223,49 +207,37 @@ class TimesBox extends Component {
 export default class DatePicker extends Component {
     constructor(props) {
         super(props);
+        this.datePickerBoxId = randomString(6);
         this.defaultDate = new Date();
         this.weeks = ["日", "一", "二", "三", "四", "五", "六"];
         this.icon = '▦';
-        this.format = !props.format || props.format.toUpperCase() != 'YMD' && props.format.toUpperCase() != 'YMDHMS' ? 'YMD' : props.format.toUpperCase();
         this.state = {
             isActive: false,//控制日期盒子显隐
+            timeBoxStatus:false,//时间盒子显示状态
             year: setLen(this.defaultDate.getFullYear()),
             month: setLen(this.defaultDate.getMonth() + 1),
             day: setLen(this.defaultDate.getDate()),
-            hour: setLen(this.defaultDate.getHours()),
-            minute: setLen(this.defaultDate.getMinutes()),
-            second: setLen(this.defaultDate.getSeconds()),
+            hour: '00',
+            minute: '00',
+            second: '00',
             week: '',
             dayArray: [],
             indent: null,//天数格子缩进量
             selectedDate: null
         };
     }
-    //输入框获得焦点
-    onFocusEvent(){
-        this.setState({
-            isActive:true
-        });
-    }
 
-    //输入框失去焦点
-    onBlurEvent(){
-        setTimeout(() => {
-            this.setState({
-                isActive:false
-            });
-        },200);
-    }
-    //点击ICON日期盒子显隐
+    //日期盒子显隐
     controlEvent() {
         const status = this.state.isActive;
         this.setState({
-            isActive: status ? false : true
+            isActive: status ? false : true,
+            timeBoxStatus:false
         });
     }
 
     //设置选择的日期时间(YMD,YMDHMS)
-    setSelectedFmtDate() {
+    setSelectedFmtDate(callback) {
         const _dateMap = {
             year:this.state.year,
             month:setLen(this.state.month),
@@ -277,16 +249,20 @@ export default class DatePicker extends Component {
         let _date;
         const ymd = _dateMap.year + '/' + _dateMap.month + '/' + _dateMap.day;
         const hms = _dateMap.hour + ':' + _dateMap.minute + ':' + _dateMap.second;
-        switch (this.format) {
-        case 'YMD':
+        switch (this.props.type) {
+        case 'default':
             _date = ymd;
             break;
-        case 'YMDHMS':
+        case 'full':
             _date = ymd + ' ' + hms;
             break;
+        default:
+            _date = ymd;
         }
         this.setState({
             selectedDate: _date
+        },() => {
+            callback ? callback() : null;
         });
     }
 
@@ -343,7 +319,10 @@ export default class DatePicker extends Component {
         this.setState({
             year: year,
             month: setLen(month),
-            day: day
+            day: day,
+            hour: '00',
+            minute: '00',
+            second: '00'
         }, () => {
             this.setSelectedFmtDate();
             this.initDateBox();
@@ -354,94 +333,103 @@ export default class DatePicker extends Component {
     //选择X天
     onSelectDay(item) {
         this.setState({
-            isActive: false,
             year: item.year,
             month: setLen(item.month),
             day: setLen(item.day),
+            hour: '00',
+            minute: '00',
+            second: '00',
             week: item.week
         }, () => {
-            this.setSelectedFmtDate();
+            this.setSelectedFmtDate(() => {
+                this.setState({
+                    isActive:false,
+                    timeBoxStatus:false
+                });
+            });
             this.setCallBackValue();
         });
     }
-
-    //当前时间
-    onCurrent(date) {
+    //打开时分秒盒子
+    openTimesBox(){
+        setTimeout(() => {
+            this.setState({
+                isActive: true,
+                timeBoxStatus:true
+            });
+        },250);
+    }
+    //现在
+    selectNow(){
+        const now = new Date();
         this.setState({
-            year: setLen(date.getFullYear()),
-            month: setLen(date.getMonth() + 1),
-            day: setLen(date.getDate()),
-            hour: setLen(date.getHours()),
-            minute: setLen(date.getMinutes()),
-            second: setLen(date.getSeconds())
-        }, () => {
-            this.setSelectedFmtDate();
-            this.initDateBox();
-            this.setCallBackValue();
+            year: setLen(now.getFullYear()),
+            month: setLen(now.getMonth() + 1),
+            day: setLen(now.getDate()),
+            hour: setLen(now.getHours()),
+            minute: setLen(now.getMinutes()),
+            second: setLen(now.getSeconds())
+        },() => {
+            this.setSelectedFmtDate(() => {
+                this.setState({
+                    isActive:false,
+                    timeBoxStatus:false
+                });
+            });
         });
     }
-
-    //获取时分秒
-    getHMS(h, m, s) {
+    //选择时分秒回调
+    setHourMinuteSecond(h,m,s){
         this.setState({
-            isActive: false,
-            hour: h,
-            minute: m,
-            second: s
-        }, () => {
-            this.setSelectedFmtDate();
-            this.initDateBox();
-            this.setCallBackValue();
-        });
-    }
-
-    //关闭日期盒子
-    closeDatePickerBox(bool) {
-        this.setState({
-            isActive: bool
+            hour:h,
+            minute:m,
+            second:s
+        },() => {
+            this.setSelectedFmtDate(() => {
+                this.setState({
+                    isActive:false,
+                    timeBoxStatus:false
+                });
+            });
         });
     }
     componentDidMount() {
         this.initDateBox();//初始化
         this.setCallBackValue();
     }
-
     render() {
-        const isBoxActive = this.state.isActive ? 'ui-datePicker-box active' : 'ui-datePicker-box';
+        const isActiveBox = this.state.isActive ? 'ui-datePicker-box active' : 'ui-datePicker-box';
         const w = this.props.width ? this.props.width : '100%';
         const h = this.props.height ? this.props.height : '34px';
         const num = Number(h.replace(/px/, ''));
         const placeholder = this.props.placeholder ? this.props.placeholder : '请选择日期';
+        const isTimes = this.state.timeBoxStatus;
+        const isCtrlTimeBox = !this.props.type || this.props.type == 'default' ? 'hidden' : 'visible';
         return (
-            <div className="ui-datePicker" style={{width:w,height:h}}>
-                <div className="ui-datePicker-input">
+            <div id={this.datePickerBoxId} className="ui-datePicker" style={{width:w,height:h}}>
+                <div className="ui-datePicker-input" onClick={this.controlEvent.bind(this)}>
                     <input
                         type="text"
+                        disabled={true}
                         placeholder={placeholder}
                         value={this.state.selectedDate}
-                        onBlur={this.onBlurEvent.bind(this)}
-                        onFocus={this.onFocusEvent.bind(this)}
                         ref="dateTimeInput"
                     />
-                    <span
-                        className="ui-datePicker-icon"
-                        style={{lineHeight:(num - 2)+'px'}}
-                        onClick={this.controlEvent.bind(this)}
-                    >
+                    <span className="ui-datePicker-icon" style={{lineHeight:(num - 2)+'px',color:this.state.isActive ? '#1890ff' :'#ccc'}}>
                         {this.icon}
                     </span>
                 </div>
-                <div className={isBoxActive} style={{top:(num + 1)+'px'}}>
+                <div className={isActiveBox} style={{top:(num + 1)+'px'}}>
                     <div className="ui-datePicker-show" unSelectable="on">
                         <SwitchYearMonthDay
                             date={this.state}
                             callback={this.getSwitchYearMonthDay.bind(this)}
                         />
                     </div>
-                    <div className="ui-datePicker-weeks">
+                    <div className="ui-datePicker-weeks" style={{display:isTimes ? 'none' : 'block'}}>
                         <Weeks weeks={this.weeks}/>
                     </div>
-                    <div className="ui-datePicker-days">
+                    <div className="ui-datePicker-days" style={{display:isTimes ? 'none' : 'block'}}>
                         <DayBox
                             list={this.state.dayArray}
                             indent={this.state.indent}
@@ -449,12 +437,12 @@ export default class DatePicker extends Component {
                             callback={this.onSelectDay.bind(this)}
                         />
                     </div>
-                    <div className="ui-datePicker-times">
-                        <TimesBox
-                            current={this.onCurrent.bind(this)}
-                            active={this.closeDatePickerBox.bind(this)}
-                            hms={this.state} callback={this.getHMS.bind(this)}
-                        />
+                    <div className="ui-datePicker-options" style={{display:isTimes ? 'none' : 'block',visibility:isCtrlTimeBox}}>
+                        <span><button onClick={this.selectNow.bind(this)}>现在</button></span>
+                        <span><button onClick={this.openTimesBox.bind(this)}>选择时间</button></span>
+                    </div>
+                    <div className="ui-datePicker-times" style={{display:isTimes ? 'block' : 'none'}}>
+                        <TimesBox callback={this.setHourMinuteSecond.bind(this)} />
                     </div>
                 </div>
             </div>

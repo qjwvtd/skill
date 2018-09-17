@@ -19,11 +19,11 @@ export default class DatePickerTest extends Component {
                 <div>
                     <DatePicker width={'280px'} onchange={this.getDate.bind(this)} placeholder="开始日期" />
                     <br />
-                    <DatePicker width={'280px'} onchange={this.getDate.bind(this)} placeholder="结束日期" />
+                    <DatePicker width={'280px'} type={'full'} onchange={this.getDate.bind(this)} placeholder="结束日期" />
                 </div>
                 <br />
                 <div>
-                    <DatePicker width={'40%'} height={'44px'} format={'ymdhms'} onchange={this.getDate.bind(this)} />
+                    <DatePicker width={'40%'} height={'44px'} type={'full'} onchange={this.getDate.bind(this)} />
                 </div>
             </div>
         );

@@ -13,19 +13,17 @@
 }
 .ui-datePicker>.ui-datePicker-input input,.ui-datePicker>.ui-datePicker-input span{
     float:left;
+    cursor:pointer;
 }
 .ui-datePicker>.ui-datePicker-input input{
     border:none;
     width:calc(100% - 22px);
     height:inherit;
-}
-.ui-datePicker>.ui-datePicker-input input:focus{
-    border:none !important;
+    background:transparent;
 }
 .ui-datePicker>.ui-datePicker-input .ui-datePicker-icon{
     font-size:20px;
     color:#ccc;
-    cursor:pointer;
 }
 /*日期盒子*/
 .ui-datePicker-box{
@@ -41,13 +39,13 @@
     opacity:0;
 }
 .ui-datePicker-box.active{
-    height:370px;
+    height:338px;
     opacity:1;
-    animation:boxShowAnimation 0.5s;
+    animation:boxShowAnimation 0.25s;
 }
 @keyframes boxShowAnimation {
     0%{height:0;opacity:0;}
-    100%{height:370px;opacity:1;}
+    100%{height:338px;opacity:1;}
 }
 .ui-datePicker-box .ui-datePicker-show{
     text-align:center;
@@ -62,7 +60,6 @@
 }
 .ui-datePicker-box .ui-datePicker-show span{
     display:inline-block;
-    width:24px;
     height:24px;
     line-height:22px;
     text-align:center;
@@ -70,6 +67,7 @@
     border:1px solid transparent;
     color:#999;
     margin:0 2px;
+    padding:0 5px;
     background:#fff;
 }
 .ui-datePicker-box .ui-datePicker-show span:hover{
@@ -104,7 +102,7 @@
     text-align:center;
 }
 .ui-datePicker-box .ui-datePicker-days{
-    min-height:204px;
+    height:210px;
     border-bottom:1px solid #d9d9d9;
 }
 .ui-datePicker-box .ui-datePicker-days ul{
@@ -153,10 +151,74 @@
 /*.ui-datePicker-nextYear:before{content:'>>';}*/
 /*.ui-datePicker-prevMonth:before{content:'<';}*/
 /*.ui-datePicker-nextMonth:before{content:'>';}*/
+/*按钮选项*/
+.ui-datePicker-options{
+    padding:5px 0;
+    text-align:center;
+}
+.ui-datePicker-options span button{
+    outline:none;
+    text-decoration:none;
+    border:none;
+    background:#1890ff;
+    color:#fff;
+    opacity:0.8;
+    border-radius:3px;
+    margin:0 3px;
+    padding:0 8px;
+    height:28px;
+    line-height:28px;
+}
+.ui-datePicker-options span button:hover{
+    opacity:1;
+}
 /*时分秒*/
 .ui-datePicker-times{
     padding:5px 0;
     text-align:center;
+}
+.ui-datePicker-times .ui-datePicker-times-top{
+    overflow:hidden;
+}
+.ui-datePicker-times .ui-datePicker-times-top span{
+    float:left;
+    width:33.3333%;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+}
+.ui-datePicker-times .ui-datePicker-times-list{
+    overflow:hidden;
+    list-style:none;
+}
+.ui-datePicker-times .ui-datePicker-times-list li{
+    padding:5px 0;
+    float:left;
+    height:140px;
+    width:30%;
+    margin-left:2.5%;
+    overflow-y:auto;
+    border:1px solid #e1e1e1;
+    visibility: hidden;
+    visibility: visible;
+}
+.ui-datePicker-times .ui-datePicker-times-list li:last-child{
+    border-right:1px solid #e1e1e1;
+}
+.ui-datePicker-times .ui-datePicker-times-list li>p{
+    width:80%;
+    margin:0 auto;
+    height:22px;
+    line-height:22px;
+    cursor:pointer;
+}
+.ui-datePicker-times .ui-datePicker-times-list li>p:hover{
+    color:#fff;
+    background:#1890ff;
+}
+.ui-datePicker-times .ui-datePicker-times-show{
+    height:50px;
+    line-height:50px;
 }
 .ui-datePicker-times span{
     display:inline-block;
@@ -164,15 +226,6 @@
     height:30px;
     line-height:30px;
     margin-bottom:5px;
-}
-.ui-datePicker-times span input{
-    margin:0 2px;
-    width:35px;
-    height:30px;
-    line-height:28px;
-    text-align:center;
-    text-indent:0 !important;
-    border-width:0 0 1px 0;
 }
 .ui-datePicker-times span button{
     outline:none;
