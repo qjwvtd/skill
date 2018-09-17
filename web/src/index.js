@@ -101,7 +101,8 @@ class App extends Component{
                     <ScrollContent />
                 </div>
                 <div className="play">
-                    <h5 style={{color:randomColor()}}>随机颜色</h5>
+                    <h5>随机颜色</h5>
+                    <div style={{width:'30px',height:'30px',background:randomColor()}}></div>
                 </div>
                 <div className="play">
                     <Star size={3} />
