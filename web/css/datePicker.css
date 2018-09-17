@@ -16,7 +16,7 @@
 }
 .ui-datePicker>.ui-datePicker-input input{
     border:none;
-    width:calc(100% - 20px);
+    width:calc(100% - 22px);
     height:inherit;
 }
 .ui-datePicker>.ui-datePicker-input input:focus{

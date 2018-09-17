@@ -202,14 +202,11 @@ class TimesBox extends Component {
             <div>
                 <span>
                     时间
-                    <input type="text" ref="hh"
-                        defaultValue={this.state.hour}
+                    <input type="text" ref="hh" value={this.state.hour}
                         onChange={this.listenInput.bind(this,'hh')} onFocus={this.onFocus.bind(this)}/>:
-                    <input type="text" ref="mm"
-                        defaultValue={this.state.minute}
+                    <input type="text" ref="mm" value={this.state.minute}
                         onChange={this.listenInput.bind(this,'mm')} onFocus={this.onFocus.bind(this)}/>:
-                    <input type="text" ref="ss"
-                        defaultValue={this.state.second}
+                    <input type="text" ref="ss" value={this.state.second}
                         onChange={this.listenInput.bind(this,'ss')} onFocus={this.onFocus.bind(this)}/>
                 </span>
                 <span>
@@ -241,7 +238,7 @@ export default class DatePicker extends Component {
             week: '',
             dayArray: [],
             indent: null,//天数格子缩进量
-            selectedDate: ''
+            selectedDate: null
         };
     }
     //输入框获得焦点
@@ -253,29 +250,17 @@ export default class DatePicker extends Component {
 
     //输入框失去焦点
     onBlurEvent(){
-        this.setSelectedFmtDate();
-        const bool = this.state.selectedDate;
-        console.log('旧:'+bool);
         setTimeout(() => {
-            const bool2 = this.state.selectedDate;
-            console.log('新:'+bool2);
-        },100);
-        const start = new Date();
-
-        //this.setState({
-        //    isActive:false
-        //});
+            this.setState({
+                isActive:false
+            });
+        },200);
     }
     //点击ICON日期盒子显隐
     controlEvent() {
         const status = this.state.isActive;
         this.setState({
             isActive: status ? false : true
-        },() => {
-            const dateTimeInput = this.refs.dateTimeInput;
-            if(this.state.isActive){
-                dateTimeInput.focus();
-            }
         });
     }
 
