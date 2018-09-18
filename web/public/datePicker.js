@@ -223,6 +223,7 @@ export default class DatePicker extends Component {
             minute:this.state.minute,
             second:this.state.second
         };
+        console.log(_dateMap);
         let dateStr;
         const ymd = _dateMap.year + '/' + _dateMap.month + '/' + _dateMap.day;
         const hms = _dateMap.hour + ':' + _dateMap.minute + ':' + _dateMap.second;
@@ -235,6 +236,7 @@ export default class DatePicker extends Component {
             break;
         case 'time':
             dateStr = hms;
+            break;
         default:
             dateStr = ymd;
         }
@@ -384,7 +386,7 @@ export default class DatePicker extends Component {
             minute:m,
             second:s
         },() => {
-            this.setSelectedFmtDate();
+            this.setSelectedFmtDate(null);
         });
     }
 
@@ -415,7 +417,7 @@ export default class DatePicker extends Component {
                     </span>
                 </div>
                 <div className={isActiveBox} style={{top:num+'px'}} unSelectable="on">
-                    <div className="ui-datePicker-body" style={{display:isTimes || isShowSelectTimeBtn ? 'none' : 'block'}}>
+                    <div className="ui-datePicker-body" style={{display:isTimes ? 'none' : 'block'}}>
                         <div className="ui-datePicker-show">
                             <SwitchYearMonthDay
                                 date={this.state}
@@ -434,7 +436,7 @@ export default class DatePicker extends Component {
                             />
                         </div>
                     </div>
-                    <div className="ui-datePicker-times" style={{display:isTimes || isShowSelectTimeBtn ? 'block' : 'none'}}>
+                    <div className="ui-datePicker-times" style={{display:isTimes ? 'block' : 'none'}}>
                         <TimesBox callback={this.setHourMinuteSecond.bind(this)} />
                     </div>
                     <div className="ui-datePicker-options">
