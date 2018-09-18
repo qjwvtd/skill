@@ -5,9 +5,9 @@
  * width:{'50%'/'280px'}，百分比或具体的px值,默认280px
  * height:{'40px'}，目前只接收px值,默认32px
  * placeholder:默认'请选择日期'
- * type：日期格式，[full/default],{default:年月日,full:年月日时分秒},默认normal
+ * model：日期格式，[full/default/time],{full:年月日时分秒,default:年月日,time:时分秒},默认default
  * onchange:回调函数，返回一个object,所选日期详情，必须完整
- * 一般用法:<DatePicker width={'280px'} height={'50px'} type={'full'} callback={this.getDate.bind(this)} />
+ * 一般用法:<DatePicker width={'280px'} height={'50px'} model={'full'} callback={this.getDate.bind(this)} />
  * 懒人用法：<DatePicker callback={this.getDate.bind(this)} />
  **/
 import React,{Component} from 'react';
@@ -145,60 +145,37 @@ class TimesBox extends Component {
     }
     //设备时间
     setTimes(option,item){
-        if(option == 'hour'){
-            this.setState({
-                hour:item.value
-            });
-        }
-        if(option == 'minute'){
-            this.setState({
-                minute:item.value
-            });
-        }
-        if(option == 'second'){
-            this.setState({
-                second:item.value
-            });
-        }
-    }
-    //确定
-    onCallBack(){
-        this.props.callback(this.state.hour,this.state.minute,this.state.second);
+        const times = {};
+        times.hour = option == 'hour' ? item.value : this.state.hour;
+        times.minute = option == 'minute' ? item.value : this.state.minute;
+        times.second = option == 'second' ? item.value : this.state.second;
+        this.setState({
+            hour:times.hour,
+            minute:times.minute,
+            second:times.second
+        },() => {
+            this.props.callback(this.state.hour,this.state.minute,this.state.second);
+        });
     }
 
     render() {
+        const hh = this.hours.map((t,i) => {
+            return (<p key={t.name+'-'+i} onClick={this.setTimes.bind(this,'hour',t)}>{t.value}</p>);
+        });
+        const mm = this.standard.map((t,i) => {
+            return (<p key={t.name+'-'+i} onClick={this.setTimes.bind(this,'minute',t)}>{t.value}</p>);
+        });
+        const ss = this.standard.map((t,i) => {
+            return (<p key={t.name+'-'+i} onClick={this.setTimes.bind(this,'second',t)}>{t.value}</p>);
+        });
         return (
             <div>
                 <div className="ui-datePicker-times-top">
                     <span>时</span><span>分</span><span>秒</span>
                 </div>
                 <ul className="ui-datePicker-times-list">
-                    <li>
-                        {
-                            this.hours.map((item,index) =>
-                                <p key={item.name+'-'+index} onClick={this.setTimes.bind(this,'hour',item)}>{item.value}</p>
-                            )
-                        }
-                    </li>
-                    <li>
-                        {
-                            this.standard.map((item,index) =>
-                                <p key={item.name+'-'+index} onClick={this.setTimes.bind(this,'minute',item)}>{item.value}</p>
-                            )
-                        }
-                    </li>
-                    <li>
-                        {
-                            this.standard.map((item,index) =>
-                                <p key={item.name+'-'+index} onClick={this.setTimes.bind(this,'second',item)}>{item.value}</p>
-                            )
-                        }
-                    </li>
+                    <li>{hh}</li><li>{mm}</li><li>{ss}</li>
                 </ul>
-                <p className="ui-datePicker-times-show">{this.state.hour+':'+this.state.minute+':'+this.state.second}</p>
-                <span>
-                    <button onClick={this.onCallBack.bind(this)}>确定</button>
-                </span>
             </div>
         );
     }
@@ -236,7 +213,7 @@ export default class DatePicker extends Component {
         });
     }
 
-    //设置选择的日期时间(YMD,YMDHMS)
+    //设置显示模式
     setSelectedFmtDate(callback) {
         const _dateMap = {
             year:this.state.year,
@@ -246,21 +223,23 @@ export default class DatePicker extends Component {
             minute:this.state.minute,
             second:this.state.second
         };
-        let _date;
+        let dateStr;
         const ymd = _dateMap.year + '/' + _dateMap.month + '/' + _dateMap.day;
         const hms = _dateMap.hour + ':' + _dateMap.minute + ':' + _dateMap.second;
-        switch (this.props.type) {
+        switch (this.props.model) {
         case 'default':
-            _date = ymd;
+            dateStr = ymd;
             break;
         case 'full':
-            _date = ymd + ' ' + hms;
+            dateStr = ymd + ' ' + hms;
             break;
+        case 'time':
+            dateStr = hms;
         default:
-            _date = ymd;
+            dateStr = ymd;
         }
         this.setState({
-            selectedDate: _date
+            selectedDate: dateStr
         },() => {
             callback ? callback() : null;
         });
@@ -343,21 +322,42 @@ export default class DatePicker extends Component {
         }, () => {
             this.setSelectedFmtDate(() => {
                 this.setState({
-                    isActive:false,
                     timeBoxStatus:false
                 });
             });
             this.setCallBackValue();
         });
     }
+    //确定
+    submitSelected(){
+        this.setState({
+            isActive: false
+        },() => {
+            this.setSelectedFmtDate();
+        });
+    }
+    //清除所有日期时间
+    clearDateTime(){
+        this.setState({
+            year: '1970',
+            month: '01',
+            day: '01',
+            hour: '00',
+            minute: '00',
+            second: '00'
+        },() => {
+            this.initDateBox();
+            this.setSelectedFmtDate();
+        });
+    }
     //打开时分秒盒子
     openTimesBox(){
-        setTimeout(() => {
-            this.setState({
-                isActive: true,
-                timeBoxStatus:true
-            });
-        },250);
+        this.setState({
+            hour: '00',
+            minute: '00',
+            second: '00',
+            timeBoxStatus:true
+        });
     }
     //现在
     selectNow(){
@@ -372,7 +372,6 @@ export default class DatePicker extends Component {
         },() => {
             this.setSelectedFmtDate(() => {
                 this.setState({
-                    isActive:false,
                     timeBoxStatus:false
                 });
             });
@@ -385,14 +384,10 @@ export default class DatePicker extends Component {
             minute:m,
             second:s
         },() => {
-            this.setSelectedFmtDate(() => {
-                this.setState({
-                    isActive:false,
-                    timeBoxStatus:false
-                });
-            });
+            this.setSelectedFmtDate();
         });
     }
+
     componentDidMount() {
         this.initDateBox();//初始化
         this.setCallBackValue();
@@ -404,6 +399,7 @@ export default class DatePicker extends Component {
         const num = Number(h.replace(/px/, ''));
         const placeholder = this.props.placeholder ? this.props.placeholder : '请选择日期';
         const isTimes = this.state.timeBoxStatus;
+        const isShowSelectTimeBtn = !this.props.model || this.props.model == 'default' ? false : true;
         return (
             <div id={this.datePickerBoxId} className="ui-datePicker" style={{width:w,height:h}}>
                 <div className="ui-datePicker-input" onClick={this.controlEvent.bind(this)}>
@@ -419,7 +415,7 @@ export default class DatePicker extends Component {
                     </span>
                 </div>
                 <div className={isActiveBox} style={{top:num+'px'}} unSelectable="on">
-                    <div className="ui-datePicker-body" style={{display:isTimes ? 'none' : 'block'}}>
+                    <div className="ui-datePicker-body" style={{display:isTimes || isShowSelectTimeBtn ? 'none' : 'block'}}>
                         <div className="ui-datePicker-show">
                             <SwitchYearMonthDay
                                 date={this.state}
@@ -437,15 +433,19 @@ export default class DatePicker extends Component {
                                 callback={this.onSelectDay.bind(this)}
                             />
                         </div>
-                        <div className="ui-datePicker-options">
-                        <span>
-                            <button onClick={this.selectNow.bind(this)}>现在</button>
-                            <button onClick={this.openTimesBox.bind(this)}>选择时间</button>
-                        </span>
-                        </div>
                     </div>
-                    <div className="ui-datePicker-times" style={{display:isTimes ? 'block' : 'none'}}>
+                    <div className="ui-datePicker-times" style={{display:isTimes || isShowSelectTimeBtn ? 'block' : 'none'}}>
                         <TimesBox callback={this.setHourMinuteSecond.bind(this)} />
+                    </div>
+                    <div className="ui-datePicker-options">
+                        <span style={{visibility:isShowSelectTimeBtn ? 'visible' : 'hidden'}}>
+                            <a onClick={this.openTimesBox.bind(this)}>选择时间</a>
+                        </span>
+                        <span>
+                            <a onClick={this.selectNow.bind(this)}>现在</a>
+                            <a onClick={this.clearDateTime.bind(this)}>清空</a>
+                            <button onClick={this.submitSelected.bind(this)}>确定</button>
+                        </span>
                     </div>
                 </div>
             </div>
