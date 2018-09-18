@@ -1,13 +1,12 @@
 .ui-datePicker{
-    border:1px solid #d9d9d9;
     position:relative;
 }
 /*输入框*/
 .ui-datePicker>.ui-datePicker-input{
+    border:1px solid #d9d9d9;
     position:absolute;
     width:100%;
-    height:calc(100% - 1px);
-    top:1px;
+    height:100%;
     background:#fff;
     overflow:hidden;
 }
@@ -17,8 +16,8 @@
 }
 .ui-datePicker>.ui-datePicker-input input{
     border:none;
-    width:calc(100% - 22px);
-    height:inherit;
+    width:calc(100% - 24px);
+    height:calc(100% - 2px);;
     background:transparent;
 }
 .ui-datePicker>.ui-datePicker-input .ui-datePicker-icon{
@@ -27,7 +26,9 @@
 }
 /*日期盒子*/
 .ui-datePicker-box{
-    border:1px solid #d9d9d9;
+    border-width:0 1px 1px 1px;
+    border-style:solid;
+    border-color:#d9d9d9;
     position:absolute;
     z-index:999;
     width:100%;/*280px*/
@@ -194,7 +195,7 @@
 .ui-datePicker-times .ui-datePicker-times-list li{
     padding:5px 0;
     float:left;
-    height:140px;
+    height:210px;
     width:30%;
     margin-left:2.5%;
     overflow-y:auto;

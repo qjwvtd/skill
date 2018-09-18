@@ -404,7 +404,6 @@ export default class DatePicker extends Component {
         const num = Number(h.replace(/px/, ''));
         const placeholder = this.props.placeholder ? this.props.placeholder : '请选择日期';
         const isTimes = this.state.timeBoxStatus;
-        const isCtrlTimeBox = !this.props.type || this.props.type == 'default' ? 'hidden' : 'visible';
         return (
             <div id={this.datePickerBoxId} className="ui-datePicker" style={{width:w,height:h}}>
                 <div className="ui-datePicker-input" onClick={this.controlEvent.bind(this)}>
@@ -419,27 +418,31 @@ export default class DatePicker extends Component {
                         {this.icon}
                     </span>
                 </div>
-                <div className={isActiveBox} style={{top:(num + 1)+'px'}}>
-                    <div className="ui-datePicker-show" unSelectable="on">
-                        <SwitchYearMonthDay
-                            date={this.state}
-                            callback={this.getSwitchYearMonthDay.bind(this)}
-                        />
-                    </div>
-                    <div className="ui-datePicker-weeks" style={{display:isTimes ? 'none' : 'block'}}>
-                        <Weeks weeks={this.weeks}/>
-                    </div>
-                    <div className="ui-datePicker-days" style={{display:isTimes ? 'none' : 'block'}}>
-                        <DayBox
-                            list={this.state.dayArray}
-                            indent={this.state.indent}
-                            currentDay={this.state.day}
-                            callback={this.onSelectDay.bind(this)}
-                        />
-                    </div>
-                    <div className="ui-datePicker-options" style={{display:isTimes ? 'none' : 'block',visibility:isCtrlTimeBox}}>
-                        <span><button onClick={this.selectNow.bind(this)}>现在</button></span>
-                        <span><button onClick={this.openTimesBox.bind(this)}>选择时间</button></span>
+                <div className={isActiveBox} style={{top:num+'px'}} unSelectable="on">
+                    <div className="ui-datePicker-body" style={{display:isTimes ? 'none' : 'block'}}>
+                        <div className="ui-datePicker-show">
+                            <SwitchYearMonthDay
+                                date={this.state}
+                                callback={this.getSwitchYearMonthDay.bind(this)}
+                            />
+                        </div>
+                        <div className="ui-datePicker-weeks">
+                            <Weeks weeks={this.weeks}/>
+                        </div>
+                        <div className="ui-datePicker-days">
+                            <DayBox
+                                list={this.state.dayArray}
+                                indent={this.state.indent}
+                                currentDay={this.state.day}
+                                callback={this.onSelectDay.bind(this)}
+                            />
+                        </div>
+                        <div className="ui-datePicker-options">
+                        <span>
+                            <button onClick={this.selectNow.bind(this)}>现在</button>
+                            <button onClick={this.openTimesBox.bind(this)}>选择时间</button>
+                        </span>
+                        </div>
                     </div>
                     <div className="ui-datePicker-times" style={{display:isTimes ? 'block' : 'none'}}>
                         <TimesBox callback={this.setHourMinuteSecond.bind(this)} />
