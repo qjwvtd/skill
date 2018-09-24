@@ -1,7 +1,6 @@
 /**
  * Notification组件
  **/
-import React,{Component} from 'react';
 
 //随机字符串,随机ID
 function randomString(len) {
