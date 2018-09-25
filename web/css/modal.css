@@ -51,7 +51,6 @@
     text-align: center;
     cursor: pointer;
     border: 1px solid #f8f8f8;
-
 }
 
 .ui-modal-head > span:hover {
@@ -60,11 +59,14 @@
 }
 
 .ui-modal-content {
-    padding: 0 15px
+    border-width:1px 0 1px 0;
+    border-style:solid;
+    border-color:#ccc;
+    border-radius:0px !important;
+    padding: 5px 15px;
 }
 
 .ui-modal-foot {
-    border-radius: 0 0 3px 3px;
     text-align:right;
 }
 
@@ -84,12 +86,14 @@
     opacity:1;
 }
 .ui-modal-foot > span.btnOK {
-    background: #1890ff
+    background: #1890ff;
+    border:1px solid #1890ff;
 }
 
 .ui-modal-foot > span.btnNO {
-    border:1px solid #999;
-    color:#999;
+    border:1px solid #ccc;
+    background: #fff;
+    color:#ccc;
 }
 .ui-modal-foot > span.btnLg {
     width: 100%;

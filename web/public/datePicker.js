@@ -403,7 +403,7 @@ export default class DatePicker extends Component {
         const isTimes = this.state.timeBoxStatus;
         const isShowSelectTimeBtn = !this.props.model || this.props.model == 'default' ? false : true;
         return (
-            <div id={this.datePickerBoxId} className="ui-datePicker" style={{width:w,height:h}}>
+            <div className="ui-datePicker" style={{width:w,height:h}}>
                 <div className="ui-datePicker-input" onClick={this.controlEvent.bind(this)}>
                     <input
                         type="text"
@@ -416,7 +416,7 @@ export default class DatePicker extends Component {
                         {this.icon}
                     </span>
                 </div>
-                <div className={isActiveBox} style={{top:num+'px'}} unSelectable="on">
+                <div id={this.datePickerBoxId} className={isActiveBox} style={{top:num+'px'}} unSelectable="on">
                     <div className="ui-datePicker-body" style={{display:isTimes ? 'none' : 'block'}}>
                         <div className="ui-datePicker-show">
                             <SwitchYearMonthDay

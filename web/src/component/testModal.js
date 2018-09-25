@@ -32,7 +32,7 @@ export default class ModalTest extends Component {
                 <div>
                     <button type="button" className="btn btn-md btn-promise" onClick={this.openModal.bind(this)}>open modal</button>
                 </div>
-                <Modal title={'modal title'} width={'360px'} status={this.state.status} close={this.closeModal.bind(this)}>
+                <Modal title={'modal title'} width={'400px'} status={this.state.status} close={this.closeModal.bind(this)}>
                     <p>this is some context</p>
                     <p>this is some context</p>
                     <p>this is some context</p>
