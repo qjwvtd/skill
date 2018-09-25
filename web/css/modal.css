@@ -1,57 +1,46 @@
 /*modal*/
 .ui-modal {
     position: fixed;
-    z-index: 99;
+    z-index: 998;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     height:100%;
-    display: none;
     background:transparent;
-    animation: fadeOut 0.6s !important;
 }
-
 .ui-modal.active {
-    display: block;
-    background:rgba(0,0,0,0.1);
-    animation: fadeIn 0.6s !important;
+    background:rgba(0,0,0,0.5);
 }
-/*modal animation*/
-@keyframes fadeIn {
-    0% {background:transparent;}
-    100% {background:rgba(0,0,0,0.1);}
-}
-
-@keyframes fadeOut {
-    0% {background:rgba(0,0,0,0.1);}
-    100% {background:transparent;}
-}
-.ui-modal-body {
-    background: #fff;
-    box-shadow: 0 0 15px #d9d9d9;
-    margin: 15% auto auto auto;
+.ui-modal .ui-modal-body {
+    background:transparent;
+    box-shadow: 0 0 15px #515151;
     border-radius: 5px;
-    width:0;
-    opacity:1;
-    transition: width 0.25s;
-    -webkit-transition: width 0.25s;
-    -moz-transition: width 0.25s;
+    overflow:hidden;
+    position:absolute;
+    z-index:999;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
 }
-.ui-modal-body.active{
-    width:auto;
-    animation: bodyShow 0.6s;
+.ui-modal.active .ui-modal-body{
+    background:#fff;
+    animation:changeWidthHeight .5s;
 }
-@keyframes bodyShow {
-    0% {opacity:0;}
-    100% {opacity:1;}
+@keyframes changeWidthHeight{from {background:transparent;}to {background:#fff}}
+@-moz-keyframes changeWidthHeight{from {background:transparent;}to {background:#fff}}
+@-webkit-keyframes changeWidthHeight{from {background:transparent;}to {background:#fff}}
+@-o-keyframes changeWidthHeight{from {background:transparent;}to {background:#fff}}
+.ui-modal-head,.ui-modal-foot{
+    padding:20px 15px;
 }
 .ui-modal-head {
     overflow: hidden;
-    text-align: left;
+    text-align: center;
     color: #2B344C;
     font-size: 1.4em;
-    padding: 20px 15px
 }
 
 .ui-modal-head > span {
@@ -71,25 +60,20 @@
 }
 
 .ui-modal-content {
-    padding: 5px 15px 56px 15px
-}
-
-.ui-modal-content > .promptModalIn {
-    width: 100%;
-    height: 60px;
-    border-width: 0 0 1px 0;
-    border-color: #ccc
+    padding: 0 15px
 }
 
 .ui-modal-foot {
     border-radius: 0 0 3px 3px;
-    padding:20px 15px;
     text-align:right;
 }
 
 .ui-modal-foot > span {
+    display:inline-block;
     margin-right:10px;
-    padding:5px 8px;
+    height:30px;
+    line-height:30px;
+    padding:0 12px;
     text-align: center;
     border-radius:3px;
     color: #fff;
@@ -104,7 +88,8 @@
 }
 
 .ui-modal-foot > span.btnNO {
-    background: #999
+    border:1px solid #999;
+    color:#999;
 }
 .ui-modal-foot > span.btnLg {
     width: 100%;
