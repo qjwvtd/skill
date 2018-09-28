@@ -1,0 +1,20 @@
+.ui-rate-box{
+
+}
+.ui-rate-box b{
+    display:inline-block;
+    font-weight:500;
+    color:#ccc;
+}
+.ui-rate-box b:hover{
+    color:orange;
+    font-weight:bolder;
+    animation: changeColor .25s;
+    -ms-animation: changeColor .25s;
+    -webkit-animation: changeColor .25s;
+    -o-animation: changeColor .25s;
+}
+@keyframes changeColor{from {color:#ccc;}to {color:orange;}}
+@-moz-keyframes changeColor{from {color:#ccc;}to {color:orange;}}
+@-webkit-keyframes changeColor{from {color:#ccc;}to {color:orange;}}
+@-o-keyframes changeColor{from {color:#ccc;}to {color:orange;}}

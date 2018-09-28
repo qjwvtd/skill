@@ -12,7 +12,7 @@ import {isNumber,ranNumber,randomString,randomColor,round,setUuid} from './../pu
 //browser
 import browser from './../public/browser';
 //Star
-import Star from './../public/star';
+import Rate from './../public/Rate ';
 //AjaxTest
 import AjaxTest from './component/testAjax';
 //ScrollContent
@@ -107,7 +107,8 @@ class App extends Component{
                     <div style={{width:'30px',height:'30px',background:randomColor()}}></div>
                 </div>
                 <div className="play">
-                    <Star size={3} />
+                    <h5>评分</h5>
+                    <Rate onchange={(index) => {console.log(index);}} />
                 </div>
                 <div className="play">
                     <SelectTest />

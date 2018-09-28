@@ -1,7 +1,7 @@
 .ui-datePicker{
     position:relative;
+    font-size: 10px;
 }
-
 /*输入框*/
 .ui-datePicker>.ui-datePicker-input{
     border:1px solid #d9d9d9;
