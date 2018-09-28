@@ -5,7 +5,7 @@ import React,{Component} from 'react';
 import ArrayList from './../../public/arrayList';
 
 
-class ArrayIndexOf extends Component{
+class Includes extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -32,7 +32,31 @@ class ArrayIndexOf extends Component{
     }
     render(){
         return (
-            <h5>includes</h5>
+            <div>
+                <h5>includes()</h5>
+            </div>
+        );
+    }
+}
+class GetIndex extends Component{
+    constructor(props) {
+        super(props);
+    }
+    componentDidMount(){
+        console.log('----get index start----');
+        const arr1 = new ArrayList([1,2,3,'d','e','f']);
+        const arr2 = new ArrayList([{id:1,name:'name1'},{id:2,name:'name2'}]);
+        const exzample1 = arr1.getIndex('d');
+        const exzample2 = arr1.getIndex('d');
+        console.log(exzample1);//3
+        console.log(exzample2);//true
+        console.log('----get index end----');
+    }
+    render(){
+        return (
+            <div>
+                <h5>getIndex()</h5>
+            </div>
         );
     }
 }
@@ -51,7 +75,8 @@ export default class ArrayListTest extends Component {
         return (
             <div>
                 <h5>数组的一些方法</h5>
-                <ArrayIndexOf />
+                <Includes />
+                <GetIndex />
             </div>
         );
     }

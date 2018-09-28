@@ -45,4 +45,25 @@ export default class ArrayList{
             return arr.indexOf(obj) == -1 ? false : true;
         }
     }
+    //获取下标，参数：纯数组传具体的值，对象数组传key和对应的value
+    getIndex(key,value){
+        const arr = this.array;
+        if(!key){
+            return 'Invalid parameter';
+        }
+        if(key && !value){
+            for(let i=0;i<arr.length;i++){
+                if(key == arr[i]){
+                    return i;
+                }
+            }
+        }
+        if(key && value){
+            for(let i=0;i<arr.length;i++){
+                if(arr[i][key] == value){
+                    return i;
+                }
+            }
+        }
+    }
 }
