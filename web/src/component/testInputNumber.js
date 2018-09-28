@@ -14,7 +14,7 @@ export default class InputCountTest extends Component {
     }
     render() {
         return (
-            <InputCount callback={this.getInputNumb.bind(this)} />
+            <InputCount onchange={this.getInputNumb.bind(this)} />
         );
     }
 }
