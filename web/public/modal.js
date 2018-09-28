@@ -40,7 +40,7 @@ export default class Modal extends Component{
     }
     render(){
         const { children } = this.props;
-        this.node = <div className={this.props.status ? 'ui-modal active' : 'ui-modal'}>
+        this.node = <div className="ui-modal">
             <div className="ui-modal-body" style={{width:this.state.width}}>
                 <ModalHead title={this.state.title} close={this.closeModal.bind(this)} />
                 <div className="ui-modal-content">

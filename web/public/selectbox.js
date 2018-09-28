@@ -46,11 +46,11 @@ export default class SelectBox extends Component{
     }
     render() {
         const __width = this.props.width ? this.props.width : '100%';
-        const __height = this.props.height ? this.props.height : '32px';
+        const __height = this.props.height ? this.props.height : '34px';
         const __lineHeight = (Number(__height.replace(/px/,'')) - 2)+'px';
         const __iconClass = this.state.isActive ? 'ui-select-icon active' :'ui-select-icon';
         const __contentClass = this.state.isActive ? "ui-select-content active" : "ui-select-content";
-        const __icon = this.state.isActive ? '∧' : '∨';
+        const __icon = this.state.isActive ? '▲' : '▼';
         //计算内容区高度
         const __cHeight = () => {
             const __num = Number(__height.replace(/px/,''));

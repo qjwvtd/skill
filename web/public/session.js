@@ -38,7 +38,7 @@ export class Cookie {
         }
     }
 
-    delCookie(name) {
+    removeCookie(name) {
         var exp = new Date();
         exp.setTime(exp.getTime() - 1);
         var cval = this.getCookie(name);

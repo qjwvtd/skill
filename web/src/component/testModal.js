@@ -35,7 +35,7 @@ export default class ModalTest extends Component {
                 <Modal title={'modal title'} width={'400px'} status={this.state.status} close={this.closeModal.bind(this)}>
                     <p>this is some context</p>
                     <p>this is some context</p>
-                    <p>this is some context</p>
+                    <p style={{height:'300px',lineHeight:'300px'}}>this is some context</p>
                     <p>this is some context</p>
                     <p>this is some context</p>
                     <p>this is some context</p>

@@ -4,15 +4,6 @@
     border:1px solid #d9d9d9;
     cursor:pointer;
 }
-.ui-select-box:hover{
-    border:1px solid #1890ff;
-    animation:hoverBorderAnimate 0.5s !important;
-}
-/*hover边框动画*/
-@keyframes hoverBorderAnimate {
-    0% {border:1px solid #d9d9d9;}
-    100% {border:1px solid #1890ff;}
-}
 .ui-select-box>div{
     position:absolute;
     width:100%;
@@ -59,20 +50,18 @@
     background:#fff;
     border:none;
     height:0;
-    overflow:hidden;
-
+    overflow-x:hidden;
     transition:height 0.15s;
     -moz-transition:height 0.15s; /* Firefox 4 */
     -webkit-transition:height 0.15s; /* Safari and Chrome */
     -o-transition:height 0.15s; /* Opera */
 }
 .ui-select-box>div.ui-select-content.active{
-    border:1px solid #1890ff;
-    overflow:auto;
+    border:1px solid #d9d9d9;
+    overflow-y:scroll;
 }
 .ui-select-box>div.ui-select-content ul{
     list-style:none;
-    width:100%;
 }
 .ui-select-box>div.ui-select-content ul li{
     text-indent:5px;
@@ -81,3 +70,13 @@
     background: #1890ff;
     color:#fff;
 }
+
+.ui-select-content{
+    scrollbar-arrow-color:#EFEFEF;/*三角箭头的颜色*/
+    scrollbar-face-color:#A7A7A7;/*滚动条滑块按钮的颜色*/
+    scrollbar-highlight-color:#EFEFEF;/*滚动条整体颜色*/
+    scrollbar-shadow-color:#EFEFEF;/*滚动条阴影*/
+}
+/*-webkit内核-*/
+.ui-select-content::-webkit-scrollbar{width:5px;}/*滚动条垂直方向的宽度*/
+.ui-select-content::-webkit-scrollbar-thumb:vertical{background:transparent;}/* 垂直滚动条的滑动块 */

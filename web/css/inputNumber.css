@@ -3,14 +3,13 @@
     display:inline-block;
     overflow:hidden;
     height:32px;
-    line-height:32px;
     border-radius:3px;
 }
 .ui-inputCount-box>button{
     width:32px;
     background:#f5f7fa;
     color:#606266;
-    font-size:2em;
+    font-size:18px;
 }
 .ui-inputCount-box>button:hover{
     color:#1890ff;

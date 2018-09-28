@@ -7,16 +7,12 @@
     bottom: 0;
     left: 0;
     height:100%;
-    background:transparent;
-}
-.ui-modal.active {
     background:rgba(0,0,0,0.5);
 }
 .ui-modal .ui-modal-body {
-    background:transparent;
+    border:1px solid #999;
     box-shadow: 0 0 15px #515151;
     border-radius: 5px;
-    overflow:hidden;
     position:absolute;
     z-index:999;
     left:50%;
@@ -24,17 +20,15 @@
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
-}
-.ui-modal.active .ui-modal-body{
     background:#fff;
-    animation:changeWidthHeight .5s;
+    animation:changeWidthHeight .25s;
 }
 @keyframes changeWidthHeight{from {background:transparent;}to {background:#fff}}
 @-moz-keyframes changeWidthHeight{from {background:transparent;}to {background:#fff}}
 @-webkit-keyframes changeWidthHeight{from {background:transparent;}to {background:#fff}}
 @-o-keyframes changeWidthHeight{from {background:transparent;}to {background:#fff}}
 .ui-modal-head,.ui-modal-foot{
-    padding:20px 15px;
+    padding:10px;
 }
 .ui-modal-head {
     overflow: hidden;
@@ -61,9 +55,9 @@
 .ui-modal-content {
     border-width:1px 0 1px 0;
     border-style:solid;
-    border-color:#ccc;
+    border-color: #dedede;
     border-radius:0px !important;
-    padding: 5px 15px;
+    padding: 5px 10px;
 }
 
 .ui-modal-foot {
@@ -91,9 +85,9 @@
 }
 
 .ui-modal-foot > span.btnNO {
-    border:1px solid #ccc;
+    border:1px solid #999;
     background: #fff;
-    color:#ccc;
+    color:#999;
 }
 .ui-modal-foot > span.btnLg {
     width: 100%;
