@@ -1,16 +1,60 @@
-/*loading*/
-.loading{padding:5px;text-align:center}
-.loading span{font-size:16px;font-weight:bold;padding:2px;color:#1890ff}
-.loading>span.loadingl{animation:a1 1s infinite;}
-.loading>span.loadingo{animation:a2 1s infinite;}
-.loading>span.loadinga{animation:a3 1s infinite;}
-.loading>span.loadingd{animation:a4 1s infinite;}
-.loading>span.loadingi{animation:a5 1s infinite;}
-.loading>span.loadingn{animation:a6 1s infinite;}
-.loading>span.loadingg{animation:a7 1s infinite;}
-.loading>span.loadingp1{animation:a8 1s infinite;}
-.loading>span.loadingp2{animation:a9 1s infinite;}
-.loading>span.loadingp3{animation:a0 1s infinite;}
+/*全局loading*/
+.ui-loading{
+    position: fixed;
+    z-index: 998;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height:100%;
+    background:rgba(0,0,0,0.1);
+}
+.ui-loading-box{
+    width:70px;
+    height:70px;
+    position:absolute;
+    z-index:999;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+.ui-loading-box .ui-loading-pie{
+    width:50px;
+    height:50px;
+    margin:0 auto;
+    border: 2px solid;
+    border-color: #1890ff #1890ff transparent;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: loadingAnimate 1s linear infinite;
+}
+.ui-loading-box p{
+    color:#1890ff;
+    text-align: center;
+    height:20px;
+    line-height:20px;
+    margin:0;
+    padding:0;
+}
+@keyframes loadingAnimate{
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+}
+/*loadingMini(局部loading)*/
+.ui-loadingMini{padding:5px;}
+.ui-loadingMini span{padding:2px;color:#1890ff}
+.ui-loadingMini>span.loadingl{animation:a1 1s infinite;}
+.ui-loadingMini>span.loadingo{animation:a2 1s infinite;}
+.ui-loadingMini>span.loadinga{animation:a3 1s infinite;}
+.ui-loadingMini>span.loadingd{animation:a4 1s infinite;}
+.ui-loadingMini>span.loadingi{animation:a5 1s infinite;}
+.ui-loadingMini>span.loadingn{animation:a6 1s infinite;}
+.ui-loadingMini>span.loadingg{animation:a7 1s infinite;}
+.ui-loadingMini>span.loadingp1{animation:a8 1s infinite;}
+.ui-loadingMini>span.loadingp2{animation:a9 1s infinite;}
+.ui-loadingMini>span.loadingp3{animation:a0 1s infinite;}
 @keyframes a1 {0%{color:#fff}10%{color:#1890ff}}
 @keyframes a2 {10%{color:#fff}20%{color:#1890ff}}
 @keyframes a3 {20%{color:#fff}30%{color:#1890ff}}

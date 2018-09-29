@@ -45,6 +45,10 @@ import NotificationTest from './component/testNotification';
 import MessageTest from './component/testMessage';
 //ArrayListTest
 import ArrayListTest from './component/testArrayList';
+//CollapseTest
+import CollapseTest from './component/testCollapse';
+//LoadingTest
+import LoadingTest from './component/testLoading';
 
 //es6/7
 import {MathArrayMax,Es6Map} from './component/ES678';
@@ -149,6 +153,14 @@ class App extends Component{
                 </div>
                 <div className="play">
                     <ArrayListTest />
+                </div>
+                <div className="play">
+                    <h5>折叠面板</h5>
+                    <CollapseTest />
+                </div>
+                <div className="play">
+                    <h5>loading</h5>
+                    <LoadingTest />
                 </div>
             </div>
         );

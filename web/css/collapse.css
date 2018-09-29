@@ -1,0 +1,56 @@
+/*折叠面板*/
+.ui-collapse{
+    border:1px solid #dcdee2;
+    border-radius:3px;
+    color:#666;
+}
+
+.ui-collapse .ui-collapse-title{
+    margin:0;
+    padding:0;
+    height:40px;
+    line-height:40px;
+    padding-left:15px;
+    background:#f7f7f7;
+    cursor:pointer;
+}
+.ui-collapse.active .ui-collapse-title{
+    border-bottom:1px solid #dcdee2;
+}
+.ui-collapse .ui-collapse-title span{
+    display:inline-block;
+}
+.ui-collapse .ui-collapse-title span{
+    transform:rotate(0deg);
+    animation:iconAnimateOne 0.15s !important;
+}
+.ui-collapse.active .ui-collapse-title span{
+    transform:rotate(90deg);
+    animation:iconAnimateTwo 0.15s !important;
+}
+/*icon边框动画*/
+@keyframes iconAnimateOne {
+    0% {transform:rotate(90deg);}
+    100% {transform:rotate(0deg);}
+}
+@keyframes iconAnimateTwo {
+    0% {transform:rotate(0deg);}
+    100% {transform:rotate(90deg);}
+}
+.ui-collapse-content{
+    background:#fff;
+    opacity:0;
+    height:0px;
+    padding: 0;
+    overflow:hidden;
+}
+.ui-collapse.active .ui-collapse-content{
+    padding:10px 15px;
+    opacity:1;
+    height:auto;
+    animation: changeAnimation 0.5s linear;
+}
+@keyframes changeAnimation {
+    0%{opacity:0;}
+    100%{opacity:1;}
+}
