@@ -1,0 +1,31 @@
+/*气泡提示组件CSS*/
+.ui-popover{
+    position:fixed;
+    z-index:999;
+    width:180px;
+}
+.ui-popover-content,.ui-popover-icon{
+    position:relative;
+}
+.ui-popover-content{
+    background:#fff;
+    border:1px solid #e1e1e1;
+    border-radius:5px;
+    z-index:1;
+    padding:15px;
+}
+.ui-popover-icon{
+    z-index:2;
+}
+.ui-popover-icon span{
+    position:absolute;
+    border:1px solid #e1e1e1;
+    border-width:0 1px 1px 0;
+    display:inline-block;
+    background:#fff;
+    top:-8px;
+    left:85px;
+    width:14px;
+    height:14px;
+    transform: rotate(45deg);
+}
