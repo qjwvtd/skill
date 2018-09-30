@@ -2,7 +2,7 @@
  * 日期插件测试
  **/
 import React,{Component} from 'react';
-import DatePicker from './../../public/datePicker';
+import {DatePicker,DateTimePicker,TimePicker} from './../../public/datePicker';
 export default class DatePickerTest extends Component {
     constructor(props) {
         super(props);
@@ -15,17 +15,17 @@ export default class DatePickerTest extends Component {
     render() {
         return (
             <div>
-                <h5>基于React的一款日期插件</h5>
+                <h5>基于React的一款日期时间插件</h5>
                 <div>
-                    <DatePicker width={'280px'} onchange={this.getDate.bind(this)} placeholder="开始日期" />
+                    <DatePicker width='280px' onchange={this.getDate.bind(this)} placeholder="开始日期" />
                     <br />
-                    <DatePicker width={'280px'} model={'full'} onchange={this.getDate.bind(this)} placeholder="结束日期" />
+                    <DateTimePicker width='280px' onchange={this.getDate.bind(this)} placeholder="结束日期" />
                     <br />
-                    <DatePicker width={'280px'} model={'time'} onchange={this.getDate.bind(this)} placeholder="时分秒" />
+                    <TimePicker width='280px' height={'30px'} onchange={this.getDate.bind(this)} placeholder="时分秒" />
                 </div>
                 <br />
                 <div>
-                    <DatePicker width={'40%'} height={'44px'} model={'full'} onchange={this.getDate.bind(this)} />
+                    <DateTimePicker width={'40%'} height={'44px'} onchange={this.getDate.bind(this)} />
                 </div>
             </div>
         );

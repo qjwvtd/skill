@@ -10,6 +10,7 @@
     height:100%;
     background:#fff;
     overflow:hidden;
+    border-radius:3px;
 }
 .ui-datePicker>.ui-datePicker-input input,.ui-datePicker>.ui-datePicker-input span{
     float:left;
@@ -209,7 +210,7 @@
     height:220px;
     width:30%;
     margin-left:2.5%;
-    overflow-y:auto;
+    overflow:auto;
     border:1px solid #e1e1e1;
 }
 .ui-datePicker-times .ui-datePicker-times-list li:last-child{
@@ -226,7 +227,3 @@
     color:#fff;
     background:#1890ff;
 }
-/*.ui-datePicker-times .ui-datePicker-times-show{*/
-    /*height:60px;*/
-    /*line-height:60px;*/
-/*}*/
