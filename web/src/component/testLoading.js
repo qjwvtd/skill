@@ -15,11 +15,11 @@ export default class LoadingTest extends Component{
         this.setState({
             isLoading:true
         },() => {
-            //setTimeout(() => {
-            //    this.setState({
-            //        isLoading:false
-            //    });
-            //},3000);
+            setTimeout(() => {
+                this.setState({
+                    isLoading:false
+                });
+            },3000);
         });
     }
     render(){
