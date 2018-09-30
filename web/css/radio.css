@@ -1,58 +1,60 @@
 .ui-radio-group{
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
     display:inline-block;
-    padding:2px;
+}
+.ui-radio-group span,.ui-radio-group label{
+    vertical-align:middle;
 }
 .ui-radio-box{
     display:inline-block;
-    overflow:hidden;
-    padding-right:5px;
-}
-.ui-radio-box>b,.ui-radio-box>label{
-    float:left;
-    text-align:center;
-}
-.ui-radio-box>b{
+    position:relative;
+    width:16px;
+    height:16px;
     border-radius:50%;
     border:1px solid #ccc;
 }
-/*size*/
-.ui-radio-box>b.sm,.ui-radio-box>label.sm{
-    width:16px;
-    height:16px;
-    line-height:16px;
+.ui-radio-box.active{
+    border:1px solid #1890ff;
+    animation:radioAnimate1 0.25s !important;
+    -moz-animation:radioAnimate1 0.25s !important;
+    -webkit-animation:radioAnimate1 0.25s !important;
+    -o-animation:radioAnimate1 0.25s !important;
 }
-.ui-radio-box>b.md,.ui-radio-box>label.md{
-    width:18px;
-    height:18px;
-    line-height:18px;
+.ui-radio-box i{
+    position:absolute;
+    left:50%;
+    top:50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform:translate(-50%, -50%);
+    -o-transform:translate(-50%, -50%);
+    width:0px;
+    height:0px;
+    background:transparent;
 }
-.ui-radio-box>b.lg,.ui-radio-box>label.lg{
-    width:20px;
-    height:20px;
-    line-height:20px;
+.ui-radio-box.active i{
+    width:6px;
+    height:6px;
+    background:#1890ff;
+    animation:radioAnimate2 0.25s !important;
+    -moz-animation:radioAnimate2 0.25s !important;
+    -webkit-animation:radioAnimate2 0.25s !important;
+    -o-animation:radioAnimate2 0.25s !important;
 }
-.ui-radio-box.active>b.sm{
-    border:6px solid #1890ff;
-    animation:smAnimate 0.15s !important;
+.ui-radio-group label{
+    padding:0 10px 0 2px;
 }
-.ui-radio-box.active>b.md{
-    border:7px solid #1890ff;
-    animation:mdAnimate 0.15s !important;
-}
-.ui-radio-box.active>b.lg{
-    border:8px solid #1890ff;
-    animation:lgAnimate 0.15s !important;
-}
-/*animation*/
-@keyframes smAnimate {
+
+/*!*animation*!*/
+@keyframes radioAnimate1 {
     0% {border:1px solid #ccc;}
-    100% {border:4px solid #1890ff;}
+    100% {border:1px solid #1890ff;}
 }
-@keyframes mdAnimate {
-    0% {border:1px solid #ccc;}
-    100% {border:5px solid #1890ff;}
-}
-@keyframes lgAnimate {
-    0% {border:1px solid #ccc;}
-    100% {border:6px solid #1890ff;}
+@keyframes radioAnimate2 {
+    0% {width:0px;height:0px;background:transparent;}
+    100% {width:6px;height:6px;background:#1890ff;}
 }
