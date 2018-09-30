@@ -205,7 +205,8 @@ export class DatePicker extends Component {
     }
 
     //日期盒子显隐
-    controlEvent() {
+    controlEvent(e) {
+        e.stopPropagation();
         const status = this.state.isActive;
         this.setState({
             isActive: status ? false : true
@@ -326,7 +327,7 @@ export class DatePicker extends Component {
         const placeholder = this.props.placeholder ? this.props.placeholder : '请选择日期';
         return (
             <div className="ui-datePicker" style={{width:w,height:h}}>
-                <div className="ui-datePicker-input" onClick={this.controlEvent.bind(this)}>
+                <div className="ui-datePicker-input" onClick={(e) => this.controlEvent(e)}>
                     <input
                         type="text"
                         disabled={true}
@@ -396,7 +397,8 @@ export class DateTimePicker extends Component {
     }
 
     //日期盒子显隐
-    controlEvent() {
+    controlEvent(e) {
+        e.stopPropagation();
         const status = this.state.isActive;
         this.setState({
             isActive: status ? false : true,
@@ -565,7 +567,7 @@ export class DateTimePicker extends Component {
         const isTimes = this.state.isTimeBox;
         return (
             <div className="ui-datePicker" style={{width:w,height:h}}>
-                <div className="ui-datePicker-input" onClick={this.controlEvent.bind(this)}>
+                <div className="ui-datePicker-input" onClick={(e) => this.controlEvent(e)}>
                     <input
                         type="text"
                         disabled={true}
@@ -633,7 +635,8 @@ export class TimePicker extends Component {
     }
 
     //日期盒子显隐
-    controlEvent() {
+    controlEvent(e) {
+        e.stopPropagation();
         const status = this.state.isActive;
         this.setState({
             isActive: status ? false : true
@@ -702,7 +705,7 @@ export class TimePicker extends Component {
         const placeholder = this.props.placeholder ? this.props.placeholder : '请选择日期';
         return (
             <div className="ui-datePicker" style={{width:w,height:h}}>
-                <div className="ui-datePicker-input" onClick={this.controlEvent.bind(this)}>
+                <div className="ui-datePicker-input" onClick={(e) => this.controlEvent(e)}>
                     <input
                         type="text"
                         disabled={true}
