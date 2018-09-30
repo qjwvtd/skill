@@ -8,7 +8,7 @@ export default class PopoverTest extends Component {
         super(props);
     }
     popoverTop(){
-        popover.top('this is popover top textpopover toppopover toppopover toppopover toppopover top');
+        popover.show('this is popover top textpopover toppopover toppopover toppopover toppopover top');
     }
     render() {
         return (

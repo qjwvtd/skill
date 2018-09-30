@@ -3,6 +3,19 @@
     position:fixed;
     z-index:999;
     width:180px;
+    animation:fadeIn 0.5s !important;
+    -webkit-animation:fadeIn 0.5s !important;
+    -moz-animation:fadeIn 0.5s !important;
+    -o-animation:fadeIn 0.5s !important;
+}
+/*message show*/
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes msgHide {
+    0% {top:50px;}
+    100% {top:-600px;}
 }
 .ui-popover-content,.ui-popover-icon{
     position:relative;

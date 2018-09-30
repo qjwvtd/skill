@@ -7,27 +7,28 @@ class Popover{
         this.body = window.document.body;
         this.node = null;
         this.nodeId = 'ui-popover-' + randomString(4);
-        this.remove = () => {
+        this.hide = () => {
             this.body.removeChild(this.node);
-        };
-        this.delay = () => {
-            setTimeout();
+            this.node = null;
         };
     }
-    top(text,event){
-        if(this.node != null){
-            this.remove();
+    show(text,event){
+        if(!text){
+            //必须传入text
+            return;
         }
-        //必须传入text
+        if(this.node != null){
+            this.hide();
+        }
+        const templete = '<div class="ui-popover-box">' +
+            '<div class="ui-popover-content">'+text+'</div>'+
+            '<div class="ui-popover-icon"><span></span></div>'+
+            '</div>';
         const e = event || window.event;
         const target = e.target || e.srcElement;
         const pointX = e.clientX;
         const pointy = e.clientY;
         //console.log(pointX,pointy,text);
-        const templete = '<div class="ui-popover-box">' +
-                '<div class="ui-popover-content">'+text+'</div>'+
-                '<div class="ui-popover-icon"><span></span></div>'+
-            '</div>';
         this.node = document.createElement('div');
         this.node.id = this.nodeId;
         this.node.className = "ui-popover";
@@ -37,6 +38,9 @@ class Popover{
         const nodeHeight = this.node.clientHeight;
         this.node.style.cssText = 'left:'+(pointX - 90)+'px;top:'+(pointy - nodeHeight - 12)+'px;';
         //console.log(pointX,pointy,text,this.node.clientWidth,target.clientHeight);
+        target.onmouseout = () => {
+            this.hide();
+        };
     }
 }
 const popover = new Popover();

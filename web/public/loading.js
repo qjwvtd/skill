@@ -57,7 +57,7 @@ export class Loading extends Component{
         this.node = <div className="ui-loading">
             <div className="ui-loading-box">
                 <div className="ui-loading-pie"></div>
-                <p><LoadingMini /></p>
+                <p>加载中</p>
             </div>
         </div>;
         return this.node;
