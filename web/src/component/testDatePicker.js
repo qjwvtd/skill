@@ -17,11 +17,11 @@ export default class DatePickerTest extends Component {
             <div>
                 <h5>基于React的一款日期时间插件</h5>
                 <div>
-                    <DatePicker width='280px' onchange={this.getDate.bind(this)} placeholder="开始日期" />
+                    <DatePicker width='280px' onchange={this.getDate.bind(this)} placeholder="yy/mm/dd" />
                     <br />
-                    <DateTimePicker width='280px' onchange={this.getDate.bind(this)} placeholder="结束日期" />
+                    <DateTimePicker width='280px' onchange={this.getDate.bind(this)} placeholder="yy/mm/dd hh:mm:ss" />
                     <br />
-                    <TimePicker width='280px' height={'30px'} onchange={this.getDate.bind(this)} placeholder="时分秒" />
+                    <TimePicker width='280px' height={'30px'} onchange={this.getDate.bind(this)} placeholder="hh:mm:ss" />
                 </div>
                 <br />
                 <div>

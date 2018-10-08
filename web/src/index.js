@@ -129,9 +129,6 @@ class App extends Component{
                     <ModalTest />
                 </div>
                 <div className="play">
-                    <CheckBoxTest />
-                </div>
-                <div className="play">
                     <StepsTest />
                 </div>
                 <div className="play">
@@ -141,7 +138,11 @@ class App extends Component{
                     <PaginationTest />
                 </div>
                 <div className="play">
-                    <h5>radio组件</h5>
+                    <h5>checkbox</h5>
+                    <CheckBoxTest />
+                </div>
+                <div className="play">
+                    <h5>radio</h5>
                     <RadioTest />
                 </div>
                 <div className="play">

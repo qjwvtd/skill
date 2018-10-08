@@ -184,7 +184,7 @@ class TimesBox extends Component {
         );
     }
 }
-//（年、月、日）
+//（year/month/day）
 export class DatePicker extends Component {
     constructor(props) {
         super(props);
@@ -371,7 +371,7 @@ export class DatePicker extends Component {
         );
     }
 }
-//（年、月、日、时、分、秒）
+//（year/month/day hour:minute:second）
 export class DateTimePicker extends Component {
     constructor(props) {
         super(props);
@@ -617,7 +617,7 @@ export class DateTimePicker extends Component {
         );
     }
 }
-//（时、分、秒）
+//（hour:minute:second）
 export class TimePicker extends Component {
     constructor(props) {
         super(props);
