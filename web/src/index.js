@@ -51,6 +51,8 @@ import CollapseTest from './component/testCollapse';
 import LoadingTest from './component/testLoading';
 //PopoverTest
 import PopoverTest from './component/testPopover';
+//ProgressTest
+import ProgressTest from './component/testProgress';
 
 //es6/7
 import {MathArrayMax,Es6Map} from './component/ES678';
@@ -168,6 +170,9 @@ class App extends Component{
                 <div className="play">
                     <h5>气泡提示</h5>
                     <PopoverTest />
+                </div>
+                <div className="play">
+                    <ProgressTest />
                 </div>
             </div>
         );

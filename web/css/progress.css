@@ -1,0 +1,51 @@
+/*进度条css*/
+.ui-progress{
+    position: relative;
+}
+.ui-progress-circle {
+    position: relative;
+}
+
+.ui-progress-circle>canvas.ui-progress-circle-item {
+    display: block;
+    margin: 0;
+    position: absolute;
+    background: transparent;
+    left: 0;
+    top: 0;
+}
+
+.ui-progress-circle>canvas.ui-progress-circle-item:first-child {
+    z-index: 997
+}
+
+.ui-progress-circle>canvas.ui-progress-circle-item:last-child {
+    z-index: 998;
+    background: transparent;
+    transform: rotate(-90deg);
+}
+.ui-progress>p.ui-progress-circle-show{
+    position: absolute;
+    z-index:999;
+    height:30px;
+    line-height:30px;
+    width:inherit;
+    text-align:center;
+    font:2em Arial;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.ui-progress .ui-progress-line{
+    border-radius:6px;
+    background:#ccc;
+    width:inherit;
+}
+.ui-progress .ui-progress-line div{
+    border-radius:6px;
+    text-align:center;
+    color:#fff;
+}

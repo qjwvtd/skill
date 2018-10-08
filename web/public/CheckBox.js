@@ -1,45 +1,32 @@
 import React,{Component} from 'react';
-//两种checkbox,需要checkbox.css
-//<Checkbox checked="checked" onChange={this.onChange.bind(this)} />
-//<CheckBoxSpan checked={true} onChange={this.onSpanCheckboxChange.bind(this)} />
-export class Checkbox extends Component{
+/*
+ * @import "checkbox.css";
+ * checked:是否选中状态，true/false,
+ * onchange:change事件回调，参数是一个函数，返回选中后的值和布尔值
+ * <Checkbox checked={true} onchange={this.onSpanCheckboxChange.bind(this)} />
+ */
+export default class Checkbox extends Component{
     constructor(props){
         super(props);
-    }
-    onClick(event){
-        const checkbox = event.currentTarget;
-        this.props.onChange(checkbox.checked);
-    }
-    render(){
-        const isChecked = this.props.checked;
-        if(isChecked){
-            return <input type="checkbox" defaultChecked onClick={this.onClick.bind(this)} />;
-        }else{
-            return <input type="checkbox" onClick={this.onClick.bind(this)} />;
-        }
-    }
-}
-export class CheckBoxSpan extends Component{
-    constructor(props){
-        super(props);
+        this.state = {
+            checked:props.checked ? props.checked : false
+        };
     }
     onClick(){
-        const target = this.refs.checkBoxSpan;
-        const classNames = target.className;
-        switch (classNames){
-        case 'checkBoxSpan active':
-            target.className = 'checkBoxSpan';
-            this.props.onChange(false);
+        const isChecked = this.state.checked;
+        switch (isChecked){
+        case true:
+            this.setState({checked:false});
+            this.props.onchange(false);
             break;
-        case 'checkBoxSpan':
-            target.className = 'checkBoxSpan active';
-            this.props.onChange(true);
+        case false:
+            this.setState({checked:true});
+            this.props.onchange(true);
             break;
         }
-        this.props.onChange(true);
     }
     render(){
-        const classes = this.props.checked ? 'checkBoxSpan active' : 'checkBoxSpan';
-        return <span className={classes} ref="checkBoxSpan" onClick={this.onClick.bind(this)}></span>;
+        const classes = this.state.checked ? 'checkBoxSpan active' : 'checkBoxSpan';
+        return <span className={classes} onClick={this.onClick.bind(this)}></span>;
     }
 }
