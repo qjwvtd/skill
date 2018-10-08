@@ -16,7 +16,6 @@ export class ProgressLine extends Component {
             percent:0,//百分比，number，默认0
             theme:'#1089ff'//颜色值，string,默认#1089ff
         };
-
     }
     componentDidMount() {
         this.setState({
