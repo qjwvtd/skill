@@ -42,6 +42,16 @@ class Browser{
         const isWindow = this.u.indexOf('Windows') > -1;//pc端windows
         return 'Android：'+isAndroid+'\n'+'ios：'+isiOS+'\n'+'Window: '+isWindow+'\n'+"verson info:"+this.app;
     }
+    //ie浏览器7、8警告?
+    isIe(){
+        const ex = window.navigator.userAgent.toLowerCase();
+        if (ex.indexOf('msie') >= 0) {
+            const vs = ex.match(/msie ([\d.]+)/)[1];
+            if(vs == 7.0 || vs == 8.0){
+                alert('您当前浏览器版本过低?');
+            }
+        }
+    }
 }
 const browser = new Browser();
 export default browser;

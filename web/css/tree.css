@@ -1,0 +1,17 @@
+.ui-tree{
+    border:1px solid red;
+}
+.ui-tree>li>ul{
+    margin-left:15px;
+}
+.ui-tree-item div{
+    height:26px;
+    line-height:26px;
+    cursor:pointer;
+}
+.ui-tree-item>ul{
+    display:none;
+}
+.ui-tree-item.active>ul{
+    display:block;
+}

@@ -53,6 +53,8 @@ import LoadingTest from './component/testLoading';
 import PopoverTest from './component/testPopover';
 //ProgressTest
 import ProgressTest from './component/testProgress';
+//TreeTest
+import TreeTest from './component/testTree';
 
 //es6/7
 import {MathArrayMax,Es6Map} from './component/ES678';
@@ -173,6 +175,9 @@ class App extends Component{
                 </div>
                 <div className="play">
                     <ProgressTest />
+                </div>
+                <div className="play">
+                    <TreeTest />
                 </div>
             </div>
         );
