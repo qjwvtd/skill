@@ -74,7 +74,7 @@ export default class TreeTest extends Component {
     render() {
         return (
             <div>
-                <Tree data={this.state.data} name="text" />
+                <Tree data={this.state.data} index="id" label="text" />
             </div>
         );
     }

@@ -1,17 +1,105 @@
-.ui-tree{
-    border:1px solid red;
-}
+.ui-tree{}
 .ui-tree>li>ul{
     margin-left:15px;
 }
 .ui-tree-item div{
     height:26px;
     line-height:26px;
+    margin:5px 0;
     cursor:pointer;
+}
+.ui-tree-item div>span,.ui-tree-item div>input[type=checkbox]{
+    float: left;
+}
+.ui-tree-item div>input[type=checkbox]{
+    width:14px;
+    height:14px;
+    margin-top:6px;
+    margin-left:5px;
+}
+.ui-tree-item div>input[type=checkbox]::before{
+    border:1px solid #ccc;
+    background:#f8f8f8;
+    position:relative;
+    z-index:2;
+    top:-7px;
+    left:-11px;
+    content: ' ';
+    width:14px;
+    height:14px;
+    line-height:12px;
+    text-indent:3px;
+    display:inline-block;
+    margin-top:6px;
+    margin-left:5px;
+    border-radius:3px;
+}
+.ui-tree-item div>input[type=checkbox]:checked::before{
+    border:1px solid #1089ff;
+    background:#1089ff;
+    border-radius:3px;
+    color:#fff;
+    content: '√';
+    animation:boxAnimation 0.25s;
+}
+/*checkbox animation*/
+@keyframes boxAnimation {
+    0% {box-shadow: 0 0 0 0 transparent;}
+    100% {box-shadow: 0 0 0.5em 0.2em #1890ff;}
 }
 .ui-tree-item>ul{
     display:none;
+    -webkit-animation:treeShow 0.5s !important;
+    -moz-animation:treeShow 0.5s !important;
+    -o-animation:treeShow 0.5s !important;
+    animation:treeShow 0.5s !important;
 }
-.ui-tree-item.active>ul{
+.ui-tree-item>ul.active{
     display:block;
+}
+.ui-tree-item>ul.active>.ui-tree-text{
+    background:#bae7ff;
+}
+.ui-tree .ui-tree-text{
+    padding:0 8px 0 5px;
+    background:transparent;
+}
+.ui-tree .ui-tree-text:hover{
+    background:#bae7ff;
+}
+@-webkit-keyframes treeShow {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-moz-keyframes treeShow {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-ms-keyframes  treeShow {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-o-keyframes  treeShow {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@keyframes  treeShow {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+.ui-tree-icon{
+    display:inline-block;
+    color:#666;
+    transform:rotate(0deg);
+    -ms-transform:rotate(0deg); /* Internet Explorer */
+    -moz-transform:rotate(0deg); /* Firefox */
+    -webkit-transform:rotate(0deg); /* Safari 和 Chrome */
+    -o-transform:rotate(0deg); /* Opera */
+}
+.ui-tree-icon.active{
+    transform:rotate(90deg);
+    -ms-transform:rotate(90deg); /* Internet Explorer */
+    -moz-transform:rotate(90deg); /* Firefox */
+    -webkit-transform:rotate(90deg); /* Safari 和 Chrome */
+    -o-transform:rotate(90deg); /* Opera */
 }

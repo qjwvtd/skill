@@ -3,49 +3,60 @@
  **/
 import React,{Component} from 'react';
 
-//生成随机字符串
-function randomString(length) {
-    let rdmString = "";
-    for(let i=0;i<length;i++){
-        if(rdmString.length < length){
-            rdmString  += Math.random().toString(36).substr(2).toUpperCase();
-        }
-    }
-    return  rdmString.substr(0, length);
-}
-
 export default class Tree extends Component{
     constructor(props){
         super(props);
         this.state = {
-            isActive:false
+            checkedList:[]
         };
     }
-    mainEvent(item,flag,id,event){
-        //const target = event.currentTarget;
-        //const perent = target.parentNode;
-        console.log(item,flag,id);
-        switch (flag) {
-        case true:
-            this.setState({isActive: false});
-            break;
-        case false:
-            this.setState({isActive: true});
-            break;
+    mainCheckbox(item,event){
+        const checkbox = event.currentTarget;
+        const checked = checkbox.checked;
+        const checkboxList = Array.prototype.slice.call(checkbox.parentNode.parentNode.getElementsByTagName('input'));
+        //全选
+        checkboxList.map((checkboxItem,index) => {
+            checkboxItem.checked = checked;
+        });
+        //添加数据
+        const thisList = this.state.checkedList;
+        if(checked){
+            checkboxList.map((checkboxItem,index) => {
+                const checkedItem = {};
+                checkedItem[this.props.index] = JSON.parse(checkboxItem.value)[this.props.index];
+                checkedItem[this.props.label] = JSON.parse(checkboxItem.value)[this.props.label];
+                thisList.push(checkedItem);
+            });
+            this.setState({
+                checkedList:thisList
+            });
+            console.log(JSON.stringify(this.state.checkedList));
         }
     }
-    renderParentNode(data,name){
+    mainEvent(item,event){
+        const target = event.currentTarget;
+        const parentUl = document.getElementById(item.id);
+        if(!parentUl){
+            return;
+        }
+        target.className = target.className == 'ui-tree-icon' ? 'ui-tree-icon active' : 'ui-tree-icon';
+        parentUl.className = parentUl.className == 'ui-tree' ? 'ui-tree active' : 'ui-tree';
+    }
+    renderParentNode(data,label,parentId){
         return (
-            <ul className="ui-tree">
+            <ul className="ui-tree" id={parentId}>
                 {
                     data && data.length > 0 ? data.map((item,index) => {
                         const children = item.children;
-                        const isItemClass = this.state.isActive ? 'ui-tree-item active' : 'ui-tree-item';
-                        const __ranId = randomString(20);
+                        const childrenId = item[this.props.index];
                         return (
-                            <li id={__ranId} className={isItemClass} key={index+Math.random()}>
-                                <div onClick={this.mainEvent.bind(this,item,__ranId,this.state.isActive)}>{item[name]}</div>
-                                {children && children.length > 0 ? this.renderParentNode(children,name) : null}
+                            <li className="ui-tree-item" key={index+Math.random()}>
+                                <div>
+                                    {children && children.length > 0 ? <span className="ui-tree-icon" onClick={this.mainEvent.bind(this,item)}>▶</span> : null}
+                                    <input type="checkbox" onChange={this.mainCheckbox.bind(this,item)} value={JSON.stringify(item)} />
+                                    <span className="ui-tree-text">{item[label]}</span>
+                                </div>
+                                {children && children.length > 0 ? this.renderParentNode(children,label,childrenId) : null}
                             </li>
                         );
                     }) : <li className="ui-tree-item">{null}</li>
@@ -55,7 +66,7 @@ export default class Tree extends Component{
     }
     render(){
         const data = this.props.data;
-        const name = this.props.name;
-        return this.renderParentNode(data,name);
+        const label = this.props.label;
+        return this.renderParentNode(data,label,null);
     }
 }

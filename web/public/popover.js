@@ -8,8 +8,10 @@ class Popover{
         this.node = null;
         this.nodeId = 'ui-popover-' + randomString(4);
         this.hide = () => {
-            this.body.removeChild(this.node);
-            this.node = null;
+            if(this.node != null){
+                this.body.removeChild(this.node);
+                this.node = null;
+            }
         };
     }
     show(text,event){
