@@ -68,13 +68,15 @@ export default class TreeTest extends Component {
         };
     }
 
-    componentDidMount() {
+    showTreeData(o) {
+        console.log(JSON.stringify(o));
     }
 
     render() {
         return (
             <div>
-                <Tree data={this.state.data} index="id" label="text" />
+                <h5>Tree型控件</h5>
+                <Tree data={this.state.data} index="id" label="text" onchange={this.showTreeData.bind(this)} />
             </div>
         );
     }

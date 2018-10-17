@@ -16,6 +16,7 @@
     height:14px;
     margin-top:6px;
     margin-left:5px;
+    margin-right:2px;
 }
 .ui-tree-item div>input[type=checkbox]::before{
     border:1px solid #ccc;
