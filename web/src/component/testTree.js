@@ -10,56 +10,56 @@ export default class TreeTest extends Component {
             data: [
                 {
                     id:1,
-                    text: '一级1',
+                    text: 'one-1',
                     children: [{
                         id:11,
-                        text: '二级1-1',
+                        text: 'two-1-1',
                         children: [{
                             id:111,
-                            text: '三级1-1-1'
+                            text: 'three-1-1-1'
                         }]
                     }]
                 },
                 {
                     id:2,
-                    text: '一级2',
+                    text: 'one-2',
                     children: [
                         {
                             id:21,
-                            text: '二级2-1',
+                            text: 'two-2-1',
                             children: [{
                                 id:211,
-                                text: '三级2-1-1'
+                                text: 'three-2-1-1'
                             }]
                         },
                         {
                             id:22,
-                            text: '二级2-2',
+                            text: 'two-2-2',
                             children: [{
                                 id:221,
-                                text: '三级2-2-1'
+                                text: 'three-2-2-1'
                             }]
                         }
                     ]
                 },
                 {
                     id:3,
-                    text: '一级3',
+                    text: 'one-3',
                     children: [
                         {
                             id:31,
-                            text: '二级3-1',
+                            text: 'two-3-1',
                             children: [{
                                 id:311,
-                                text: '三级3-1-1'
+                                text: 'three-3-1-1'
                             }]
                         },
                         {
                             id:32,
-                            text: '二级3-2',
+                            text: 'two-3-2',
                             children: [{
                                 id:321,
-                                text: '三级3-2-1'
+                                text: 'three-3-2-1'
                             }]
                         }
                     ]
