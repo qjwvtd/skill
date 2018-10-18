@@ -148,3 +148,47 @@ export function diff(a,b){
     }
     return true;
 }
+//加入收藏夹
+export function addFavorite(url, title) {
+    try {
+        window.external.addFavorite(url, title);
+    } catch (e) {
+        try {
+            window.sidebar.addPanel(title, url, "");
+        } catch (event) {
+            alert("加入收藏失败，请使用Ctrl+D进行添加");
+        }
+    }
+}
+//查看元素的几何尺寸(left top right bottom width height)
+export function getElementRect(element){
+    const rect = element.getBoundingClientRect();
+    return rect;
+}
+//匹配移动电话
+export function isMobile(obj) {
+    if (!(/^1[3|5|8][0-9]\d{4,8}$/.test(obj))) {
+        return false;
+    }
+    return true;
+}
+
+
+//匹配电子邮件
+export function isemail(obj) {
+    const result = obj.match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/);
+    if (result == null) {
+        return false;
+    }
+    return true;
+}
+//拆分整数与小数
+export function splits(tranvalue) {
+    let arr = new Array('','');
+    const temp = tranvalue.split(".");
+    for (let i = 0; i < temp.length; i++) {
+        arr = temp;
+    }
+    return arr;
+}
+

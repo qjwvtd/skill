@@ -1,6 +1,6 @@
 /*message[success|warning|error]*/
 .ui-message-box{
-    border:1px solid #e1e1e1;
+    /*border:1px solid #e1e1e1;*/
     position:fixed;
     z-index:999999999;
     background:#fff;
@@ -10,7 +10,6 @@
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
-    padding:20px;
     text-align:center;
     top:-600px;
     animation:msgHide 0.5s !important;
@@ -19,7 +18,26 @@
     top:50px;
     animation:msgShow 0.3s !important;
 }
-.ui-message-body{}
+.ui-message-body{
+    padding:20px;
+    border-radius:3px;
+}
+.ui-message-body.ui-message-success{
+    border:1px solid #b7eb8f;
+    background:#f6ffed;
+}
+.ui-message-body.ui-message-info{
+    border:1px solid #91d5ff;
+    background:#e6f7ff;
+}
+.ui-message-body.ui-message-warning{
+    border:1px solid #ffe58f;
+    background:#fffbe6;
+}
+.ui-message-body.ui-message-error{
+    border:1px solid #ffa39e;
+    background:#fff1f0;
+}
 .ui-message-body>span{
     font-size:14px !important;
     display:inline-block;
@@ -32,15 +50,19 @@
     border-radius:50%;
 }
 .ui-message-body>span.ui-message-success-icon{
-    background:#1890ff;
+    background:#b7eb8f;
+    color:#fff;
+}
+.ui-message-body>span.ui-message-info-icon{
+    background:#91d5ff;
     color:#fff;
 }
 .ui-message-body>span.ui-message-warning-icon{
-    background:orange;
+    background:#ffe58f;
     color:#fff;
 }
 .ui-message-body>span.ui-message-error-icon{
-    background:red;
+    background:#ffa39e;
     color:#fff;
 }
 /*message show*/

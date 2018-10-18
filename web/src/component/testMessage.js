@@ -11,6 +11,9 @@ export default class MessageTest extends Component {
     onSuccess() {
         message.success('this is some success message!');
     }
+    onInfo(){
+        message.info('this is some info message!');
+    }
     onWarning() {
         message.warning('this is some warning message!');
     }
@@ -23,6 +26,7 @@ export default class MessageTest extends Component {
             <div>
                 <h5>消息组件（纯函数实现）</h5>
                 <button className="btn btn-promise" onClick={this.onSuccess.bind(this)}>success</button>
+                <button className="btn btn-promise" onClick={this.onInfo.bind(this)}>info</button>
                 <button className="btn btn-promise" onClick={this.onWarning.bind(this)}>warning</button>
                 <button className="btn btn-promise" onClick={this.onError.bind(this)}>error</button>
             </div>

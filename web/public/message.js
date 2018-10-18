@@ -1,5 +1,14 @@
-//需要message.css
-//Message 使用message.success(text,delay);
+/*
+* 需要message.css
+* 接口：
+* message.success(text,delay),
+* message.info(text,delay),
+* message.warning(text,delay),
+* message.error(text,delay),
+* #######华丽的分界线#######
+* @params text,消息内容，必传
+* @params delay,延迟关闭，默认3秒
+* */
 
 //随机字符串,随机ID
 function randomString(len) {
@@ -24,8 +33,21 @@ class Message{
     success(text,delay){
         text = text ? text : 'this is some message text!';
         const container = document.getElementById(this.boxId);
-        const successTemplate = '<a class="ui-message-body">' +
+        const successTemplate = '<a class="ui-message-body ui-message-success">' +
             '<span class="ui-message-success-icon">√</span>' +
+            '<span>'+text+'</span>' +
+            '</a>';
+        if(!container){
+            this.render(successTemplate);
+            this.remove(delay ? delay : this.__delay);
+        }
+        return;
+    }
+    info(text,delay){
+        text = text ? text : 'this is some message text!';
+        const container = document.getElementById(this.boxId);
+        const successTemplate = '<a class="ui-message-body ui-message-info">' +
+            '<span class="ui-message-info-icon">i</span>' +
             '<span>'+text+'</span>' +
             '</a>';
         if(!container){
@@ -37,7 +59,7 @@ class Message{
     warning(text,delay){
         text = text ? text : 'this is some message text!';
         const container = document.getElementById(this.boxId);
-        const warningTemplate = '<a class="ui-message-body">' +
+        const warningTemplate = '<a class="ui-message-body ui-message-warning">' +
             '<span class="ui-message-warning-icon">!</span>' +
             '<span>'+text+'</span>' +
             '</a>';
@@ -50,7 +72,7 @@ class Message{
     error(text,delay){
         text = text ? text : 'this is some message text!';
         const container = document.getElementById(this.boxId);
-        const errorTemplate = '<a class="ui-message-body">' +
+        const errorTemplate = '<a class="ui-message-body ui-message-error">' +
             '<span class="ui-message-error-icon">×</span>' +
             '<span>'+text+'</span>' +
             '</a>';
