@@ -67,21 +67,21 @@ export default class Pagination extends Component{
     render(){
         return (
             <div className="ui-pagi">
-                <button onClick={this.onMainEvent.bind(this,"home")} title="首页">{'<<'}</button>
-                <button onClick={this.onMainEvent.bind(this,"prev")} title="上一页">{'<'}</button>
+                <a onClick={this.onMainEvent.bind(this,"home")} title="首页">首页</a>
+                <a onClick={this.onMainEvent.bind(this,"prev")} title="上一页">{'<'}</a>
                 <span className="ui-pagi-show">
                     第{this.state.currentPage+ '页/共' +this.props.total}页
                 </span>
-                <button onClick={this.onMainEvent.bind(this,"next")} title="下一页">{'>'}</button>
-                <button onClick={this.onMainEvent.bind(this,"last")} title="最后一页">{'>>'}</button>
-                <span className="ui-pagi-toPageNum">
-                    跳至<input
+                <a onClick={this.onMainEvent.bind(this,"next")} title="下一页">{'>'}</a>
+                <a onClick={this.onMainEvent.bind(this,"last")} title="尾页">尾页</a>
+                <span className="ui-pagi-toPageNum" title="跳至指定页">
+                    跳至
+                    <input
                         type="text"
                         ref="pInput"
                         defaultValue={null}
-                        className="ui-pagi-goInput"
-                    />页，
-                    <b onClick={this.choosePage.bind(this)}>GO</b>
+                        onBlur={this.choosePage.bind(this)} />
+                    页
                 </span>
             </div>
         );

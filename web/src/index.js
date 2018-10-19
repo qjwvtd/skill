@@ -140,7 +140,7 @@ class App extends Component{
                 <div className="play">
                     <DatePickerTest />
                 </div>
-                <div className="play">
+                <div>
                     <PaginationTest />
                 </div>
                 <div className="play">

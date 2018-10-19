@@ -2,11 +2,13 @@
 .ui-pagi{
     text-align:center;
     padding:10px 0;
+    font-family: "黑体" !important;
 }
-.ui-pagi button{
-    background:#f8f8f8;
-    border: 1px solid #999;
-    margin: 5px 0 5px 5px;
+.ui-pagi a{
+    display: inline-block;
+    border: 1px solid #d9d9d9;
+    color:rgba(0,0,0,0.65);
+    margin: 0 2px;
     cursor: pointer;
     outline: none;
     border-radius: 3px;
@@ -14,10 +16,10 @@
     height: 26px;
     line-height: 24px;
     font-family: "黑体" !important;
-    font-size: 16px;
+    font-size: 14px;
     opacity:0.8;
 }
-.ui-pagi button:hover{
+.ui-pagi a:hover{
     opacity:1;
     border: 1px solid #1890ff;
     color:#1890ff;
@@ -27,47 +29,23 @@
     padding:0 8px;
     color:#999;
 }
-/*选择页数输入框*/
-.ui-pagi-goInput {
-    text-indent: 0;
-    outline: none;
-    margin:0 2px;
-    padding: 0 1px;
-    width: 30px;
-    height: 26px;
-    line-height: 26px;
-    border: 1px solid #d9d9d9;
-    border-radius: 3px;
-    text-align: center;
-    font-size: 12px;
-}
+
 
 /*跳到第几页*/
 .ui-pagi-toPageNum{
-    padding-left:20px;
-    color:#999;
+    margin-left: 5px;
+    display: inline-block;
+    padding: 0px !important;
+    color:rgba(0,0,0,0.65);
+    border-radius:3px;
+    font-size: 12px;
 }
-.ui-pagi b {
-    display:inline-block;
-    width:26px;
-    height:20px;
-    cursor: pointer;
-    outline: none;
-    border:none;
-    color: rgba(0, 0, 0, 0.65);
-    border-radius: 3px;
+.ui-pagi-toPageNum input {
     height: 26px;
-    line-height: 24px;
-    font-family: "黑体" !important;
-    font-size: 12px
-}
-.ui-pagi b:hover{
-    color:#1890ff;
-    font-size:20px;
-    animation:fontSizeAnimation 0.25s;
-}
-/*animation*/
-@keyframes fontSizeAnimation {
-    0% {font-size: 16px;}
-    100% {font-size: 20px;}
+    line-height: 26px;
+    text-indent: 0;
+    outline: none;
+    padding: 0 1px;
+    width: 30px;
+    text-align: center;
 }
