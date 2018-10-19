@@ -16,7 +16,7 @@ class ModalHead extends Component{
         super(props);
     }
     close(){
-        this.props.onChange(false);
+        this.props.close(false);
     }
     render(){
         return (
