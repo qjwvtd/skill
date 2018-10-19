@@ -1,3 +1,15 @@
+//session
+export class Session{
+    setItem(key,value){
+        sessionStorage.setItem(key,JSON.stringify(value));
+    }
+    getItem(key){
+        return JSON.parse(sessionStorage.getItem(key));
+    }
+    removeItem(key){
+        sessionStorage.removeItem(key);
+    }
+}
 //字符串去空
 export function trim(str){
     return str.replace(/\s+/g, "");
