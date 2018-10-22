@@ -18,7 +18,7 @@ class Popover{
     constructor(){
         this.body = window.document.body;
         this.node = null;
-        this.nodeId = 'ui-popover-' + randomString(4);
+        this.nodeId = null;
         this.hide = () => {
             if(this.node != null){
                 this.body.removeChild(this.node);
@@ -34,6 +34,7 @@ class Popover{
         if(this.node != null){
             this.hide();
         }
+        this.nodeId = 'ui-popover-' + randomString(4);
         const templete = '<div class="ui-popover-box">' +
             '<div class="ui-popover-content">'+text+'</div>'+
             '<div class="ui-popover-icon"><span></span></div>'+
