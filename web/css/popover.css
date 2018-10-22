@@ -1,7 +1,7 @@
 /*气泡提示组件CSS*/
 .ui-popover{
     position:fixed;
-    z-index:999;
+    z-index:999999;
     width:180px;
     animation:fadeIn 0.5s !important;
     -webkit-animation:fadeIn 0.5s !important;
@@ -13,19 +13,22 @@
     0% {opacity:0;}
     100% {opacity:1;}
 }
-@keyframes msgHide {
-    0% {top:50px;}
-    100% {top:-600px;}
-}
 .ui-popover-content,.ui-popover-icon{
     position:relative;
 }
 .ui-popover-content{
+    font-size:10px;
     background:#fff;
     border:1px solid #e1e1e1;
     border-radius:5px;
     z-index:1;
     padding:15px;
+    height:60px;
+    overflow-y: auto;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
 }
 .ui-popover-icon{
     z-index:2;
@@ -33,12 +36,33 @@
 .ui-popover-icon span{
     position:absolute;
     border:1px solid #e1e1e1;
-    border-width:0 1px 1px 0;
     display:inline-block;
     background:#fff;
-    top:-8px;
-    left:85px;
     width:14px;
     height:14px;
     transform: rotate(45deg);
+}
+/*上*/
+.ui-popover-top span{
+    border-width:0 1px 1px 0;
+    top:-8px;
+    left:85px;
+}
+/*下*/
+.ui-popover-bottom span{
+    border-width:1px 0 0 1px;
+    top:-7px;
+    left:85px;
+}
+/*左*/
+.ui-popover-left span{
+    border-width:1px 1px 0 0;
+    left:calc(100% - 8px);
+    margin-top:23px;
+}
+/*right*/
+.ui-popover-right span{
+    border-width:0 0 1px 1px;
+    left:-7px;
+    margin-top:23px;
 }
