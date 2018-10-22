@@ -7,19 +7,13 @@ export default class PopoverTest extends Component {
     constructor(props) {
         super(props);
     }
-    popoverTop(){
-        popover.show('this is popover top textpopover toppopover toppopover toppopover toppopover top');
+    openPopover(){
+        popover.show('this is some popover text');
     }
     render() {
         return (
             <div>
-                <button className="btn btn-promise" onClick={this.popoverTop.bind(this)}>popover top</button>
-
-                <button className="btn btn-promise" onClick={this.popoverTop.bind(this)}>popover right</button>
-
-                <button className="btn btn-promise" onClick={this.popoverTop.bind(this)}>popover bottom</button>
-
-                <button className="btn btn-promise" onClick={this.popoverTop.bind(this)}>popover left</button>
+                <button className="btn btn-promise" onClick={this.openPopover.bind(this)}>popover test</button>
             </div>
         );
     }

@@ -1,7 +1,19 @@
 /**
  * 气泡提示组件
+ * popover.show('this is some popover text');
  **/
-
+//随机字符串,用于插件随机ID
+function randomString(len) {
+    len = len || 32;
+    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+    const $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+    const maxPos = $chars.length;
+    let str = '';
+    for (let i = 0; i < len; i++) {
+        str += $chars.charAt(Math.floor(Math.random() * maxPos));
+    }
+    return str;
+}
 class Popover{
     constructor(){
         this.body = window.document.body;
@@ -30,16 +42,13 @@ class Popover{
         const target = e.target || e.srcElement;
         const pointX = e.clientX;
         const pointy = e.clientY;
-        //console.log(pointX,pointy,text);
         this.node = document.createElement('div');
         this.node.id = this.nodeId;
         this.node.className = "ui-popover";
         this.node.innerHTML = templete;
         this.body.appendChild(this.node);
-        //console.log(this.node.clientHeight);
         const nodeHeight = this.node.clientHeight;
         this.node.style.cssText = 'left:'+(pointX - 90)+'px;top:'+(pointy - nodeHeight - 12)+'px;';
-        //console.log(pointX,pointy,text,this.node.clientWidth,target.clientHeight);
         target.onmouseout = () => {
             this.hide();
         };
@@ -48,15 +57,3 @@ class Popover{
 const popover = new Popover();
 export default popover;
 
-//随机字符串,用于插件随机ID
-function randomString(len) {
-    len = len || 32;
-    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
-    const $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
-    const maxPos = $chars.length;
-    let str = '';
-    for (let i = 0; i < len; i++) {
-        str += $chars.charAt(Math.floor(Math.random() * maxPos));
-    }
-    return str;
-}
