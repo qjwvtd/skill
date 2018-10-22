@@ -1,16 +1,16 @@
 /**
  * Created by Lenovo on 2018/7/28.
  * 五量点赞评级组件
- * 使用:<Star star={2} onchange={this.onchange.bind(this)} />
+ * 使用:<Star star={2} onChange={this.onchange.bind(this)} />
  * star:指定实际评分
- * onchange:返回点击后的评分number
+ * onChange:返回点击后的评分number
  */
 import React,{Component} from 'react';
 export default class Rate extends Component{
     constructor(props){
         super(props);
         this.state = {
-            star:null,
+            star:props.star || 0,
             list:[
                 {xh:0,value:'★'},
                 {xh:1,value:'★'},
@@ -30,11 +30,9 @@ export default class Rate extends Component{
         });
         return template;
     }
-    mainEvent(index){
-        this.setState({
-            star:index
-        },() => {
-            this.props.onchange(index);
+    mainEvent(starNum){
+        this.setState({star:starNum},() => {
+            this.props.onChange(this.state.star);
         });
     }
     componentDidMount(){
