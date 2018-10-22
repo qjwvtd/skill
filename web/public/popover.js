@@ -23,6 +23,7 @@ class Popover{
             if(this.node != null){
                 this.body.removeChild(this.node);
                 this.node = null;
+                this.nodeId = null;
             }
         };
     }
