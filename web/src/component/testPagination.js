@@ -16,7 +16,10 @@ export default class PaginationTest extends Component {
 
     render() {
         return (
-            <Pagination pageNumber={1} pageSize={10} total={20} callback={this.onPagination.bind(this)} />
+            <div>
+                <Pagination pageNumber={1} pageSize={10} total={20} onChange={this.onPagination.bind(this)} />
+                <Pagination  total={30} onChange={this.onPagination.bind(this)} />
+            </div>
         );
     }
 }

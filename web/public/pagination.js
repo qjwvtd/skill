@@ -2,15 +2,14 @@
  * 2018/4/27
  * 基于react的分页实现
  * 需要@pagination.css
- * props:[
- *      pageNumber:当前第几页
- *      pageSize:每页条数
- *      total:总页数
- *      callback:点击回调，返回(pageNumber,pageSize)
- * ]
- * <Pagination pageNumber="1" pageSize="10" total="20" callback={testFenYe}/>
+ * @params total:总页数，(必传),
+ * @params onChange:点击回调，返回(pageNumber,pageSize),(必传),
+ * @params pageNumber:当前第几页,默认1(可选),
+ * @params pageSize:每页条数，默认8(可选)
+ * 用法：
+ * <Pagination pageNumber="1" pageSize="10" total="20" onChange={testFenYe}/>
  * 或
- * <Pagination pageNumber={1} pageSize={10} total={20} callback={testFenYe}/>
+ * <Pagination pageNumber={1} pageSize={10} total={20} onChange={testFenYe}/>
  */
 import React,{Component} from 'react';
 
@@ -18,8 +17,8 @@ export default class Pagination extends Component{
     constructor(props){
         super(props);
         this.state = {
-            currentPage:Number(props.pageNumber),
-            pageSize:Number(props.pageSize),
+            currentPage:Number(props.pageNumber) || 1,
+            pageSize:Number(props.pageSize) || 8,
             total:Number(props.total)
         };
     }
@@ -47,7 +46,7 @@ export default class Pagination extends Component{
             this.setState({
                 currentPage:num
             },() => {
-                this.props.callback(num,this.state.pageSize);
+                this.props.onChange(num,this.state.pageSize);
             });
         }
     }
@@ -60,21 +59,21 @@ export default class Pagination extends Component{
             this.setState({
                 currentPage:val
             },() => {
-                this.props.callback(val,this.props.pageSize);
+                this.props.onChange(val,this.props.pageSize);
             });
         }
     }
     render(){
         return (
-            <div className="ui-pagi">
+            <div className="ui-pagination">
                 <a onClick={this.onMainEvent.bind(this,"home")} title="首页">首页</a>
                 <a onClick={this.onMainEvent.bind(this,"prev")} title="上一页">{'<'}</a>
-                <span className="ui-pagi-show">
+                <span className="ui-pagination-show">
                     第{this.state.currentPage+ '页/共' +this.props.total}页
                 </span>
                 <a onClick={this.onMainEvent.bind(this,"next")} title="下一页">{'>'}</a>
                 <a onClick={this.onMainEvent.bind(this,"last")} title="尾页">尾页</a>
-                <span className="ui-pagi-toPageNum" title="跳至指定页">
+                <span className="ui-pagination-toPageNum" title="跳至指定页">
                     跳至
                     <input
                         type="text"
