@@ -1,13 +1,14 @@
 /**分页CSS**/
-.ui-pagination{
-    text-align:center;
-    padding:10px 0;
+.ui-pagination {
+    text-align: center;
+    padding: 10px 0;
     font-family: "黑体" !important;
 }
-.ui-pagination a{
+
+.ui-pagination a {
     display: inline-block;
     border: 1px solid #d9d9d9;
-    color:rgba(0,0,0,0.65);
+    color: rgba(0, 0, 0, 0.65);
     margin: 0 2px;
     cursor: pointer;
     outline: none;
@@ -17,29 +18,39 @@
     line-height: 24px;
     font-family: "黑体" !important;
     font-size: 14px;
-    opacity:0.8;
-}
-.ui-pagination a:hover{
-    opacity:1;
-    border: 1px solid #1890ff;
-    color:#1890ff;
-}
-.ui-pagination-show{
-    font-size:12px;
-    padding:0 8px;
-    color:#999;
+    opacity: 0.8;
 }
 
+.ui-pagination a:hover {
+    opacity: 1;
+    border: 1px solid #1890ff;
+    color: #1890ff;
+}
+.ui-pagination-show {
+    font-size: 12px;
+    padding: 0 8px;
+    color: #999;
+    height:26px;
+    line-height:24px;
+}
+.ui-pagination-show input{
+    width:30px;
+    height:24px;
+    line-height:22px;
+    text-align:center;
+    text-indent:0px;
+}
 
 /*跳到第几页*/
-.ui-pagination-toPageNum{
+.ui-pagination-toPageNum {
     margin-left: 5px;
     display: inline-block;
     padding: 0px !important;
-    color:rgba(0,0,0,0.65);
-    border-radius:3px;
+    color: rgba(0, 0, 0, 0.65);
+    border-radius: 3px;
     font-size: 12px;
 }
+
 .ui-pagination-toPageNum input {
     height: 26px;
     line-height: 26px;
