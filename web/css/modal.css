@@ -30,9 +30,6 @@
 @-moz-keyframes cw{from {opacity:0;}to {opacity:1}}
 @-webkit-keyframes cw{from {opacity:0;}to {opacity:1}}
 @-o-keyframes cw{from {opacity:0;}to {opacity:1}}
-.ui-modal-head,.ui-modal-foot{
-    padding:10px;
-}
 .ui-modal-head {
     overflow: hidden;
     text-align: center;
