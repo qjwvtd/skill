@@ -1,4 +1,31 @@
-/*进度条css*/
+/*直线型进度条*/
+.ui-progress-normal{
+    border:1px solid #ccc;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 5px 0px #ddd inset;
+}
+.ui-progress-normal span {
+    display: inline-block;
+    width: 0;
+    height:inherit;
+    background: #1089ff; /* Old browsers */
+    background: -moz-linear-gradient(45deg, #1089ff 33%, #7db9e8 34%, #7db9e8 59%, #1089ff 60%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(33%,#1089ff), color-stop(34%,#7db9e8), color-stop(59%,#7db9e8), color-stop(60%,#1089ff)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(45deg, #1089ff 33%,#7db9e8 34%,#7db9e8 59%,#1089ff 60%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(45deg, #1089ff 33%,#7db9e8 34%,#7db9e8 59%,#1089ff 60%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(45deg, #1089ff 33%,#7db9e8 34%,#7db9e8 59%,#1089ff 60%); /* IE10+ */
+    background: linear-gradient(45deg, #1089ff 33%,#7db9e8 34%,#7db9e8 59%,#1089ff 60%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1089ff', endColorstr='#1089ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    text-align: center;
+    font-size:10px;
+    color:#fff;
+    transition:width .5s linear;
+    -webkit-transition:width .5s linear;
+    -o-transition:width .5s linear;
+    -moz-transition:width .5s linear;
+}
+/*圆形进度条*/
 .ui-progress{
     position: relative;
 }

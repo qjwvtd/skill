@@ -1,37 +1,38 @@
 /**
- * progress,进度条组件[直线进度条ProgressLine,圆形进度条ProgressCircle]
- * 公共属性：
- * theme:颜色值，string,'red'/'#1089ff'/'rgb(x,x,x)'，默认#1089ff
- * percent:百分比，number，默认0
- * 圆形进度条私有属性：
- * size:大小，number，默认160
- * 直线进度条私有属性：
+ * progress,进度条组件
+ * 直线进度条ProgressNormal:
+ * @params progress真实进度，number
+ * @params width,宽度，number/百分比值
+ * @params size,高度大小，number
+ * <ProgressNormal progress={(Math.random()*100).toFixed(0)} width={360} size={30} />
  **/
 import React,{Component} from 'react';
 //直线进度条
-export class ProgressLine extends Component {
+export class ProgressNormal extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            percent:0,//百分比，number，默认0
-            theme:'#1089ff'//颜色值，string,默认#1089ff
+            progress:0,//百分比，number，默认0
+            width:props.width + 'px' || '100%',//默认100%
+            size:props.size && props.size > 20 ? props.size : 20//默认最小20px
         };
     }
     componentDidMount() {
-        this.setState({
-            percent:this.props.percent ? this.props.percent : this.state.percent,
-            theme:this.props.theme ? this.props.theme : this.state.theme
-        });
+        setTimeout(() => {
+            this.setState({
+                progress:this.props.progress
+            });
+        },0);
     }
 
     render() {
-        const _theme = this.state.theme;
-        const _width = this.state.percent + '%';
+        const __progress = this.state.progress;
+        const __width = this.state.width;
+        const __height = this.state.size;
+        const bsize = __height*2+'px '+__height+'px';
         return (
-            <div className="ui-progress" style={{width:'100%'}}>
-                <div className="ui-progress-line" style={{}}>
-                    <div style={{background:_theme,width:_width}}>{_width}</div>
-                </div>
+            <div className="ui-progress-normal" style={{width:__width,height:__height+'px'}}>
+                <span style={{width:__progress+'%',lineHeight:__height+'px',backgroundSize:bsize}}>{__progress+'%'}</span>
             </div>
         );
     }
@@ -40,14 +41,14 @@ export class ProgressLine extends Component {
 export class ProgressCircle extends Component {
     constructor(props) {
         super(props);
-        this.percent = this.props.percent ? this.props.percent : 0;//百分比，number，默认0
-        this.size = this.props.size ? this.props.size : 160;//默认160px大小
+        this.progress = this.props.progress ? this.props.progress : 0;//百分比，number，默认0
+        this.size = this.props.size ? this.props.size : 120;//默认120px大小
         this.theme = this.props.theme ? this.props.theme : '#1089ff';//默认#1089ff
     }
     componentDidMount() {
         const c1 = this.refs.c1;
         const c2 = this.refs.c2;
-        this.initProgressCircle(c1,c2,this.percent);
+        this.initProgressCircle(c1,c2,this.progress);
     }
     //绘制圆
     initProgressCircle(c1,c2,percent){
