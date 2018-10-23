@@ -20,13 +20,13 @@
 }
 
 .ui-propress-r-shadow {
-    width: 75%;
-    height: 75%;
+    width: 80%;
+    height: 80%;
     border-radius: 50%;
     background: #fff;
     position: absolute;
-    left: 12.5%;
-    top: 12.5%;
+    left: 10%;
+    top: 10%;
 }
 
 .ui-propress-left-part {
@@ -43,13 +43,13 @@
 }
 
 .ui-propress-l-shadow {
-    width: 75%;
-    height: 75%;
+    width: 80%;
+    height: 80%;
     border-radius: 50%;
     background: #fff;
     position: absolute;
-    left: 12.5%;
-    top: 12.5%;
+    left: 10%;
+    top: 10%;
 }
 
 .ui-propress-text-desc{
