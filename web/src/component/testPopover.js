@@ -8,19 +8,16 @@ export default class PopoverTest extends Component {
         super(props);
     }
     openPopoverTop(){
-        popover.top('this is some top text');
+        popover.top('this is some top text,this is some top textthis is some top textthis is some top text');
     }
     openPopoverBottom(){
-        popover.bottom('this is some bottom text');
+        popover.bottom('this is some bottom text,this is some bottom text,this is some bottom text');
     }
     openPopoverLeft(){
-        popover.left('this is some left text,this is some left text,this is some left' +
-            ' text,this is some left text,this is some left text,this is some left text,thi' +
-            's is some left text,this is some left text,' +
-            'this is some left text,this is some left text');
+        popover.left('this is some left text');
     }
     openPopoverRight(){
-        popover.right('this is some bottom text');
+        popover.right('this is some bottom text,this is some bottom text,this is some bottom text,this is some bottom text,');
     }
     render() {
         return (

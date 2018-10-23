@@ -13,56 +13,97 @@
     0% {opacity:0;}
     100% {opacity:1;}
 }
-.ui-popover-content,.ui-popover-icon{
-    position:relative;
-}
-.ui-popover-content{
-    font-size:10px;
-    background:#fff;
+.ui-popover-box{
     border:1px solid #e1e1e1;
-    border-radius:5px;
-    z-index:1;
+    width:180px;
     padding:15px;
-    height:60px;
-    overflow-y: auto;
-    overflow: hidden;
-    text-overflow:ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
+    border-radius:5px;
+    word-wrap:break-word;
+    position:relative;
+    background: #fff;
 }
-.ui-popover-icon{
-    z-index:2;
-}
-.ui-popover-icon span{
-    position:absolute;
+.ui-popover-content span{
     border:1px solid #e1e1e1;
-    display:inline-block;
-    background:#fff;
-    width:14px;
-    height:14px;
     transform: rotate(45deg);
+    width: 14px;
+    height: 14px;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }
-/*上*/
-.ui-popover-top span{
+.ui-popover-content .ui-popover-topIcon{
+    margin: auto auto -8px auto;
     border-width:0 1px 1px 0;
-    top:-8px;
-    left:85px;
 }
-/*下*/
-.ui-popover-bottom span{
-    border-width:1px 0 0 1px;
-    top:-7px;
-    left:85px;
-}
-/*左*/
-.ui-popover-left span{
-    border-width:1px 1px 0 0;
-    left:calc(100% - 8px);
-    margin-top:23px;
-}
-/*right*/
-.ui-popover-right span{
+.ui-popover-content .ui-popover-rightIcon{
+    margin: auto auto auto -8px;
     border-width:0 0 1px 1px;
-    left:-7px;
-    margin-top:23px;
 }
+.ui-popover-content .ui-popover-bottomIcon{
+
+    margin: -8px auto auto auto;
+    border-width:1px 0 0 1px;
+}
+.ui-popover-content .ui-popover-leftIcon{
+    margin: auto -8px auto auto;
+    border-width:1px 1px 0 0;
+}
+/*.ui-popover-content,.ui-popover-icon{*/
+    /*position:relative;*/
+/*}*/
+/*.ui-popover-content{*/
+    /*z-index:998;*/
+    /*font-size:10px;*/
+    /*background:#fff;*/
+    /*border:1px solid #e1e1e1;*/
+    /*border-radius:5px;*/
+    /*padding:15px;*/
+/*}*/
+/*.ui-popover-icon{*/
+    /*z-index:999;!*要比content高*!*/
+/*}*/
+/*.ui-popover-icon span{*/
+    /*position:absolute;*/
+    /*border:1px solid #e1e1e1;*/
+    /*display:inline-block;*/
+    /*background:#fff;*/
+    /*width:14px;*/
+    /*height:14px;*/
+    /*transform: rotate(45deg);*/
+/*}*/
+/*!*上*!*/
+/*.ui-popover-top span{*/
+    /*border-width:0 1px 1px 0;*/
+    /*top:-8px;*/
+    /*left:85px;*/
+/*}*/
+/*!*下*!*/
+/*.ui-popover-bottom span{*/
+    /*border-width:1px 0 0 1px;*/
+    /*top:-7px;*/
+    /*left:85px;*/
+/*}*/
+/*!*左*!*/
+/*.ui-popover-left{*/
+    /*display: flex;*/
+    /*justify-content:center;*/
+    /*align-items:Center;*/
+/*}*/
+/*.ui-popover-left span{*/
+    /*border-width:1px 1px 0 0;*/
+    /*!*left:calc(100% - 8px);*!*/
+    /*!*margin-top:23px;*!*/
+
+    /*overflow: auto;*/
+    /*margin: auto;*/
+    /*top: 0; left: 0; bottom: 0; right: 0;*/
+/*}*/
+/*!*right*!*/
+/*.ui-popover-right span{*/
+    /*border-width:0 0 1px 1px;*/
+    /*left:-7px;*/
+    /*margin-top:23px;*/
+/*}*/

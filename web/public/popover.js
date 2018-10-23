@@ -5,8 +5,7 @@
 //随机字符串,用于插件随机ID
 function randomString(len) {
     len = len || 32;
-    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
-    const $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+    const $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const maxPos = $chars.length;
     let str = '';
     for (let i = 0; i < len; i++) {
@@ -17,36 +16,35 @@ function randomString(len) {
 class Popover{
     constructor(){
         this.body = window.document.body;
+        this.node = null;
     }
     top(text,event){
         if(!text){
             //必须传入text
             return;
         }
-        const box = document.getElementsByClassName('ui-popover')[0];
-        if(box){
-            this.body.removeChild(box);
+        const templete = '<div class="ui-popover-box ui-popover-content">'+text+'<span class="ui-popover-topIcon"></span></div>',
+            e = event || window.event,
+            target = e.target || e.srcElement,
+            pointX = e.clientX,
+            pointy = e.clientY;
+        if(!this.node){
+            this.body.style.paddingRight = '17px';
+            this.body.style.overflow = 'hidden';
+            this.node = document.createElement('a');
+            this.node.className = "ui-popover";
+            this.node.innerHTML = templete;
+            this.body.appendChild(this.node);
+            const nodeHeight = this.node.clientHeight;
+            this.node.style.cssText = 'left:'+(pointX - 90)+'px;top:'+(pointy - nodeHeight - 12)+'px;';
         }
-        this.body.style.paddingRight = '17px';
-        this.body.style.overflow = 'hidden';
-        const templete = '<div class="ui-popover-box">' +
-            '<div class="ui-popover-content">'+text+'</div>'+
-            '<div class="ui-popover-icon ui-popover-top"><span></span></div>'+
-            '</div>';
-        const e = event || window.event;
-        const target = e.target || e.srcElement;
-        const pointX = e.clientX;
-        const pointy = e.clientY;
-        const node = document.createElement('a');
-        node.className = "ui-popover";
-        node.innerHTML = templete;
-        this.body.appendChild(node);
-        const nodeHeight = node.clientHeight;
-        node.style.cssText = 'left:'+(pointX - 90)+'px;top:'+(pointy - nodeHeight - 12)+'px;';
         target.onmouseout = () => {
-            this.body.removeChild(node);
-            this.body.style.paddingRight = '';
-            this.body.style.overflow = '';
+            if(this.node != null){
+                this.body.removeChild(this.node);
+                this.body.style.paddingRight = '';
+                this.body.style.overflow = '';
+                this.node = null;
+            }
         };
     }
     bottom(text,event){
@@ -54,30 +52,28 @@ class Popover{
             //必须传入text
             return;
         }
-        const box = document.getElementsByClassName('ui-popover')[0];
-        if(box){
-            this.body.removeChild(box);
+        const templete = '<div class="ui-popover-box ui-popover-content">'+text+'<span class="ui-popover-bottomIcon"></span></div>',
+            e = event || window.event,
+            target = e.target || e.srcElement,
+            pointX = e.clientX,
+            pointy = e.clientY;
+        if(!this.node){
+            this.body.style.paddingRight = '17px';
+            this.body.style.overflow = 'hidden';
+            this.node = document.createElement('a');
+            this.node.className = "ui-popover";
+            this.node.innerHTML = templete;
+            this.body.appendChild(this.node);
+            const nodeHeight = this.node.clientHeight;
+            this.node.style.cssText = 'left:'+(pointX - 90)+'px;top:'+(pointy + nodeHeight/2 - 20)+'px;';
         }
-        this.body.style.paddingRight = '17px';
-        this.body.style.overflow = 'hidden';
-        const templete = '<div class="ui-popover-box">' +
-            '<div class="ui-popover-icon ui-popover-bottom"><span></span></div>'+
-            '<div class="ui-popover-content">'+text+'</div>'+
-            '</div>';
-        const e = event || window.event;
-        const target = e.target || e.srcElement;
-        const pointX = e.clientX;
-        const pointy = e.clientY;
-        const node = document.createElement('a');
-        node.className = "ui-popover";
-        node.innerHTML = templete;
-        this.body.appendChild(node);
-        const nodeHeight = node.clientHeight;
-        node.style.cssText = 'left:'+(pointX - 90)+'px;top:'+(pointy + nodeHeight/2)+'px;';
         target.onmouseout = () => {
-            this.body.removeChild(node);
-            this.body.style.paddingRight = '';
-            this.body.style.overflow = '';
+            if(this.node != null){
+                this.body.removeChild(this.node);
+                this.body.style.paddingRight = '';
+                this.body.style.overflow = '';
+                this.node = null;
+            }
         };
     }
     left(text,event){
@@ -85,31 +81,29 @@ class Popover{
             //必须传入text
             return;
         }
-        const box = document.getElementsByClassName('ui-popover')[0];
-        if(box){
-            this.body.removeChild(box);
+        const templete = '<div class="ui-popover-box ui-popover-content">'+text+'<span class="ui-popover-leftIcon"></span></div>',
+            e = event || window.event,
+            target = e.target || e.srcElement,
+            pointX = e.clientX,
+            pointy = e.clientY;
+        if(!this.node){
+            this.body.style.paddingRight = '17px';
+            this.body.style.overflow = 'hidden';
+            this.node = document.createElement('a');
+            this.node.className = "ui-popover";
+            this.node.innerHTML = templete;
+            this.body.appendChild(this.node);
+            const nodeWidth = this.node.clientWidth;
+            const nodeHeight = this.node.clientHeight;
+            this.node.style.cssText = 'left:'+(pointX - nodeWidth - 12)+'px;top:'+(pointy - nodeHeight/2)+'px;';
         }
-        this.body.style.paddingRight = '17px';
-        this.body.style.overflow = 'hidden';
-        const templete = '<div class="ui-popover-box">' +
-            '<div class="ui-popover-icon ui-popover-left"><span></span></div>'+
-            '<div class="ui-popover-content">'+text+'</div>'+
-            '</div>';
-        const e = event || window.event;
-        const target = e.target || e.srcElement;
-        const pointX = e.clientX;
-        const pointy = e.clientY;
-        const node = document.createElement('a');
-        node.className = "ui-popover";
-        node.innerHTML = templete;
-        this.body.appendChild(node);
-        const nodeWidth = node.clientWidth;
-        const nodeHeight = node.clientHeight;
-        node.style.cssText = 'left:'+(pointX - nodeWidth - 12)+'px;top:'+(pointy - nodeHeight/2)+'px;';
         target.onmouseout = () => {
-            this.body.removeChild(node);
-            this.body.style.paddingRight = '';
-            this.body.style.overflow = '';
+            if(this.node != null){
+                this.body.removeChild(this.node);
+                this.body.style.paddingRight = '';
+                this.body.style.overflow = '';
+                this.node = null;
+            }
         };
     }
     right(text,event){
@@ -117,31 +111,28 @@ class Popover{
             //必须传入text
             return;
         }
-        const box = document.getElementsByClassName('ui-popover')[0];
-        if(box){
-            this.body.removeChild(box);
+        const templete = '<div class="ui-popover-box ui-popover-content">'+text+'<span class="ui-popover-rightIcon"></span></div>',
+            e = event || window.event,
+            target = e.target || e.srcElement,
+            pointX = e.clientX,
+            pointy = e.clientY;
+        if(!this.node){
+            this.body.style.paddingRight = '17px';
+            this.body.style.overflow = 'hidden';
+            this.node = document.createElement('a');
+            this.node.className = "ui-popover";
+            this.node.innerHTML = templete;
+            this.body.appendChild(this.node);
+            const nodeHeight = this.node.clientHeight;
+            this.node.style.cssText = 'left:'+(pointX + 24)+'px;top:'+(pointy - nodeHeight/2)+'px;';
         }
-        this.body.style.paddingRight = '17px';
-        this.body.style.overflow = 'hidden';
-        const templete = '<div class="ui-popover-box">' +
-            '<div class="ui-popover-icon ui-popover-right"><span></span></div>'+
-            '<div class="ui-popover-content">'+text+'</div>'+
-            '</div>';
-        const e = event || window.event;
-        const target = e.target || e.srcElement;
-        const pointX = e.clientX;
-        const pointy = e.clientY;
-        const node = document.createElement('a');
-        node.className = "ui-popover";
-        node.innerHTML = templete;
-        this.body.appendChild(node);
-        const nodeWidth = node.clientWidth;
-        const nodeHeight = node.clientHeight;
-        node.style.cssText = 'left:'+(pointX + 24)+'px;top:'+(pointy - nodeHeight/2)+'px;';
         target.onmouseout = () => {
-            this.body.removeChild(node);
-            this.body.style.paddingRight = '';
-            this.body.style.overflow = '';
+            if(this.node != null){
+                this.body.removeChild(this.node);
+                this.body.style.paddingRight = '';
+                this.body.style.overflow = '';
+                this.node = null;
+            }
         };
     }
 }
