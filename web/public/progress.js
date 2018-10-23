@@ -36,9 +36,9 @@ export class Progress extends Component {
         const size = this.state.size;
         const leftRect = 'rect(0px, ' + size / 2 + 'px, auto, 0px)';
         const rightRect = 'rect(0px, auto, auto, ' + size / 2 + 'px)';
-        const right = document.getElementById("right"),
-            left = document.getElementById("left"),
-            desc = document.getElementById("desc");
+        const right = this.refs.right;
+        const left = this.refs.left;
+        const desc = this.refs.desc;
         if (p > 100 || p < 0) {
             p = 100;
         }
@@ -70,14 +70,14 @@ export class Progress extends Component {
         return (
             <div className="ui-propress-wrap" style={{width:size+'px',height:size+'px'}}>
                 <div className="ui-propress-right-part">
-                    <div className="ui-propress-right" id="right"></div>
+                    <div className="ui-propress-right" ref="right"></div>
                     <div className="ui-propress-r-shadow"></div>
                 </div>
                 <div className="ui-propress-left-part">
-                    <div className="ui-propress-left" id="left"></div>
+                    <div className="ui-propress-left" ref="left"></div>
                     <div className="ui-propress-l-shadow"></div>
                 </div>
-                <span className="ui-propress-text-desc" id="desc" style={{lineHeight:size+'px'}}>{this.state.progress}</span>
+                <span className="ui-propress-text-desc" ref="desc" style={{lineHeight:size+'px'}}>{this.state.progress}</span>
             </div>
         );
     }
