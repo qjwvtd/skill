@@ -26,10 +26,10 @@
     -webkit-animation:cw .25s;
     -o-animation:cw .25s;
 }
-@keyframes cw{from {opacity:0;}to {opacity:1}}
-@-moz-keyframes cw{from {opacity:0;}to {opacity:1}}
-@-webkit-keyframes cw{from {opacity:0;}to {opacity:1}}
-@-o-keyframes cw{from {opacity:0;}to {opacity:1}}
+@keyframes cw{from {opacity:0;top:25%;transform: translate(-50%, -25%);}to {opacity:1;top:50%;transform: translate(-50%, -50%);}}
+@-moz-keyframes cw{from {opacity:0;top:25%;transform: translate(-50%, -25%);}to {opacity:1;top:50%;transform: translate(-50%, -50%);}}
+@-webkit-keyframes cw{from {opacity:0;top:25%;transform: translate(-50%, -25%);}to {opacity:1;top:50%;transform: translate(-50%, -50%);}}
+@-o-keyframes cw{from {opacity:0;top:25%;transform: translate(-50%, -25%);}to {opacity:1;top:50%;transform: translate(-50%, -50%);}}
 .ui-modal-head {
     overflow: hidden;
     text-align: center;
