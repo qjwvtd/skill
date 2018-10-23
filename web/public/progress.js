@@ -1,7 +1,7 @@
 /**
  * progress,进度条组件[三种]
  * 圆形进度条div:
- * @params progress真实进度，number[1-100]
+ * @params progress真实进度，0-1之间的浮点数
  * @params size,直径，number
  * @params theme,进度条的颜色，string
  * <Progress progress={(Math.random()*100).toFixed(0)} size={100} theme={'#1089ff'} />
