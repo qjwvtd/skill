@@ -1,3 +1,66 @@
+/*圆形进度条div*/
+.ui-propress-wrap {
+    position: relative;
+    border-radius: 50%;
+    background: #ccc;
+    text-align: center;
+}
+
+.ui-propress-right-part {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+}
+
+.ui-propress-right {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.ui-propress-r-shadow {
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    left: 12.5%;
+    top: 12.5%;
+}
+
+.ui-propress-left-part {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+}
+
+.ui-propress-left {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.ui-propress-l-shadow {
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    left: 12.5%;
+    top: 12.5%;
+}
+
+.ui-propress-text-desc{
+    display: inline-block;
+    width: inherit;
+    height: inherit;
+    font-size: 10px;
+    position: absolute;
+    left: 0;
+}
+
 /*直线型进度条*/
 .ui-progress-normal{
     border:1px solid #ccc;
@@ -25,7 +88,8 @@
     -o-transition:width .5s linear;
     -moz-transition:width .5s linear;
 }
-/*圆形进度条*/
+
+/*圆形进度条画布*/
 .ui-progress{
     position: relative;
 }
@@ -64,15 +128,4 @@
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
-}
-
-.ui-progress .ui-progress-line{
-    border-radius:6px;
-    background:#ccc;
-    width:inherit;
-}
-.ui-progress .ui-progress-line div{
-    border-radius:6px;
-    text-align:center;
-    color:#fff;
 }
