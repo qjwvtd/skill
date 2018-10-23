@@ -41,8 +41,7 @@ export class Progress extends Component {
         const desc = this.refs.desc;
         if (p > 100 || p < 0) {
             p = 100;
-        }
-        ;
+        };
         if (deg <= 180) {
             right.style.cssText = 'background:'+theme+';transform:rotate(' + (deg - 180) + 'deg);clip:' + rightRect;
             left.style.cssText = 'background:#ccc;clip:' + leftRect;
