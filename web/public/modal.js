@@ -55,6 +55,6 @@ export default class Modal extends Component{
                 </div>
             </div>
         </div>;
-        return this.props.visible ? createPortal(this.node,this.body) : null;
+        return this.props.visible && createPortal(this.node,this.body);
     }
 }
