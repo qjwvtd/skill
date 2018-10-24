@@ -18,8 +18,8 @@ export default class PaginationTest extends Component {
         return (
             <div>
                 <Pagination pageNumber={1} pageSize={10} total={20} onChange={this.onPagination.bind(this)} />
-                <Pagination  total={30} onChange={this.onPagination.bind(this)} />
-                <PaginationMini pageNumber={1} pageSize={10} total={15} onChange={this.onPagination.bind(this)} />
+                <Pagination total={30} onChange={this.onPagination.bind(this)} />
+                <PaginationMini total={15} onChange={this.onPagination.bind(this)} />
             </div>
         );
     }
