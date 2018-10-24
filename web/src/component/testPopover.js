@@ -19,6 +19,10 @@ export default class PopoverTest extends Component {
     openPopoverRight(){
         popover.right('this is some bottom text,this is some bottom text,this is some bottom text,this is some bottom text,');
     }
+    openInputPopover(event){
+        let value = event.currentTarget.value;
+        popover.top(value.length == 0 ? 'value is null' : 'value is '+value);
+    }
     render() {
         return (
             <div>
@@ -26,6 +30,12 @@ export default class PopoverTest extends Component {
                 <button className="btn btn-promise" onClick={this.openPopoverBottom.bind(this)}>popover bottom</button>
                 <button className="btn btn-promise" onClick={this.openPopoverLeft.bind(this)}>popover left</button>
                 <button className="btn btn-promise" onClick={this.openPopoverRight.bind(this)}>popover right</button>
+                <br/>
+                <input
+                    type="text"
+                    style={{width:'160px',height:'32px',lineHeight:'32px',marginTop:'10px'}}
+                    onClick={this.openInputPopover.bind(this)}
+                />
             </div>
         );
     }
