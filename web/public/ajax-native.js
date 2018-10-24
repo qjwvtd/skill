@@ -79,7 +79,7 @@ function ajax(params) {
             if (xhr.readyState == 4 && !requestDone) {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     let data = options.dataType == "xml" ? xhr.responseXML : xhr.responseText;
-                    console.log(data)
+                    console.log(data);
                     if (options.dataType == "json") {
                         try {
                             data = JSON.parse(data);

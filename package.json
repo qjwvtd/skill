@@ -8,7 +8,8 @@
   "scripts": {
     "server": "node server/server.js",
     "start": "webpack-dev-server --mode development --config webpack.dev.js",
-    "build": "webpack -p --mode production --config webpack.prod.js"
+    "build": "webpack -p --mode production --config webpack.prod.js",
+    "lint": "eslint --fix --ext .js,.jsx web"
   },
   "devDependencies": {
     "axios": "0.18.0",

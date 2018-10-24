@@ -39,9 +39,9 @@ export class Cookie {
     }
 
     removeCookie(name) {
-        var exp = new Date();
+        let exp = new Date();
         exp.setTime(exp.getTime() - 1);
-        var cval = this.getCookie(name);
+        let cval = this.getCookie(name);
         if (cval != null) {
             document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
         }
