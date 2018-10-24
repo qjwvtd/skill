@@ -17,15 +17,25 @@ class Popover{
     constructor(){
         this.body = window.document.body;
         this.node = null;
+        this.clear = () => {
+            if(this.node != null){
+                this.body.removeChild(this.node);
+                this.body.style.paddingRight = '';
+                this.body.style.overflow = '';
+                this.node = null;
+            }
+        };
     }
     top(text,event){
         if(!text){
             //必须传入text
             return;
         }
+        if(this.node != null){
+            this.clear();
+        }
         const templete = '<div class="ui-popover-box ui-popover-content">'+text+'<span class="ui-popover-topIcon"></span></div>',
             e = event || window.event,
-            target = e.target || e.srcElement,
             pointX = e.clientX,
             pointy = e.clientY;
         if(!this.node){
@@ -38,23 +48,20 @@ class Popover{
             const nodeHeight = this.node.clientHeight;
             this.node.style.cssText = 'left:'+(pointX - 90)+'px;top:'+(pointy - nodeHeight - 12)+'px;';
         }
-        target.onmouseout = () => {
-            if(this.node != null){
-                this.body.removeChild(this.node);
-                this.body.style.paddingRight = '';
-                this.body.style.overflow = '';
-                this.node = null;
-            }
-        };
+        setTimeout(() => {
+            this.clear();
+        },2000);
     }
     bottom(text,event){
         if(!text){
             //必须传入text
             return;
         }
+        if(this.node != null){
+            this.clear();
+        }
         const templete = '<div class="ui-popover-box ui-popover-content">'+text+'<span class="ui-popover-bottomIcon"></span></div>',
             e = event || window.event,
-            target = e.target || e.srcElement,
             pointX = e.clientX,
             pointy = e.clientY;
         if(!this.node){
@@ -67,23 +74,20 @@ class Popover{
             const nodeHeight = this.node.clientHeight;
             this.node.style.cssText = 'left:'+(pointX - 90)+'px;top:'+(pointy + nodeHeight/2 - 20)+'px;';
         }
-        target.onmouseout = () => {
-            if(this.node != null){
-                this.body.removeChild(this.node);
-                this.body.style.paddingRight = '';
-                this.body.style.overflow = '';
-                this.node = null;
-            }
-        };
+        setTimeout(() => {
+            this.clear();
+        },2000);
     }
     left(text,event){
         if(!text){
             //必须传入text
             return;
         }
+        if(this.node != null){
+            this.clear();
+        }
         const templete = '<div class="ui-popover-box ui-popover-content">'+text+'<span class="ui-popover-leftIcon"></span></div>',
             e = event || window.event,
-            target = e.target || e.srcElement,
             pointX = e.clientX,
             pointy = e.clientY;
         if(!this.node){
@@ -97,23 +101,20 @@ class Popover{
             const nodeHeight = this.node.clientHeight;
             this.node.style.cssText = 'left:'+(pointX - nodeWidth - 12)+'px;top:'+(pointy - nodeHeight/2)+'px;';
         }
-        target.onmouseout = () => {
-            if(this.node != null){
-                this.body.removeChild(this.node);
-                this.body.style.paddingRight = '';
-                this.body.style.overflow = '';
-                this.node = null;
-            }
-        };
+        setTimeout(() => {
+            this.clear();
+        },2000);
     }
     right(text,event){
         if(!text){
             //必须传入text
             return;
         }
+        if(this.node != null){
+            this.clear();
+        }
         const templete = '<div class="ui-popover-box ui-popover-content">'+text+'<span class="ui-popover-rightIcon"></span></div>',
             e = event || window.event,
-            target = e.target || e.srcElement,
             pointX = e.clientX,
             pointy = e.clientY;
         if(!this.node){
@@ -126,14 +127,9 @@ class Popover{
             const nodeHeight = this.node.clientHeight;
             this.node.style.cssText = 'left:'+(pointX + 24)+'px;top:'+(pointy - nodeHeight/2)+'px;';
         }
-        target.onmouseout = () => {
-            if(this.node != null){
-                this.body.removeChild(this.node);
-                this.body.style.paddingRight = '';
-                this.body.style.overflow = '';
-                this.node = null;
-            }
-        };
+        setTimeout(() => {
+            this.clear();
+        },2000);
     }
 }
 const popover = new Popover();
