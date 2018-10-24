@@ -34,7 +34,7 @@ class Popover{
         if(this.node != null){
             this.clear();
         }
-        const templete = '<div class="ui-popover-box ui-popover-content">'+text+'<span class="ui-popover-topIcon"></span></div>',
+        const templete = '<div class="ui-popover-box">'+text+'<span class="ui-popover-topIcon"></span></div>',
             e = event || window.event,
             pointX = e.clientX,
             pointy = e.clientY;

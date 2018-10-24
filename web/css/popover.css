@@ -22,7 +22,7 @@
     position:relative;
     background: #fff;
 }
-.ui-popover-content span{
+.ui-popover-box span{
     border:1px solid #e1e1e1;
     transform: rotate(45deg);
     width: 14px;
@@ -34,15 +34,15 @@
     bottom: 0;
     right: 0;
 }
-.ui-popover-content .ui-popover-topIcon{
+.ui-popover-box .ui-popover-topIcon{
     margin: auto auto -8px auto;
     border-width:0 1px 1px 0;
 }
-.ui-popover-content .ui-popover-rightIcon{
+.ui-popover-box .ui-popover-rightIcon{
     margin: auto auto auto -8px;
     border-width:0 0 1px 1px;
 }
-.ui-popover-content .ui-popover-bottomIcon{
+.ui-popover-box .ui-popover-bottomIcon{
 
     margin: -8px auto auto auto;
     border-width:1px 0 0 1px;
