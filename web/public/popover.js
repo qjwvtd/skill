@@ -36,6 +36,7 @@ class Popover{
         }
         const templete = '<div class="ui-popover-box">'+text+'<span class="ui-popover-topIcon"></span></div>',
             e = event || window.event,
+            target = e.target || e.srcElement,
             pointX = e.clientX,
             pointy = e.clientY;
         if(!this.node){
@@ -48,9 +49,9 @@ class Popover{
             const nodeHeight = this.node.clientHeight;
             this.node.style.cssText = 'left:'+(pointX - 90)+'px;top:'+(pointy - nodeHeight - 12)+'px;';
         }
-        setTimeout(() => {
+        target.onmouseout = () => {
             this.clear();
-        },2000);
+        };
     }
     bottom(text,event){
         if(!text){
@@ -62,6 +63,7 @@ class Popover{
         }
         const templete = '<div class="ui-popover-box ui-popover-content">'+text+'<span class="ui-popover-bottomIcon"></span></div>',
             e = event || window.event,
+            target = e.target || e.srcElement,
             pointX = e.clientX,
             pointy = e.clientY;
         if(!this.node){
@@ -74,9 +76,9 @@ class Popover{
             const nodeHeight = this.node.clientHeight;
             this.node.style.cssText = 'left:'+(pointX - 90)+'px;top:'+(pointy + nodeHeight/2 - 20)+'px;';
         }
-        setTimeout(() => {
+        target.onmouseout = () => {
             this.clear();
-        },2000);
+        };
     }
     left(text,event){
         if(!text){
@@ -88,6 +90,7 @@ class Popover{
         }
         const templete = '<div class="ui-popover-box ui-popover-content">'+text+'<span class="ui-popover-leftIcon"></span></div>',
             e = event || window.event,
+            target = e.target || e.srcElement,
             pointX = e.clientX,
             pointy = e.clientY;
         if(!this.node){
@@ -101,9 +104,9 @@ class Popover{
             const nodeHeight = this.node.clientHeight;
             this.node.style.cssText = 'left:'+(pointX - nodeWidth - 12)+'px;top:'+(pointy - nodeHeight/2)+'px;';
         }
-        setTimeout(() => {
+        target.onmouseout = () => {
             this.clear();
-        },2000);
+        };
     }
     right(text,event){
         if(!text){
@@ -115,6 +118,7 @@ class Popover{
         }
         const templete = '<div class="ui-popover-box ui-popover-content">'+text+'<span class="ui-popover-rightIcon"></span></div>',
             e = event || window.event,
+            target = e.target || e.srcElement,
             pointX = e.clientX,
             pointy = e.clientY;
         if(!this.node){
@@ -127,9 +131,9 @@ class Popover{
             const nodeHeight = this.node.clientHeight;
             this.node.style.cssText = 'left:'+(pointX + 24)+'px;top:'+(pointy - nodeHeight/2)+'px;';
         }
-        setTimeout(() => {
+        target.onmouseout = () => {
             this.clear();
-        },2000);
+        };
     }
 }
 const popover = new Popover();
