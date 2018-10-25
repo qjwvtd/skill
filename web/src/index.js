@@ -59,6 +59,8 @@ import ProgressTest from './component/testProgress';
 import TreeTest from './component/testTree';
 //ElementTest
 import ElementTest from './component/testElement';
+//CssNavTest
+import CssNavTest from './component/testCssNavs';
 
 //es6/7
 import {MathArrayMax,Es6Map} from './component/ES678';
@@ -188,6 +190,9 @@ class App extends Component{
                 </div>
                 <div className="play">
                     <ElementTest />
+                </div>
+                <div className="play">
+                    <CssNavTest />
                 </div>
             </div>
         );
