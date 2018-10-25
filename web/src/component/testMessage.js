@@ -25,10 +25,10 @@ export default class MessageTest extends Component {
         return (
             <div>
                 <h5>消息组件（纯函数实现）</h5>
-                <button className="btn btn-promise" onClick={this.onSuccess.bind(this)}>success</button>
-                <button className="btn btn-promise" onClick={this.onInfo.bind(this)}>info</button>
-                <button className="btn btn-promise" onClick={this.onWarning.bind(this)}>warning</button>
-                <button className="btn btn-promise" onClick={this.onError.bind(this)}>error</button>
+                <button className="btn btn-primary" onClick={this.onSuccess.bind(this)}>success</button>
+                <button className="btn btn-primary" onClick={this.onInfo.bind(this)}>info</button>
+                <button className="btn btn-primary" onClick={this.onWarning.bind(this)}>warning</button>
+                <button className="btn btn-primary" onClick={this.onError.bind(this)}>error</button>
             </div>
         );
     }

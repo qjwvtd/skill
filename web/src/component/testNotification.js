@@ -18,8 +18,8 @@ export default class NotificationTest extends Component {
         return (
             <div>
                 <h5>通知(notification)</h5>
-                <button className="btn btn-promise" onClick={this.onOpenRender.bind(this)}>需要手动关闭</button>
-                <button className="btn btn-promise" onClick={this.onOpenAuto.bind(this)}>会自动关闭</button>
+                <button className="btn btn-primary" onClick={this.onOpenRender.bind(this)}>需要手动关闭</button>
+                <button className="btn btn-primary" onClick={this.onOpenAuto.bind(this)}>会自动关闭</button>
             </div>
         );
     }

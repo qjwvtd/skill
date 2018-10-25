@@ -30,7 +30,7 @@ export default class ModalTest extends Component {
             <div>
                 <h5>模态窗口</h5>
                 <div>
-                    <button type="button" className="btn btn-md btn-promise" onClick={this.openModal.bind(this)}>open modal</button>
+                    <button type="button" className="btn btn-md btn-primary" onClick={this.openModal.bind(this)}>open modal</button>
                 </div>
                 <Modal width={'400px'} visible={this.state.visible} onChange={this.closeModal.bind(this)}>
                     <p>this is some context</p>

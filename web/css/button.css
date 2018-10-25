@@ -10,7 +10,6 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    border: 1px solid transparent;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -20,6 +19,49 @@
 }
 .btn:not(:disabled):not(.disabled) {cursor: pointer;}
 .btn:hover,.btn.active{opacity:1}
-/*color*/
-.btn-promise{background:#1890ff;color:#fff;}
-/*size*/
+/*group*/
+.btn-group{
+    padding: .375rem .75rem;
+}
+/*#####华丽的分界线#####*/
+/*primary*/
+.btn-primary{background:#1890ff;color:#fff;border: 1px solid #1890ff;}
+.btn-empty-primary{background:#fff;color:#1890ff;border:1px solid #1890ff;}
+.btn-primary:hover,.btn-empty-primary:hover{box-shadow: 0 0 15px #1089ff;}
+/*secondary*/
+.btn-secondary{background:#6c757d;color:#fff;border: 1px solid #6c757d;}
+.btn-empty-secondary{background:#fff;color:#6c757d;border:1px solid #6c757d;}
+.btn-secondary:hover,.btn-empty-secondary:hover{box-shadow: 0 0 15px #6c757d;}
+/*success*/
+.btn-success{background:#28a745;color:#fff;border: 1px solid #28a745;}
+.btn-empty-success{background:#fff;color:#28a745;border:1px solid #28a745;}
+.btn-success:hover,.btn-empty-success:hover{box-shadow: 0 0 15px #28a745;}
+/*danger*/
+.btn-danger{background:#dc3545;color:#fff;border: 1px solid #dc3545;}
+.btn-empty-danger{background:#fff;color:#dc3545;border:1px solid #dc3545;}
+.btn-danger:hover,.btn-empty-danger:hover{box-shadow: 0 0 15px #dc3545;}
+/*warning*/
+.btn-warning{background:#ffc107;color:#fff;border: 1px solid #ffc107;}
+.btn-empty-warning{background:#fff;color:#ffc107;border:1px solid #ffc107;}
+.btn-warning:hover,.btn-empty-warning:hover{box-shadow: 0 0 15px #ffc107;}
+/*info*/
+.btn-info{background:#17a2b8;color:#fff;border: 1px solid #17a2b8;}
+.btn-empty-info{background:#fff;color:#17a2b8;border:1px solid #17a2b8;}
+.btn-info:hover,.btn-empty-info:hover{box-shadow: 0 0 15px #17a2b8;}
+/*default*/
+.btn-default{background:#d9d9d9;color:#fff;border: 1px solid #d9d9d9;}
+.btn-empty-default{background:#fff;color:#d9d9d9;border:1px solid #d9d9d9;}
+.btn-default:hover,.btn-empty-default:hover{box-shadow: 0 0 15px #d9d9d9;}
+/*black*/
+.btn-black{background:#343a40;color:#fff;border: 1px solid #343a40;}
+.btn-empty-black{background:#fff;color:#000;border:1px solid #343a40;}
+.btn-black:hover,.btn-empty-black:hover{box-shadow: 0 0 15px #343a40;}
+/*#####华丽的分界线#####*/
+.btn-lg{padding: .6rem 1.2rem !important;}
+.btn-md{padding: .375rem .75rem !important;}
+.btn-sm{padding: .25rem .5rem !important;}
+.btn-xs{padding: .1rem .2rem !important;}
+/*#####华丽的分界线#####*/
+.btn-block{padding: .6rem 1.2rem !important;display: block !important;width:100%}
+/*#####华丽的分界线#####*/
+.btn-pie{border-radius: 50% !important;padding: .75rem .75rem !important;}

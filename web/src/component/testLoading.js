@@ -30,7 +30,7 @@ export default class LoadingTest extends Component{
                 </div>
                 ----------------------------------------------
                 <div>
-                    <button className="btn btn-promise" onClick={this.mainEvent.bind(this)}>start loading</button>
+                    <button className="btn btn-primary" onClick={this.mainEvent.bind(this)}>start loading</button>
                     <Loading status={this.state.isLoading} />
                 </div>
             </div>

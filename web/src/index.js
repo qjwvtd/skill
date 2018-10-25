@@ -11,6 +11,8 @@ import VerifyCodeBtn from './../public/verificationCodeBtn';
 import {isNumber,ranNumber,randomString,randomColor,round,setUuid} from './../public/util';
 //browser
 import browser from './../public/browser';
+//ButtonTest
+import ButtonTest from './component/testButton';
 //Star
 import Rate from './../public/rate';
 //AjaxTest
@@ -87,6 +89,9 @@ class App extends Component{
     render(){
         return (
             <div>
+                <div className="play">
+                    <ButtonTest />
+                </div>
                 <div className="play">
                     <PageTest />
                 </div>

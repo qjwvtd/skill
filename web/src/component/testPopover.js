@@ -26,10 +26,10 @@ export default class PopoverTest extends Component {
     render() {
         return (
             <div>
-                <button className="btn btn-promise" onClick={this.openPopoverTop.bind(this)}>popover top</button>
-                <button className="btn btn-promise" onClick={this.openPopoverBottom.bind(this)}>popover bottom</button>
-                <button className="btn btn-promise" onClick={this.openPopoverLeft.bind(this)}>popover left</button>
-                <button className="btn btn-promise" onClick={this.openPopoverRight.bind(this)}>popover right</button>
+                <button className="btn btn-primary" onClick={this.openPopoverTop.bind(this)}>popover top</button>
+                <button className="btn btn-primary" onClick={this.openPopoverBottom.bind(this)}>popover bottom</button>
+                <button className="btn btn-primary" onClick={this.openPopoverLeft.bind(this)}>popover left</button>
+                <button className="btn btn-primary" onClick={this.openPopoverRight.bind(this)}>popover right</button>
                 <br/>
                 <input
                     type="text"
