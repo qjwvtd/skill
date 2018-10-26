@@ -9,10 +9,10 @@ export default class NotificationTest extends Component {
     }
 
     onOpenRender(){
-        notification.render('the notification infomations，需要手动关闭!');
+        notification.open('不传delay,需要手动关闭!');
     }
     onOpenAuto(){
-        notification.auto('the notification infomations，会自动关闭!',2500);
+        notification.open('传delay,3秒后自动关闭!',3000);
     }
     render() {
         return (

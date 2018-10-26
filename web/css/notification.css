@@ -8,13 +8,14 @@
     max-width:320px;
     min-width:240px;
     opacity:0;
-    animation:boxChange 0.3s;
+    animation:boxShow 0.3s;
+    border-radius:3px;
 }
 .ui-notification-box.active{
     opacity:1;
     right:20px;
 }
-@keyframes boxChange {
+@keyframes boxShow {
     0%{right:-360px;opacity:0;}
     100%{right:20px;opacity:1;}
 }
@@ -39,4 +40,5 @@
 .ui-notification-box>.ui-notification-body>.ui-notification-centent{
     margin-top:24px;
     padding:10px 20px 34px 20px;
+    text-align:center;
 }
