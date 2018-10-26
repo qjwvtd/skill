@@ -1,6 +1,5 @@
 /*message[success|warning|error]*/
 .ui-message-box{
-    /*border:1px solid #e1e1e1;*/
     position:fixed;
     z-index:999999999;
     background:#fff;
@@ -19,6 +18,8 @@
     animation:msgShow 0.3s !important;
 }
 .ui-message-body{
+    display:inline-block;
+    width:100%;
     padding:20px;
     border-radius:3px;
 }

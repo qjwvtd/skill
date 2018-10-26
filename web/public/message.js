@@ -12,11 +12,10 @@ const message = {
     body: document.body,
     __delay: 3000,//默认3秒后remove
     success:function(text){
-        if(!text){return;}
         let delay = this.__delay;//默认延迟3秒关闭
         const successTemplate = '<a class="ui-message-body ui-message-success">' +
             '<span class="ui-message-success-icon">√</span>' +
-            '<span>'+text+'</span>' +
+            '<span>'+(text ? text : '')+'</span>' +
             '</a>';
         const container = document.createElement('div');
         container.className = 'ui-message-box active';
@@ -33,11 +32,10 @@ const message = {
         },this.__delay);
     },
     info:function(text){
-        if(!text){return;}
         let delay = this.__delay;//默认延迟3秒关闭
         const infoTemplate = '<a class="ui-message-body ui-message-info">' +
             '<span class="ui-message-info-icon">i</span>' +
-            '<span>'+text+'</span>' +
+            '<span>'+(text ? text : '')+'</span>' +
             '</a>';
         const container = document.createElement('div');
         container.className = 'ui-message-box active';
@@ -54,11 +52,10 @@ const message = {
         },this.__delay);
     },
     warning:function(text){
-        if(!text){return;}
         let delay = this.__delay;//默认延迟3秒关闭
         const warningTemplate = '<a class="ui-message-body ui-message-warning">' +
             '<span class="ui-message-warning-icon">!</span>' +
-            '<span>'+text+'</span>' +
+            '<span>'+(text ? text : '')+'</span>' +
             '</a>';
         const container = document.createElement('div');
         container.className = 'ui-message-box active';
@@ -75,11 +72,10 @@ const message = {
         },this.__delay);
     },
     error:function(text){
-        if(!text){return;}
         let delay = this.__delay;//默认延迟3秒关闭
         const errorTemplate = '<a class="ui-message-body ui-message-error">' +
             '<span class="ui-message-error-icon">×</span>' +
-            '<span>'+text+'</span>' +
+            '<span>'+(text ? text : '')+'</span>' +
             '</a>';
         const container = document.createElement('div');
         container.className = 'ui-message-box active';
