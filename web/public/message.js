@@ -8,20 +8,6 @@
 * #######华丽的分界线#######
 * @params text,消息内容，必传
 * */
-
-//随机字符串,随机ID
-function randomString(len) {
-    len = len || 32;
-    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
-    const $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
-    const maxPos = $chars.length;
-    let str = '';
-    for (let i = 0; i < len; i++) {
-        str += $chars.charAt(Math.floor(Math.random() * maxPos));
-    }
-    return str;
-}
-
 const message = {
     body: document.body,
     __delay: 3000,//默认3秒后remove
