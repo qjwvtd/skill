@@ -1,0 +1,24 @@
+.ui-carousel{
+    /*一定要有宽度和高度*/
+    width:500px;
+    height:300px;
+    overflow:hidden;
+    position:relative;
+}
+.ui-carousel>.ui-carousel-box{
+    height:inherit;
+    overflow:hidden;
+    transition: all 0.6s linear;
+}
+.ui-carousel>.ui-carousel-box>img{
+    height:inherit;
+    float:left;
+}
+.ui-carousel>.ui-carousel-ctrl{
+    border:1px solid red;
+    height:40px;
+    position: absolute;
+    z-index:2;
+    bottom:0;
+    width:100%;
+}

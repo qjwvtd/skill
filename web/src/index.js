@@ -61,6 +61,8 @@ import TreeTest from './component/testTree';
 import ElementTest from './component/testElement';
 //CssNavTest
 import CssNavTest from './component/testCssNavs';
+//CarouselTest
+import CarouselTest from './component/testCarousel';
 
 //es6/7
 import {MathArrayMax,Es6Map} from './component/ES678';
@@ -91,6 +93,9 @@ class App extends Component{
     render(){
         return (
             <div>
+                <div className="play">
+                    <CarouselTest />
+                </div>
                 <div className="play">
                     <ButtonTest />
                 </div>

@@ -10,7 +10,7 @@
     -ms-transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     text-align:center;
-    top:-600px;
+    top:-200px;
     animation:msgHide 0.5s !important;
 }
 .ui-message-box.active{
