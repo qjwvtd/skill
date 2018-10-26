@@ -11,7 +11,7 @@
 const message = {
     body: document.body,
     __delay: 3000,//默认3秒后remove
-    success(text){
+    success:function(text){
         if(!text){return;}
         let delay = this.__delay;//默认延迟3秒关闭
         const successTemplate = '<a class="ui-message-body ui-message-success">' +
@@ -32,7 +32,7 @@ const message = {
             }
         },this.__delay);
     },
-    info(text){
+    info:function(text){
         if(!text){return;}
         let delay = this.__delay;//默认延迟3秒关闭
         const infoTemplate = '<a class="ui-message-body ui-message-info">' +
@@ -53,7 +53,7 @@ const message = {
             }
         },this.__delay);
     },
-    warning(text){
+    warning:function(text){
         if(!text){return;}
         let delay = this.__delay;//默认延迟3秒关闭
         const warningTemplate = '<a class="ui-message-body ui-message-warning">' +
@@ -74,7 +74,7 @@ const message = {
             }
         },this.__delay);
     },
-    error(text){
+    error:function(text){
         if(!text){return;}
         let delay = this.__delay;//默认延迟3秒关闭
         const errorTemplate = '<a class="ui-message-body ui-message-error">' +
@@ -95,7 +95,7 @@ const message = {
             }
         },this.__delay);
     },
-    remove(container){
+    remove:function(container){
         container.className = 'ui-message-box';
         setTimeout(() => {
             this.body.removeChild(container);
