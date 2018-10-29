@@ -22,11 +22,10 @@ export default class Carousel extends Component {
         let ml = Number(this.state.left);
         let xh = this.state.index;
         const width = this.state.width;
-        const len = this.props.images.length;
         if(xh == 0){
             this.orientation = 'left';
         }
-        if(xh == +(len - 1)){
+        if(xh == this.props.images.length - 1){
             this.orientation = 'right';
         }
         if(this.orientation == 'left'){
@@ -41,6 +40,22 @@ export default class Carousel extends Component {
             index:xh,
             left:ml
         });
+    }
+    mainEvent(index){
+        const ml = this.state.width * index;
+        const orientation = this.orientation;
+        this.setState({
+            index:index,
+            left:orientation == 'left' ? '-'+ml : ml
+        });
+    }
+    mouseover(){
+        clearInterval(this.timer);
+    }
+    mouseout(){
+        this.timer = setInterval(() => {
+            this.interval();
+        },2500);
     }
     componentDidMount() {
         this.init();
@@ -58,11 +73,35 @@ export default class Carousel extends Component {
                 <div className="ui-carousel-box" style={{width:_boxWidth,marginLeft:_marginLeft}}>
                     {
                         images.length > 0 ? images.map((item,index) => {
-                            return (<img key={item} src={item} style={{width:this.state.width+'px'}} />);
+                            return (
+                                <img
+                                    key={item}
+                                    src={item}
+                                    style={{width:this.state.width+'px'}}
+                                    onMouseOver={this.mouseover.bind(this)}
+                                    onMouseOut={this.mouseout.bind(this)}
+                                />
+                            );
                         }) : ''
                     }
                 </div>
-                <div className="ui-carousel-ctrl">12345</div>
+                <div className="ui-carousel-ctrl">
+                    {
+                        images.length > 0 ? images.map((item,index) => {
+                            const isActive = this.state.index == index ? 'active' : '';
+                            return (
+                                <span
+                                    key={item}
+                                    className={isActive}
+                                    onMouseOver={this.mouseover.bind(this)}
+                                    onMouseOut={this.mouseout.bind(this)}
+                                    onClick={this.mainEvent.bind(this,index)}
+                                >
+                                </span>
+                            );
+                        }) : ''
+                    }
+                </div>
             </div>
         );
     }

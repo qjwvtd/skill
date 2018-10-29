@@ -1,0 +1,4 @@
+1，禁止选取，防止复制，onselectstart="return false";
+2，关闭input输入法，<input style="ime-mode:disabled" />;
+3，判断上一页的来源，document.referrer;
+4，让弹出窗口都是最上面，<body onblur="this.focus();">

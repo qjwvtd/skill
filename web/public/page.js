@@ -47,6 +47,18 @@ class Page{
         }
         return {x:_x,y:_y};
     }
+    //获得控件的绝对位置
+    getCurrentPosition(e){
+        let event = e || window.event;
+        let target = event.target || event.srcElement;
+        let top = target.offsetTop;
+        let left = target.offsetLeft;
+        while(target = event.offsetParent){
+            top += target.offsetTop;
+            left += target.offsetLeft;
+        }
+        return {left:left,top:top};
+    }
 }
 const page = new Page();
 export default page;

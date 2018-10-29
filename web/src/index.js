@@ -59,8 +59,6 @@ import ProgressTest from './component/testProgress';
 import TreeTest from './component/testTree';
 //ElementTest
 import ElementTest from './component/testElement';
-//CssNavTest
-import CssNavTest from './component/testCssNavs';
 //CarouselTest
 import CarouselTest from './component/testCarousel';
 
@@ -195,9 +193,6 @@ class App extends Component{
                 </div>
                 <div className="play">
                     <ElementTest />
-                </div>
-                <div className="play">
-                    <CssNavTest />
                 </div>
             </div>
         );

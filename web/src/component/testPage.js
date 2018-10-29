@@ -6,7 +6,9 @@ export default class PageTest extends Component {
         super(props);
         this.state = {
             x:'',
-            y:''
+            y:'',
+            left:'',
+            top:''
         };
     }
 
@@ -24,7 +26,13 @@ export default class PageTest extends Component {
             });
         };
     }
-
+    getPosition(e){
+        const position = page.getCurrentPosition(e);
+        this.setState({
+            left:position.left,
+            top:position.top
+        });
+    }
     render() {
         return (
             <div>
@@ -35,6 +43,8 @@ export default class PageTest extends Component {
                 <div>
                     <p>坐标：{'x:' + this.state.x+','+'y:' + this.state.y}</p>
                 </div>
+                <button type="button" className="btn btn-primary" onClick={this.getPosition.bind(this)}>获得控件的绝对位置</button>
+                <p>{'left:'+this.state.left+',top:'+this.state.top}</p>
             </div>
         );
     }

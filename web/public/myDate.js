@@ -55,8 +55,8 @@ class MyDate{
         };
     }
     //获取星期几
-    getWeek(){
-        const date = new Date();
+    getWeek(dateStr){
+        const date = new Date(dateStr ? dateStr : '');
         const weekend = ["星期一","星期二","星期三","星期四","星期五","星期六","星期日"];
         const week = weekend[date.getDay() - 1];
         return week;
@@ -66,7 +66,6 @@ class MyDate{
         const __date = new Date(year, month, 0);
         return __date.getDate();
     }
-    //秒表
 }
 const date = new MyDate();
 export default date;
