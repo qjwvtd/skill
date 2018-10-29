@@ -24,7 +24,7 @@ export default class CarouselTest extends Component {
         return (
             <div style={{overflow:'hidden'}}>
                 <h5>走马灯、轮播（自动、非自动）</h5>
-                <div style={{width:'500px',height:'300px',float:'left'}}>
+                <div style={{width:'400px',height:'240px',float:'left'}}>
                     <Carousel images={this.state.imgList} autoplay={true} />
                 </div>
                 <div style={{width:'500px',height:'300px',float:'right'}}>
