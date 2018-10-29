@@ -52,12 +52,11 @@ export default class Carousel extends Component {
             left:ml
         });
     }
-    mainEvent(index){
-        const ml = this.state.width * index;
-        const orientation = this.orientation;
+    mainEvent(currentIndex){
+        const ml = this.state.width * currentIndex;
         this.setState({
-            index:index,
-            left:orientation == 'left' ? '-'+ml : ml
+            index:currentIndex,
+            left:Number('-'+ml)
         });
     }
     end(){
