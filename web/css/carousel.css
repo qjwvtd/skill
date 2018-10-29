@@ -1,7 +1,7 @@
 .ui-carousel{
-    /*一定要有宽度和高度*/
-    width:500px;
-    height:300px;
+    /*父元素一定要有宽度和高度*/
+    width:inherit;
+    height:inherit;
     overflow:hidden;
     position:relative;
 }
@@ -24,7 +24,7 @@
     text-align: center;
 }
 .ui-carousel>.ui-carousel-ctrl>span{
-    border:1px solid #d9d9d9;
+    background:rgba(0,0,0,0.2);
     display:inline-block;
     width:20px;
     height:10px;
@@ -38,10 +38,10 @@
     transform: skewX(-45deg);
 }
 .ui-carousel>.ui-carousel-ctrl>span:hover{
-    border:1px solid #07D6FF;
+    background:#07D6FF;
     color:#000;
 }
 .ui-carousel>.ui-carousel-ctrl>span.active{
-    border:1px solid #1089ff;
+    background:#1089ff;
     color:#fff;
 }

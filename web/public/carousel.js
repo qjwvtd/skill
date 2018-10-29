@@ -1,5 +1,12 @@
 /**
  * Carousel 走马灯组件
+ * @params images:图片url集合,array
+ * @params autoplay:是否自动切换，boolean,默认false
+ * @params delay:自动切换延迟(毫秒),number，默认2500
+ * <div style={{width:'500px',height:'300px'}}>
+ *    <Carousel images={this.state.imgList} autoplay={false} />
+ * </div>
+ * 备注：组件一定要有父元素，且父元素一定要有宽度和高度
  **/
 import React,{Component} from 'react';
 export default class Carousel extends Component {
@@ -9,13 +16,17 @@ export default class Carousel extends Component {
         this.state = {
             width:null,//盒子宽度
             left:0,//滚动区域left值
-            index:0//当前图片index
+            index:0,//当前图片index
+            delay:props.delay || 2500
         };
     }
-    init(){
+    //初始化盒子宽度数据
+    init(startCarousel){
         const pannelWidth = this.refs.pannel.clientWidth;
         this.setState({
             width:pannelWidth
+        },() => {
+            startCarousel();
         });
     }
     interval(){
@@ -49,19 +60,20 @@ export default class Carousel extends Component {
             left:orientation == 'left' ? '-'+ml : ml
         });
     }
-    mouseover(){
+    end(){
         clearInterval(this.timer);
     }
-    mouseout(){
-        this.timer = setInterval(() => {
-            this.interval();
-        },2500);
+    start(){
+        if(this.props.autoplay){
+            this.timer = setInterval(() => {
+                this.interval();
+            },this.state.delay);
+        }
     }
     componentDidMount() {
-        this.init();
-        this.timer = setInterval(() => {
-            this.interval();
-        },2500);
+        this.init(() => {
+            this.start();
+        });
     }
 
     render() {
@@ -78,8 +90,8 @@ export default class Carousel extends Component {
                                     key={item}
                                     src={item}
                                     style={{width:this.state.width+'px'}}
-                                    onMouseOver={this.mouseover.bind(this)}
-                                    onMouseOut={this.mouseout.bind(this)}
+                                    onMouseOver={this.end.bind(this)}
+                                    onMouseOut={this.start.bind(this)}
                                 />
                             );
                         }) : ''
@@ -93,8 +105,8 @@ export default class Carousel extends Component {
                                 <span
                                     key={item}
                                     className={isActive}
-                                    onMouseOver={this.mouseover.bind(this)}
-                                    onMouseOut={this.mouseout.bind(this)}
+                                    onMouseOver={this.end.bind(this)}
+                                    onMouseOut={this.start.bind(this)}
                                     onClick={this.mainEvent.bind(this,index)}
                                 >
                                 </span>

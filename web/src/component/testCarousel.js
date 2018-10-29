@@ -22,9 +22,14 @@ export default class CarouselTest extends Component {
 
     render() {
         return (
-            <div>
-                <h5>走马灯、轮播</h5>
-                <Carousel images={this.state.imgList} />
+            <div style={{overflow:'hidden'}}>
+                <h5>走马灯、轮播（自动、非自动）</h5>
+                <div style={{width:'500px',height:'300px',float:'left'}}>
+                    <Carousel images={this.state.imgList} autoplay={true} />
+                </div>
+                <div style={{width:'500px',height:'300px',float:'right'}}>
+                    <Carousel images={this.state.imgList} />
+                </div>
             </div>
         );
     }
