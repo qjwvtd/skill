@@ -4,7 +4,7 @@
  * @params autoplay:是否自动切换，boolean,默认false
  * @params delay:自动切换延迟(毫秒),number，默认2500
  * <div style={{width:'500px',height:'300px'}}>
- *    <Carousel images={this.state.imgList} autoplay={false} />
+ *    <Carousel images={this.state.imgList} autoplay={true} />
  * </div>
  * 备注：组件一定要有父元素，且父元素一定要有宽度和高度
  **/
