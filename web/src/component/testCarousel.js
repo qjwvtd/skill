@@ -17,8 +17,7 @@ export default class CarouselTest extends Component {
         };
     }
 
-    componentDidMount() {
-    }
+    componentDidMount() {}
 
     render() {
         return (
