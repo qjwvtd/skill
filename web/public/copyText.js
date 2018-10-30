@@ -14,12 +14,6 @@ export default class CopyText extends Component {
 
     componentDidMount() {
     }
-    openCopyBtn(flag){
-        console.log(flag);
-        this.setState({
-            isCopy:flag
-        });
-    }
     copyText(){
         const { children } = this.props;
         const input = this.refs.uiCopyInput;
