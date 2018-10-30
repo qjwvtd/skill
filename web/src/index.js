@@ -63,6 +63,8 @@ import ElementTest from './component/testElement';
 import CarouselTest from './component/testCarousel';
 //RangeTest
 import RangeTest from './component/testRange';
+//CopyTextTest
+import CopyTextTest from './component/testCopyText';
 
 //es6/7
 import {MathArrayMax,Es6Map} from './component/ES678';
@@ -199,6 +201,7 @@ class App extends Component{
                 <div className="play">
                     <RangeTest />
                 </div>
+                <CopyTextTest />
             </div>
         );
     }

@@ -1,0 +1,45 @@
+.ui-copy-wraper {
+    position: relative;
+    padding:15px;
+    border:1px solid #ccc;
+    border-radius:3px;
+    background:#f8f8f8;
+}
+.ui-copy-wraper>div,.ui-copy-wraper>input,.ui-copy-wraper>button,.ui-copy-wraper>span{
+    position:absolute;
+}
+.ui-copy-wraper:hover button{
+    display:block;
+}
+.ui-copy-wraper>button{
+    padding:2px 4px;
+    border-radius:3px;
+    z-index:3;
+    top:2px;
+    right:2px;
+    text-decoration:none;
+    outline:none;
+    background:#D6D6D6;
+    display: none;
+}
+.ui-copy-wraper>div{
+    border:1px solid red;
+    z-index:3;
+}
+.ui-copy-wraper>input{
+    z-index:-1;
+}
+.ui-copy-wraper>span{
+    border:1px solid #d6e9c6;
+    background:#dff0d8;
+    color: #3c763d;
+    padding:3px 6px;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    text-align:center;
+    border-radius:3px;
+    opacity:0;
+}
