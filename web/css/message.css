@@ -24,20 +24,24 @@
     border-radius:3px;
 }
 .ui-message-body.ui-message-success{
-    border:1px solid #b7eb8f;
-    background:#f6ffed;
+    border:1px solid #d6e9c6;
+    background:#dff0d8;
+    color: #3c763d;
 }
 .ui-message-body.ui-message-info{
-    border:1px solid #91d5ff;
-    background:#e6f7ff;
+    border:1px solid #bce8f1;
+    background:#d9edf7;
+    color: #31708f;
 }
 .ui-message-body.ui-message-warning{
-    border:1px solid #ffe58f;
-    background:#fffbe6;
+    border:1px solid #faebcc;
+    background:#fcf8e3;
+    color: #8a6d3b;
 }
 .ui-message-body.ui-message-error{
-    border:1px solid #ffa39e;
-    background:#fff1f0;
+    border:1px solid #ebccd1;
+    background:#f2dede;
+    color: #a94442;
 }
 .ui-message-body>span{
     font-size:14px !important;

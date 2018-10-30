@@ -61,6 +61,8 @@ import TreeTest from './component/testTree';
 import ElementTest from './component/testElement';
 //CarouselTest
 import CarouselTest from './component/testCarousel';
+//RangeTest
+import RangeTest from './component/testRange';
 
 //es6/7
 import {MathArrayMax,Es6Map} from './component/ES678';
@@ -193,6 +195,9 @@ class App extends Component{
                 </div>
                 <div className="play">
                     <ElementTest />
+                </div>
+                <div className="play">
+                    <RangeTest />
                 </div>
             </div>
         );
