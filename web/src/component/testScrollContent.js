@@ -22,7 +22,7 @@ export default class ScrollContent extends Component {
         return (
             <div>
                 <h5>手动滚动(无滚动条)</h5>
-                <ManualMarquee height={'200px'}>
+                <ManualMarquee width={'50%'} height={'200px'}>
                     <div>{this.state.content}</div>
                 </ManualMarquee>
                 <h5>自动滚动</h5>

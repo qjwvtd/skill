@@ -1,13 +1,11 @@
 /**
  * 滚动组件，包括无滚动条的手动滚动和自动滚动
- * 1、手动滚动，无滚动条
- * <ManualMarquee height={'200px'}>
- *     这里是滚动内容
- * </ManualMarquee>
- * 2、自动滚动
- * <AutoMarquee height={'200px'} speed={50}>
- *    这里是滚动内容
- * </AutoMarquee>
+ * 1、手动滚动，无滚动条:<ManualMarquee height={'200px'}>这里是滚动内容</ManualMarquee>
+ * @params width:宽度【'200px'或'50%'】,默认100%
+ * @params height:高度【'200px'或'50%'】，必传参数
+ * 2、自动滚动：<AutoMarquee height={'200px'} speed={50}>这里是滚动内容</AutoMarquee>
+ * @params height:高度【'200px'或'50%'】，必传参数
+ * @params speed:滚动速度，默认50
  **/
 import React,{Component} from 'react';
 //无滚动条,手动滚动
@@ -15,26 +13,14 @@ export class ManualMarquee extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            outStyle:{
-                position:'relative',
-                overflow:'hidden',
-                height:props.height
-            },
-            innerStyle:{
-                position: 'absolute',
-                left: 0,
-                width:'100%',
-                height:props.height,
-                overFlowX: 'hidden',
-                overFlowY: 'scroll'
-            }
+            width:props.width || '100%'
         };
     }
     render() {
         const {children} = this.props;
         return (
-            <div className="msoc-scroll" style={this.state.outStyle}>
-                <div className="msic-scroll" style={this.state.innerStyle}>
+            <div className="ui-scroll-container" style={{width:this.state.width,height:this.props.height}}>
+                <div className="ui-scroll-box">
                     {children}
                 </div>
             </div>
@@ -51,7 +37,7 @@ export class AutoMarquee extends Component{
             width:'100%'
         };//容器样式
         this.count = 0;//滚动开始位置
-        this.speed = props.speed ? props.speed : 50;//滚动速度
+        this.speed = props.speed || 50;//滚动速度
     }
     componentWillUnmount(){
         clearInterval(this.setinterval);

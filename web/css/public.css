@@ -121,29 +121,20 @@ body:before{
 .ml-11{margin-left:91.6663%;}
 /*手动滚动区域 start*/
 /*
-<div class="msoc-scroll">
-    <div class="msic-scroll">
+<div class="ui-scroll-container">
+    <div class="ui-scroll-box">
         这是滚动内容
     </div>
 </div>
 */
-.msoc-scroll {
-    position: relative;
-    overflow: hidden;
-    height:480px;/*高度根据实际情况修改*/
+.ui-scroll-container{
+    overflow:hidden;
 }
-.msic-scroll {
-    position: absolute;
-    left: 0;
-    width:100%;
-    height:inherit;
-    overflow-x: hidden;
-    overflow-y: scroll;
+.ui-scroll-box{
+    width:calc(100% + 17px);
+    height:100%;
+    overflow-y:auto;
 }
-.msic-scroll::-webkit-scrollbar {display: none;}/*chrome 和Safari*/
-.msic-scroll::-webkit-scrollbar { width: 0 !important }/*chrome 和Safari*/
-.msic-scroll { -ms-overflow-style: none; }/*IE 10+*/
-.msic-scroll { overflow: -moz-scrollbars-none; }/*Firefox*/
 /*手动滚动区域 end*/
 /*DIV垂直居中原理 start*/
 .vertical-parent {
