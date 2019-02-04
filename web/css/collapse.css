@@ -40,17 +40,20 @@
 .ui-collapse-content{
     background:#fff;
     opacity:0;
-    height:0px;
+    height:0;
+    max-height:0px;
     padding: 0;
     overflow:hidden;
+    overflow-y: scroll;
 }
 .ui-collapse.active .ui-collapse-content{
-    padding:10px 15px;
+    padding:10px 8px;
     opacity:1;
-    height:auto;
-    animation: changeAnimation 0.5s linear;
+    max-height:180px;
+    height: auto;
+    animation: changeAnimation 0.25s linear;
 }
 @keyframes changeAnimation {
-    0%{opacity:0;}
-    100%{opacity:1;}
+    0%{opacity:0;max-height:0px;}
+    100%{opacity:1;max-height: 180px;}
 }
