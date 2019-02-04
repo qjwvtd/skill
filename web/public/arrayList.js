@@ -66,4 +66,30 @@ export default class ArrayList{
             }
         }
     }
+    //数组升序排列
+    rise(){
+        const arr = this.array;
+        return arr.sort((a,b) => {
+            if(a < b){
+                return -1;
+            }else if(a > b){
+                return 1;
+            }else{
+                return 0;
+            }
+        });
+    }
+    //数组倒序排列
+    inverted(){
+        const arr = this.array;
+        return arr.sort((a,b) => {
+            if(a < b){
+                return 1;
+            }else if(a > b){
+                return -1;
+            }else{
+                return 0;
+            }
+        });
+    }
 }

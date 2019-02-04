@@ -60,6 +60,37 @@ class GetIndex extends Component{
         );
     }
 }
+class ArrReview extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            json1:null,
+            json2:null
+        };
+    }
+    componentDidMount(){
+        const nums = [3,5,6,1,8,50,10,12];
+        const strs = ['abc','def','ghi','jkl','mno'];
+        const arr1 = new ArrayList(nums);
+        const arr2 = new ArrayList(strs);
+        const riseArr1 = arr1.rise();
+        const declineArr2 = arr2.inverted();
+        const state = {
+            json1:JSON.stringify(riseArr1),
+            json2:JSON.stringify(declineArr2)
+        };
+        this.setState(state);
+    }
+    render(){
+        return (
+            <div>
+                <h5>数组升序、倒序</h5>
+                <p>{this.state.json1}</p>
+                <p>{this.state.json2}</p>
+            </div>
+        );
+    }
+}
 
 
 export default class ArrayListTest extends Component {
@@ -77,6 +108,7 @@ export default class ArrayListTest extends Component {
                 <h5>数组的一些方法</h5>
                 <Includes />
                 <GetIndex />
+                <ArrReview />
             </div>
         );
     }
