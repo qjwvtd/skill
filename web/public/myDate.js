@@ -14,10 +14,13 @@ class MyDate{
          * dateStr:时间戳，必选,
          * reg:reg:'/'或'-'，可选，默认'-'
          **/
+        if(typeof dateStr == "string"){
+            throw 'params isn`t number';
+        }
         if(!dateStr){
             return;
         }
-        const _data = new Date(dateStr);
+        const _data = new Date(Number(dateStr));
         const year = _data.getFullYear();
         const month = this.setLen(_data.getMonth() + 1);
         const date = this.setLen(_data.getDate());
