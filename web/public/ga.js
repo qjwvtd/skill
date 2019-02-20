@@ -22,8 +22,7 @@
  * }
  * //事件
  * export function clickevent(event) {
- *    const itemname = $("#pro_name").val();
- *    ga("send", "event", "clawin index", event+"_"+itemname);
+ *    ga("send", "event", "clawin index", event);
  * }
  * */
 /**
