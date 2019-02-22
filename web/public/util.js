@@ -1,17 +1,17 @@
 //session
-export class Session{
-    setItem(key,value){
+export const session = {
+    setItem:(key,value) => {
         sessionStorage.setItem(key,JSON.stringify(value));
-    }
-    getItem(key){
+    },
+    getItem:(key) => {
         return JSON.parse(sessionStorage.getItem(key));
-    }
-    removeItem(key){
+    },
+    removeItem:(key) => {
         sessionStorage.removeItem(key);
     }
 }
 //字符串去空
-export function trim(str){
+export function stringToTrim(str){
     return str.replace(/\s+/g, "");
 }
 //随机整数,返回min-max以内(包括min,max)的随机数,(无参数时返回Math.random)
