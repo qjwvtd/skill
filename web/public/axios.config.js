@@ -12,10 +12,12 @@
 
  **/
 import axios from 'axios';
+import Qs from 'qs';
 /**
  * 全局root
  * */
-const  webRoot = 'http://x.x.x.x:xxxx';
+//const webRoot = 'http://sandbox.catchadoll.com:8888';
+const  webRoot = 'http://52.74.130.129:8090';
 /**
  * 全局http配置
  * */
@@ -28,20 +30,23 @@ const instance = axios.create({
     }],
     transformResponse: [function (data) {
         //对响应数据进行处理
+        if(typeof data == 'string'){
+            data = JSON.parse(data);
+        }
         return data;
     }],
     headers:{
-        'Content-Type':'application/x-www-form-urlencoded'
+        'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'
     }
 });
-/**
-* 拦截请求
-* */
+//拦截请求
 instance.interceptors.request.use(
     (config) => {
+        if(config.method  === 'post' || 'put' || 'delete' || 'patch'){
+            config.data = Qs.stringify(config.data);
+        }
         const token = sessionStorage.getItem('AUTH_TOKEN');
         config.headers.common['Authorization'] = 'Bearer ' + token;
-        console.log(config);
         return config;
     },
     (error) =>{
