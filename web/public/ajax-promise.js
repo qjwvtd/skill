@@ -1,5 +1,5 @@
 //原生promise-ajax
-function ajax(params){
+export function ajax(params){
     return new Promise(function(resole,reject){
         params = params || {};
         if (!params.url) {
@@ -27,15 +27,18 @@ function ajax(params){
             return false;
         }
         //发送请求
-        options.data = formatParams(options.data);
+        const fmtData = formatParams(options.data);
+        if(options.type == 'GET'){
+            xhr.open(options.type, options.url + '?' + fmtData, options.async);
+            // xhr.setRequestHeader('Authorization', 'Bearer ' + sessionStorage.getItem('TOKEN'));
+            xhr.send(null);
+        }
         if (options.type == 'POST' || 'PUT' || 'DELETE') {
             xhr.open(options.type, options.url, options.async);
             xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-            xhr.send(options.data);
-        } else {
-            xhr.open(options.type, options.url + '?' + options.data, options.async);
-            xhr.send(null);
+            // xhr.setRequestHeader('Authorization', 'Bearer ' + sessionStorage.getItem('TOKEN'));
+            xhr.send(fmtData);
         }
         //超时处理
         let requestDone = false;
@@ -50,7 +53,6 @@ function ajax(params){
             if (xhr.readyState == 4 && !requestDone) {
                 if (xhr.status >= 200 && xhr.status < 300) {
                     let data = options.dataType == "xml" ? xhr.responseXML : xhr.responseText;
-                    console.log(data);
                     if (options.dataType == "json") {
                         try {
                             data = JSON.parse(data);
