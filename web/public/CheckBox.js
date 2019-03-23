@@ -9,24 +9,16 @@ export default class Checkbox extends Component{
     constructor(props){
         super(props);
         this.state = {
-            checked:props.checked ? props.checked : false
+            checked:props.checked || false
         };
     }
     onClick(){
         const isChecked = this.state.checked;
-        switch (isChecked){
-        case true:
-            this.setState({checked:false});
-            this.props.onchange(false);
-            break;
-        case false:
-            this.setState({checked:true});
-            this.props.onchange(true);
-            break;
-        }
+        this.setState({checked:!isChecked});
+        this.props.onchange(!isChecked);
     }
     render(){
-        const classes = this.state.checked ? 'checkBoxSpan active' : 'checkBoxSpan';
-        return <span className={classes} onClick={this.onClick.bind(this)}></span>;
+        const __class = this.state.checked ? 'checkBoxSpan active' : 'checkBoxSpan';
+        return <span className={__class} onClick={this.onClick.bind(this)}></span>;
     }
 }
