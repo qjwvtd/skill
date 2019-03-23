@@ -23,18 +23,7 @@ export default class SelectBox extends Component{
     }
     openContent(){
         const isActive = this.state.isActive;
-        switch (isActive){
-        case true:
-            this.setState({
-                isActive:false
-            });
-            break;
-        case false:
-            this.setState({
-                isActive:true
-            });
-            break;
-        }
+        this.setState({isActive:!isActive});
     }
     onSelect(item){
         this.setState({
