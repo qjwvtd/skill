@@ -15,18 +15,9 @@ export default class Collapse extends Component{
     }
     mainEvent(){
         const isActive = this.state.isActive;
-        switch (isActive){
-        case true:
-            this.setState({
-                isActive:false
-            });
-            break;
-        case false:
-            this.setState({
-                isActive:true
-            });
-            break;
-        }
+        this.setState({
+            isActive:!isActive
+        });
     }
     render(){
         const {children} = this.props;
