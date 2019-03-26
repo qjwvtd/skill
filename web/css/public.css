@@ -83,9 +83,9 @@ body:before{
 }
 .scroll-touch {-webkit-overflow-scrolling: touch}/*移动端顺畅滚动*/
 /*浮动*/
-.fl{float:left}
-.fr{float:right}
-.clear{overflow:hidden}
+.fl{float: left;}
+.fr{float: right;}
+.clearfix:after,.clearfix:before{display: block;height: 0;clear: both;content: " ";}
 /*圆角*/
 .br3{border-radius:3px}
 .br5{border-radius:5px}
