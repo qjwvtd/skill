@@ -8,7 +8,7 @@ small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td {
     margin: 0;padding: 0;border: 0;outline: 0;vertical-align: baseline;background: transparent;
 }
-body{line-height:1.5;min-width:1366px;}
+body{line-height:1.5;}
 ol, ul {list-style: none;}
 blockquote, q {quotes: none;}
 blockquote:before, blockquote:after,q:before, q:after {content: '';content: none;}
@@ -92,21 +92,25 @@ body:before{
 /*阴影*/
 .boxShadow{box-shadow:0 0 15px #ccc;}
 /*布局*/
-.container{}
-.row:after{content: "";display: block;height: 0;clear: both;visibility: hidden;}
-.col-1,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-10,.col-11,.col-12{float:left}
-.col-1{width:8.3333%;}
-.col-2{width:16.6666%;}
-.col-3{width:24.9999%;}
-.col-4{width:33.3332%;}
-.col-5{width:41.6665%;}
-.col-6{width:49.9998%;}
-.col-7{width:58.3331%;}
-.col-8{width:66.6664%;}
-.col-9{width:74.9997%;}
-.col-10{width:83.333%;}
-.col-11{width:91.6663%;}
-.col-12{width:100%;}
+*{-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+.ui-row{width: 100%;}
+.ui-row::before,.ui-row::after{display: block;height: 0;clear: both;content: " ";}
+.ui-col-1,.ui-col-2,.ui-col-3,.ui-col-4,.ui-col-5,.ui-col-6,
+.ui-col-7,.ui-col-8,.ui-col-9,.ui-col-10,.ui-col-11,.ui-col-12{
+    float: left;
+}
+.ui-col-1{width: 8.3333%}
+.ui-col-2{width: 16.6666%}
+.ui-col-3{width: 24.9999%}
+.ui-col-4{width: 33.3333%}
+.ui-col-5{width: 41.6666%}
+.ui-col-6{width: 49.9999%}
+.ui-col-7{width: 58.3332%}
+.ui-col-8{width: 66.6666%}
+.ui-col-9{width: 74.9999%}
+.ui-col-10{width: 83.3332%}
+.ui-col-11{width: 91.6666%}
+.ui-col-12{width: 100%}
 /*列偏移量,结合col使用*/
 .ml-1{margin-left:8.3333%;}
 .ml-2{margin-left:16.6666%;}
