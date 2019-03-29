@@ -36,22 +36,31 @@ npm install babel-eslint -g/--save-dev
 
 
 webpack配置：
+
 rules中添加：
+
 {
    test: /\.(js|jsx)$/,
    use: {loader: 'eslint-loader'},
    exclude: /node_modules/
 }
+
 plugins中添加：
+
 new webpack.LoaderOptionsPlugin({
     test: /\.(js|jsx)$/,
     options:{
         eslint: './.eslintrc'
     }
 })
+
 在package.json的scripts中加入:
+
 "lint": "eslint --fix --ext .js,.jsx web"
+
 web是需要修复的目录
+
 npm run lint就可以修复代码了
+
 /****eslint 配置结束****/
 
