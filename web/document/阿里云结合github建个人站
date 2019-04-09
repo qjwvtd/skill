@@ -1,0 +1,6 @@
+1 前提是已经有了一个阿里云的域名（此处假设这个域名为:website.com）；
+2 在github里new repository，名字是：website.github.io,选择public,初始化README,
+3 Create new file index.html,然后访问website.github.io
+4 进入阿里云域名解析，添加一个纪录，纪录类型选择“CNAME”，主机纪录填“@”，解析线路默认，纪录值：‘website.github.io’,TTL值：10分钟
+5 回到仓库，Create new file 名字是“CNAME”，内容是：“website.com”
+6 访问website.com
