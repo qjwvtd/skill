@@ -1,0 +1,42 @@
+
+#创建自定义标注
+const label = new BMap.Label('', { position: point }) // 创建设备位置标注
+label.setStyle({
+  background: '#0f66bf',
+  width: '30px',
+  height: '30px',
+  border: '10px solid rgba(210, 242, 248,0.75)',
+  borderRadius: '50%'
+})
+map.addOverlay(label)
+
+#定位到中心点
+map.centerAndZoom(point, 18)
+map.panTo(point)
+
+#设置地图样式,隐藏建筑物
+map.setMapStyle({
+  styleJson: [
+    {
+      featureType: 'poilabel',
+      elementType: 'all',
+      stylers: {
+        visibility: 'off'
+      }
+    },
+    {
+      featureType: 'manmade',
+      elementType: 'all',
+      stylers: {
+        visibility: 'off'
+      }
+    },
+    {
+      featureType: 'building',
+      elementType: 'all',
+      stylers: {
+        visibility: 'off'
+      }
+    }
+  ]
+})
