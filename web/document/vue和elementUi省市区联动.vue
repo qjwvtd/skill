@@ -68,7 +68,20 @@ export default {
     },
     //选择傎
     selectedTown: function(tcode) {
-      console.log(tcode)
+      const __province = this.getSelectedValue(this.province, this.checkedProvince)
+      const __city = this.getSelectedValue(this.city, this.checkedCity)
+      const __town = this.getSelectedValue(this.town, this.checkedTown)
+      console.log(JSON.stringify(__province))
+      console.log(JSON.stringify(__city))
+      console.log(JSON.stringify(__town))
+    },
+    //计算最后的值
+    getSelectedValue: function(list, code) {
+      for (let i = 0; i < list.length; i++) {
+        if (list[i].code === code) {
+          return list[i]
+        }
+      }
     }
   }
 }
