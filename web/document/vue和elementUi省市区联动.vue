@@ -39,7 +39,7 @@
   </el-row>
 </template>
 <script>
-import area from '@/components/area.js'
+import area from './../public/area.js'
 export default {
   name: '',
   data() {
