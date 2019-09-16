@@ -1,0 +1,2 @@
+#检查8000端口是否被占用
+netstat -ano |findstr "8000" 
