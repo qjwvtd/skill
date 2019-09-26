@@ -223,4 +223,21 @@ export default function getUrlParams(paramName) {
   }
   return false;
 }
-
+/**
+ * 取出数组中随机几项元素
+ * arr原数组,count随机取出的个数
+ */
+function getRandomArrayElements (arr, count) {
+  let shuffled = arr.slice(0),
+    i = arr.length,
+    min = i - count,
+    temp,
+    index;
+  while (i-- > min) {
+    index = Math.floor((i + 1) * Math.random());
+    temp = shuffled[index];
+    shuffled[index] = shuffled[i];
+    shuffled[i] = temp;
+  }
+  return shuffled.slice(min);
+}
