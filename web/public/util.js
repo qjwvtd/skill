@@ -16,19 +16,16 @@ export function stringToTrim(str){
 }
 //随机整数,返回min-max以内(包括min,max)的随机数,(无参数时返回Math.random)
 export function ranNumber(min,max){
-    if(typeof min != 'number' || typeof max != 'number'){
-        return 'parameter is error';
-    }
-    
-    if (!max) {
-       let num = +(Math.random() * min).toFixed(0);
-       num === 0 ? min : num;
-       return num;
-    }
-    if(!min && !max){
-       return Math.random();
-    }
-    return +((Math.random()) * (max - min)).toFixed(0);
+    if (arguments.length === 1) {
+    let min = arguments[0];
+    var num = +(Math.random() * min).toFixed(0);
+    return num;
+  }
+  if (arguments.length === 2) {
+    let min = arguments[0];
+    let max = arguments[1];
+    return +((Math.random() * (max - min) + min).toFixed(0));
+  }
 }
 //是否是数字
 export function isNumber(num) {
