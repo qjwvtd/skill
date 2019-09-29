@@ -19,18 +19,16 @@ export function ranNumber(min,max){
     if(typeof min != 'number' || typeof max != 'number'){
         return 'parameter is error';
     }
-    //无参
+    
+    if (!max) {
+       let num = +(Math.random() * min).toFixed(0);
+       num === 0 ? min : num;
+       return num;
+    }
     if(!min && !max){
-        return Math.random();
+       return Math.random();
     }
-    //一个参数
-    if(min && !max){
-        return ((Math.random())*min).toFixed(0);
-    }
-    //两个参数
-    if(min && max){
-        return ((Math.random())*(max - min)).toFixed(0);
-    }
+    return +((Math.random()) * (max - min)).toFixed(0);
 }
 //是否是数字
 export function isNumber(num) {
