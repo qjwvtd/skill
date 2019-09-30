@@ -119,7 +119,7 @@ export function setUuid() {
     return uuid;
 };
 //随机字符串
-function randomString(len) {
+export function randomString(len) {
     len = len || 6;
     /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
     const $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
@@ -222,7 +222,7 @@ export default function getUrlParams(paramName) {
  * 取出数组中随机几项元素
  * arr原数组,count随机取出的个数
  */
-function getRandomArrayElements (arr, count) {
+export function getRandomArrayElements (arr, count) {
   let shuffled = arr.slice(0),
     i = arr.length,
     min = i - count,
@@ -236,6 +236,58 @@ function getRandomArrayElements (arr, count) {
   }
   return shuffled.slice(min);
 }
+//js无限向上滚动函数
+function Marquee (elId, options) {
+  if (!elId) {
+    console.log('滚动缺少必要参数');
+    return;
+  }
+  //滚动的元素id,必传
+  this.scrollElId = elId;
+  //滚动高度,在css中设置过可不传,默认240px,string格式:'200px'/'50%'
+  this.scrollHeight = options.scrollHeight || '240px';
+  //滚动开始位置,默认0,可不传
+  this.scrollStart = options.scrollStart || 0;
+  //滚动速度,默认50,可不传
+  this.scrollSpeed = options.scrollSpeed || 50;
+};
+Marquee.prototype.init = function () {
+  var mc = document.getElementById(this.scrollElId).parentNode;
+  mc.style.height = this.scrollHeight;
+  mc.style.overflow = 'hidden';
+  mc.style.width = 'auto';
+  this.mp = mc;
+  this.ms = document.getElementById(this.scrollElId);
+  this.md = this.ms.cloneNode(true);
+  this.md.id = '';
+  this.mp.appendChild(this.md);
+  var self = this;
+  this.setinterval = setInterval(function () {
+    self.start(self.mp, self.ms, self.md);
+  }, self.scrollSpeed);
+  this.mp.onmouseover = function (e) {
+    clearInterval(self.setinterval);
+    return;
+  }
+  this.mp.onmouseout = function (e) {
+    self.setinterval = setInterval(function () {
+      self.start(self.mp, self.ms, self.md);
+    }, self.scrollSpeed);
+  }
+}
+Marquee.prototype.start = function () {
+  const showHeight = (this.ms.clientHeight * 2) - this.mp.clientHeight;
+  if (this.md.offsetTop - this.mp.scrollTop <= 0) {
+    this.scrollStart -= this.ms.offsetHeight;
+  } else {
+    this.scrollStart = this.scrollStart + 1;
+  }
+  if (this.scrollStart == showHeight) {
+    this.scrollStart = 0;
+  }
+  this.mp.scrollTop = this.scrollStart;
+}
+
 //格式化日期
 Date.prototype.format = function (fmt) {
   var o = {
