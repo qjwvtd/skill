@@ -309,3 +309,31 @@ Date.prototype.format = function (fmt) {
   }
   return fmt;
 }
+//采点工具
+function player () {
+  //采点
+  var pc = document.getElementById('pointerDomContainer');
+  pc.onclick = function (e) {
+    var item = {};
+    item.x = e.offsetX | e.layerX;
+    item.y = e.offsetY | e.layerY;
+    console.log(item)
+  }
+  //采集点的移动轨迹,依赖jquery
+  var start = false;
+  var locus = []
+  $(document).mousedown(function () {
+    start = true;
+    $(document).mousemove(function (e) {
+      if (start) {
+        var locusItem = {};
+        locusItem.x = e.offsetX | e.layerX;
+        locusItem.y = e.offsetY | e.layerY;
+        locus.push(locusItem);
+      }
+    });
+  }).mouseup(function () {
+    start = false;
+    console.log(JSON.stringify(locus));
+  })
+}
