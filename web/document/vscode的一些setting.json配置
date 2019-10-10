@@ -1,0 +1,49 @@
+/*
+说明:
+里面的一些eslint配置需要先安装eslint插件
+然后保存的时候会自动进行eslint检测
+*/
+{
+    "files.autoSave": "afterDelay",
+    "git.autofetch": true,
+    "eslint.autoFixOnSave": true,
+    "editor.formatOnSave": true,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "html",
+        {
+            "language": "react",
+            "autoFix": true
+        },
+        {
+            "language": "vue",
+            "autoFix": true
+        },
+        {
+            "language": "html",
+            "autoFix": true
+        }
+    ],
+    "git.enableSmartCommit": true,
+    "eslint.run": "onSave",
+    "editor.fontSize": 18,
+    "vetur.format.defaultFormatterOptions": {
+        "prettier": {
+            "semi": false,
+            "singleQuote": true
+        }
+    },
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+    "vetur.format.defaultFormatter.js": "vscode-typescript",
+    "workbench.colorTheme": "MacOS Modern Light - Xcode Low Key",
+    "workbench.iconTheme": "vscode-icons-mac",
+    "editor.tabSize": 2,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#27a1b1",
+        "statusBar.noFolderBackground": "#040405",
+        "statusBar.debuggingBackground": "#511f1f"
+    },
+    "editor.autoClosingBrackets": "never",
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe"
+}
