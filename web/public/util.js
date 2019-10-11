@@ -337,3 +337,23 @@ function player () {
     console.log(JSON.stringify(locus));
   })
 }
+//深拷贝
+export function deepClone(source, key) {
+  const targetObj = source.constructor === Array ? [] : {}
+  for (const keys in source) {
+    if (source.hasOwnProperty(keys)) {
+      if (source[keys] && typeof source[keys] === 'object') {
+        targetObj[keys] = source[keys].constructor === Array ? [] : {}
+        targetObj[keys] = deepClone(source[keys], key)
+      } else {
+        if (keys === 'name' && key) {
+          targetObj.label = source.name
+        } else {
+          targetObj[keys] = source[keys]
+        }
+
+      }
+    }
+  }
+  return targetObj
+}
