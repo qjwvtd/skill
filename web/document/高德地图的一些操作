@@ -1,0 +1,79 @@
+/**
+ * 导出高德地图
+ * 高德地图在index.html中引入,全局配置windown.AMap = AMap
+ * 高德地图UI插件在index.html中引入,全局配置windown.AMapUI = AMapUI
+**/
+export const AMap = window.AMap
+export const AMapUI = window.AMapUI
+
+/**
+*拖拽定位
+*不传坐标,定位到当前位置,回调中返回定位信息
+*elid:地图挂载的元素id
+**/
+export function drapCurrentPosition(elid, callback) {
+  AMapUI.loadUI(['misc/PositionPicker'], function(PositionPicker) {
+    const map = new AMap.Map(elid)
+    //实时位置
+    map.plugin('AMap.Geolocation', function() {
+      const geo = new AMap.Geolocation({
+        zoomToAccuracy: true
+      })
+      map.addControl(geo)
+      geo.getCurrentPosition()
+    })
+    //可拖拽
+    const __picker = new PositionPicker({ mode: 'dragMap', map: map })
+    __picker.on('success', function(positionResult) {
+      callback(positionResult)
+    })
+    __picker.start()
+    map.panBy(0, 1)
+  })
+}
+/**
+*拖拽定位
+*传坐标,定位到坐标所在位置,回调中返回定位信息
+*elid:地图挂载的元素id
+*point:['经度','纬度']
+**/
+export function drapRealPosition(elid, point, callback) {
+  AMapUI.loadUI(['misc/PositionPicker'], function(PositionPicker) {
+    const map = new AMap.Map(elid, {
+      center: point
+    })
+    //可拖拽
+    const __picker = new PositionPicker({ mode: 'dragMap', map: map })
+    __picker.on('success', function(positionResult) {
+      callback(positionResult)
+    })
+    __picker.start()
+    map.panBy(0, 1)
+  })
+}
+/**
+*根据输入值,搜索位置信息,在回调中返回list
+*keyword:搜索的关键字,callback:回调
+*/
+export function searchAddresList(keyword, callback) {
+  AMap.plugin('AMap.Autocomplete', function() {
+    //实例化Autocomplete
+    const autoOptions = {
+      city: '全国' //城市，默认全国
+    }
+    const auto = new AMap.Autocomplete(autoOptions)
+    auto.search(keyword, function(status, result) {
+      if (result.tips && result.tips.length > 0) {
+        //剃除没有坐标的点
+        result.tips.forEach((item, index) => {
+          if (!item.location.lng) {
+            result.tips.splice(index, 1)
+          }
+        })
+        callback(result.tips)
+      } else {
+        callback([])
+      }
+    })
+  })
+}
