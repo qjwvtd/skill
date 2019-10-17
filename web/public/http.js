@@ -39,9 +39,17 @@ export default {
       timeout: 30000
     }).then(checkStatus).then(res => checkCode(res, errMsg))
   },
-  DELETE(url, errMsg) {
+  DELETE(url, params, errMsg) {
+    const { CancelToken } = axios
     return axios.delete(url, {
-      timeout: 30000
+      params: {
+        _t: +(new Date()),
+        ...params
+      },
+      timeout: 30000,
+      cancelToken: new CancelToken((c) => {
+        Vue.$httpRequestList.push(c)
+      })
     }).then(checkStatus).then(res => checkCode(res, errMsg))
   },
   PUT(url, data, errMsg) {
