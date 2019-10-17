@@ -78,3 +78,7 @@ export function searchAddresList(keyword, callback) {
     })
   })
 }
+#########禁止拖动和缩放##########
+zoomEnable: false,
+dragEnable: false,
+###################
