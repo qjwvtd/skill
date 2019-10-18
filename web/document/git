@@ -47,3 +47,7 @@ git push origin --delete 远程分支名
 -----------------------------------
 #删除一个本地分支
 git branch --delete 本地分支名
+----------------------------------
+#远程库名变更,本地重新关联
+git remote rm origin
+git remote add origin 新的地址
