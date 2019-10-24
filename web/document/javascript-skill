@@ -5,3 +5,4 @@
 5，Chrome浏览器debugger用法，if(doSomething){debugger;};
 6, 设置<name: "viewport",content: "width=1200, viewport-fit=cover" />移动设备会以1200的视角打开页面
 7,window.scrollY,window.scrollX,分别可以获取窗口滚动的垂直和水平位置
+8,'data:image/jpeg;base64,' + 后端解析生成的字节码,就是一张图片
