@@ -6,8 +6,9 @@
 {
     "files.autoSave": "afterDelay",
     "git.autofetch": true,
-    "eslint.autoFixOnSave": true,
     "editor.formatOnSave": true,
+    "eslint.autoFixOnSave": true,
+    "eslint.run": "onSave",
     "eslint.validate": [
         "javascript",
         "javascriptreact",
@@ -26,7 +27,6 @@
         }
     ],
     "git.enableSmartCommit": true,
-    "eslint.run": "onSave",
     "editor.fontSize": 18,
     "vetur.format.defaultFormatterOptions": {
         "prettier": {
