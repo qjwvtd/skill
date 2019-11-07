@@ -155,6 +155,22 @@ export function diff(a,b){
     }
     return true;
 }
+/**
+ * 复杂数组去重,如:const testArr = [{id:1,name:'Tom'},{id:1,name:'Pandy'},...]
+ * @params arr,需要操作的数组
+ * @params kye,String,根据元素的某项属性去重,比如id,unique(testArr,'id')
+ **/
+export function unique(arr, key) {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+              if (arr[i][key] === arr[j][key]) {
+                  arr.splice(j, 1)
+                  j--
+              }
+           }
+        }
+    return arr
+}
 //加入收藏夹
 export function addFavorite(url, title) {
     try {
