@@ -6,7 +6,12 @@
 {
     "files.autoSave": "afterDelay",
     "git.autofetch": true,
+    "editor.tabSize": 4,
+    "git.enableSmartCommit": true,
+    "editor.fontSize": 14,
+    "editor.foldingStrategy": "indentation",
     "editor.formatOnSave": true,
+    "editor.autoClosingBrackets": "never",
     "eslint.autoFixOnSave": true,
     "eslint.run": "onSave",
     "eslint.validate": [
@@ -26,8 +31,13 @@
             "autoFix": true
         }
     ],
-    "git.enableSmartCommit": true,
-    "editor.fontSize": 18,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "emmet.syntaxProfiles": {
+        "JavaScript React": "jsx"
+    },
+    "emmet.triggerExpansionOnTab": true,
     "vetur.format.defaultFormatterOptions": {
         "prettier": {
             "semi": false,
@@ -36,14 +46,11 @@
     },
     "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
     "vetur.format.defaultFormatter.js": "vscode-typescript",
-    "workbench.colorTheme": "MacOS Modern Light - Xcode Low Key",
-    "workbench.iconTheme": "vscode-icons-mac",
-    "editor.tabSize": 2,
     "workbench.colorCustomizations": {
         "statusBar.background": "#27a1b1",
         "statusBar.noFolderBackground": "#040405",
         "statusBar.debuggingBackground": "#511f1f"
     },
-    "editor.autoClosingBrackets": "never",
-    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe"
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+    "workbench.colorTheme": "One Dark Pro"
 }
