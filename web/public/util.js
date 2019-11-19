@@ -261,6 +261,11 @@ export function getRandomArrayElements (arr, count) {
  */
 export function shakePrevent(e, delay) {
   function getTarget(target) {
+    //已到顶层,非button和input类型的按钮
+    if (['BODY', 'HTML', '#document'].indexOf(target.nodeName) >= 0) {
+      console.log('非button和input类型的按钮,无法设置防抖')
+      return e.target
+    }
     const flag = target.nodeName === 'BUTTON' || target.nodeName === 'INPUT'
     return flag ? target : getTarget(target.parentNode)
   }
