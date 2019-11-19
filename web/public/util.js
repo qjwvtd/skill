@@ -261,12 +261,8 @@ export function getRandomArrayElements (arr, count) {
  */
 export function shakePrevent(e, delay) {
   function getTarget(target) {
-    if (target.nodeName === 'BUTTON' || target.nodeName === 'INPUT') {
-      return target
-    }
-    if (target.nodeName !== 'BUTTON' || target.nodeName !== 'INPUT') {
-      return getTarget(target.parentNode)
-    }
+    const flag = target.nodeName === 'BUTTON' || target.nodeName === 'INPUT'
+    return flag ? target : getTarget(target.parentNode)
   }
   const _target = getTarget(e.target)
   _target.disabled = true
