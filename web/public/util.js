@@ -252,6 +252,28 @@ export function getRandomArrayElements (arr, count) {
   }
   return shuffled.slice(min);
 }
+/**
+ * 防抖函数
+ * 只需要在调用的地方传一个event对象,如:
+ * shakePrevent(event)
+ * @param e,event对象
+ * @param delay,延迟毫秒,可不传,默认3000
+ */
+export function shakePrevent(e, delay) {
+  function getTarget(target) {
+    if (target.nodeName === 'BUTTON' || target.nodeName === 'INPUT') {
+      return target
+    }
+    if (target.nodeName !== 'BUTTON' || target.nodeName !== 'INPUT') {
+      return getTarget(target.parentNode)
+    }
+  }
+  const _target = getTarget(e.target)
+  _target.disabled = true
+  setTimeout(() => {
+    _target.disabled = false
+  }, delay ? delay : 3000)
+}
 //js无限向上滚动函数
 function Marquee (elId, options) {
   if (!elId) {
