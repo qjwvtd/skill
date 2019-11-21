@@ -254,26 +254,27 @@ export function getRandomArrayElements (arr, count) {
 }
 /**
  * 防抖函数
- * 只需要在调用的地方传一个event对象,如:
- * shakePrevent(event)
- * @param e,event对象
+ * 只需要在事件触发的第一行调用,如:
+ * shakePrevent()
  * @param delay,延迟毫秒,可不传,默认3000
  */
-export function shakePrevent(e, delay) {
-  function getTarget(target) {
-    //已到顶层,非button和input类型的按钮
-    if (['BODY', 'HTML', '#document'].indexOf(target.nodeName) >= 0) {
-      console.log('非button和input类型的按钮,无法设置防抖')
-      return e.target
+export function shakePrevent (delay) {
+    const e = event;
+    const _delay = delay ? delay : 3000;
+    function getTarget (target) {
+        //已到顶层,非button和input类型的按钮
+        if (['BODY', 'HTML', '#document'].indexOf(target.nodeName) >= 0) {
+            console.log('非button和input类型的按钮,无法设置防抖');
+            return e.target;
+        }
+        const flag = target.nodeName === 'BUTTON' || target.nodeName === 'INPUT';
+        return flag ? target : getTarget(target.parentNode);
     }
-    const flag = target.nodeName === 'BUTTON' || target.nodeName === 'INPUT'
-    return flag ? target : getTarget(target.parentNode)
-  }
-  const _target = getTarget(e.target)
-  _target.disabled = true
-  setTimeout(() => {
-    _target.disabled = false
-  }, delay ? delay : 3000)
+    const _target = getTarget(e.target);
+    _target.disabled = true;
+    setTimeout(() => {
+        _target.disabled = false;
+    }, _delay);
 }
 //js无限向上滚动函数
 function Marquee (elId, options) {
