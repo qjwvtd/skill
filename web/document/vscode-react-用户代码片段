@@ -1,0 +1,31 @@
+{
+	"Import React": {
+		"prefix": "jsr", // 触发片段的快捷键
+		"body": [
+			"import React, { Component, PureComponent, Fragment } from 'react';",
+			"",
+			"export default class App extends Component {",
+			"    constructor(props) {",
+			"        super(props);",
+			"        this.state = {",
+			"            title: 'this is my App'",
+			"        };",
+			"    }",
+			"    render() {",
+			"        return (",
+			"            <Fragment>{this.state.title}</Fragment>",
+			"        );",
+			"    }",
+			"}"
+		],
+		"description": "Create React Component"
+	},
+	"Constructor": {
+		"prefix": "ctr",
+		"body": [
+			"constructor() {",
+			"super()",
+			"}"
+		]
+	}
+}
