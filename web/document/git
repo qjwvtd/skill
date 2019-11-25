@@ -2,10 +2,15 @@
 git config --global user.name yourName
 git config --global user.email yourEmail
 git config --list // 查看配置信息
+--------------------------
 #配置当前项目用户
 git config user.name yourName
 git config user.email yourEmail
 git config --list // 查看配置信息
+--------------------------
+#创建本地分支
+git branch 本地分支名
+--------------------------
 #查看所有本地和远程分支
 git branch -a
 --------------------------
