@@ -8,7 +8,7 @@
     "git.autofetch": true,
     "editor.tabSize": 4,
     "git.enableSmartCommit": true,
-    "editor.fontSize": 14,
+    "editor.fontSize": 16,
     "editor.foldingStrategy": "indentation",
     "editor.formatOnSave": true,
     "editor.autoClosingBrackets": "never",
@@ -40,11 +40,12 @@
     "emmet.triggerExpansionOnTab": true,
     "vetur.format.defaultFormatterOptions": {
         "prettier": {
-            "semi": false,
+            "semi": true,
             "singleQuote": true
         }
     },
-    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+    //函数名后面不加空格
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
     "vetur.format.defaultFormatter.js": "vscode-typescript",
     "workbench.colorCustomizations": {
         "statusBar.background": "#27a1b1",
@@ -52,5 +53,8 @@
         "statusBar.debuggingBackground": "#511f1f"
     },
     "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
-    "workbench.colorTheme": "One Dark Pro"
+    "terminal.integrated.fontFamily": "Consolas, 'Courier New', monospace",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Darcula",
+    "javascript.updateImportsOnFileMove.enabled": "always"
 }
