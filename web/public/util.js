@@ -397,3 +397,22 @@ export function deepClone(source, key) {
   }
   return targetObj
 }
+/**文本框chang事件防抖类
+ * @param fn,写自己的处理逻辑
+ * @param delay,延迟多少毫秒拿到结果,默认2000
+ * @param value,文本框输入的值
+ * debounce.init(fn, delay)(value);
+ * 如:debounce.init(() => {console.log('在这里写请求')}, 1000)('文本框输入的值');
+ **/
+export const debounce = {
+    timerId: null,
+    init(fn, delay) {
+        return (...parms) => {
+            let args = parms;
+            if (this.timerId) { clearTimeout(this.timerId); }
+            this.timerId = setTimeout(() => {
+                fn.apply(this, args);
+            }, delay || 2000);//默认2秒
+        };
+    }
+};
