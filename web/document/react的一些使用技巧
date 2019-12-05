@@ -1,4 +1,5 @@
-class A extends React.Component {
+###新的生命周期
+,class A extends React.Component {
   // 用于初始化 state
   constructor() {}
   // 用于替换 `componentWillReceiveProps` ，该函数会在初始化和 `update` 时被调用
@@ -26,3 +27,6 @@ class A extends React.Component {
   UNSAFE_componentWillUpdate(nextProps, nextState) {}
   UNSAFE_componentWillReceiveProps(nextProps) {}
 }
+--------------------------------------------------------------------------------
+###router的使用
+给Link组件加上replace,可以防止路由重复点击报错,官方暂不修复这个BUG
