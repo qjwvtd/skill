@@ -416,3 +416,11 @@ export const debounce = {
         };
     }
 };
+/**
+ * react阻止当前事件冒泡
+ * @param e,当前事件触发的事件对象,调用:stopeEventPropagation(e)
+*/
+export function stopeEventPropagation(e) {
+    e.nativeEvent.stopImmediatePropagation();
+    e.stopPropagation();
+}
