@@ -424,3 +424,29 @@ export function stopeEventPropagation(e) {
     e.nativeEvent.stopImmediatePropagation();
     e.stopPropagation();
 }
+/**
+*根据key,value,从树里面找到一个节点,return当前节点
+*@param treeList,标准的树型结构,必须要有children字段
+*@param key,查询的关键属性
+*@param value,key的值
+*如:queryFindTreeNode(treeList,'id',1),查找treeList中id为3的节点
+**/
+export function queryFindTreeNode(treeList, key, value) {
+    let result = null;
+    if (!treeList) {
+        return;
+    }
+    for (let i in treeList) {
+        if (result !== null) {
+            break;
+        }
+        let item = treeList[i];
+        if (item[key] === value) {
+            result = item;
+            break;
+        } else if (item.children && item.children.length > 0) {
+            result = queryFindTreeNode(item.children, key, value);
+        }
+    }
+    return result;
+}
