@@ -46,6 +46,7 @@
     },
     //函数名后面不加空格
     "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
+    "javascript.implicitProjectConfig.experimentalDecorators": true,
     "vetur.format.defaultFormatter.js": "vscode-typescript",
     "workbench.colorCustomizations": {
         "statusBar.background": "#27a1b1",
