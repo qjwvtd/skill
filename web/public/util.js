@@ -450,3 +450,20 @@ export function queryFindTreeNode(treeList, key, value) {
     }
     return result;
 }
+//处理树数据,添加字段名key,title,children,删除subsetList
+//根据实际情况修改
+export function hanldeTreeData(list) {
+    if (list.length === 0) { return; }
+    const arr = [];
+    list.forEach(item => {
+        item.title = item.name;
+        item.key = item.id;
+        item.children = item.subsetList;
+        arr.push(item);
+        delete item.subsetList;
+        if (item.children) {
+            return this.hanldeTreeData(item.children);
+        }
+    });
+    return arr;
+}
