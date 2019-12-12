@@ -467,3 +467,19 @@ export function hanldeTreeData(list) {
     });
     return arr;
 }
+//下载文件
+export function downloadFile(url) {
+    if (!url) { throw '缺少必要参数url'; }
+    if (navigator.userAgent.indexOf('Trident') > -1) {
+        //ie
+        window.open(url, '_blank');
+    } else {
+        //非ie
+        const a = document.createElement('a'); // 创建a标签
+        const e = document.createEvent('MouseEvents'); // 创建鼠标事件对象
+        e.initEvent('click', false, false); // 初始化事件对象
+        a.href = url; // 设置下载地址
+        a.download = ''; // 设置下载文件名
+        a.dispatchEvent(e);
+    }
+}
