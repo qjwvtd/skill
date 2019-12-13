@@ -483,3 +483,27 @@ export function downloadFile(url) {
         a.dispatchEvent(e);
     }
 }
+/**
+ * 日期格式化
+ */
+export function dateformat(fmt, date) {
+  const str = date || new Date()
+  var o = {
+    'M+': str.getMonth() + 1, //月份 
+    'd+': str.getDate(), //日 
+    'h+': str.getHours(), //小时 
+    'm+': str.getMinutes(), //分 
+    's+': str.getSeconds(), //秒 
+    'q+': Math.floor((str.getMonth() + 3) / 3), //季度
+    'S': str.getMilliseconds() //毫秒 
+  }
+  if (/(y+)/.test(fmt)) {
+    fmt = fmt.replace(RegExp.$1, (str.getFullYear() + '').substr(4 - RegExp.$1.length))
+  }
+  for (var k in o) {
+    if (new RegExp('(' + k + ')').test(fmt)) {
+      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) : (('00' + o[k]).substr(('' + o[k]).length)))
+    }
+  }
+  return fmt
+}
