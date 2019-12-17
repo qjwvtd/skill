@@ -12,24 +12,19 @@
     "editor.foldingStrategy": "indentation",
     "editor.formatOnSave": true,
     "editor.autoClosingBrackets": "never",
-    "eslint.autoFixOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+        "source.autoFixOnSave": true,
+        "source.fixAll.eslint": true
+    },
     "eslint.run": "onSave",
     "eslint.validate": [
         "javascript",
         "javascriptreact",
+        "react",
+        "vue",
         "html",
-        {
-            "language": "react",
-            "autoFix": true
-        },
-        {
-            "language": "vue",
-            "autoFix": true
-        },
-        {
-            "language": "html",
-            "autoFix": true
-        }
+        "js"
     ],
     "emmet.includeLanguages": {
         "javascript": "javascriptreact"
@@ -38,16 +33,9 @@
         "JavaScript React": "jsx"
     },
     "emmet.triggerExpansionOnTab": true,
-    "vetur.format.defaultFormatterOptions": {
-        "prettier": {
-            "semi": true,
-            "singleQuote": true
-        }
-    },
     //函数名后面不加空格
     "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
     "javascript.implicitProjectConfig.experimentalDecorators": true,
-    "vetur.format.defaultFormatter.js": "vscode-typescript",
     "workbench.colorCustomizations": {
         "statusBar.background": "#27a1b1",
         "statusBar.noFolderBackground": "#040405",
@@ -55,7 +43,5 @@
     },
     "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
     "terminal.integrated.fontFamily": "Consolas, 'Courier New', monospace",
-    "workbench.iconTheme": "vscode-icons",
-    "workbench.colorTheme": "Darcula",
     "javascript.updateImportsOnFileMove.enabled": "always"
 }
