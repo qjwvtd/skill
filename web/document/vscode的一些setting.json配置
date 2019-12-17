@@ -7,24 +7,23 @@
     "files.autoSave": "afterDelay",
     "git.autofetch": true,
     "editor.tabSize": 4,
+    "editor.detectIndentation": true, //设置全部的文件都是4个字符缩进
     "git.enableSmartCommit": true,
     "editor.fontSize": 16,
+    "editor.fontFamily": "Courier New",
+    "editor.fontWeight": "400",
     "editor.foldingStrategy": "indentation",
-    "editor.formatOnSave": true,
     "editor.autoClosingBrackets": "never",
     "editor.codeActionsOnSave": {
         "source.fixAll": true,
-        "source.autoFixOnSave": true,
-        "source.fixAll.eslint": true
+        "source.autoFixOnSave": true
     },
     "eslint.run": "onSave",
     "eslint.validate": [
         "javascript",
         "javascriptreact",
         "react",
-        "vue",
-        "html",
-        "js"
+        "html"
     ],
     "emmet.includeLanguages": {
         "javascript": "javascriptreact"
@@ -33,8 +32,6 @@
         "JavaScript React": "jsx"
     },
     "emmet.triggerExpansionOnTab": true,
-    //函数名后面不加空格
-    "javascript.format.insertSpaceBeforeFunctionParenthesis": false,
     "javascript.implicitProjectConfig.experimentalDecorators": true,
     "workbench.colorCustomizations": {
         "statusBar.background": "#27a1b1",
