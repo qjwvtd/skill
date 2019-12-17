@@ -7,6 +7,7 @@
     "files.autoSave": "afterDelay",
     "git.autofetch": true,
     "editor.tabSize": 4,
+    "editor.lineHeight": 24,
     "editor.detectIndentation": true, //设置全部的文件都是4个字符缩进
     "git.enableSmartCommit": true,
     "editor.fontSize": 16,
@@ -14,19 +15,26 @@
     "editor.fontWeight": "400",
     "editor.foldingStrategy": "indentation",
     "editor.autoClosingBrackets": "never",
+    "editor.tabCompletion": "on",
     "editor.codeActionsOnSave": {
         "source.fixAll": true,
         "source.autoFixOnSave": true
+    },
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": true,
+        "strings": true
     },
     "eslint.run": "onSave",
     "eslint.validate": [
         "javascript",
         "javascriptreact",
-        "react",
         "html"
     ],
+    "eslint.alwaysShowStatus": true,
     "emmet.includeLanguages": {
-        "javascript": "javascriptreact"
+        "javascript": "javascriptreact",
+        "jsx-sublime-babel-tags": "javascriptreact"
     },
     "emmet.syntaxProfiles": {
         "JavaScript React": "jsx"
@@ -40,5 +48,13 @@
     },
     "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
     "terminal.integrated.fontFamily": "Consolas, 'Courier New', monospace",
-    "javascript.updateImportsOnFileMove.enabled": "always"
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.validate.enable": false,
+    "files.associations": {
+        "*.js": "javascript",
+        "*.jsx": "javascript",
+        "*.html": "html"
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
 }
