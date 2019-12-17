@@ -6,6 +6,7 @@
 {
     "files.autoSave": "afterDelay",
     "git.autofetch": true,
+    "editor.formatOnSave": true,
     "editor.tabSize": 4,
     "editor.lineHeight": 24,
     "editor.detectIndentation": true, //设置全部的文件都是4个字符缩进
@@ -17,7 +18,7 @@
     "editor.autoClosingBrackets": "never",
     "editor.tabCompletion": "on",
     "editor.codeActionsOnSave": {
-        "source.fixAll": true,
+        "source.fixAll.eslint": true,
         "source.autoFixOnSave": true
     },
     "editor.quickSuggestions": {
