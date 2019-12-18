@@ -21,11 +21,7 @@
         "source.fixAll.eslint": true,
         "source.autoFixOnSave": true
     },
-    "editor.quickSuggestions": {
-        "other": true,
-        "comments": true,
-        "strings": true
-    },
+    "editor.quickSuggestions": true,
     "eslint.run": "onSave",
     "eslint.validate": [
         "javascript",
