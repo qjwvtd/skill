@@ -22,6 +22,7 @@
         "source.autoFixOnSave": true
     },
     "editor.quickSuggestions": true,
+    "editor.suggestSelection": "first",
     "eslint.run": "onSave",
     "eslint.validate": [
         "javascript",
@@ -29,14 +30,18 @@
         "html"
     ],
     "eslint.alwaysShowStatus": true,
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.useNewEmmet": true,
     "emmet.includeLanguages": {
         "javascript": "javascriptreact",
-        "jsx-sublime-babel-tags": "javascriptreact"
+        "jsx-sublime-babel-tags": "javascriptreact",
+        "plaintext": "jade",
+        "vue-html": "html",
+        "vue": "html"
     },
     "emmet.syntaxProfiles": {
         "JavaScript React": "jsx"
     },
-    "emmet.triggerExpansionOnTab": true,
     "javascript.implicitProjectConfig.experimentalDecorators": true,
     "workbench.colorCustomizations": {
         "statusBar.background": "#27a1b1",
@@ -52,6 +57,5 @@
         "*.jsx": "javascript",
         "*.html": "html"
     },
-    "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
 }
