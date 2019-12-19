@@ -1,0 +1,120 @@
+import React, { Fragment, useRef, useState } from 'react';
+import { Row, Col, Button, Modal, Upload, message } from 'antd';
+import Cropper from 'react-cropper';
+/**
+ * 必须引入react-cropper插件的cropper.css文件
+ **/
+const avtar = require('@/static/images/portrait_default.png');
+
+function CropperModal() {
+    //默认图片state
+    const [avtarSrc, setAvtarSrc] = useState(avtar);
+    //裁剪后的图片
+    const [cropperedImg, setCropperedImg] = useState(null);
+
+    const cropperRef = useRef();
+
+    //处理成base64位
+    function getBase64(img, callback) {
+        const reader = new FileReader();
+        reader.addEventListener('load', () => callback(reader.result));
+        reader.readAsDataURL(img);
+    }
+    //限制类型为图片文件和文件大小
+    function beforeUpload(file) {
+        const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+        if (!isJpgOrPng) {
+            message.error('只能上传JPG/PNG 文件!');
+        }
+        const isLt2M = file.size / 1024 / 1024 < 2;
+        if (!isLt2M) {
+            message.error('图片大小必须小于2MB!');
+        }
+        return isJpgOrPng && isLt2M;
+    }
+    //裁剪图片
+    function cropImage() {
+        if (cropperRef.current.getCroppedCanvas() === 'null') {
+            return false;
+        }
+        //裁剪后的图片
+        const cimg = cropperRef.current.getCroppedCanvas().toDataURL();
+        setCropperedImg(cimg);
+    }
+    //处理上传
+    function handleChange(info) {
+        if (info.file.status === 'done') {
+            getBase64(info.file.originFileObj, (imageUrl) =>
+                setAvtarSrc(imageUrl)
+            );
+        }
+    }
+    return (
+        <Modal
+            title="更改头像"
+            width={"600px"}
+            visible={true}
+        >
+            <Row className="ui-updateHeadAvtar-modal">
+                <Col span={14}>
+                    <div className="ui-cropper-box">
+                        {
+                            avtarSrc &&
+                            <Cropper
+                                src={avtarSrc}
+                                ref={cropperRef}
+                                className="user-avtar-cropper"
+                                viewMode={1}
+                                zoomable={false}
+                                aspectRatio={1}
+                                guides={false}
+                            />
+                        }
+                    </div>
+                    <Upload
+                        name="avatar"
+                        showUploadList={false}
+                        action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                        beforeUpload={beforeUpload}
+                        onChange={handleChange}
+                    >
+                        <a className="headAvtar-upload-btn">
+                            {
+                                avtarSrc ?
+                                    <span><i className="iconfont">&#xe627;</i>重新上传</span> :
+                                    <span><i className="iconfont">&#xe627;</i>上传</span>
+                            }
+                        </a>
+                    </Upload>
+                </Col>
+                <Col span={10}>
+                    <div className="cropper-preview text-center">
+                        <div className="avtar-cropper-preview">
+                            <img src={cropperedImg} />
+                        </div>
+                        <div>
+                            <Button type="primary" size="large" onClick={cropImage} style={{ marginTop: '10px' }}>
+                                确认裁剪
+                            </Button>
+                        </div>
+                    </div>
+                </Col>
+            </Row>
+        </Modal>
+    );
+}
+
+
+export default function UpdateUserAvater() {
+    const [headAvtar, setHheadAvtar] = useState(avtar);
+    console.log(setHheadAvtar);
+    return (
+        <Fragment>
+            <Row className="ui-userinfo-updataAvtar">
+                <img src={headAvtar} />
+                <Button>更改头像</Button>
+            </Row>
+            <CropperModal />
+        </Fragment>
+    );
+}
