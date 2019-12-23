@@ -1,4 +1,4 @@
-###新的生命周期
+1,###新的生命周期
 ,class A extends React.Component {
   // 用于初始化 state
   constructor() {}
@@ -28,5 +28,30 @@
   UNSAFE_componentWillReceiveProps(nextProps) {}
 }
 --------------------------------------------------------------------------------
-###router的使用
+2,###router的使用
 给Link组件加上replace,可以防止路由重复点击报错,官方暂不修复这个BUG
+--------------------------------------------------------------------------------
+3,###react hooks里清除setInterval/setTimeout
+import React, { useEffect, useRef } from 'react';
+const [codeOldBtnText, setCodeOldBtnText] = useState('获取验证码');
+useEffect(() => {
+    //在useEffect中返回一个方法,会在组件卸载时执行
+    return () => { clearInterval(intervalRef.current); };//这里很关键
+}, []);
+const btnChangeFunc = () => {
+    let count = 60;
+    let intervalId = setInterval(() => {
+        let btnText = '';
+        if (count > 0) {
+            count = count - 1;
+            btnText = count + 's后重新获取';
+        }
+        if (count === 0) {
+            clearInterval(intervalId);
+            btnText = '获取验证码';
+        }
+        setCodeOldBtnText(btnText);
+    }, 1000);
+    intervalRef.current = intervalId;//这里很关键
+};
+btnChangeFunc();
