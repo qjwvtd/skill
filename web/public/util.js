@@ -507,6 +507,23 @@ export function dateformat(fmt, date) {
   }
   return fmt
 }
+//input type=file,文件转为base64
+function imgFileToBase64(file) {
+    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+    if (!isJpgOrPng) {
+        message.error('只能上传JPG/PNG 文件!');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+        message.error('图片大小必须小于2MB!');
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = e => {
+        const base64URL = e.target.result;
+        console.log(base64URL);
+    };
+}
 // base64 转file,并生成表单数据
 export function dataURLtoFile(dataurl, fileName) {
     let arr = dataurl.split(',');
