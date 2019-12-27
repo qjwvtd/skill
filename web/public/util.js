@@ -507,3 +507,18 @@ export function dateformat(fmt, date) {
   }
   return fmt
 }
+// base64 转file,并生成表单数据
+export function dataURLtoFile(dataurl, fileName) {
+    let arr = dataurl.split(',');
+    let mime = arr[0].match(/:(.*?);/)[1];
+    let bstr = atob(arr[1]);
+    let n = bstr.length;
+    let u8arr = new Uint8Array(n);
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    const file = new File([u8arr], fileName || 'avatarImgFile', { type: mime });
+    const formData = new FormData();
+    formData.append('file', file);
+    return formData;
+}
