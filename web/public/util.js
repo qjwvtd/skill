@@ -216,15 +216,25 @@ export function splits(tranvalue) {
 }
 //获取URL参数,返回一个对象
 export function getParam() {
-    const startIndex = window.location.href.indexOf('?');
-    const params = window.location.href.substr(startIndex, window.location.href.length);
-    const xh = params.indexOf('?');
-    const query = params.substr(xh + 1, params.length);
-    const list = query.split('&' || '&&');
+    const search = window.location.search;
+    const hash = window.location.hash;
+    const searchParam = search.indexOf('?') >= 0 && search;
+    const hashParam = hash.indexOf('?') >= 0 && hash;
     const paramObj = {};
-    for (let i = 0; i < list.length; i++) {
-        const pair = list[i].split('=');
-        paramObj[pair[0]] = pair[1];
+    function montage(obj, params) {
+        const startIndex = params.indexOf('?') + 1;
+        const query = params.substr(startIndex, params.length);
+        const list = query.split('&' || '&&');
+        for (let i = 0; i < list.length; i++) {
+            const pair = list[i].split('=');
+            obj[pair[0]] = pair[1];
+        }
+    }
+    if (searchParam.length > 0) {
+        montage(paramObj, searchParam);
+    }
+    if (hashParam.length > 0) {
+        montage(paramObj, hashParam);
     }
     return paramObj;
 }
