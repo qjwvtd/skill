@@ -1,0 +1,25 @@
+//执行多个任务,一键gulp<4.0版本之后>
+gulp.task('default', gulp.series(
+    [
+        'minicss-home',
+        'minicss-homeCap',
+        'minicss-homeSass',
+        'minicss-homeLog',
+        'minicss-about',
+        'minicss-scene',
+        'minicss-support',
+        'minicss-search',
+        'minijs-home',
+        'minijs-homeCap',
+        'minijs-homeSass',
+        'minijs-homeLog',
+        'minijs-about',
+        'minijs-scene',
+        'minijs-support',
+        'minijs-search'
+    ],
+    done => {
+        console.log("gulp压缩任务已完成");
+        done();
+    }
+));
