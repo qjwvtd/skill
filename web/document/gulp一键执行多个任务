@@ -1,6 +1,115 @@
+var gulp = require('gulp'),
+    minifycss = require('gulp-minify-css'),
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify'),
+    rename = require('gulp-rename'),
+    babel = require("gulp-babel"),
+    del = require('del');
+//生成随机字符串
+function randomHashString(length) {
+    var dateStr = new Date().getTime();
+    return dateStr;
+}
+
+var assetsUrl = __dirname + '/src/assets';
+var publicCss = {
+    base: assetsUrl + '/css/base.css',
+    carsousel: assetsUrl + '/css/carsousel.css',
+    common: assetsUrl + '/css/common.css',
+    footer: assetsUrl + '/css/footer.css',
+    head: assetsUrl + '/css/head.css'
+};
+var publicJs = {
+    jq: assetsUrl + '/js/lib/jquery.min.js',
+    common: assetsUrl + '/js/common.js',
+    root: assetsUrl + '/js/root.js'
+}
+//首页
+var home = {
+    name: 'home',
+    css: [publicCss.base, publicCss.head, publicCss.carsousel, publicCss.footer, assetsUrl + '/css/home.css'],
+    js: [publicJs.common, assetsUrl + '/js/home.js']
+};
+//首页-安全帽
+var homeCap = {
+    name: 'homeCap',
+    css: [publicCss.base, publicCss.head, publicCss.common, publicCss.footer, assetsUrl + '/css/cap.css'],
+    js: [publicJs.common, assetsUrl + '/js/cap.js']
+};
+//首页-天天云志
+var homeLog = {
+    name: 'homeLog',
+    css: [publicCss.base, publicCss.head, publicCss.common, publicCss.footer, assetsUrl + '/css/cloudLog.css'],
+    js: [publicJs.common, assetsUrl + '/js/cloudLog.js']
+};
+//首页-智安汇
+var homeSass = {
+    name: 'homeSass',
+    css: [publicCss.base, publicCss.head, publicCss.common, publicCss.footer, assetsUrl + '/css/sass.css'],
+    js: [publicJs.common, assetsUrl + '/js/sass.js']
+};
+//应用场景
+var scene = {
+    name: 'scene',
+    css: [publicCss.base, publicCss.head, publicCss.common, publicCss.footer, assetsUrl + '/css/scene.css'],
+    js: [publicJs.common, assetsUrl + '/js/scene.js']
+};
+//关于我们
+var about = {
+    name: 'about',
+    css: [publicCss.base, publicCss.head, publicCss.common, publicCss.footer, assetsUrl + '/css/about.css'],
+    js: [publicJs.jq, publicJs.root, publicJs.common, assetsUrl + '/js/about.js']
+};
+//技术支持
+var support = {
+    name: 'support',
+    css: [publicCss.base, publicCss.head, publicCss.common, publicCss.footer, assetsUrl + '/css/support.css'],
+    js: [publicJs.jq, publicJs.root, publicJs.common, assetsUrl + '/js/support.js']
+};
+//搜索界面
+var search = {
+    name: 'search',
+    css: [publicCss.base, publicCss.head, publicCss.common, publicCss.footer, assetsUrl + '/css/search.css'],
+    js: [publicJs.jq, publicJs.root, publicJs.common, assetsUrl + '/js/search.js']
+};
+var arr = [home, homeCap, homeLog, homeSass, scene, about, support, search];
+console.log("删除已有文件");
+//删除已有文件
+gulp.task('clean', function () {
+    return del([
+        assetsUrl + '/scripts/',
+        assetsUrl + '/styles/'
+    ]);
+});
+console.log("开始压缩");
+for (var i = 0; i < arr.length; i++) {
+    var option = arr[i];
+    (function (item, name) {
+        //使用gulp minicss 压缩css
+        gulp.task('minicss-' + name, function () {
+            //需要操作的文件,可接受数组
+            return gulp.src(item.css)
+                .pipe(minifycss())   //压缩css
+                .pipe(concat(item.name + '_' + randomHashString(8) + '.css')) //合并css
+                .pipe(rename({ suffix: '.min' }))   //rename压缩后的文件名
+                .pipe(gulp.dest(assetsUrl + '/styles'));   //输出文件夹
+        });
+        //使用gulp minijs 压缩/合并js
+        gulp.task('minijs-' + name, function () {
+            //需要操作的文件,可接受数组
+            return gulp.src(item.js)
+                .pipe(babel())//编译es6
+                .pipe(uglify()) //压缩js
+                .pipe(concat(item.name + '_' + randomHashString(8) + '.js'))    //合并js
+                .pipe(rename({ suffix: '.min' }))   //rename压缩后的文件名
+                .pipe(gulp.dest(assetsUrl + '/scripts'))//输出到文件夹
+        });
+    })(option, option.name);
+}
 //执行多个任务,一键gulp<4.0版本之后>
 gulp.task('default', gulp.series(
     [
+        'clean',
         'minicss-home',
         'minicss-homeCap',
         'minicss-homeSass',
@@ -19,7 +128,7 @@ gulp.task('default', gulp.series(
         'minijs-search'
     ],
     done => {
-        console.log("gulp压缩任务已完成");
+        console.log("压缩完成");
         done();
     }
 ));
