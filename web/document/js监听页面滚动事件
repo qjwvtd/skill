@@ -1,0 +1,2 @@
+window.addEventListener('scroll', function (e) { }, false);或
+document.addEventListener('scroll', function (e) { }, false);
