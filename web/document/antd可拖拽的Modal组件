@@ -1,0 +1,76 @@
+import React, { Component } from "react";
+function randomWord(len) {
+    const arr = [
+        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'm', 'n',
+        'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B',
+        'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+        'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+    ];
+    let str = "";
+    for (let i = 0; i < len; i++) {
+        const pos = Math.round(Math.random() * (arr.length - 1));
+        str += arr[pos];
+    }
+    return str;
+}
+export default class BuildTitle extends Component {
+    constructor(props) {
+        super(props);
+        this.header = null;
+        this.tdom = null;
+        this.id = randomWord(24);
+        this.position = {
+            startX: 0,
+            startY: 0,
+            dx: 0,
+            dy: 0,
+            tx: 0,
+            ty: 0
+        };
+    }
+
+    start = event => {
+        if (event.button !== 0) {
+            //只允许左键，右键问题在于不选择conextmenu就不会触发mouseup事件
+            return;
+        }
+        document.addEventListener("mousemove", this.docMove);
+        this.position.startX = event.pageX - this.position.dx;
+        this.position.startY = event.pageY - this.position.dy;
+    };
+    docMove = event => {
+        const tx = event.pageX - this.position.startX;
+        const ty = event.pageY - this.position.startY;
+        const transformStr = `translate(${tx}px,${ty}px)`;
+        this.tdom.style.transform = transformStr;
+        this.position.dx = tx;
+        this.position.dy = ty;
+    };
+    docMouseUp = () => {
+        document.removeEventListener("mousemove", this.docMove);
+    };
+    componentDidMount() {
+        //title节点
+        const titleDom = document.getElementById(this.id);
+        //modal头部
+        this.header = titleDom.parentNode.parentNode;
+        //modal容器
+        this.tdom = titleDom.parentNode.parentNode.parentNode.parentNode.parentNode;
+        this.header.style.cursor = 'move';
+        this.header.style.userSelect = 'none';
+        this.tdom.addEventListener("mousedown", this.start);
+        //用document移除对mousemove事件的监听
+        document.addEventListener("mouseup", this.docMouseUp);
+    }
+    render() {
+        const { title } = this.props;
+        return (<div id={this.id}>{title}</div>);
+    }
+}
+
+使用方法:
+<Modal
+    title={<BuildTitle title="修改部门" />}
+>
+    //do something
+</Modal>
