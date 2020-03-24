@@ -1,3 +1,8 @@
+/**
+ * 可拖拽的antd Modal组伯
+ * @param title,string
+ * 在antd Modal组件中的title属性加入title={<BuildTitle title="你的title" />>}
+*/
 import React, { Component } from "react";
 function randomWord(len) {
     const arr = [
