@@ -11,3 +11,12 @@
    window.addEventListener('popstate', function() {
      history.pushState(null, null, document.URL)
    })
+10,禁止右键:
+document.onmousedown = function (e) {
+     if (e.button == 2) {
+         return false;
+     }
+ }
+ document.oncontextmenu = function () {
+     return false;
+ }
