@@ -22,15 +22,14 @@
         -ms-user-select: none; /* Internet Explorer/Edge */
         user-select: none; /* Non-prefixed version, currently not supported by any browser */
     }
-5,css实现左右布局<flex>
-ul{
-    display:flex;
-    justify-content: space-between; /* 横向中间自动空间 */
-    align-content: space-between;  /* 竖向中间自动空间 */
-    flex-wrap: wrap; /* 换行 */
-}
-li{
-    width: 45%;
-}
+5、css实现左右布局<flex>
+    ul{
+        display:flex;
+        justify-content: space-between; /* 横向中间自动空间 */
+        align-content: space-between;  /* 竖向中间自动空间 */
+        flex-wrap: wrap; /* 换行 */
+    }
+    li{width: 45%;}
+6、img去除默认下边距img{vertical-align: middle;}
 
 
