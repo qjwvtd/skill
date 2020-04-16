@@ -32,4 +32,16 @@
     li{width: 45%;}
 6、img去除默认下边距img{vertical-align: middle;}
 
-
+7、输入框placeholder颜色
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{
+    color: #999;
+}
+input::-moz-placeholder,textarea::-moz-placeholder{   /* Mozilla Firefox 19+ */
+    color: #999;
+}
+input:-moz-placeholder,textarea:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+    color: #999;
+}
+input:-ms-input-placeholder,textarea:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+    color: #999;
+}
