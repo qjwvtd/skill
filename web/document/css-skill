@@ -45,3 +45,4 @@
     input:-ms-input-placeholder,textarea:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
         color: #999;
     }
+8、禁止按钮显示为红色圆圈加一杠,cursor: not-allowed;
