@@ -13,5 +13,5 @@ function xian(data) {
     return p;
 }
 china().then(jiangshu).then(xian).then(function (data) {
-    console.log(data)
+    console.log(data);//中国,四川,成都
 })
