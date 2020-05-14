@@ -1,15 +1,15 @@
 function china() {
-    var p = new Promise((resolve, reject) => { resolve('中国') });
+    var p = new Promise((resolve) => { resolve('中国') });
     return p;
 }
 
 function jiangshu(data) {
-    var p = new Promise(function (resolve, reject) { resolve(data + ',四川') });
+    var p = new Promise(function (resolve) { resolve(data + ',四川') });
     return p;
 }
 
 function xian(data) {
-    var p = new Promise(function (resolve, reject) { resolve(data + ',成都') });
+    var p = new Promise(function (resolve) { resolve(data + ',成都') });
     return p;
 }
 china().then(jiangshu).then(xian).then(function (data) {
