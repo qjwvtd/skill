@@ -1,0 +1,34 @@
+/* task */
+#task{
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    opacity: 0;
+}
+#task.active{
+    background: rgba(0,0,0, 0.5);
+    opacity: 1;
+    animation: taskChange 0.25s linear;
+}
+@keyframes taskChange {
+    from{opacity: 0;background: transparent;}
+    to{opacity: 1;background: rgba(0,0,0, 0.5);}
+}
+#task .content{
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    transform: translate(-50%,-20%);
+    width: 50%;
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+    color: #fff;
+    border-radius: 18px;
+    font-size: 16px;
+}
