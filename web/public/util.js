@@ -28,16 +28,8 @@ export function ranNumber(min,max){
   }
 }
 //是否是数字
-export function isNumber(num) {
-    //严格模式,必须传入number类型
-    if(typeof num !== 'number'){
-        console.warn('警告:参数类型为' + typeof num + ',不匹配');
-        return false;
-    }
-    const zreo = /^[0]+$/;//0也是数字
-    const positive = /^[1-9]+$|^[0]{1}[.]{1}[0-9]+$|^[1-9]+[.]{1}[0-9]+$/;//匹配正数
-    const negative = /^[-]{1}[1-9]+$|^[-]{1}[0]{1}[.]{1}[0-9]+$|^[-]{1}[1-9]+[.]{1}[0-9]+$/;//匹配负数
-    return positive.test(num) || negative.test(num) || zreo.test(num) ? true : false;
+export function isNumber(value) {
+    return +(value) % 1 >= 0 || +(value) % 1 < 0;
 }
 //获取鼠标点击时的位置
 export function Position(ev) {
