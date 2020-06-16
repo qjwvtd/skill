@@ -231,35 +231,6 @@ export function getParam() {
     return paramObj;
 }
 /**
- * 取出数组中随机几项元素
- * arr原数组,num随机取出的个数
- */
-export function getRandomArray(arr, num) {
-    //新建一个数组,将传入的数组复制过来,用于运算,而不要直接操作传入的数组;
-    const temp_array = new Array();
-    for (let index in arr) {
-        temp_array.push(arr[index]);
-    }
-    num = num || arr.length - 1;
-    //取出的数值项,保存在此数组
-    const return_array = new Array();
-    for (let i = 0; i < num; i++) {
-        //判断如果数组还有可以取出的元素,以防下标越界
-        if (temp_array.length > 0) {
-            //在数组中产生一个随机索引
-            const arrIndex = Math.floor(Math.random() * temp_array.length);
-            //将此随机索引的对应的数组元素值复制出来
-            return_array[i] = temp_array[arrIndex];
-            //然后删掉此索引的数组元素,这时候temp_array变为新的数组
-            temp_array.splice(arrIndex, 1);
-        } else {
-            //数组中数据项取完后,退出循环,比如数组本来只有10项,但要求取出20项.
-            break;
-        }
-    }
-    return return_array;
-}
-/**
  * 防抖函数
  * 只需要在事件触发的第一行调用,如:
  * shakePrevent()
