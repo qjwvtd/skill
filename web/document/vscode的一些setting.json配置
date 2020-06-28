@@ -1,11 +1,14 @@
 {
     "git.autofetch": true,
-    "editor.formatOnSave": true,
     "editor.tabSize": 4,
     "editor.lineHeight": 28,
     "editor.fontSize": 16,
     "editor.fontFamily": "Courier New",
-    "editor.fontWeight": "400",
-    "files.autoSave": "afterDelay",
-    "javascript.implicitProjectConfig.experimentalDecorators": true
+    "editor.fontWeight": "500",
+    "javascript.implicitProjectConfig.experimentalDecorators": true,
+    "workbench.settings.editor": "json",
+    "workbench.settings.useSplitJSON": true,
+    "files.autoSaveDelay": 0,
+    "eslint.codeAction.disableRuleComment": {},
+    "javascript.updateImportsOnFileMove.enabled": "always"
 }
