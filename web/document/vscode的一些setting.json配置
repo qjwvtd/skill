@@ -10,5 +10,6 @@
     "workbench.settings.useSplitJSON": true,
     "files.autoSaveDelay": 0,
     "eslint.codeAction.disableRuleComment": {},
+    "editor.formatOnSave": true,
     "javascript.updateImportsOnFileMove.enabled": "always"
 }
