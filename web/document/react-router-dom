@@ -1,0 +1,15 @@
+//错误用法
+import { BrowserRouter as Router } from 'react-router-dom';
+import history from '@/common/router';//外部history对象
+<Router history={history}>...<Router>
+//正确用法<Browser模式>
+import { Router } from 'react-router-dom';
+import history from '@/common/router';//外部history对象
+<Router history={history}>...<Router>
+//正确用法<Hash模式>
+import { HashRouter as Router } from 'react-router-dom';
+import history from '@/common/router';//外部history对象
+<Router>...<Router>
+
+原因:Router对象默认是使用Browser模式,若要引入外部history,
+则Browser模式必须指定history属性
