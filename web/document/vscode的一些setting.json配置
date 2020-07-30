@@ -4,7 +4,7 @@
     "files.autoSave": "onFocusChange",
     "javascript.updateImportsOnFileMove.enabled": "always",
     "editor.formatOnSave": true,
-    "editor.fontFamily": "Fira Code",
+    "editor.fontFamily": "'Courier New'",
     "editor.fontLigatures": false,
     // 控制字体粗细。
     "editor.fontWeight": "200",
