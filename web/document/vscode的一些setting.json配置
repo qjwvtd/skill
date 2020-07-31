@@ -1,8 +1,7 @@
 {
     "git.autofetch": true,
     "editor.lineHeight": 28,
-    "editor.fontSize": 18,
-    "editor.tabSize": 4,
+    "editor.fontSize": 16,
     "javascript.implicitProjectConfig.experimentalDecorators": true,
     "workbench.settings.editor": "json",
     "workbench.settings.useSplitJSON": true,
@@ -13,14 +12,11 @@
     "editor.formatOnSave": true,
     "editor.fontFamily": "'Courier New'",
     "editor.fontLigatures": false,
-    // 控制字体粗细。
-    "editor.fontWeight": "200",
     "workbench.settings.openDefaultSettings": true,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "eslint.validate": [
         "javascript",
         "javascriptreact",
-        "typescript",
         "typescriptreact"
     ]
 }
