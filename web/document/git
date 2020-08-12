@@ -19,6 +19,9 @@ git branch -a
 --------------------------
 #关联远程分支
 git remote add origin 远程分支名
+-------------------------------
+#在本地目录初始好git后<生成.git文件后>,第一次拉取远程仓库的代码要执行下面的代码
+git pull origin master<更换你要拉取的远程分支名> --allow-unrelated-histories
 ----------------------------------
 # 推送本地分支到远程分支
 git push origin 本地分支名:远程分支名
