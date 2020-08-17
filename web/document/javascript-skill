@@ -20,3 +20,4 @@ document.onmousedown = function (e) {
  document.oncontextmenu = function () {
      return false;
  }
+11,字符串强制换行,拼接时在\n左右两边各打一个空格
