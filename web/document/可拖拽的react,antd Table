@@ -1,0 +1,103 @@
+import React, { useState, useCallback, useRef, useEffect } from 'react';
+import { DndProvider, useDrag, useDrop } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { Table } from "antd";
+import update from 'immutability-helper';
+
+const ItemTypes = { ROW: 'row' };
+function DragBody(props) {
+    const { dataSource, columns, onChange, ...tableProps } = props;
+    const [list, setList] = useState([]);
+    useEffect(() => {
+        setList(dataSource);
+    }, [dataSource]);
+    const moveRow = useCallback((dragIndex, hoverIndex) => {
+        const dragItem = list[dragIndex];
+        const newList = update(list, {
+            $splice: [
+                [dragIndex, 1],
+                [hoverIndex, 0, dragItem]
+            ]
+        });
+        setList(newList);
+        onChange(newList);
+    }, [list]);
+    const DraggableRow = (rowProps) => {
+        const { index, record, move, ...restProps } = rowProps;
+        const ref = useRef(null);
+        // 接收
+        const [{ isOver, canDrop }, drop] = useDrop({
+            accept: ItemTypes.ROW,
+            drop: (col) => move(col.index, index),
+            collect: (monitor) => ({
+                isOver: monitor.isOver(),
+                canDrop: monitor.canDrop()
+            })
+        });
+        const rowStyle = { ...restProps.style };
+        if (isOver && canDrop) {
+            rowStyle.background = '#ccc';
+        }
+        // 拖拽
+        const [{ isDragging }, drag] = useDrag({
+            item: { type: ItemTypes.ROW, record, index },
+            collect: monitor => ({
+                isDragging: monitor.isDragging()
+            })
+        });
+        const opacity = isDragging ? 0 : 1;
+        drag(drop(ref));
+        return <tr ref={ref} {...restProps} style={{ ...rowStyle, opacity, cursor: 'move' }}></tr>;
+    };
+    const components = {
+        body: { row: DraggableRow }
+    };
+    return <DndProvider backend={HTML5Backend}>
+        <Table
+            {...tableProps}
+            components={components}
+            dataSource={list}
+            columns={columns}
+            onRow={(record, index) => {
+                return {
+                    record: record,
+                    index: index,
+                    move: moveRow
+                };
+            }}
+        />
+    </DndProvider>;
+}
+export default function DragTable() {
+    const list = [
+        { id: 1, text: 'Write a cool JS library' },
+        { id: 2, text: 'Make it generic enough' },
+        { id: 3, text: 'Write README' },
+        { id: 4, text: 'Create some examples' },
+        { id: 5, text: 'note that this element is taller than the others' },
+        { id: 6, text: '???' },
+        { id: 7, text: 'PROFIT' }
+    ];
+    const columns = [
+        {
+            title: "ID",
+            dataIndex: 'id',
+            key: 'id'
+        },
+        {
+            title: "text",
+            dataIndex: 'text',
+            key: 'text'
+        }
+    ];
+    function handleTableDrag(arr) {
+        console.log(arr);
+    }
+    return <DragBody
+        rowKey="id"
+        dataSource={list}
+        columns={columns}
+        pagination={false}
+        onChange={handleTableDrag}
+    />;
+}
