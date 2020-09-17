@@ -4,10 +4,11 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Table } from "antd";
 import update from 'immutability-helper';
 
-const ItemTypes = { ROW: 'row' };
-function DragBody(props) {
+//基于react,antd的可拖拽table组件
+export default function DragTable(props) {
     const { dataSource, columns, onChange, ...tableProps } = props;
     const [list, setList] = useState([]);
+    const itemType = 'row';
     useEffect(() => {
         setList(dataSource);
     }, [dataSource]);
@@ -27,7 +28,7 @@ function DragBody(props) {
         const ref = useRef(null);
         // 接收
         const [{ isOver, canDrop }, drop] = useDrop({
-            accept: ItemTypes.ROW,
+            accept: itemType,
             drop: (col) => move(col.index, index),
             collect: (monitor) => ({
                 isOver: monitor.isOver(),
@@ -40,7 +41,7 @@ function DragBody(props) {
         }
         // 拖拽
         const [{ isDragging }, drag] = useDrag({
-            item: { type: ItemTypes.ROW, record, index },
+            item: { type: itemType, record, index },
             collect: monitor => ({
                 isDragging: monitor.isDragging()
             })
@@ -58,6 +59,7 @@ function DragBody(props) {
             components={components}
             dataSource={list}
             columns={columns}
+            pagination={false}
             onRow={(record, index) => {
                 return {
                     record: record,
@@ -68,7 +70,9 @@ function DragBody(props) {
         />
     </DndProvider>;
 }
-export default function DragTable() {
+
+//使用方法示例
+export function DragTableDemo() {
     const list = [
         { id: 1, text: 'Write a cool JS library' },
         { id: 2, text: 'Make it generic enough' },
@@ -93,11 +97,10 @@ export default function DragTable() {
     function handleTableDrag(arr) {
         console.log(arr);
     }
-    return <DragBody
+    return <DragTable
         rowKey="id"
         dataSource={list}
         columns={columns}
-        pagination={false}
         onChange={handleTableDrag}
     />;
 }
