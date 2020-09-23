@@ -21,3 +21,4 @@ document.onmousedown = function (e) {
      return false;
  }
 11,字符串强制换行,拼接时在\n左右两边各打一个空格
+12,replace使用,[1,2,[a,b,c],[A,B,C,[d,e,f]]].replace(/\[|\]/g, ''),替换所有的[和]为空格,转化为一维数组
