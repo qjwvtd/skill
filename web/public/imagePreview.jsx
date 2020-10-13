@@ -1,5 +1,11 @@
 //预览图片弹窗
 import React, { Fragment, useState, useEffect } from 'react';
+/**
+ * @param visible,boolean,预览器显示/隐藏
+ * @param setVisible,function,控制预览器显示/隐藏,参数是boolean
+ * @param image,string,默认显示的图片路径
+ * @param list,Array,图片路径数组,字符串数组
+ */
 export function ImagePreviewer({ visible, setVisible, image, list }) {
     const [currentIndex, setCurrentIndex] = useState(null);
     const [currentImg, setCurrentImg] = useState(null);
