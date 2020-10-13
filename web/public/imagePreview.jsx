@@ -1,5 +1,6 @@
 //预览图片弹窗
 import React, { Fragment, useState, useEffect } from 'react';
+import './../css/imgPreview.less';
 /**
  * @param visible,boolean,预览器显示/隐藏
  * @param setVisible,function,控制预览器显示/隐藏,参数是boolean
