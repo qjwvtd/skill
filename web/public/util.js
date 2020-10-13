@@ -365,7 +365,7 @@ export function shallowClone(obj) {
     }
     return target;
 }
-//深拷贝
+//深拷贝<复杂>
 export function deepClone(obj) {
     if (obj === null) {return obj;}
     if (obj instanceof Date) {return new Date(obj);}
@@ -379,6 +379,10 @@ export function deepClone(obj) {
       }
     }
     return cloneObj;
+}
+//深拷贝<会忽略function和undefined>-最简单快速的深拷贝
+export function quickDeepClone(obj){
+    return JSON.parse(JSON.stringify(obj));
 }
 /**文本框chang事件防抖类
  * @param fn,写自己的处理逻辑
