@@ -50,7 +50,7 @@ export function ajax(params){
         }, options.timeout);
         //状态处理
         xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && !requestDone) {
+                if (xhr.readyState !== 4) { return; }
                 if (xhr.status >= 200 && xhr.status < 300) {
                     let data = options.dataType == "xml" ? xhr.responseXML : xhr.responseText;
                     if (options.dataType == "json") {
