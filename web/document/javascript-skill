@@ -23,3 +23,13 @@ document.onmousedown = function (e) {
 11,字符串强制换行,拼接时在\n左右两边各打一个空格
 12,使用replace,多维数组替换所有的[和],转化为一维数组,
   JSON.parse('[' + JSON.stringify([1,2,[a,b,c],[A,B,C,[d,e,f]]]).replace(/\[|\]/g, '') + ']')
+13,如何平滑滚动到页面顶部？
+const scrollToTop = () => {  
+      const c = document.documentElement.scrollTop || document.body.scrollTop;  
+      if (c > 0) {  
+        window.requestAnimationFrame(scrollToTop);  //重点
+        window.scrollTo(0, c - c / 8);  
+      }  
+    };  
+    // Example  
+    scrollToTop();
