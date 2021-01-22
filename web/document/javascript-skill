@@ -36,3 +36,6 @@ const scrollToTop = () => {
 14,字符串去除所有空格,str = str.replace(/\s+/g, "");
 15,监听页面滚动事件,window.addEventListener('scroll', function (e) { }, false);或
 document.addEventListener('scroll', function (e) { }, false);
+16,用户卸载网页的时候，有时需要向服务器发一些数据
+window.addEventListener('unload', logData, false);
+function logData() {navigator.sendBeacon('/log', analyticsData);}
