@@ -1,0 +1,56 @@
+var path = require('path');
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+var request = require('request');
+var port = 8888;
+//定位静态资源到web目录
+var root = __dirname.replace('server', 'src');
+app.use(express.static(path.join(root)));
+// parse application/x-www-form-urlencoded  
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json  
+app.use(bodyParser.json());
+app.use(function (req, res, next) {
+    const parsedUrl = req.url;
+    const method = req.method;
+    const params = req.params;
+    const query = req.query;
+    const body = req.body;
+    const sendData = Object.assign(params, query, body);
+    const baseUrl = 'http://172.16.3.51:31505';
+    var option = {
+        url: baseUrl + parsedUrl,
+        method: "POST",
+        json: true,
+        headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+        },
+        body: sendData
+    };
+    if (method === 'GET') {
+        option.method = 'GET';
+    }
+    if (method === 'POST') {
+        option.method = 'POST';
+    }
+    request(option, function (error, response, body) {
+        if (error) { console.log(error); }
+        res.send(body);
+    });
+});
+//设置跨域访问
+app.all('*', function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By", ' 3.2.1');
+    res.header("Content-Type", "application/json;charset=utf-8");
+    next();
+});
+
+//开启服务
+app.listen(port, function () {
+    console.log('Server listening on port:', port);
+});
