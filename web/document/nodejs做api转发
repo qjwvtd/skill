@@ -50,3 +50,5 @@ app.all('*', function (req, res, next) {
 app.listen(port, function () {
     console.log('Server listening on port:', port);
 });
+//示例:
+$.ajax({url:'http://localhost:8888/api/getUser',type: 'get'});/api/getUser就会被代理到'http://172.16.3.51:31505'上
