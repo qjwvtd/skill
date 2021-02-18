@@ -54,6 +54,10 @@ export function randomString(length) {
 export function randomColor(){
     return '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).slice(-6);
 }
+//判断数据类型
+export function type(param){
+    return Object.prototype.toString.call(param);
+}
 // 对象
 export function isObject(value) {
     return Object.prototype.toString.call(value).slice(8, -1) === 'Object';
@@ -65,6 +69,40 @@ export function isArray(value) {
 // 函数
 export function isFunction(value) {
     return Object.prototype.toString.call(value).slice(8, -1) === 'Function';
+}
+//移动电话
+export function isMobile(obj) {
+    if (!(/^1[3|5|8][0-9]\d{4,8}$/.test(obj))) {
+        return false;
+    }
+    return true;
+}
+
+
+//电子邮件
+export function isEmail(obj) {
+    const result = obj.match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/);
+    if (result == null) {
+        return false;
+    }
+    return true;
+}
+//异步加载script
+export function loadScript(url, callback) {
+    const oscript = document.createElement('script');
+    if (oscript.readyState) { // ie8及以下版本
+        oscript.onreadystatechange = function () {
+            if (oscript.readyState === 'complete' || oscript.readyState === 'loaded') {
+                callback();
+            }
+        }
+    } else {
+        oscript.onload = function () {
+            callback()
+        };
+    }
+    oscript.src = url;
+    document.body.appendChild(oscript);
 }
 //四舍五入
 export function round(v, p) {
@@ -180,23 +218,7 @@ export function getElementRect(element){
     const rect = element.getBoundingClientRect();
     return rect;
 }
-//匹配移动电话
-export function isMobile(obj) {
-    if (!(/^1[3|5|8][0-9]\d{4,8}$/.test(obj))) {
-        return false;
-    }
-    return true;
-}
 
-
-//匹配电子邮件
-export function isemail(obj) {
-    const result = obj.match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/);
-    if (result == null) {
-        return false;
-    }
-    return true;
-}
 //拆分整数与小数
 export function splits(tranvalue) {
     let arr = new Array('','');
@@ -431,6 +453,29 @@ export const debounce = {
         };
     }
 };
+//防抖
+export function debounceEvent(handle, delay) {
+    let timer = null;
+    return function () {
+        const _self = this,
+            _args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(function () {
+            handle.apply(_self, _args)
+        }, delay)
+    }
+}
+//节流
+export function throttleEvent(handler, wait) {
+    let lastTime = 0;
+    return function (e) {
+        const nowTime = new Date().getTime();
+        if (nowTime - lastTime > wait) {
+            handler.apply(this, arguments);
+            lastTime = nowTime;
+        }
+    }
+}
 /**
  * react阻止当前事件冒泡
  * @param e,当前事件触发的事件对象,调用:stopeEventPropagation(e)
