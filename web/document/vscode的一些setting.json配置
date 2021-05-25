@@ -1,3 +1,4 @@
+设置时从命令行进去： 设置-命令面板，输入 open settings.json
 {
     "git.autofetch": true,
     "editor.lineHeight": 28,
