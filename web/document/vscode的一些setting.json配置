@@ -1,13 +1,14 @@
 设置时从命令行进去： 设置-命令面板，输入 open settings.json
 {
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
     "git.autofetch": true,
     "editor.lineHeight": 28,
     "editor.fontSize": 16,
-    "javascript.implicitProjectConfig.experimentalDecorators": true,
     "workbench.settings.editor": "json",
     "workbench.settings.useSplitJSON": true,
     "files.autoSaveDelay": 0,
-    "eslint.codeAction.disableRuleComment": {},
     "files.autoSave": "onFocusChange",
     "javascript.updateImportsOnFileMove.enabled": "always",
     "editor.formatOnSave": true,
@@ -15,9 +16,10 @@
     "editor.fontLigatures": false,
     "workbench.settings.openDefaultSettings": true,
     "typescript.updateImportsOnFileMove.enabled": "always",
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        "typescriptreact"
+    "workbench.editorAssociations": [
+        {
+            "viewType": "default",
+            "filenamePattern": "*.html"
+        }
     ]
 }
