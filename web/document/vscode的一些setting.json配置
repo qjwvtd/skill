@@ -1,16 +1,18 @@
-设置时从命令行进去： 设置-命令面板，输入 open settings.json
+vscode内搜索eslint插件，安装后在vscode中设置，
+从命令行进去： 设置-命令面板，输入 open settings.json
 {
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
     },
     "git.autofetch": true,
-    "editor.lineHeight": 28,
+    "editor.lineHeight": 24,
     "editor.fontSize": 16,
     "workbench.settings.editor": "json",
     "workbench.settings.useSplitJSON": true,
     "files.autoSaveDelay": 0,
     "files.autoSave": "onFocusChange",
     "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.formatOnType": true,
     "editor.formatOnSave": true,
     "editor.fontFamily": "'Courier New'",
     "editor.fontLigatures": false,
@@ -21,5 +23,11 @@
             "viewType": "default",
             "filenamePattern": "*.html"
         }
+    ],
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
     ]
 }
