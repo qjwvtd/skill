@@ -1,0 +1,21 @@
+1，yarn add @amap/amap-jsapi-loader;
+
+2, import AMapLoader from '@amap/amap-jsapi-loader';
+
+3, const mapRef = useRef<any>();
+
+4, <div ref={mapRef}></div>
+
+5, AMapLoader.load({
+      key: "e8862c29ec0cb8e245db765e7d61bfc7",
+      version: "2.0", // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
+      plugins: []  //插件列表
+  }).then((AMap) => {
+      const map = new AMap.Map(mapRef.current, {
+          zoom: 11,//级别
+          center: [116.397428, 39.90923],//中心点坐标
+          viewMode:'3D'//使用3D视图
+      });
+  }).catch((e:any) => {
+      console.log(e);
+  });
