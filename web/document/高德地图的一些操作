@@ -1,4 +1,20 @@
 /**
+ * 异步加载高德，帐号:qjwvtd,626288
+**/
+useEffect(() => {
+  const url = 'https://webapi.amap.com/maps?v=1.4.15&key=e8862c29ec0cb8e245db765e7d61bfc7';
+  const asyncMapScript = document.createElement('script');
+  asyncMapScript.charset = 'utf-8';
+  asyncMapScript.src = url;
+  asyncMapScript.innerHTML = 'window.AMap=AMap';
+  asyncMapScript.onload = function(){
+      // 在这里写加载完成后的代码
+      console.log('amap is ok',window.AMap);
+  }
+  document.head.appendChild(asyncMapScript);
+},[]);
+
+/**
  * 高德个人帐号:qjwvtd,626288
  * 导出高德地图
  * 高德地图在index.html中引入,全局配置windown.AMap = AMap
