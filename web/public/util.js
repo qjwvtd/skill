@@ -260,29 +260,17 @@ export function parseURL(url) {
     };
 }
 //获取URL参数,返回一个对象
-export function getParam() {
-    const search = window.location.search;
-    const hash = window.location.hash;
-    const searchParam = search.indexOf('?') >= 0 && search;
-    const hashParam = hash.indexOf('?') >= 0 && hash;
-    const paramObj = {};
-    function montage(obj, params) {
-        const startIndex = params.indexOf('?') + 1;
-        const query = params.substr(startIndex, params.length);
-        const list = query.split('&' || '&&');
-        for (let i = 0; i < list.length; i++) {
-            const pair = list[i].split('=');
-            obj[pair[0]] = pair[1];
-        }
-    }
-    if (searchParam.length > 0) {
-        montage(paramObj, searchParam);
-    }
-    if (hashParam.length > 0) {
-        montage(paramObj, hashParam);
-    }
-    return paramObj;
-}
+export function getParameters(URL){
+  URL = JSON.parse(
+    '{"' +
+      decodeURI(URL.split("?")[1])
+        .replace(/"/g, '\\"')
+        .replace(/&/g, '","')
+        .replace(/=/g, '":"') +
+      '"}'
+  );
+  return JSON.stringify(URL);
+};
 /**
  * 防抖函数
  * 只需要在事件触发的第一行调用,如:
