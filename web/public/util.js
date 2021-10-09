@@ -77,7 +77,10 @@ export function isMobile(obj) {
     }
     return true;
 }
-
+//是否合法的日期
+export function isDate(val){
+    return !Number.isNaN(new Date(...val).valueOf());
+}
 
 //电子邮件
 export function isEmail(obj) {
