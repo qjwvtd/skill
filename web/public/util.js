@@ -58,6 +58,11 @@ export function randomColor(){
 export function type(param){
     return Object.prototype.toString.call(param);
 }
+//新密码必须包含大写字母,小写字母,数字和特殊字符@$!%*?&,长度8-20位
+export function isPassword(value){
+    const reg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/g;
+    return reg.test(value);
+}
 // 对象
 export function isObject(value) {
     return Object.prototype.toString.call(value).slice(8, -1) === 'Object';
