@@ -55,7 +55,7 @@ export function randomColor(){
     return '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).slice(-6);
 }
 //判断数据类型
-export function type(param){
+export function isType(param){
     return Object.prototype.toString.call(param);
 }
 //新密码必须包含大写字母,小写字母,数字和特殊字符@$!%*?&,长度8-20位
