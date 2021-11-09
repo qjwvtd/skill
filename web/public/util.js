@@ -27,10 +27,7 @@ export function ranNumber(min,max){
     return +((Math.random() * (max - min) + min).toFixed(0));
   }
 }
-//是否是数字
-export function isNumber(value) {
-    return +(value) % 1 >= 0 || +(value) % 1 < 0;
-}
+
 //获取鼠标点击时的位置
 export function Position(ev) {
     const pageH = document.body.clientHeight;
@@ -53,6 +50,10 @@ export function randomString(length) {
 //随机颜色
 export function randomColor(){
     return '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).slice(-6);
+}
+//是否是数字
+export function isNumber(value) {
+    return +(value) % 1 >= 0 || +(value) % 1 < 0;
 }
 //判断数据类型
 export function isType(param){
